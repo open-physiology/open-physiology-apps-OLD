@@ -1,14 +1,18 @@
 /**
  * Created by Natallia on 7/23/2016.
  */
-import { Injectable } from '@angular/core';
-import { Subject }    from 'rxjs/Subject';
+import { Injectable, EventEmitter} from '@angular/core';
 
 @Injectable()
 export class HighlightService {
-  private highlightedItem = new Subject<any>(); 
-  highlightedItem$ = this.highlightedItem.asObservable();
-  highlightedItemChange(event: any) {
-    this.highlightedItem.next(event);
+  public highlightedItemChanged$: EventEmitter<any>;
+
+  constructor() {
+    this.highlightedItemChanged$ = new EventEmitter();
   }
+
+  public highlight(item: any): void {
+    this.highlightedItemChanged$.emit(item);
+  }
+
 }
