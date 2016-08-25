@@ -78,11 +78,6 @@ legend{
   width: auto;
 }
 
-.repo-template{
-  min-width: 200px;
-  width: 100%;
-}
-
 input[type=number] {
   text-align:right;
 }
@@ -215,7 +210,7 @@ div .dotted {
 
 .repo {
   border-right:3px #eee solid;
-  min-width: 340px;
+  min-width: 380px;
   min-height: 300px;
 }
 
