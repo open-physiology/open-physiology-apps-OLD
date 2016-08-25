@@ -31,9 +31,10 @@ import {FormToolbar} from "./toolbar.form";
            [min] ="min? min: 0" 
            [max] ="max? max: 10" 
            [step]="step? step: 1" 
-          [(ngModel)]="value" (ngModelChange)="updated.emit(value)"/>
+           [(ngModel)]="value" 
+           (ngModelChange)="updated.emit(value)"/>
         
-        <fieldset *ngIf="valueType == 'Range' || valueType == 'Distribution'">
+        <fieldset *ngIf="(valueType == 'Range') || (valueType == 'Distribution')">
           <!--Min--> 
           <div class="input-control">
             <label for="min">Min: </label>
@@ -41,7 +42,8 @@ import {FormToolbar} from "./toolbar.form";
               [min] ="min? min: 0" 
               [max] ="max? max: 10" 
               [step]="step? step: 1" 
-              required [(ngModel)]="valueSet.min">
+              [(ngModel)]="valueSet.min"
+              (ngModelChange)="updated.emit(valueSet)">
           </div>
           <!--Max-->
           <div class="input-control">
@@ -50,7 +52,8 @@ import {FormToolbar} from "./toolbar.form";
               [min] ="min? min: 0" 
               [max] ="max? max: 10" 
               [step]="step? step: 1" 
-              required [(ngModel)]="valueSet.max">
+              [(ngModel)]="valueSet.max"
+              (ngModelChange)="updated.emit(valueSet)">
           </div>
           <div *ngIf="valueType == 'Distribution'">
             <!--Mean-->
@@ -60,7 +63,8 @@ import {FormToolbar} from "./toolbar.form";
               [min] ="min? min: 0" 
               [max] ="max? max: 10" 
               [step]="step? step: 1" 
-              required [(ngModel)]="valueSet.mean">
+              [(ngModel)]="valueSet.mean"
+              (ngModelChange)="updated.emit(valueSet)">
             </div>
             <!--Std-->
             <div class="input-control">
@@ -69,7 +73,8 @@ import {FormToolbar} from "./toolbar.form";
               [min] ="min? min: 0" 
               [max] ="max? max: 10" 
               [step]="step? step: 1" 
-              required [(ngModel)]="valueSet.std">
+              [(ngModel)]="valueSet.std"
+              (ngModelChange)="updated.emit(valueSet)">
             </div>
           </div>
         </fieldset>
@@ -89,11 +94,13 @@ export class TemplateValue{
   ngOnInit(){
     if (this.item) {
       if (this.item instanceof Object) {
-        if (this.item.distribution)
-          this.valueType = "Distribution";
-        else
-          this.valueType = "Range";
         this.valueSet = this.item;
+        if (this.item.distribution){
+          this.valueType = "Distribution";
+        }
+        else {
+          this.valueType = "Range";
+        }
       } else {
         this.value = this.item;
       }
@@ -104,11 +111,10 @@ export class TemplateValue{
     if (type == "Value"){
       this.item = this.value;
     } else {
+      this.valueSet.distribution = (type == 'Distribution')? "Normal": undefined;
       this.item = this.valueSet;
     }
     this.valueType = type;
-    console.log("valueType", this.valueType);
-    console.log("value", this.item);
     this.updated.emit(this.item);
   }
 }
