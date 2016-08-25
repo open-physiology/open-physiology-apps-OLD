@@ -1,0 +1,377 @@
+========================================
+Resource [abstract]
+----------------------------------------
+id                       :  {"type":"integer","readonly":true}
+href                     :  {"type":"string","format":"uri","readonly":true}
+class                    :  {"type":"string","pattern":"^[a-zA-Z_][a-zA-Z0-9_]*$","readonly":true}
+name                     :  {"type":"string"}
+-[:IsRelatedTo]->        :  (0..∞)-->(0..∞)  Resource
+                            id    :  {"type":"integer","readonly":true}
+                            href  :  {"type":"string","format":"uri","readonly":true}
+                            class :  {"type":"string","pattern":"^[a-zA-Z_][a-zA-Z0-9_]*$","readonly":true}
+<-[:IsRelatedTo]-        :  (0..∞)<--(0..∞)  Resource
+                            id    :  {"type":"integer","readonly":true}
+                            href  :  {"type":"string","format":"uri","readonly":true}
+                            class :  {"type":"string","pattern":"^[a-zA-Z_][a-zA-Z0-9_]*$","readonly":true}
+-[:CorrespondsTo]->      :  (0..∞)-->(0..∞)  Resource [anchors] [key='externals']
+<-[:PrescribesStyleFor]- :  (0..∞)<--(0..∞)  Resource [key='themes']
+
+========================================
+ExternalResource [extends Resource]
+----------------------------------------
+uri                         :  {"type":"string","format":"uri","required":true}
+type                        :  {"type":"string"}
+-[:IsExternallyRelatedTo]-> :  (0..∞)-->(0..∞)  ExternalResource
+                               type :  {"type":"string","required":true}
+<-[:IsExternallyRelatedTo]- :  (0..∞)<--(0..∞)  ExternalResource
+                               type :  {"type":"string","required":true}
+<-[:CorrespondsTo]-         :  (0..∞)<--(0..∞)  ExternalResource [key='locals']
+
+========================================
+Type [extends Resource]
+----------------------------------------
+-[:IsSubtypeOf]->   :  (0..∞)-->(0..∞)  Type [key='subtypes']
+<-[:IsSubtypeOf]-   :  (0..∞)<--(0..∞)  Type [anchors] [key='supertypes']
+<-[:HasType]-       :  (   1)<--(0..∞)  Type
+<-[:PresentsModel]- :  (   1)<--(0..∞)  Type
+
+========================================
+Template [extends Resource]
+----------------------------------------
+cardinalityBase                        :  {"oneOf":[{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]},{"type":"integer","minimum":1}],"default":1}
+-[:HasCardinalityMultipliedByThatOf]-> :  (0..∞)-->(0..∞)  Template [anchors] [key='cardinalityMultipliers']
+<-[:HasCardinalityMultipliedByThatOf]- :  (0..∞)<--(0..∞)  Template
+-[:HasType]->                          :  (0..∞)-->(   1)  Template [anchors] [key='type']
+<-[:HasElement]-                       :  (0..∞)<--(0..∞)  Template
+
+========================================
+MaterialType [extends Type]
+----------------------------------------
+<-[:HasType]-                    :  (   1)<--(0..∞)  MaterialType
+-[:ContainsMaterial]->           :  (0..∞)-->(0..∞)  MaterialType [anchors] [key='materials']
+<-[:ContainsMaterial]-           :  (0..∞)<--(0..∞)  MaterialType
+-[:InheritsAllMaterialsFrom]->   :  (0..∞)-->(0..∞)  MaterialType [anchors] [key='materialProviders']
+<-[:InheritsAllMaterialsFrom]-   :  (0..∞)<--(0..∞)  MaterialType
+<-[:TransportsMaterial]-         :  (0..∞)<--(0..∞)  MaterialType
+<-[:MeasuresMaterial]-           :  (0..∞)<--(0..∞)  MaterialType
+-[:InheritsAllMeasurablesFrom]-> :  (0..∞)-->(0..∞)  MaterialType [anchors] [covariant] [key='inheritsMeasurables']
+<-[:InheritsAllMeasurablesFrom]- :  (0..∞)<--(0..∞)  MaterialType
+<-[:PresentsModel]-              :  (   1)<--(0..∞)  MaterialType
+
+========================================
+MaterialTemplate [extends Template]
+----------------------------------------
+-[:HasType]-> :  (0..∞)-->(   1)  MaterialTemplate [anchors] [key='type']
+
+========================================
+LyphType [extends MaterialType]
+----------------------------------------
+<-[:HasType]-                :  (   1)<--(0..∞)  LyphType
+-[:HasPart]->                :  (0..∞)-->(0..∞)  LyphType [anchors] [covariant] [key='parts']
+-[:HasLayer]->               :  (0..∞)-->(0..∞)  LyphType [anchors] [covariant] [key='layers']
+-[:HasPatch]->               :  (0..∞)-->(0..∞)  LyphType [anchors] [covariant] [key='patches']
+                                patchMap :  {"type":"string"}
+-[:InheritsAllPatchesFrom]-> :  (0..∞)-->(0..∞)  LyphType [anchors] [covariant] [key='patchProviders']
+<-[:InheritsAllPatchesFrom]- :  (0..∞)<--(0..∞)  LyphType
+-[:InheritsAllLayersFrom]->  :  (0..∞)-->(0..∞)  LyphType [anchors] [covariant] [key='layerProviders']
+<-[:InheritsAllLayersFrom]-  :  (0..∞)<--(0..∞)  LyphType
+-[:InheritsAllPartsFrom]->   :  (0..∞)-->(0..∞)  LyphType [anchors] [covariant] [key='partProviders']
+<-[:InheritsAllPartsFrom]-   :  (0..∞)<--(0..∞)  LyphType
+-[:HasInnerBorder]->         :  (   1)-->(   1)  LyphType [anchors] [sustains] [covariant] [key='innerBorder']
+                                position :  {"Type":{"oneOf":[{"type":"number"},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}],"required":false},"Template":{"oneOf":[{"type":"number"},{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]}],"required":true}}
+-[:HasOuterBorder]->         :  (   1)-->(   1)  LyphType [anchors] [sustains] [covariant] [key='outerBorder']
+                                position :  {"Type":{"oneOf":[{"type":"number"},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}],"required":false},"Template":{"oneOf":[{"type":"number"},{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]}],"required":true}}
+<-[:CoalescesThroughLayer]-  :  (0..∞)<--(0..∞)  LyphType
+-[:HasNode]->                :  (0..∞)-->(0..∞)  LyphType [anchors] [covariant] [key='nodes']
+-[:ConveysProcess]->         :  (0..1)-->(0..∞)  LyphType [anchors] [covariant] [key='processes']
+<-[:PresentsModel]-          :  (   1)<--(0..∞)  LyphType
+
+========================================
+LyphTemplate [extends MaterialTemplate]
+----------------------------------------
+-[:HasType]->       :  (0..∞)-->(   1)  LyphTemplate [anchors] [key='type']
+<-[:HasPart]-       :  (0..∞)<--(0..∞)  LyphTemplate
+<-[:HasLayer]-      :  (0..∞)<--(0..∞)  LyphTemplate
+<-[:HasPatch]-      :  (0..∞)<--(0..∞)  LyphTemplate
+                       patchMap :  {"type":"string"}
+-[:CoalescesWith]-> :  (0..∞)-->(2..∞)  LyphTemplate [key='coalescences']
+
+========================================
+CylindricalLyphType [extends LyphType]
+----------------------------------------
+<-[:HasType]-                 :  (   1)<--(0..∞)  CylindricalLyphType
+-[:HasSegment]->              :  (0..∞)-->(0..∞)  CylindricalLyphType [anchors] [covariant] [key='segments']
+-[:InheritsAllSegmentsFrom]-> :  (0..∞)-->(0..∞)  CylindricalLyphType [anchors] [covariant] [key='segmentProviders']
+<-[:InheritsAllSegmentsFrom]- :  (0..∞)<--(0..∞)  CylindricalLyphType
+-[:HasMinusBorder]->          :  (   1)-->(   1)  CylindricalLyphType [anchors] [sustains] [covariant] [key='minusBorder']
+                                 position :  {"Type":{"oneOf":[{"type":"number"},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}],"required":false},"Template":{"oneOf":[{"type":"number"},{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]}],"required":true}}
+-[:HasPlusBorder]->           :  (   1)-->(   1)  CylindricalLyphType [anchors] [sustains] [covariant] [key='plusBorder']
+                                 position :  {"Type":{"oneOf":[{"type":"number"},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}],"required":false},"Template":{"oneOf":[{"type":"number"},{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]}],"required":true}}
+<-[:PresentsModel]-           :  (   1)<--(0..∞)  CylindricalLyphType
+
+========================================
+CylindricalLyphTemplate [extends LyphTemplate]
+----------------------------------------
+-[:HasType]->    :  (0..∞)-->(   1)  CylindricalLyphTemplate [anchors] [key='type']
+<-[:HasSegment]- :  (0..∞)<--(0..∞)  CylindricalLyphTemplate
+
+========================================
+BorderType [extends Type]
+----------------------------------------
+<-[:HasType]-                    :  (   1)<--(0..∞)  BorderType
+-[:HasNode]->                    :  (0..∞)-->(0..∞)  BorderType [anchors] [covariant] [key='nodes']
+-[:InheritsAllMeasurablesFrom]-> :  (0..∞)-->(0..∞)  BorderType [anchors] [covariant] [key='inheritsMeasurables']
+<-[:InheritsAllMeasurablesFrom]- :  (0..∞)<--(0..∞)  BorderType
+<-[:PresentsModel]-              :  (   1)<--(0..∞)  BorderType
+
+========================================
+BorderTemplate [extends Template]
+----------------------------------------
+-[:HasType]->        :  (0..∞)-->(   1)  BorderTemplate [anchors] [key='type']
+<-[:HasInnerBorder]- :  (   1)<--(   1)  BorderTemplate
+                        position :  {"Type":{"oneOf":[{"type":"number"},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}],"required":false},"Template":{"oneOf":[{"type":"number"},{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]}],"required":true}}
+<-[:HasOuterBorder]- :  (   1)<--(   1)  BorderTemplate
+                        position :  {"Type":{"oneOf":[{"type":"number"},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}],"required":false},"Template":{"oneOf":[{"type":"number"},{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]}],"required":true}}
+<-[:HasMinusBorder]- :  (   1)<--(   1)  BorderTemplate
+                        position :  {"Type":{"oneOf":[{"type":"number"},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}],"required":false},"Template":{"oneOf":[{"type":"number"},{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]}],"required":true}}
+<-[:HasPlusBorder]-  :  (   1)<--(   1)  BorderTemplate
+                        position :  {"Type":{"oneOf":[{"type":"number"},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}],"required":false},"Template":{"oneOf":[{"type":"number"},{"oneOf":[{"type":"object","properties":{"mean":{"type":"number","required":true},"std":{"type":"number","required":true},"min":{"type":"number","required":true},"max":{"type":"number","required":true}}},{"type":"object","properties":{"min":{"type":"number","required":true},"max":{"type":"number","required":true}}}]}],"required":true}}
+
+========================================
+Coalescence [extends Resource]
+----------------------------------------
+<-[:CoalescesWith]-         :  (2..∞)<--(0..∞)  Coalescence [anchors] [key='lyphs']
+-[:CoalescesThroughLayer]-> :  (0..∞)-->(0..∞)  Coalescence [anchors] [key='interfaceLayers']
+<-[:PresentsModel]-         :  (   1)<--(0..∞)  Coalescence
+
+========================================
+NodeType [extends Type]
+----------------------------------------
+<-[:HasType]-                    :  (   1)<--(0..∞)  NodeType
+-[:HasChannel]->                 :  (0..∞)-->(0..∞)  NodeType [anchors] [covariant] [key='channels']
+-[:InheritsAllChannelsFrom]->    :  (0..∞)-->(0..∞)  NodeType [anchors] [covariant] [key='channelProviders']
+<-[:InheritsAllChannelsFrom]-    :  (0..∞)<--(0..∞)  NodeType
+-[:InheritsAllMeasurablesFrom]-> :  (0..∞)-->(0..∞)  NodeType [anchors] [covariant] [key='inheritsMeasurables']
+<-[:InheritsAllMeasurablesFrom]- :  (0..∞)<--(0..∞)  NodeType
+<-[:PresentsModel]-              :  (   1)<--(0..∞)  NodeType
+
+========================================
+NodeTemplate [extends Template]
+----------------------------------------
+-[:HasType]->    :  (0..∞)-->(   1)  NodeTemplate [anchors] [key='type']
+<-[:HasNode]-    :  (0..∞)<--(0..∞)  NodeTemplate
+-[:FlowsTo]->    :  (   1)-->(0..∞)  NodeTemplate [key='outgoingProcesses']
+<-[:FlowsTo]-    :  (   1)<--(0..∞)  NodeTemplate [key='incomingProcesses']
+<-[:HasChannel]- :  (0..∞)<--(0..∞)  NodeTemplate
+<-[:HasAsRoot]-  :  (   1)<--(0..∞)  NodeTemplate
+
+========================================
+ProcessType [extends Type]
+----------------------------------------
+<-[:HasType]-                    :  (   1)<--(0..∞)  ProcessType
+-[:TransportsMaterial]->         :  (0..∞)-->(0..∞)  ProcessType [anchors] [covariant] [key='materials']
+-[:InheritsAllMaterialsFrom]->   :  (0..∞)-->(0..∞)  ProcessType [anchors] [covariant] [key='materialProviders']
+<-[:InheritsAllMaterialsFrom]-   :  (0..∞)<--(0..∞)  ProcessType
+-[:HasSegment]->                 :  (0..∞)-->(0..∞)  ProcessType [anchors] [covariant] [key='segments']
+-[:InheritsAllSegmentsFrom]->    :  (0..∞)-->(0..∞)  ProcessType [anchors] [covariant] [key='segmentProviders']
+<-[:InheritsAllSegmentsFrom]-    :  (0..∞)<--(0..∞)  ProcessType
+-[:HasChannel]->                 :  (0..∞)-->(0..∞)  ProcessType [anchors] [covariant] [key='channels']
+-[:InheritsAllChannelsFrom]->    :  (0..∞)-->(0..∞)  ProcessType [anchors] [covariant] [key='channelProviders']
+<-[:InheritsAllChannelsFrom]-    :  (0..∞)<--(0..∞)  ProcessType
+-[:InheritsAllMeasurablesFrom]-> :  (0..∞)-->(0..∞)  ProcessType [anchors] [covariant] [key='inheritsMeasurables']
+<-[:InheritsAllMeasurablesFrom]- :  (0..∞)<--(0..∞)  ProcessType
+<-[:PresentsModel]-              :  (   1)<--(0..∞)  ProcessType
+
+========================================
+ProcessTemplate [extends Template]
+----------------------------------------
+-[:HasType]->        :  (0..∞)-->(   1)  ProcessTemplate [anchors] [key='type']
+<-[:FlowsTo]-        :  (0..∞)<--(   1)  ProcessTemplate [anchors] [key='source']
+-[:FlowsTo]->        :  (0..∞)-->(   1)  ProcessTemplate [anchors] [key='target']
+<-[:ConveysProcess]- :  (0..∞)<--(0..1)  ProcessTemplate [key='conveyingLyph']
+<-[:HasSegment]-     :  (0..∞)<--(0..∞)  ProcessTemplate
+<-[:HasChannel]-     :  (0..∞)<--(0..∞)  ProcessTemplate
+
+========================================
+MeasurableType [extends Type]
+----------------------------------------
+<-[:HasType]-          :  (   1)<--(0..∞)  MeasurableType
+-[:MeasuresMaterial]-> :  (0..∞)-->(0..∞)  MeasurableType [anchors] [covariant] [key='materials']
+<-[:PresentsModel]-    :  (   1)<--(0..∞)  MeasurableType
+
+========================================
+Measurable [extends Template]
+----------------------------------------
+-[:HasType]->            :  (0..∞)-->(   1)  Measurable [anchors] [key='type']
+<-[:HasMeasurable]-      :  (0..∞)<--(   1)  Measurable [key='location']
+-[:Causes]->             :  (   1)-->(0..∞)  Measurable [key='effects']
+<-[:Causes]-             :  (   1)<--(0..∞)  Measurable [key='causes']
+<-[:InvolvesMeasurable]- :  (0..∞)<--(0..∞)  Measurable
+
+========================================
+MeasurableLocation
+----------------------------------------
+<-[:HasType]- :  (   1)<--(0..∞)  MeasurableLocation
+
+========================================
+MeasurableLocationTemplate
+----------------------------------------
+-[:HasType]-> :  (0..∞)-->(   1)  MeasurableLocationTemplate [anchors] [key='type']
+
+========================================
+CausalityType [extends Type]
+----------------------------------------
+<-[:HasType]-       :  (   1)<--(0..∞)  CausalityType
+<-[:PresentsModel]- :  (   1)<--(0..∞)  CausalityType
+
+========================================
+CausalityTemplate [extends Template]
+----------------------------------------
+-[:HasType]-> :  (0..∞)-->(   1)  CausalityTemplate [anchors] [key='type']
+<-[:Causes]-  :  (0..∞)<--(   1)  CausalityTemplate [anchors] [key='cause']
+-[:Causes]->  :  (0..∞)-->(   1)  CausalityTemplate [anchors] [key='effect']
+
+========================================
+GroupType [extends Type]
+----------------------------------------
+<-[:HasType]-    :  (   1)<--(0..∞)  GroupType
+-[:HasElement]-> :  (0..∞)-->(0..∞)  GroupType [anchors] [key='elements']
+
+========================================
+GroupTemplate [extends Template]
+----------------------------------------
+-[:HasType]-> :  (0..∞)-->(   1)  GroupTemplate [anchors] [key='type']
+
+========================================
+OmegaTreeType [extends GroupType]
+----------------------------------------
+<-[:HasType]-   :  (   1)<--(0..∞)  OmegaTreeType
+-[:HasAsRoot]-> :  (0..∞)-->(   1)  OmegaTreeType [anchors] [covariant] [key='root']
+
+========================================
+OmegaTreeTemplate [extends GroupTemplate]
+----------------------------------------
+-[:HasType]-> :  (0..∞)-->(   1)  OmegaTreeTemplate [anchors] [key='type']
+
+========================================
+Correlation [extends Resource]
+----------------------------------------
+comment                     :  {"type":"string"}
+-[:InvolvesMeasurable]->    :  (0..∞)-->(0..∞)  Correlation [anchors] [key='measurables']
+-[:InvolvesClinicalIndex]-> :  (0..∞)-->(0..∞)  Correlation [anchors] [key='clinicalIndices']
+-[:InvolvesPublication]->   :  (0..∞)-->(0..1)  Correlation [anchors] [key='publication']
+
+========================================
+ClinicalIndex [extends Resource]
+----------------------------------------
+-[:EncompassesClinicalIndex]-> :  (0..1)-->(0..∞)  ClinicalIndex [anchors] [key='children']
+<-[:EncompassesClinicalIndex]- :  (0..∞)<--(0..1)  ClinicalIndex [key='parent']
+<-[:InvolvesClinicalIndex]-    :  (0..∞)<--(0..∞)  ClinicalIndex
+
+========================================
+Publication [extends Resource]
+----------------------------------------
+<-[:InvolvesPublication]- :  (0..1)<--(0..∞)  Publication
+
+========================================
+Theme [extends Resource]
+----------------------------------------
+-[:PrescribesStyleFor]-> :  (0..∞)-->(0..∞)  Theme [key='resources']
+
+========================================
+Artefact [abstract] [extends Resource]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  Artefact [anchors] [key='model']
+
+========================================
+Dim2Artefact [abstract] [extends Artefact]
+----------------------------------------
+width                  :  {"type":"object","properties":{"n":{"type":"integer","minimum":0,"required":true},"d":{"type":"integer","minimum":1,"default":1,"required":true},"s":{"type":"integer","enum":[-1,1],"default":1,"required":true}},"required":true}
+height                 :  {"type":"object","properties":{"n":{"type":"integer","minimum":0,"required":true},"d":{"type":"integer","minimum":1,"default":1,"required":true},"s":{"type":"integer","enum":[-1,1],"default":1,"required":true}},"required":true}
+<-[:ContainsArtefact]- :  (0..∞)<--(0..1)  Dim2Artefact [key='parent']
+                          x        :  {"type":"object","properties":{"n":{"type":"integer","minimum":0,"required":true},"d":{"type":"integer","minimum":1,"default":1,"required":true},"s":{"type":"integer","enum":[-1,1],"default":1,"required":true}},"required":true}
+                          y        :  {"type":"object","properties":{"n":{"type":"integer","minimum":0,"required":true},"d":{"type":"integer","minimum":1,"default":1,"required":true},"s":{"type":"integer","enum":[-1,1],"default":1,"required":true}},"required":true}
+                          rotation :  {"type":"number","minimum":0,"exclusiveMinimum":false,"maximum":360,"exclusiveMaximum":true,"default":0,"required":true}
+
+========================================
+Dim1Artefact [abstract] [extends Dim2Artefact]
+----------------------------------------
+height                 =  {"n":0}
+<-[:ContainsArtefact]- :  (0..∞)<--(0..1)  Dim1Artefact [key='parent']
+                          x :  {"type":"object","properties":{"n":{"type":"integer","minimum":0,"required":true},"d":{"type":"integer","minimum":1,"default":1,"required":true},"s":{"type":"integer","enum":[-1,1],"default":1,"required":true}},"required":true}
+
+========================================
+Dim0Artefact [abstract] [extends Dim1Artefact]
+----------------------------------------
+width                  =  {"n":0}
+<-[:ContainsArtefact]- :  (0..∞)<--(0..1)  Dim0Artefact [key='parent']
+
+========================================
+Dim2Container [abstract] [extends Dim2Artefact]
+----------------------------------------
+-[:ContainsArtefact]-> :  (0..1)-->(0..∞)  Dim2Container [anchors] [key='children']
+                          x        :  {"type":"object","properties":{"n":{"type":"integer","minimum":0,"required":true},"d":{"type":"integer","minimum":1,"default":1,"required":true},"s":{"type":"integer","enum":[-1,1],"default":1,"required":true}},"required":true}
+                          y        :  {"type":"object","properties":{"n":{"type":"integer","minimum":0,"required":true},"d":{"type":"integer","minimum":1,"default":1,"required":true},"s":{"type":"integer","enum":[-1,1],"default":1,"required":true}},"required":true}
+                          rotation :  {"type":"number","minimum":0,"exclusiveMinimum":false,"maximum":360,"exclusiveMaximum":true,"default":0,"required":true}
+
+========================================
+Dim1Container [abstract] [extends Dim1Artefact]
+----------------------------------------
+-[:ContainsArtefact]-> :  (0..1)-->(0..∞)  Dim1Container [anchors] [key='children']
+                          x :  {"type":"object","properties":{"n":{"type":"integer","minimum":0,"required":true},"d":{"type":"integer","minimum":1,"default":1,"required":true},"s":{"type":"integer","enum":[-1,1],"default":1,"required":true}},"required":true}
+
+========================================
+Dim0Container [abstract] [extends Dim0Artefact]
+----------------------------------------
+-[:ContainsArtefact]-> :  (0..1)-->(0..∞)  Dim0Container [anchors] [key='children']
+
+========================================
+LyphCanvas [extends Dim2Container]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  LyphCanvas [anchors] [key='model']
+
+========================================
+MaterialGlyph [extends Dim0Artefact]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  MaterialGlyph [anchors] [key='model']
+
+========================================
+LyphRectangle [extends Dim2Container]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  LyphRectangle [anchors] [key='model']
+
+========================================
+CylindricalLyphRectangle [extends LyphRectangle]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  CylindricalLyphRectangle [anchors] [key='model']
+
+========================================
+BorderLine [extends Dim1Container]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  BorderLine [anchors] [key='model']
+
+========================================
+CoalescenceRectangle [extends Dim2Container]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  CoalescenceRectangle [anchors] [key='model']
+
+========================================
+NodeGlyph [extends Dim0Container]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  NodeGlyph [anchors] [key='model']
+
+========================================
+ProcessEdge [extends Dim1Container]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  ProcessEdge [anchors] [key='model']
+
+========================================
+MeasurableGlyph [extends Dim0Artefact]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  MeasurableGlyph [anchors] [key='model']
+
+========================================
+CausalityArrow [extends Dim1Artefact]
+----------------------------------------
+-[:PresentsModel]-> :  (0..∞)-->(   1)  CausalityArrow [anchors] [key='model']
+

@@ -1,0 +1,1939 @@
+Accessor basal nucleus (amygdala), ventromedial division | cocomac:98
+Accessory basal (magnocellular) nucleus of the amygdala | cocomac:8
+Accessory basal (parvocellular) nucleus of the amygdala | cocomac:1236
+Accessory basal amygdaloid nucleus | cocomac:1295
+Accessory basal amygdaloid nucleus, dorsal division | cocomac:323
+Accessory basal amygdaloid nucleus, parvicellular part | cocomac:9
+Accessory basal amygdaloid nucleus, superficial part | cocomac:87
+Accessory basal amygdaloid nucleus, ventral division | cocomac:329
+Accessory basal amygdaloid nucleus: pars densocellularis | cocomac:1296
+Accessory basal amygdaloid nucleus: pars magnocellularis | cocomac:1297
+Accessory basal amygdaloid nucleus: pars magnocellularis lateralis | cocomac:1298
+Accessory basal amygdaloid nucleus: pars magnocellularis medialis | cocomac:1299
+Accessory basal amygdaloid nucleus: pars mediocellularis | cocomac:1300
+Accessory basal amygdaloid nucleus: pars mixtocellularis | cocomac:1302
+Accessory basal nucleus | cocomac:209
+Accessory basal nucleus of the amygdala | cocomac:1726
+Aentral posterior lateral nucleus (thalamus)	 | cocomac:465
+Agranular area of temporal polar cortex	 | cocomac:803
+Agranular insula   | cocomac:274
+Agranular insula | cocomac:1937
+Agranular insular cortex | cocomac:881
+Agranular part of temporopolar cortex | cocomac:1594
+Agranular periallocortical insular cortex | cocomac:1597
+Allocortex of Bonin & Bailey 1947 | cocomac:423
+Ammonic subfield CA2, stratum lacunosum-moleculare | cocomac:2355
+Ammonic subfield CA3, stratum lacunosum-moleculare | cocomac:1276
+Amydalohippocampal area, magnocellular part | cocomac:1877
+Amydalohippocampal area, posteromedial part | cocomac:1878
+Amygdala	 | cocomac:989
+Amygdala | cocomac:11
+Amygdalo-hippocampal area | cocomac:1288
+Amygdalohippocampal area, dorsal division	 | cocomac:1712
+Amygdalohippocampal area, ventral division		 | cocomac:1713
+Amygdaloid anterior area, pars oralis | cocomac:1315
+Amygdalopiriform transition area | cocomac:477
+Anterior amygdaloid area | cocomac:1616
+Anterior amygdaloid area, pars caudalis | cocomac:1328
+Anterior amygdaloid nucleus	 | cocomac:1287
+Anterior area 14 | cocomac:1742
+Anterior cingulate area 24  | cocomac:53
+Anterior cingulate cortex | cocomac:162
+Anterior cortical amygdaloid nucleus, layer I | cocomac:64
+Anterior cortical amygdaloid nucleus, layer II		 | cocomac:65
+Anterior cortical amygdaloid nucleus, layer III | cocomac:66
+Anterior inferotemporal area (dorsal)	 | cocomac:995
+Anterior inferotemporal area (ventral) | cocomac:996
+Anterior insula	 | cocomac:432
+Anterior intraparietal area		  | cocomac:515
+Anterior medial nucleus	 | cocomac:1932
+Anterior nuclei of the thalamus	 | cocomac:125
+Anterior olfactory nucleus | cocomac:536
+Anterior paraventricular nucleus talami | cocomac:1343
+Anterior pulvinar nucleus | cocomac:370
+Anterior ventral lateral posterior nucleus | cocomac:1356
+Anterior ventral nucleus | cocomac:1931
+Arae TH caudal division	 | cocomac:1577
+Arae TH, caudal division | cocomac:2039
+Arcuate fasciculus | cocomac:1910
+Arcuate premotor area	 | cocomac:920
+Area 1 | cocomac:260
+Area 1 of cingulate cortex	    | cocomac:1881
+Area 10		 | cocomac:36
+Area 11	  | cocomac:154
+Area 12	    | cocomac:37
+Area 15		  | cocomac:343
+Area 16	 | cocomac:344
+Area 18	 | cocomac:345
+Area 19	 | cocomac:335
+Area 19a   | cocomac:2325
+Area 19b | cocomac:2326
+Area 2 | cocomac:287
+Area 2 of cingulate cortex | cocomac:1882
+Area 20	 | cocomac:336
+Area 21	  | cocomac:337
+Area 22 | cocomac:338
+Area 23	 | cocomac:167
+Area 23a	 | cocomac:844
+Area 23b | cocomac:845
+Area 23c   | cocomac:918
+Area 24a	 | cocomac:296
+Area 24b   | cocomac:297
+Area 25	 | cocomac:168
+Area 26	 | cocomac:339
+Area 27 (Presubiculum) | cocomac:340
+Area 28 | cocomac:341
+Area 28a | cocomac:18
+Area 28b | cocomac:19
+Area 29 | cocomac:342
+Area 29a | cocomac:452
+Area 29b  | cocomac:453
+Area 29c | cocomac:456
+Area 29d | cocomac:1862
+Area 3 | cocomac:261
+Area 31 | cocomac:529
+Area 32 | cocomac:169
+Area 33 | cocomac:1733
+Area 35 | cocomac:170
+Area 35a | cocomac:2216
+Area 35b | cocomac:2217
+Area 36	 | cocomac:206
+Area 36, caudolateral subdivision   | cocomac:2025
+Area 36, caudomedial subdivision		 | cocomac:2026
+Area 36, dorsal subdivision | cocomac:2027
+Area 36, rostrolateral subdivision | cocomac:2028
+Area 36, rostromedial subdivision | cocomac:2029
+Area 4 | cocomac:262
+Area 46 (dorsal rim of the principal sulcus) | cocomac:1526
+Area 46 (fundus of the principal sulcus) | cocomac:1527
+Area 46 (ventral rim of the principal sulcus)	 | cocomac:1528
+Area 49 (Parasubiculum)	 | cocomac:917
+Area 5 | cocomac:263
+Area 51		 | cocomac:191
+Area 6 | cocomac:56
+Area 6 (ventral part, caudal division) | cocomac:1869
+Area 6 (ventral part, rostral division)		 | cocomac:1870
+Area 6c	  | cocomac:919
+Area 7	 | cocomac:264
+Area 7a	 | cocomac:57
+Area 7a-l   | cocomac:1750
+Area 7a-m	 | cocomac:1751
+Area 7b	 | cocomac:38
+Area 7m	  | cocomac:787
+Area 7op | cocomac:1483
+Area 8 | cocomac:155
+Area 8A | cocomac:39
+Area 8B	 | cocomac:40
+Area 8alpha | cocomac:2318
+Area 8beta | cocomac:2319
+Area 8delta | cocomac:2320
+Area 8gamma	   | cocomac:2321
+Area 9 | cocomac:41
+Area Pro (frontal lobe) | cocomac:311
+Area Prostriata		 | cocomac:1629
+Area TEO plus more caudally placed visual association areas | cocomac:2033
+Area TH rostral division | cocomac:1578
+Area TH, rostral division	    | cocomac:2040
+Area X (thalamus)	 | cocomac:782
+Area in the temporalis medialis posterior sulcus | cocomac:2023
+Area lateralis hypothalami | cocomac:2167
+Area medialis hypothalami | cocomac:2187
+Area olfatoria | cocomac:2203
+Area on the cingulate gyrus | cocomac:1470
+Area preoptica lateralis | cocomac:2065
+Area preoptica medialis	 | cocomac:2075
+Area pretectalis | cocomac:1393
+Area prostriata	 | cocomac:1628
+Area septalis | cocomac:2096
+Area temporalis superior | cocomac:1749
+Area temporalis superior 1	 | cocomac:411
+Area temporalis superior 2 | cocomac:412
+Area temporalis superior 3	  | cocomac:413
+Arm area of primary sensory cortex | cocomac:483
+Arm region of the primary motor cortex | cocomac:1378
+Arm region of the primary sensory cortex    | cocomac:1374
+Arm representation of the primary motor cortex | cocomac:921
+Auditory Area | cocomac:1394
+Auditory field a    | cocomac:1519
+Auditory field b | cocomac:1520
+Auditory field c | cocomac:1521
+Auditory konicortex lateral | cocomac:1920
+Auditory koniocortex	 | cocomac:445
+Auditory koniocortex | cocomac:1176
+Auditory koniocortex (lateral part) | cocomac:1879
+Auditory koniocortex (medial part) | cocomac:1880
+Auditory prokoniocortex	 | cocomac:401
+Axial area of primary motor cortex M1 | cocomac:1641
+Basal Ganglia according to GM-Definition    | cocomac:1101
+Basal amygdaloid nucleus, dorsal division	 | cocomac:333
+Basal amygdaloid nucleus, intermediate part | cocomac:103
+Basal amygdaloid nucleus, magnocellular part | cocomac:295
+Basal amygdaloid nucleus, pars lateralis | cocomac:1289
+Basal amygdaloid nucleus, pars lateralis: pars magnocellularis | cocomac:1290
+Basal amygdaloid nucleus, pars lateralis: pars magnocellularis dorsalis | cocomac:1301
+Basal amygdaloid nucleus, pars lateralis: pars magnocellularis dorso(lateralis) | cocomac:1312
+Basal amygdaloid nucleus, pars lateralis: pars magnocellularis dorsomedialis | cocomac:1322
+Basal amygdaloid nucleus, pars lateralis: pars magnocellularis ventralis | cocomac:1331
+Basal amygdaloid nucleus, pars lateralis: pars mediocellularis | cocomac:1332
+Basal amygdaloid nucleus, pars lateralis: pars parvocellularis | cocomac:1333
+Basal amygdaloid nucleus, pars medialis | cocomac:1303
+Basal amygdaloid nucleus, pars medialis: pars glomerularis | cocomac:1304
+Basal amygdaloid nucleus, pars medialis: pars granularis | cocomac:1305
+Basal amygdaloid nucleus, pars medialis: pars pyramidalis | cocomac:1306
+Basal amygdaloid nucleus, pars medialis: pars supragranularis | cocomac:1307
+Basal amygdaloid nucleus, pars parvicellularis	 | cocomac:1950
+Basal amygdaloid nucleus, periamygdaloid sulcal cortex | cocomac:334
+Basal amygdaloid nucleus, ventral lateral division | cocomac:320
+Basal amygdaloid nucleus, ventral medial division | cocomac:321
+Basal complex of amygdala | cocomac:1280
+Basal nucleus of Meynert | cocomac:269
+Basal nucleus of the amygdala	 | cocomac:2270
+Basolateral nucleus of amygdala | cocomac:107
+Basolateral nucleus of the amygdala | cocomac:1727
+Basomedial nucleus of the amygdala | cocomac:1728
+Bed nucleus of stria terminalis, lateral part | cocomac:1919
+Bed nucleus of stria terminalis, medial part | cocomac:1915
+Brain according to GM-Definition | cocomac:1103
+CA1 subfield of Ammon`s horn	    | cocomac:23
+CA1 subfield of cornu ammonis: lateral one-third | cocomac:2361
+CA1 subfield of cornu ammonis: medial one-third | cocomac:2362
+CA1 subfield of cornu ammonis: medial one-third, stratum moleculare | cocomac:2363
+CA1 subfield of cornu ammonis: medial one-third, stratum pyramidale | cocomac:2364
+CA1 subfield of cornu ammonis: medial one-third, stratum radiatum | cocomac:2365
+CA1 subfield of cornu ammonis: middle one-third | cocomac:2366
+CA1 subfield, (stratum) alveus	 | cocomac:157
+CA1 subfield, stratum lacunosum et moleculare | cocomac:1275
+CA1 subfield, stratum moleculare   | cocomac:158
+CA1 subfield, stratum oriens | cocomac:159
+CA1 subfield, stratum pyramidale	   | cocomac:160
+CA1 subfield, stratum radiatum	  | cocomac:161
+CA1Â´ subfield, (stratum) alveus | cocomac:2021
+CA1Â´ subfield, stratum moleculare | cocomac:2022
+CA1Â´ subfield, stratum oriens | cocomac:1996
+CA1Â´ subfield, stratum pyramidale | cocomac:1997
+CA1Â´ subfield, stratum radiatum | cocomac:1998
+CA2 subfield of Ammons horn	 | cocomac:305
+CA2 subfield, (stratum) alveus	 | cocomac:1999
+CA2 subfield, stratum moleculare | cocomac:2000
+CA2 subfield, stratum oriens | cocomac:2001
+CA2 subfield, stratum pyramidale | cocomac:2002
+CA2 subfield, stratum radiatum	 | cocomac:2003
+CA3 subfield of Ammons horn | cocomac:24
+CA3 subfield, (stratum) alveus	 | cocomac:2004
+CA3 subfield, stratum lucidum | cocomac:2005
+CA3 subfield, stratum moleculare | cocomac:2006
+CA3 subfield, stratum oriens	 | cocomac:2007
+CA3 subfield, stratum pyramidale | cocomac:2008
+CA3 subfield, stratum radiatum | cocomac:2009
+CA4 subfield of Ammons horn | cocomac:34
+CA4 subfield-stratum granulosum | cocomac:2306
+Campus foreli	 | cocomac:2193
+Capsule of the nucleus lateralis dorsalis | cocomac:1666
+Caudal Intraparietal Area   | cocomac:458
+Caudal agranular insular field | cocomac:853
+Caudal and medial superior parietal lobule	 | cocomac:443
+Caudal and medial superior parietal lobule | cocomac:607
+Caudal area 14	 | cocomac:826
+Caudal area 8A | cocomac:694
+Caudal auditory parakoniocortex | cocomac:648
+Caudal cingulate motor area	 | cocomac:882
+Caudal cingulate motor area, dorsal bank | cocomac:817
+Caudal cingulate motor area, ventral bank | cocomac:818
+Caudal field of entorhinal cortex	 | cocomac:195
+Caudal inferior parietal lobule	 | cocomac:47
+Caudal lateral auditory belt | cocomac:1227
+Caudal limiting field of entorhinal cortex		 | cocomac:196
+Caudal medial frontal area | cocomac:1739
+Caudal parietal operculum	 | cocomac:612
+Caudal part of area 36	 | cocomac:176
+Caudal part of perirhinal area 36, lamina I | cocomac:177
+Caudal part of perirhinal area 36, lamina II | cocomac:178
+Caudal part of perirhinal area 36, lamina III | cocomac:179
+Caudal part of perirhinal area 36, lamina V | cocomac:181
+Caudal part of perirhinal area 36, lamina VI	 | cocomac:183
+Caudal part of perirhinal area 36, lamina VI | cocomac:180
+Caudal part of the cingulate sulcus | cocomac:608
+Caudal part of ventral area 46		 | cocomac:601
+Central amygdaloid nucleus | cocomac:1327
+Central amygdaloid nucleus, capsular division | cocomac:322
+Central amygdaloid nucleus, lateral part | cocomac:846
+Central amygdaloid nucleus, medial part | cocomac:847
+Central gray	 | cocomac:661
+Central inferotemporal area | cocomac:997
+Central inferotemporal area (dorsal) | cocomac:998
+Central inferotemporal area (ventral)	 | cocomac:999
+Central medial nucleus thalami	   | cocomac:783
+Central nucleus (amygdala), lateral division | cocomac:61
+Central nucleus (amygdala), medial division | cocomac:62
+Central nucleus of the amygdala | cocomac:2277
+Central nucleus of the amygdala; medial, magnocellular division | cocomac:13
+Central temporal cortex	 | cocomac:1107
+Centrolateral prefrontal cortex | cocomac:1070
+Centrum medianum thalami  | cocomac:2154
+Cingulate Gyrus according to GM-Definition | cocomac:1147
+Cingulate area 23c, ventral division | cocomac:1639
+Cingulate area 23d	 | cocomac:1547
+Cingulate area 24aÂ´	 | cocomac:2302
+Cingulate area 24bÂ´	  | cocomac:2303
+Cingulate area 24c, ventral division | cocomac:1634
+Cingulate area 24cÂ´ | cocomac:1652
+Cingulate area 24Â´	 | cocomac:2301
+Cingulate cortex	 | cocomac:2268
+Cingulate gyrus	 | cocomac:698
+Claustrum	 | cocomac:1514
+Claustrum	 | cocomac:271
+Claustrum | cocomac:572
+Colliculus inferior | cocomac:2152
+Colliculus superior	 | cocomac:2163
+Colliculus superior | cocomac:1392
+Conjoint lateral and ventral intraparietal area | cocomac:819
+Cornu ammonis	   | cocomac:130
+Corpus amygdalae	 | cocomac:2145
+Corpus geniculatum laterale | cocomac:2184
+Corpus geniculatum laterale | cocomac:2269
+Corpus geniculatum laterale, magnocellular part | cocomac:1011
+Corpus geniculatum laterale, pars dorsale | cocomac:2342
+Corpus geniculatum laterale, pars oralis | cocomac:2185
+Corpus geniculatum laterale, parvocellular part | cocomac:1012
+Corpus geniculatum laterale, superficial layers | cocomac:1013
+Corpus geniculatum mediale	 | cocomac:2186
+Corpus geniculatum mediale | cocomac:369
+Corpus geniculatum mediale, pars magnocellularis | cocomac:2188
+Corpus geniculatum mediale, pars magnocellularis | cocomac:2347
+Corpus mamillaris	 | cocomac:2155
+Corpus piriformis | cocomac:2160
+Corpus pontobulbare | cocomac:2159
+Corpus restiforme	 | cocomac:2162
+Corpus subthalamicum	   | cocomac:1509
+Corpus trapezoideum | cocomac:2164
+Cortex insularis | cocomac:2153
+Cortex of the intraparietal sulcus | cocomac:1065
+Cortex of the superior temporal gyrus and sulcus (anterior portion) | cocomac:858
+Cortex of the superior temporal gyrus and sulcus (posterior portion) | cocomac:859
+Cortex prestriatus | cocomac:2161
+Cortical amygdaloid nucleus	 | cocomac:1368
+Cortical amygdaloid nucleus, amygdaloid portion | cocomac:1308
+Cortical amygdaloid nucleus, amygdaloid portion: pars caudalis dorsalis | cocomac:1309
+Cortical amygdaloid nucleus, amygdaloid portion: pars caudalis intermedia | cocomac:1310
+Cortical amygdaloid nucleus, amygdaloid portion: pars caudalis ventralis | cocomac:1311
+Cortical amygdaloid nucleus, amygdaloid portion: pars dorsalis | cocomac:1313
+Cortical amygdaloid nucleus, amygdaloid portion: pars ventralis | cocomac:1314
+Cortical amygdaloid nucleus, periamygdaloid portion | cocomac:548
+Cortical amygdaloid nucleus, periamygdaloid portion: pars dorsalis | cocomac:1317
+Cortical amygdaloid nucleus, periamygdaloid portion: pars intermedia | cocomac:1318
+Cortical amygdaloid nucleus, periamygdaloid portion: pars oralis dorsalis | cocomac:1319
+Cortical amygdaloid nucleus, periamygdaloid portion: pars oralis ventralis | cocomac:1320
+Cortical amygdaloid nucleus, periamygdaloid portion: pars ventralis | cocomac:1321
+Cortical area 29a-c	    | cocomac:1624
+Cortical area 29a-d | cocomac:1861
+Cortical area 36o | cocomac:1864
+Cortical area 36p	   | cocomac:1240
+Cortical area 36pl | cocomac:1241
+Cortical area 36pm	 | cocomac:1242
+Cortical area 43 | cocomac:351
+Cortical area 44 | cocomac:878
+Cortical area 45 | cocomac:54
+Cortical area 45A	 | cocomac:680
+Cortical area 45B | cocomac:685
+Cortical area 46	 | cocomac:55
+Cortical area 46 (inferior part)  | cocomac:1991
+Cortical area 46 (superior part)		 | cocomac:1992
+Cortical area FAL | cocomac:434
+Cortical area FDL   | cocomac:428
+Cortical area FE | cocomac:429
+Cortical area FL | cocomac:431
+Cortical area FPO	  | cocomac:1746
+Cortical area OAa | cocomac:622
+Cortical area PGa | cocomac:395
+Cortical area TEm | cocomac:408
+Cortical area proM	 | cocomac:587
+Cortical masticatory area | cocomac:1233
+Cortical nucleus of the amygdala | cocomac:643
+Cortical nucleus of the amygdala | cocomac:1729
+Cortico-amygdaloid transition area | cocomac:1622
+Corticoamygdalar transition area | cocomac:1883
+Corticoamygdalar transition area | cocomac:15
+Deep cerebellar nuclei		 | cocomac:2166
+Densely Myelinated Zone of the upper bank of the superior temporal sulcus | cocomac:897
+Dentate gyrus-granular cell layer | cocomac:1277
+Dentate gyrus-molecular layer		    | cocomac:1278
+Dentate gyrus-polymorphic cell layer | cocomac:2010
+Depth intraparietal area	 | cocomac:1884
+Depth of the intraparietal sulcus | cocomac:385
+Diencephalon according to GM-Definition	 | cocomac:1149
+Digit 1 area of primary sensory cortex	 | cocomac:484
+Digit 2 and 3 area of primary sensory cortex | cocomac:507
+Digit 2 area of primary sensory cortex		 | cocomac:506
+Digit 2,3 and 4 area of primary sensory cortex | cocomac:509
+Digit 3 and 4 area of primary sensory cortex	 | cocomac:511
+Digit 3 area or primary sensory cortex | cocomac:510
+Digit 3,4 and 5 area of primary sensory cortex | cocomac:485
+Digit 4 area of primary sensory cortex	   | cocomac:487
+Digit 5 area of primary sensory cortex	 | cocomac:489
+Dorsal (lateral and medial) prefrontal cortex | cocomac:1071
+Dorsal Lateral Geniculate Nucleus, magnocellular part | cocomac:1471
+Dorsal Lateral Geniculate Nucleus, parvocellular part | cocomac:1472
+Dorsal agranular insula	 | cocomac:1985
+Dorsal area 10	 | cocomac:588
+Dorsal area 10 | cocomac:383
+Dorsal area 46	   | cocomac:589
+Dorsal area 46 | cocomac:375
+Dorsal area 6 | cocomac:604
+Dorsal area 8	 | cocomac:592
+Dorsal area 8 | cocomac:381
+Dorsal area 8B | cocomac:1647
+Dorsal dysgranular area of temporal polar cortex | cocomac:851
+Dorsal lateral geniculate nucleus | cocomac:467
+Dorsal parietal area | cocomac:1885
+Dorsal parietal cortex (= SPL and precuneus) | cocomac:1983
+Dorsal portion of area 8A	  | cocomac:1872
+Dorsal post central stage of core_s | cocomac:875
+Dorsal prelunate area	 | cocomac:681
+Dorsolateral Nucleus		 | cocomac:466
+Dorsolateral prefrontal cortex | cocomac:1072
+Dorsolateral premotor cortex | cocomac:1085
+Dorsomedial prefrontal cortex | cocomac:1073
+Dysgranular insula	 | cocomac:1938
+Dysgranular insula	 | cocomac:884
+Dysgranular insula | cocomac:275
+Dysgranular insular cortex	 | cocomac:539
+Dysgranular temporal pole dorsal part | cocomac:1408
+Dysgranular temporal pole ventral part	    | cocomac:1410
+Eminentia medialis  | cocomac:2172
+Endopiriform nucleus	 | cocomac:212
+Entorhinal cortex | cocomac:194
+Entorhinal cortex | cocomac:1487
+Entorhinal cortex | cocomac:16
+Entorhinal cortex | cocomac:1150
+Entorhinal cortex, lamina I | cocomac:346
+Entorhinal cortex, lamina II | cocomac:347
+Entorhinal cortex, lamina III | cocomac:348
+Entorhinal cortex, lamina IV | cocomac:1413
+Entorhinal cortex, lamina V	 | cocomac:349
+Entorhinal cortex, lamina VI | cocomac:350
+Entorhinal cortex, olfactory part	 | cocomac:1886
+Epiphysis	 | cocomac:2173
+Epithalamus according to GM-Definition | cocomac:1151
+Extrastriate area OA	 | cocomac:44
+Extrastriate area OB	 | cocomac:45
+F2 sector located around the superior precentral dimple | cocomac:1449
+Face region of the primary motor cortex	 | cocomac:1029
+Face region of the primary sensory cortex | cocomac:1375
+Fascia dentata hippocampi | cocomac:2174
+Fimbria hippocampi	 | cocomac:2175
+First temporal field	 | cocomac:1360
+Floor of superior temporal sulcus | cocomac:481
+Fomatio reticularis tegmenti mesencephali | cocomac:2180
+Forebrain according to GM-Definition | cocomac:1152
+Forel's Field H1	 | cocomac:1671
+Forel's Field H2	 | cocomac:1672
+Forelimb region of the primary motor cortex | cocomac:1030
+Formatio reticularis myelencephali | cocomac:2177
+Formatio reticularis pontis | cocomac:2178
+Frontal eye field  | cocomac:480
+Frontal operculum | cocomac:450
+Frontopolar cingulate area | cocomac:1736
+Frontopolar cortex | cocomac:1613
+Globus pallidus	 | cocomac:1167
+Globus pallidus external part | cocomac:2358
+Globus pallidus internal part	   | cocomac:2357
+Globus pallidus, external part | cocomac:1195
+Globus pallidus, internal part	 | cocomac:1196
+Globus pallidus, lamina medullaris externa | cocomac:2204
+Globus pallidus, lamina medullaris interna | cocomac:2205
+Globus pallidus, rostral parts | cocomac:1197
+Granular area of temporal polar cortex	 | cocomac:805
+Granular insula	 | cocomac:1939
+Granular insular cortex	 | cocomac:276
+Granular insular cortex	 | cocomac:885
+Granular temporal pole dorsal part | cocomac:1407
+Granular temporal pole surrounding superior temporal sulcus | cocomac:1411
+Granular temporal pole ventral part | cocomac:1409
+Griseum centrale | cocomac:1670
+Griseum periventriculare hypothalami | cocomac:2189
+Griseum periventriculare mesencephali | cocomac:2190
+Griseum pontis | cocomac:2191
+Gustatory area	 | cocomac:273
+Gustatory cortex | cocomac:1818
+Gyrus cinguli anterior	  | cocomac:1105
+Gyrus cinguli posterior | cocomac:1106
+Gyrus cinguli retrosplenialis	 | cocomac:1114
+Gyrus cinguli subgenualis | cocomac:1123
+Gyrus hippocampi | cocomac:2183
+Gyrus uncinatus	 | cocomac:2192
+Hand area of primary sensory cortex	 | cocomac:490
+Hand field of area 4 | cocomac:1538
+Hand field of area 6	   | cocomac:1541
+Head of the nucleus caudatus | cocomac:2370
+Heavily myelinated portion of area VIP | cocomac:2285
+Hippocampal cortex	 | cocomac:1168
+Hippocampal formation	 | cocomac:112
+Hippocampal formation | cocomac:1281
+Hippocampal-amygdalar transition area | cocomac:454
+Hippocampal-amygdaloid transition area- alveus | cocomac:2011
+Hippocampal-amygdaloid transition area- stratum moleculare | cocomac:2012
+Hippocampal-amygdaloid transition area- stratum oriens | cocomac:2013
+Hippocampal-amygdaloid transition area- stratum pyramidale | cocomac:2014
+Hippocampus	 | cocomac:70
+Hippocampus	 | cocomac:1515
+Hippocampus	 | cocomac:17
+Hypothalamus	    | cocomac:1619
+Hypothalamus | cocomac:1614
+Indusium griseum | cocomac:1737
+Inferior parietal cortex | cocomac:1064
+Inferior parietal lobule (lateral posterior cortex below the intraparietal sulcus) | cocomac:1021
+Inferior pulvinar	 | cocomac:354
+Inferior pulvinar nucleus | cocomac:567
+Inferior temporal areas TEa plus TEm | cocomac:889
+Inferior temporal cortex | cocomac:1108
+Inferior temporal cortex anterodorsal part | cocomac:2220
+Inferior temporal cortex anteroventral part | cocomac:2221
+Inferior temporal cortex, anterodorsal part | cocomac:2259
+Inferior temporal cortex, anteroventral part | cocomac:2260
+Inferotemporal cortex (visual area) | cocomac:682
+Inferotemporal gyrus, inferior temporal gyrus | cocomac:1285
+Inferotemporal gyrus, middle temporal gyrus | cocomac:1286
+Infralimbic area | cocomac:1738
+Insula	  | cocomac:1216
+Insula | cocomac:1057
+Insula callejae | cocomac:2197
+Insular cortex	 | cocomac:1588
+Insular proisocortex | cocomac:1819
+Intercalated amygdaloid nucleus | cocomac:71
+Intercalated cell masses (large neurons) | cocomac:1330
+Intercalated cell masses (small neurons)  | cocomac:1316
+Intercalated mass | cocomac:1440
+Intermediate agranula insular cortex | cocomac:833
+Intermediate field of entorhinal cortex | cocomac:197
+Intermediate orbital prefrontal cortex	 | cocomac:1075
+Internal segment of globus pallidus lateral portion | cocomac:1902
+Internal segment of the globus pallidus medial portion | cocomac:1901
+Interpeduncular nucleus | cocomac:1943
+Intralaminar nuclei of the thalamus | cocomac:543
+Intraparietal part of area 7	 | cocomac:784
+Intraparietal part of area 7, anterior part | cocomac:785
+Intraparietal sulcus associated area in the superior temporal sulcus | cocomac:384
+LGN external magnocellular layer | cocomac:1210
+LGN external parvocellular layer | cocomac:1212
+LGN internal magnocellular layer | cocomac:1211
+LGN intralaminar parts	 | cocomac:1155
+LGN koniocellular layers | cocomac:1156
+LGN layer 1	   | cocomac:1658
+LGN layer 2	 | cocomac:1659
+LGN layer 2 | cocomac:1028
+LGN layer 3 | cocomac:1660
+LGN layer 4 | cocomac:1661
+LGN layer 5		 | cocomac:1662
+LGN layer 6 | cocomac:1663
+LGN main laminas	 | cocomac:569
+LGN superficial layer	 | cocomac:1213
+LGN superficial layer	 | cocomac:1653
+LGN superficial layers | cocomac:1163
+Lateral Geniculate Nucleus | cocomac:133
+Lateral agranular insular cortex | cocomac:834
+Lateral amygdaloid capsular nuclei | cocomac:72
+Lateral amygdaloid nucleus	 | cocomac:1334
+Lateral amygdaloid nucleus, dorsomedial region | cocomac:291
+Lateral amygdaloid nucleus: pars gracilicellularis | cocomac:1335
+Lateral amygdaloid nucleus: pars limitans | cocomac:1291
+Lateral amygdaloid nucleus: pars magnocellularis | cocomac:1292
+Lateral amygdaloid nucleus: pars mediocellularis | cocomac:1293
+Lateral amygdaloid nucleus: pars parvocellularis | cocomac:1294
+Lateral area 11 | cocomac:828
+Lateral area 12	 | cocomac:593
+Lateral area 12 | cocomac:417
+Lateral area 14	 | cocomac:1743
+Lateral area 29	 | cocomac:286
+Lateral area 9	 | cocomac:594
+Lateral auditory koniocortex	 | cocomac:645
+Lateral basal nucleus of the amygdala | cocomac:4
+Lateral core central nucleus | cocomac:927
+Lateral division of anterior olfactory nucleus		 | cocomac:829
+Lateral division of the basal amygdaloid nucleus | cocomac:1617
+Lateral field (caudal part) of entorhinal cortex | cocomac:199
+Lateral field (rostral part) of entorhinal cortex | cocomac:200
+Lateral field of entorhinal cortex | cocomac:198
+Lateral geniculate complex | cocomac:1336
+Lateral intraparietal area | cocomac:42
+Lateral intraparietal area (ventral part) | cocomac:421
+Lateral nucleus (amygdala), dorsal division | cocomac:324
+Lateral nucleus (amygdala), dorsal intermediate division | cocomac:325
+Lateral nucleus (amygdala), ventral division | cocomac:326
+Lateral nucleus (amygdala), ventral intermediate division	 | cocomac:327
+Lateral nucleus of the amygdala	 | cocomac:1730
+Lateral nucleus of the amygdala | cocomac:647
+Lateral nucleus of tuberal hypothalamus	  | cocomac:1970
+Lateral part of the anterior olfactory nucleus | cocomac:1621
+Lateral posterior nucleus or complex thalami, Intermediate nucleus | cocomac:1337
+Lateral posterior nucleus or complex thalami, lateral nucleus | cocomac:1338
+Lateral posterior nucleus or complex thalami, medial nucleus | cocomac:1339
+Lateral pulvinar nucleus    | cocomac:560
+Laterodorsal nucleus (thalamus)	 | cocomac:113
+Layer 6 of area 17	 | cocomac:638
+Leg area of primary sensory cortex | cocomac:491
+Leg field of area 4	 | cocomac:1539
+Leg region of the primary motor cortex | cocomac:1383
+Leg region of the primary sensory cortex	 | cocomac:1377
+Leg representation in the VPLc_shell region thalami | cocomac:936
+Limbic nuclei of the thalamus (AV, AM, AD and LD) | cocomac:2367
+Lingula cerebelli	 | cocomac:2201
+Locus coeruleus	 | cocomac:2202
+Locus coerulus	 | cocomac:1256
+Lower bank of the intraparietal sulcus	 | cocomac:613
+Lower bank of the intraparietal sulcus (external division) | cocomac:399
+Lower bank of the intraparietal sulcus (internal division) | cocomac:400
+Lower lip area of primary sensory cortex | cocomac:492
+Massa grisea centralis | cocomac:2344
+Massa intermedia	 | cocomac:810
+Maxillary region of face area of primary sensory cortex	    | cocomac:493
+Medial Nucleii of Thalamus | cocomac:1061
+Medial agranular insular cortex		 | cocomac:835
+Medial amygdaloid nucleus	   | cocomac:1329
+Medial amygdaloid nucleus, layer I | cocomac:292
+Medial amygdaloid nucleus, layer I | cocomac:293
+Medial amygdaloid nucleus, layer I | cocomac:294
+Medial amygdaloid nucleus, layer I | cocomac:74
+Medial amygdaloid nucleus, layer II | cocomac:75
+Medial amygdaloid nucleus, layer III		 | cocomac:76
+Medial area 10 | cocomac:822
+Medial area 11	 | cocomac:832
+Medial area 12	    | cocomac:839
+Medial area 14		 | cocomac:1744
+Medial area 29		 | cocomac:848
+Medial area 8A | cocomac:1485
+Medial area 8B	 | cocomac:1648
+Medial area 9 | cocomac:596
+Medial auditory koniocortex | cocomac:646
+Medial basal nucleus of the amygdala | cocomac:5
+Medial division of anterior olfactory nucleus | cocomac:830
+Medial division of the basal amygdaloid nucleus | cocomac:1618
+Medial dorsal parietal area | cocomac:820
+Medial geniculate complex | cocomac:1201
+Medial geniculate complex magnocellular nucleus | cocomac:1207
+Medial geniculate complex ventral nucleus | cocomac:1206
+Medial geniculate complex, Internal nucleus | cocomac:1340
+Medial geniculate complex, dorsal nucleus | cocomac:563
+Medial geniculate complex, magnocellular nucleus | cocomac:564
+Medial geniculate complex, ventral nucleus | cocomac:566
+Medial geniculate nucleus | cocomac:576
+Medial intraparietal area | cocomac:795
+Medial nucleus of the amygdala | cocomac:1731
+Medial nucleus of the amygdala | cocomac:6
+Medial parietal cortex (= Precuneus) | cocomac:1066
+Medial prefrontal cortex | cocomac:1074
+Medial premotor area 6M	 | cocomac:1036
+Medial premotor cortex (= supplementary motor cortex) | cocomac:1086
+Medial preoptic area	 | cocomac:963
+Medial pulvinar nucleus | cocomac:561
+Medial superior temporal area | cocomac:387
+Medial superior temporal area (dorsal) | cocomac:683
+Medial superior temporal area (lateral) | cocomac:684
+Medioventral ( reuniens ) nucleus thalami | cocomac:1341
+Metathalamus (Geniculate Nucleii) | cocomac:1166
+Metathalamus as defined in GM	 | cocomac:1062
+Midbrain according to GM-Definition | cocomac:1060
+Middle Insula | cocomac:1615
+Middle temporal area	 | cocomac:43
+Midline nuclei of the thalamus | cocomac:110
+Midpart of the inferior parietal lobule	 | cocomac:609
+Motor area 4c | cocomac:377
+Mouth field of area 4 | cocomac:1540
+Mouth field of area 6	 | cocomac:1542
+Nuclei arcuati | cocomac:2059
+Nucleus Centrum Medianum | cocomac:225
+Nucleus Darkschewitsch	 | cocomac:2067
+Nucleus Olivaris of the superior colliculus | cocomac:227
+Nucleus accumbens	 | cocomac:2054
+Nucleus accumbens | cocomac:944
+Nucleus accumbens septi | cocomac:2104
+Nucleus alaris thalami | cocomac:1130
+Nucleus ambiguus	 | cocomac:2058
+Nucleus annularis	 | cocomac:2195
+Nucleus anterior dorsalis thalami | cocomac:540
+Nucleus anterior hypothalami | cocomac:2158
+Nucleus anterior medialis thalami | cocomac:117
+Nucleus anterior medialis thalami | cocomac:765
+Nucleus anterior thalami    | cocomac:214
+Nucleus anterior ventralis thalami | cocomac:126
+Nucleus anterodorsalis thalami | cocomac:213
+Nucleus basalis (Meynert) | cocomac:2142
+Nucleus basalis accessorius amygdale | cocomac:2132
+Nucleus basalis accessorius lateralis amygdalae | cocomac:1512
+Nucleus basalis amygdale	 | cocomac:2122
+Nucleus basalis medialis amygdalae	 | cocomac:2143
+Nucleus basalis of Meynert | cocomac:1944
+Nucleus basalis thalami | cocomac:1679
+Nucleus caudatus | cocomac:1684
+Nucleus caudatus | cocomac:459
+Nucleus caudatus; body | cocomac:1129
+Nucleus caudatus; body, intermediate, central | cocomac:978
+Nucleus caudatus; body, intermediate, dorsal | cocomac:984
+Nucleus caudatus; body, intermediate, ventral | cocomac:985
+Nucleus caudatus; body, lateral, central | cocomac:986
+Nucleus caudatus; body, lateral, dorsal	 | cocomac:987
+Nucleus caudatus; body, lateral, ventral | cocomac:988
+Nucleus caudatus; body, medial, central | cocomac:946
+Nucleus caudatus; body, medial, dorsal | cocomac:947
+Nucleus caudatus; body, medial, ventral | cocomac:948
+Nucleus caudatus; genu	 | cocomac:1131
+Nucleus caudatus; genu, intermediate, central | cocomac:1132
+Nucleus caudatus; genu, intermediate, dorsal | cocomac:1133
+Nucleus caudatus; genu, intermediate, ventral | cocomac:1134
+Nucleus caudatus; genu, lateral, central | cocomac:1135
+Nucleus caudatus; genu, lateral, dorsal | cocomac:1136
+Nucleus caudatus; genu, lateral, ventral | cocomac:1137
+Nucleus caudatus; genu, medial, central | cocomac:1138
+Nucleus caudatus; genu, medial, dorsal | cocomac:1139
+Nucleus caudatus; genu, medial, ventral | cocomac:1140
+Nucleus caudatus; head | cocomac:1004
+Nucleus caudatus; head, intermediate, central | cocomac:949
+Nucleus caudatus; head, intermediate, dorsal | cocomac:950
+Nucleus caudatus; head, intermediate, ventral | cocomac:951
+Nucleus caudatus; head, lateral, central | cocomac:952
+Nucleus caudatus; head, lateral, dorsal | cocomac:953
+Nucleus caudatus; head, lateral, ventral | cocomac:954
+Nucleus caudatus; head, medial, central | cocomac:955
+Nucleus caudatus; head, medial, dorsal | cocomac:957
+Nucleus caudatus; head, medial, ventral | cocomac:958
+Nucleus caudatus; tail | cocomac:1005
+Nucleus caudatus; tail, intermediate, central | cocomac:1141
+Nucleus caudatus; tail, intermediate, dorsal | cocomac:959
+Nucleus caudatus; tail, intermediate, ventral | cocomac:1142
+Nucleus caudatus; tail, lateral, central | cocomac:1143
+Nucleus caudatus; tail, lateral, dorsal	 | cocomac:1144
+Nucleus caudatus; tail, lateral, ventral | cocomac:1146
+Nucleus caudatus; tail, medial, central | cocomac:960
+Nucleus caudatus; tail, medial, dorsal | cocomac:961
+Nucleus caudatus; tail, medial, ventral | cocomac:962
+Nucleus centralis amygdalae | cocomac:2147
+Nucleus centralis densocellularis thalami | cocomac:554
+Nucleus centralis inferior thalami | cocomac:555
+Nucleus centralis intermedialis thalami	 | cocomac:556
+Nucleus centralis intermedius thalami	 | cocomac:2151
+Nucleus centralis lateralis thalami | cocomac:2149
+Nucleus centralis lateralis thalami | cocomac:2150
+Nucleus centralis lateralis thalami | cocomac:247
+Nucleus centralis lateralis thalami | cocomac:356
+Nucleus centralis latocellularis thalami | cocomac:557
+Nucleus centralis medialis thalami | cocomac:236
+Nucleus centralis medialis, thalami	 | cocomac:2346
+Nucleus centralis n. oculomontorii | cocomac:2078
+Nucleus centralis superior | cocomac:2063
+Nucleus centralis superior lateralis thalami | cocomac:542
+Nucleus centralis superior of the raphe | cocomac:1252
+Nucleus centralis superior thalami  | cocomac:541
+Nucleus centralis thalami | cocomac:129
+Nucleus centrum medianum thalami | cocomac:761
+Nucleus cochlearis dorsalis | cocomac:2146
+Nucleus cochlearis ventralis | cocomac:2165
+Nucleus colliculi inferioris | cocomac:2062
+Nucleus commissurae anterioris | cocomac:2061
+Nucleus corticalis amygdalae | cocomac:2144
+Nucleus cuneatus | cocomac:2156
+Nucleus cuneatus lateralis | cocomac:2157
+Nucleus densocellularis thalami	 | cocomac:1179
+Nucleus dentatus cerebelli | cocomac:2066
+Nucleus dorsalis tegmenti | cocomac:2168
+Nucleus dorsalis thalami | cocomac:254
+Nucleus dorsomedialis hypothalami | cocomac:2169
+Nucleus dosalis septi	 | cocomac:2170
+Nucleus emboliformis cerebelle	 | cocomac:2068
+Nucleus fasciculi diagonalis Brocae | cocomac:2071
+Nucleus fastigii cerebelli | cocomac:2070
+Nucleus filiformis	 | cocomac:1667
+Nucleus geniculatus lateralis dorsalis thalami | cocomac:639
+Nucleus geniculatus lateralis dorsalis thalami | cocomac:762
+Nucleus geniculatus lateralis thalami	 | cocomac:1154
+Nucleus geniculatus lateralis ventralis thalami | cocomac:1164
+Nucleus geniculatus lateralis ventralis, pars caudalis thalami | cocomac:1668
+Nucleus geniculatus lateralis ventralis, pars oralis thalami | cocomac:1669
+Nucleus geniculatus lateralis, pars dorsalis | cocomac:256
+Nucleus geniculatus lateralis, pars ventralis | cocomac:257
+Nucleus geniculatus medialis | cocomac:258
+Nucleus geniculatus medialis thalami | cocomac:132
+Nucleus geniculatus medialis thalami, pars magnocellularis | cocomac:1165
+Nucleus geniculatus medialis thalami, pars parvocellularis | cocomac:763
+Nucleus geniculatus medialis, pars magnocellularis | cocomac:259
+Nucleus globosus cerebelli | cocomac:2072
+Nucleus gracilis	 | cocomac:2181
+Nucleus habenulae | cocomac:2353
+Nucleus habenularis lateralis | cocomac:1055
+Nucleus habenularis lateralis | cocomac:216
+Nucleus habenularis lateralis epithalami | cocomac:2194
+Nucleus habenularis lateralis, pars magnocellularis | cocomac:1673
+Nucleus habenularis lateralis, pars parvocellularis | cocomac:1180
+Nucleus habenularis medialis	   | cocomac:217
+Nucleus habenularis medialis | cocomac:1056
+Nucleus habenularis medialis epithalami | cocomac:2196
+Nucleus habenularis thalami		  | cocomac:468
+Nucleus habenularis, thalamus	 | cocomac:215
+Nucleus infundibularis hypothalami | cocomac:2199
+Nucleus intercalatus		 | cocomac:319
+Nucleus intercalatus | cocomac:1676
+Nucleus intercalatus amygdalae	 | cocomac:2198
+Nucleus intermedius corpus mamillaris | cocomac:2209
+Nucleus interstitialis	 | cocomac:2200
+Nucleus interstitialis of the posterior commissure | cocomac:1675
+Nucleus interstitialis thalami	 | cocomac:1674
+Nucleus interventralis	 | cocomac:1504
+Nucleus interventralis thalami	 | cocomac:218
+Nucleus lateralis anuli aquaeducti | cocomac:2074
+Nucleus lateralis corpus mamillaris | cocomac:2210
+Nucleus lateralis posterior thalami | cocomac:470
+Nucleus lateralis posterior thalami, pars angularis | cocomac:2343
+Nucleus lateralis septi | cocomac:2207
+Nucleus lateralis thalami	 | cocomac:219
+Nucleus lateralis thalami, pars anterior | cocomac:220
+Nucleus lateralis thalami, pars intermedia | cocomac:221
+Nucleus lateralis thalami, pars posterior | cocomac:222
+Nucleus lemnisci lateralis | cocomac:2076
+Nucleus lentiformis thalami | cocomac:223
+Nucleus limitans thalami	 | cocomac:469
+Nucleus limitans thalami | cocomac:559
+Nucleus limitans thalami | cocomac:575
+Nucleus limitans thalami | cocomac:2206
+Nucleus mamillaris | cocomac:1677
+Nucleus medialis amygdalae | cocomac:2208
+Nucleus medialis anuli aquaeducti | cocomac:2077
+Nucleus medialis dorsalis thalami | cocomac:114
+Nucleus medialis dorsalis thalami, pars caudodorsalis | cocomac:1987
+Nucleus medialis dorsalis thalami, pars densocellularis | cocomac:1177
+Nucleus medialis dorsalis thalami, pars densocellularis | cocomac:1178
+Nucleus medialis dorsalis thalami, pars densocellularis | cocomac:544
+Nucleus medialis dorsalis thalami, pars fibrosa | cocomac:1988
+Nucleus medialis dorsalis thalami, pars lateralis	 | cocomac:764
+Nucleus medialis dorsalis thalami, pars magnocellularis	 | cocomac:545
+Nucleus medialis dorsalis thalami, pars magnocellularis | cocomac:1989
+Nucleus medialis dorsalis thalami, pars medialis | cocomac:766
+Nucleus medialis dorsalis thalami, pars multiformis | cocomac:546
+Nucleus medialis dorsalis thalami, pars paramediana | cocomac:1990
+Nucleus medialis dorsalis thalami, pars parvocellularis | cocomac:547
+Nucleus medialis dorsalis thalami, pars posterior | cocomac:767
+Nucleus medialis dorsalis thalami, pars ventralis | cocomac:768
+Nucleus medialis thalami | cocomac:224
+Nucleus medialis ventralis	 | cocomac:2345
+Nucleus n. oculomontorii, pars dorsalis		 | cocomac:2079
+Nucleus n. oculomontorii, pars ventralis | cocomac:2080
+Nucleus n.abducentis	  | cocomac:2060
+Nucleus of the horizontal limb of the diagonal band | cocomac:1940
+Nucleus of the lateral olfactory tract | cocomac:1326
+Nucleus of the lateral olfactory tract | cocomac:77
+Nucleus of the lateral olfactory tract, layer I | cocomac:78
+Nucleus of the lateral olfactory tract, layer II | cocomac:79
+Nucleus of the lateral olfactory tract, layer III | cocomac:80
+Nucleus of the optic tract  | cocomac:226
+Nucleus of the posterior commissure | cocomac:228
+Nucleus of the posterior commissure | cocomac:676
+Nucleus of the pretectal area | cocomac:675
+Nucleus of the vertical limb of the diagonal band | cocomac:1945
+Nucleus olivaris inferior | cocomac:2092
+Nucleus olivaris inferior dorsalis | cocomac:2093
+Nucleus olivaris inferior medialis	 | cocomac:2094
+Nucleus olivaris superior | cocomac:2095
+Nucleus pallidus | cocomac:1681
+Nucleus paracentralis thalami	 | cocomac:232
+Nucleus paracentralis thalami	   | cocomac:550
+Nucleus parafascicularis thalami | cocomac:118
+Nucleus parafascicularis thalami | cocomac:2349
+Nucleus parafscicularis thalami	 | cocomac:233
+Nucleus parataenialis thalami	  | cocomac:119
+Nucleus parataenialis thalami | cocomac:229
+Nucleus parataenialis thalami | cocomac:2348
+Nucleus paraventricularis anterior thalami | cocomac:1575
+Nucleus paraventricularis anterior thalami | cocomac:230
+Nucleus paraventricularis caudalis thalami | cocomac:549
+Nucleus paraventricularis hypothalami | cocomac:1685
+Nucleus paraventricularis posterior thalami | cocomac:1576
+Nucleus paraventricularis posterior thalami | cocomac:231
+Nucleus paraventricularis thalami | cocomac:115
+Nucleus paraventricularis thalami  | cocomac:2103
+Nucleus paraventricularis thalami, pars anterior | cocomac:116
+Nucleus paraventricularis thalami, pars medialis | cocomac:1505
+Nucleus paraventricularis thalami, pars posterior | cocomac:1506
+Nucleus peripeduncularis thalami | cocomac:1507
+Nucleus peripeduncularis thalami | cocomac:1682
+Nucleus peripeduncularis thalami | cocomac:2101
+Nucleus posterior thalami | cocomac:2098
+Nucleus posterior thalami   | cocomac:234
+Nucleus posterior thalami | cocomac:1982
+Nucleus praetectalis anterior	 | cocomac:1683
+Nucleus pregeniculatus thalami	 | cocomac:235
+Nucleus preopticus medianus	 | cocomac:2105
+Nucleus prepositus	 | cocomac:2106
+Nucleus pretectalis	 | cocomac:237
+Nucleus pulvinaris imedialis thalami | cocomac:2111
+Nucleus pulvinaris inferior thalami | cocomac:149
+Nucleus pulvinaris inferior thalami | cocomac:1563
+Nucleus pulvinaris inferior thalami | cocomac:2354
+Nucleus pulvinaris inferior thalami | cocomac:769
+Nucleus pulvinaris inferior thalami central subdivision | cocomac:1701
+Nucleus pulvinaris inferior thalami | cocomac:2109
+Nucleus pulvinaris inferior thalami lateral subdivision | cocomac:1698
+Nucleus pulvinaris inferior thalami pars medialis | cocomac:1700
+Nucleus pulvinaris inferior thalami posterior subdivision | cocomac:1699
+Nucleus pulvinaris inferior thalami, central subdivision | cocomac:895
+Nucleus pulvinaris inferior thalami, lateral subdivision | cocomac:152
+Nucleus pulvinaris inferior thalami, pars centrolateralis | cocomac:150
+Nucleus pulvinaris inferior thalami, pars centromedialis | cocomac:151
+Nucleus pulvinaris inferior thalami, pars medialis | cocomac:135
+Nucleus pulvinaris inferior thalami, pars posterior	 | cocomac:571
+Nucleus pulvinaris inferior thalami, posterior subdivision | cocomac:136
+Nucleus pulvinaris inferior thalami, shell of the lateral subdivision | cocomac:134
+Nucleus pulvinaris lateralis thalami	 | cocomac:770
+Nucleus pulvinaris lateralis thalami | cocomac:137
+Nucleus pulvinaris lateralis thalami | cocomac:1564
+Nucleus pulvinaris lateralis thalami | cocomac:2110
+Nucleus pulvinaris lateralis thalami pars alpha | cocomac:1951
+Nucleus pulvinaris lateralis thalami pars beta | cocomac:1952
+Nucleus pulvinaris lateralis thalami pars gamma | cocomac:1953
+Nucleus pulvinaris lateralis thalami pars ventrolateralis | cocomac:138
+Nucleus pulvinaris lateralis thalami pars ventromedialis | cocomac:139
+Nucleus pulvinaris lateralis thalami, dorsal division | cocomac:1025
+Nucleus pulvinaris medialis thalami	 | cocomac:140
+Nucleus pulvinaris medialis thalami | cocomac:771
+Nucleus pulvinaris medialis thalami, lateral division | cocomac:1022
+Nucleus pulvinaris medialis thalami, medial division | cocomac:1023
+Nucleus pulvinaris oralis thalami	 | cocomac:2112
+Nucleus pulvinaris oralis thalami | cocomac:772
+Nucleus pulvinaris thalami | cocomac:141
+Nucleus pulvinaris thalami | cocomac:2082
+Nucleus pulvinaris thalami 1	 | cocomac:146
+Nucleus pulvinaris thalami 2 | cocomac:147
+Nucleus pulvinaris thalami 3 | cocomac:148
+Nucleus pulvinaris thalami 4 | cocomac:253
+Nucleus pulvinaris thalami x	 | cocomac:255
+Nucleus pulvinaris thalami, pars oralis	 | cocomac:461
+Nucleus putamen	 | cocomac:1598
+Nucleus reticularis lateralis		 | cocomac:2113
+Nucleus reticularis magnocellularis | cocomac:2176
+Nucleus reticularis paramedianus myencephali | cocomac:2107
+Nucleus reticularis parvocellularis | cocomac:2179
+Nucleus reticularis tegmenti pontis	 | cocomac:2114
+Nucleus reticularis thalami | cocomac:1104
+Nucleus reticularis thalami | cocomac:142
+Nucleus reuniens anterior thalami  | cocomac:238
+Nucleus reuniens posterior thalami | cocomac:239
+Nucleus reuniens thalami | cocomac:120
+Nucleus reuniens thalami  | cocomac:1928
+Nucleus reuniens ventralis thalami | cocomac:1508
+Nucleus rhomboidalis thalami | cocomac:241
+Nucleus rotundus thalami   | cocomac:551
+Nucleus ruber | cocomac:2083
+Nucleus ruber magnocellularis | cocomac:1687
+Nucleus ruber parvocellularis | cocomac:1688
+Nucleus stria medullaris | cocomac:243
+Nucleus striae terminalis | cocomac:2084
+Nucleus subfascicularis	 | cocomac:1704
+Nucleus subfascicularis thalami	 | cocomac:1690
+Nucleus subfascicularis thalami	 | cocomac:1265
+Nucleus subfascicularis, pars magnocellularis | cocomac:1691
+Nucleus subfascicularis, pars magnocellularis | cocomac:1705
+Nucleus subfascicularis, pars parvocellularis | cocomac:1692
+Nucleus subfascicularis, pars parvocellulars | cocomac:1706
+Nucleus submedius thalami | cocomac:2123
+Nucleus submedius thalami | cocomac:2350
+Nucleus subparafscicularis thalami, pars magnocellularis | cocomac:1510
+Nucleus subparafscicularis thalami, pars parvocellularis | cocomac:1511
+Nucleus substantie grisea dosalis | cocomac:2117
+Nucleus substantie grisea dosalis | cocomac:2119
+Nucleus subthalamicus	 | cocomac:2085
+Nucleus subthalamicus | cocomac:1693
+Nucleus suprachiasmaticus hypothalami | cocomac:2120
+Nucleus suprageniculatus thalami	   | cocomac:143
+Nucleus suprageniculatus thalami | cocomac:242
+Nucleus supraopticus hypothalami | cocomac:2126
+Nucleus supraopticus hypothalami | cocomac:641
+Nucleus supratrochlearis    | cocomac:2086
+Nucleus tegmentalis anterior	 | cocomac:1694
+Nucleus tegmenti ventralis | cocomac:2091
+Nucleus tractus mesencephali trigemini | cocomac:2057
+Nucleus tractus solitarii | cocomac:2090
+Nucleus tractus spinalis n. trigemini | cocomac:2087
+Nucleus trapezoidalis	 | cocomac:2064
+Nucleus triangularis septi | cocomac:2131
+Nucleus trigemini radiy motoria | cocomac:2089
+Nucleus tuberis hypothalami | cocomac:1695
+Nucleus ventalis raphe	 | cocomac:2171
+Nucleus ventralis anterior thalami, pars densocellularis    | cocomac:1272
+Nucleus ventralis anterior thalami, pars magnocellularis | cocomac:552
+Nucleus ventralis anterior thalami, pars parvocellularis | cocomac:553
+Nucleus ventralis anterior thalami, pars ventromedialis | cocomac:775
+Nucleus ventralis intermedius | cocomac:2352
+Nucleus ventralis intermedius, thalami | cocomac:1403
+Nucleus ventralis lateralis thalami | cocomac:2136
+Nucleus ventralis lateralis thalami, pars caudalis | cocomac:776
+Nucleus ventralis lateralis thalami, pars caudocaudalis | cocomac:1217
+Nucleus ventralis lateralis thalami, pars caudorostralis | cocomac:1218
+Nucleus ventralis lateralis thalami, pars medialis | cocomac:777
+Nucleus ventralis lateralis thalami, pars oralis | cocomac:778
+Nucleus ventralis lateralis thalami, pars postrema | cocomac:779
+Nucleus ventralis medialis hypothalami | cocomac:1949
+Nucleus ventralis medialis thalami | cocomac:1268
+Nucleus ventralis posterior	 | cocomac:1128
+Nucleus ventralis posterior inferior thalami | cocomac:364
+Nucleus ventralis posterior lateralis thalami | cocomac:2138
+Nucleus ventralis posterior lateralis thalami, pars caudalis | cocomac:365
+Nucleus ventralis posterior lateralis thalami, pars oralis | cocomac:780
+Nucleus ventralis posterior medialis thalami | cocomac:366
+Nucleus ventralis posterior medialis thalami, pars parvocellularis | cocomac:2139
+Nucleus ventralis posterior medialis, pars parvocellularis | cocomac:781
+Nucleus ventralis raphae    | cocomac:2140
+Nucleus ventralis thalami, pars anterior | cocomac:244
+Nucleus ventralis thalami, pars arcuata		 | cocomac:245
+Nucleus ventralis thalami, pars arcuata magnocellularis | cocomac:246
+Nucleus ventralis thalami, pars arcuata parvocellularis | cocomac:248
+Nucleus ventralis thalami, pars medialis | cocomac:250
+Nucleus ventralis thalami, pars posterior | cocomac:249
+Nucleus ventralis thalami, pars submedia | cocomac:251
+Nucleus ventralis thalami, pars ventralis | cocomac:252
+Nucleus vestibularis inferior | cocomac:2134
+Nucleus vestibularis lateralis	 | cocomac:2135
+Nucleus vestibularis medialis	 | cocomac:2137
+Nucleus vestibularis superior		 | cocomac:2141
+Olfactory bulb	 | cocomac:1599
+Olfactory field of entorhinal cortex | cocomac:201
+Olfactory field of periamygdaloid cortex | cocomac:849
+Olfactory tubercle | cocomac:838
+Opercular lateral parietal area | cocomac:1925
+Orbital area 10	 | cocomac:823
+Orbital periallocortex		 | cocomac:307
+Orbital periallocortex | cocomac:1823
+Orbital prefrontal cortex | cocomac:1078
+Orbital proisocortex	    | cocomac:524
+Orbital proisocortex	 | cocomac:390
+Orbitofrontal area 13 | cocomac:48
+Orbitofrontal area 13a	 | cocomac:166
+Orbitofrontal area 13b | cocomac:841
+Orbitofrontal area 14	    | cocomac:51
+Orbitofrontal cortex		 | cocomac:916
+Orbitofrontal cortex, agranular periallocortical | cocomac:1566
+Orbitofrontal cortex, agranular periallocortical | cocomac:1589
+Orbitofrontal cortex, dysgranular | cocomac:1567
+Orbitofrontal cortex, granular		 | cocomac:1568
+Orbitofrontal opercular area	 | cocomac:306
+Orbitolateral prefrontal cortex | cocomac:1076
+Orbitomedial prefrontal cortex	 | cocomac:1077
+Organum subcommissurale | cocomac:2097
+Organum subfornicale | cocomac:2116
+Parabigeminal nucleus	 | cocomac:678
+Paraflocculus (cerebelli)   | cocomac:2102
+Parahippocampal cortex | cocomac:1082
+Parahippocampal cortex | cocomac:2031
+Parahippocampal region			 | cocomac:1194
+Parainsular cortex (lateral part) | cocomac:1824
+Parainsular cortex (medial part) | cocomac:1825
+Paralaminar amygdaloid nucleus	 | cocomac:100
+Paralaminar amygdaloid nucleus | cocomac:331
+Paralaminar amygdaloid nucleus | cocomac:332
+Paraolfactory cortex, granular | cocomac:1571
+Parasubiculum	   | cocomac:455
+Parasubiculum	 | cocomac:1193
+Parasubiculum | cocomac:26
+Paraventricular nuclei of thalamus | cocomac:1342
+Parietal area PFCx | cocomac:1827
+Parietal operculum	 | cocomac:440
+Parieto-occipital area	 | cocomac:398
+Part of the temporal parietooccipital associated area in superior temporal sulcus | cocomac:617
+Part of the temporal parietooccipital associated area in superior temporal sulcus | cocomac:618
+Part of the temporal parietooccipital associated area in superior temporal sulcus | cocomac:619
+Part of the temporal parietooccipital associated area in superior temporal sulcus | cocomac:620
+Peceptive field for the occiput in Area1	 | cocomac:1758
+Peirhinal area 36, lamina V | cocomac:174
+Peirhinal area 36, lamina VI | cocomac:175
+Periamygdaloid cortex		 | cocomac:7
+Periamygdaloid cortex | cocomac:2356
+Periamygdaloid cortex (sulcal part), deeper cell layer | cocomac:97
+Periamygdaloid cortex (sulcal part), superficial cell layer | cocomac:96
+Periamygdaloid cortex (sulcal part), superficial molecular layer (Layer I) | cocomac:95
+Periamygdaloid cortex 1 | cocomac:328
+Periamygdaloid cortex 1, deeper cell layer	 | cocomac:1918
+Periamygdaloid cortex 1, superficial cell layer | cocomac:1917
+Periamygdaloid cortex 1, superficial molecular layer (Layer I) | cocomac:1916
+Periamygdaloid cortex 2		 | cocomac:90
+Periamygdaloid cortex 2	 | cocomac:85
+Periamygdaloid cortex 2, deeper cell layer | cocomac:89
+Periamygdaloid cortex 2, superficial cell layer	 | cocomac:88
+Periamygdaloid cortex 2, superficial molecular layer (Layer I) | cocomac:86
+Periamygdaloid cortex 3, deeper cell layer | cocomac:93
+Periamygdaloid cortex 3, superficial cell layer | cocomac:92
+Periamygdaloid cortex 3, superficial molecular layer (Layer I) | cocomac:91
+Periamygdaloid cortex, deeper cell layer | cocomac:84
+Periamygdaloid cortex, oral division | cocomac:330
+Periamygdaloid cortex, sulcal part  | cocomac:94
+Periamygdaloid cortex, superficial cell layer	 | cocomac:83
+Periamygdaloid cortex, superficial molecular layer (Layer I) | cocomac:82
+Pericentral stage of belt_s	 | cocomac:870
+Perifornical region	 | cocomac:1261
+Peripheral part of area MT  | cocomac:388
+Perirhinal area 35, lamina I	 | cocomac:171
+Perirhinal area 35, lamina II | cocomac:182
+Perirhinal area 35, lamina III	 | cocomac:193
+Perirhinal area 35, lamina IV | cocomac:203
+Perirhinal area 35, lamina V	 | cocomac:204
+Perirhinal area 35, lamina VI | cocomac:205
+Perirhinal area 36, lamina I | cocomac:207
+Perirhinal area 36, lamina II | cocomac:208
+Perirhinal area 36, lamina III	 | cocomac:172
+Perirhinal area 36, lamina IV | cocomac:173
+Perirhinal cortex   | cocomac:1941
+Perirhinal cortex | cocomac:27
+Perirhinal cortex | cocomac:1934
+Piriform cortex		 | cocomac:153
+Piriform cortex	 | cocomac:99
+Piriform cortex | cocomac:1279
+Piriform cortex, frontal part	 | cocomac:2271
+Piriform cortex, temporal part | cocomac:2272
+Piriform part of olfactory cortex | cocomac:649
+Pole of prefrontal cortex	   | cocomac:1080
+Pole of temporal cortex		 | cocomac:1109
+Postcentral area 3a | cocomac:374
+Postcentral area 3b	 | cocomac:514
+Postcentral area PA | cocomac:437
+Postcentral area PB | cocomac:438
+Posterior Nucleii of Thalamus	 | cocomac:1088
+Posterior cingulate cortex | cocomac:435
+Posterior complex or nucleus thalami, Medial nucleus | cocomac:1347
+Posterior complex or nucleus thalami, intermediate nucleus | cocomac:1345
+Posterior complex or nucleus thalami, lateral nucleus | cocomac:1346
+Posterior cortical amygdaloid nucleus, layer I | cocomac:289
+Posterior cortical amygdaloid nucleus, layer II | cocomac:290
+Posterior inferior parietal lobule  | cocomac:1924
+Posterior inferior temporal cortex	 | cocomac:1215
+Posterior inferior temporal cortex | cocomac:283
+Posterior inferotemporal area	 | cocomac:893
+Posterior inferotemporal area (dorsal) | cocomac:686
+Posterior inferotemporal area (ventral) | cocomac:1000
+Posterior insula | cocomac:433
+Posterior insula | cocomac:1058
+Posterior intraparietal area | cocomac:796
+Posterior nucleus of the thalamus | cocomac:372
+Posterior paraventricular nucleus thalami | cocomac:1344
+Posterior parietal area	   | cocomac:1832
+Posterior parietal area	 | cocomac:821
+Posterolateral agranular insular cortex	   | cocomac:836
+Posteromedial agranular insular cortex | cocomac:837
+Posteromedial field of prelunate gyrus | cocomac:1523
+Precentral opercular area | cocomac:308
+Prefrontal Cortex | cocomac:1069
+Prefrontal area 10a	 | cocomac:2312
+Prefrontal area 9a | cocomac:2322
+Prefrontal area 9b | cocomac:2323
+Prefrontal area 9c	 | cocomac:2324
+Prefrontal area 9d	 | cocomac:1649
+Prefrontal area 9m	 | cocomac:1650
+Prefrontal area FD	  | cocomac:451
+Prefrontal area FDE | cocomac:426
+Prefrontal area Fddelta		 | cocomac:425
+Prefrontal area Fdgamma	 | cocomac:427
+Pregeniculate Nucleus	   | cocomac:1014
+Pregeniculate nucleus thalami | cocomac:1349
+Prelimbic area	 | cocomac:278
+Premotor area 6DC | cocomac:586
+Premotor area 6DR | cocomac:378
+Premotor area 6Ds | cocomac:1480
+Premotor area 6Va | cocomac:379
+Premotor area 6Vb | cocomac:380
+Premotor area 6a-alpha	  | cocomac:316
+Premotor area 6a-beta | cocomac:301
+Premotor area 6b-alpha	 | cocomac:303
+Premotor area 6b-beta	 | cocomac:304
+Premotor area FB	 | cocomac:446
+Premotor area FBA | cocomac:447
+Premotor area FCBm | cocomac:449
+Premotor cortex		 | cocomac:902
+Premotor cortex		  | cocomac:1084
+Premotor cortex dorsal aspect (caudal zone) | cocomac:1170
+Premotor cortex dorsal aspect (rostral zone) | cocomac:1169
+Premotor cortex ventral aspect (caudal zone) | cocomac:1172
+Premotor cortex ventral aspect (rostral zone) | cocomac:1171
+Premotor cortex, dorsal aspect	   | cocomac:1032
+Premotor cortex, dorsal aspect (caudal zone) | cocomac:815
+Premotor cortex, dorsal aspect (rostral zone) | cocomac:816
+Premotor cortex, ventral aspect | cocomac:1033
+Premotor cortex, ventral aspect (caudal zone) | cocomac:1572
+Premotor cortex, ventral aspect (rostral zone)	  | cocomac:1573
+Prepiriform cortex | cocomac:2304
+Presubiculum	   | cocomac:20
+Presubiculum | cocomac:582
+Presubiculum-lamina pyramidale externa | cocomac:309
+Presubiculum-lamina pyramidale interna | cocomac:310
+Pretectal nuclei thalamus | cocomac:1348
+Pretectum  | cocomac:1089
+Pretectum | cocomac:460
+Primary auditory cortex	 | cocomac:131
+Primary auditory cortex | cocomac:156
+Primary gustatory cortex | cocomac:1596
+Primary motor area	  | cocomac:813
+Primary motor cortex	 | cocomac:915
+Primary motor cortex | cocomac:699
+Primary motor cortex M1, face area	 | cocomac:1642
+Primary motor cortex M1, forelimb area | cocomac:1643
+Primary motor cortex M1, hindlimb area	  | cocomac:1644
+Primary olfactory cortex | cocomac:523
+Primary sensory area PC		 | cocomac:439
+Primary sensory cortex | cocomac:513
+Primary somatosensory cortex | cocomac:530
+Principal Sulcus | cocomac:1529
+Principal ventral medial nucleus   | cocomac:1355
+Principal ventral medial nucleus thalami | cocomac:1354
+Proisocortex	 | cocomac:29
+Prokoniocortex (medial part) | cocomac:1835
+Prorhinal cortex (lateral) | cocomac:2305
+Prosubiculum | cocomac:300
+Prosubiculum, (stratum) alveus	 | cocomac:2016
+Prosubiculum, stratum moleculare | cocomac:312
+Prosubiculum, stratum oriens	   | cocomac:2017
+Prosubiculum, stratum pyramidale | cocomac:313
+Prosubiculum, stratum radiatum	 | cocomac:2018
+Putamen	 | cocomac:101
+Putamen | cocomac:1590
+Putamen | cocomac:210
+Putamen; caudal	 | cocomac:1090
+Putamen; caudal, intermediate, central | cocomac:1091
+Putamen; caudal, intermediate, dorsal | cocomac:1092
+Putamen; caudal, intermediate, ventral	 | cocomac:1093
+Putamen; caudal, lateral, central | cocomac:1094
+Putamen; caudal, lateral, dorsal | cocomac:1095
+Putamen; caudal, lateral, ventral | cocomac:1096
+Putamen; caudal, medial, central | cocomac:1097
+Putamen; caudal, medial, dorsal | cocomac:1098
+Putamen; caudal, medial, ventral | cocomac:1099
+Putamen; middle	 | cocomac:1100
+Putamen; middle, intermediate, central | cocomac:964
+Putamen; middle, intermediate, dorsal	 | cocomac:965
+Putamen; middle, intermediate, ventral | cocomac:966
+Putamen; middle, lateral, central | cocomac:968
+Putamen; middle, lateral, dorsal | cocomac:969
+Putamen; middle, lateral, ventral | cocomac:970
+Putamen; middle, medial, central | cocomac:971
+Putamen; middle, medial, dorsal | cocomac:972
+Putamen; middle, medial, ventral | cocomac:973
+Putamen; rostral | cocomac:1102
+Putamen; rostral, intermediate, central | cocomac:974
+Putamen; rostral, intermediate, dorsal | cocomac:975
+Putamen; rostral, intermediate, ventral | cocomac:976
+Putamen; rostral, lateral, central | cocomac:977
+Putamen; rostral, lateral, dorsal | cocomac:979
+Putamen; rostral, lateral, ventral | cocomac:980
+Putamen; rostral, medial, central	 | cocomac:981
+Putamen; rostral, medial, dorsal | cocomac:982
+Putamen; rostral, medial, ventral | cocomac:983
+Pyriform cortex	 | cocomac:1323
+Pyriform cortex: pars intermedia | cocomac:1324
+Pyriform cortex: pars lateralis | cocomac:1325
+Receptive Field for the Lower Lip in Area 3b | cocomac:1803
+Receptive field for the Pads in Area 5	 | cocomac:1897
+Receptive field for the wrist in Area1	 | cocomac:1767
+Regio praetectalis | cocomac:1686
+Representation of muscle spindle and other deep receptors in VPL | cocomac:1977
+Representation of the Lower Lip in VPM | cocomac:1979
+Representation of the Upper Lip in VPM		 | cocomac:1980
+Representation of the digit in the primary somatosensory cortex | cocomac:1536
+Representation of the midline in the primary somatosensory cortex | cocomac:1537
+Retroinsular parietal cortex | cocomac:1922
+Retroinsular temporal cortex	 | cocomac:402
+Retrosplenial Cortex | cocomac:697
+Retrosplenial cortex		 | cocomac:2297
+Retrosplenial cortex	 | cocomac:1630
+Retrosplenial cortex | cocomac:807
+Retrosplenial cortex, agranular | cocomac:2296
+Rostral area 12	 | cocomac:840
+Rostral area 14	 | cocomac:827
+Rostral area 46	   | cocomac:1734
+Rostral area 8A	 | cocomac:695
+Rostral auditory parakoniocortex | cocomac:392
+Rostral cingulate motor area	 | cocomac:883
+Rostral field of entorhinal cortex | cocomac:202
+Rostral inferior parietal lobule	   | cocomac:394
+Rostral medial frontal area	 | cocomac:1740
+Rostral parietal operculum	 | cocomac:610
+Rostral part of area 36	 | cocomac:184
+Rostral part of perirhinal area 36, lamina I | cocomac:185
+Rostral part of perirhinal area 36, lamina II | cocomac:186
+Rostral part of perirhinal area 36, lamina III | cocomac:187
+Rostral part of perirhinal area 36, lamina IV | cocomac:188
+Rostral part of perirhinal area 36, lamina V | cocomac:189
+Rostral part of perirhinal area 36, lamina VI | cocomac:190
+Rostral superior parietal lobule | cocomac:441
+SMA - caudal part	 | cocomac:1530
+SMA - rostral part | cocomac:1531
+Second gustatory area	 | cocomac:831
+Second temporal field	 | cocomac:1361
+Secondary auditory cortex	 | cocomac:1054
+Secondary auditory cortex | cocomac:1595
+Secondary sensory cortex | cocomac:281
+Secondary somatosensory cortex	 | cocomac:1935
+Secondary somatosensory cortex | cocomac:531
+Secondary somatosensory cortex (external part) | cocomac:1839
+Secondary somatosensory cortex (internal part) | cocomac:1840
+Secondary visual cortex | cocomac:1984
+Shell region of VPLc thalami receiving deep inputs | cocomac:933
+Somatic prokoniocortex | cocomac:1921
+Somatosensory area | cocomac:1905
+Stratum album intermediale of the superior colliculus | cocomac:1397
+Stratum album profundum of the superior colliculus | cocomac:1398
+Stratum griseum intermediale of the superior colliculus | cocomac:2292
+Stratum griseum intermiediale of the superior colliculus | cocomac:1399
+Stratum griseum profundum of the superior colliculus | cocomac:1400
+Stratum griseum superficiale of the superior colliculus | cocomac:2293
+Stratum griseum superficiale of the superior colliculus | cocomac:640
+Stratum opticum of the superior colliculus | cocomac:1401
+Stratum opticum of the superior colliculus | cocomac:2294
+Stratum zonale of the superior colliculus | cocomac:642
+Stria medullaris thalami | cocomac:2121
+Stria olfactoria lateralis | cocomac:2127
+Stria olfactoria medialis	 | cocomac:2128
+Stria terminalis	 | cocomac:925
+Striate cortex	 | cocomac:436
+Striate cortex layer 1	 | cocomac:1955
+Striate cortex layer 2	 | cocomac:1956
+Striate cortex layer 3 | cocomac:1957
+Striate cortex layer 4 | cocomac:1958
+Striate cortex layer 5	 | cocomac:1959
+Striate cortex layer 6	 | cocomac:1960
+Subiculum	 | cocomac:654
+Subiculum	 | cocomac:2115
+Subiculum | cocomac:21
+Subiculum | cocomac:1422
+Subiculum, (stratum) alveus | cocomac:2019
+Subiculum, body portion	 | cocomac:842
+Subiculum, stratum moleculare	  | cocomac:2020
+Subiculum, stratum pyramidale | cocomac:314
+Subiculum, uncal portion | cocomac:843
+Submedial thalamic nucleus | cocomac:1350
+Subparafascicular nucleus thalami | cocomac:1351
+Substantia gelatinosa spinalis	 | cocomac:2118
+Substantia inominata, pars lateralis | cocomac:1946
+Substantia inominata, pars medialis | cocomac:1947
+Substantia nigra , pars diffusa	 | cocomac:2125
+Substantia nigra pars compacta | cocomac:938
+Substantia nigra pars reticulata | cocomac:939
+Substantia nigra, pars compacta	 | cocomac:1199
+Substantia nigra, pars compacta	 | cocomac:2124
+Substantia nigra, pars diffusa | cocomac:1680
+Substantia reticularis mesencephali | cocomac:1689
+Superior colliculus	 | cocomac:463
+Superior colliculus	 | cocomac:1948
+Superior colliculus layer 1	 | cocomac:662
+Superior colliculus layer 2	  | cocomac:663
+Superior colliculus layer 2 (sublamina 1) | cocomac:664
+Superior colliculus layer 2 (sublamina 2)	 | cocomac:665
+Superior colliculus layer 2 (sublamina 3) | cocomac:666
+Superior colliculus layer 3	 | cocomac:667
+Superior colliculus layer 4	 | cocomac:668
+Superior colliculus layer 5 | cocomac:669
+Superior colliculus layer 6		    | cocomac:670
+Superior colliculus layer 7 | cocomac:671
+Superior longitudinal fasciculus bundle 3 | cocomac:1904
+Superior parietal cortex | cocomac:1067
+Superior parietal lobule | cocomac:46
+Superior temporal area		 | cocomac:1926
+Superior temporal area 1 | cocomac:1841
+Superior temporal area 2 | cocomac:1842
+Superior temporal area 2G | cocomac:1843
+Superior temporal area 2S | cocomac:1844
+Superior temporal area 3	 | cocomac:1845
+Superior temporal polysensory area | cocomac:479
+Superior temporal polysensory area (anterior) | cocomac:702
+Superior temporal polysensory area (posterior) | cocomac:703
+Superior temporal polysensory region | cocomac:1493
+Superior temporal sulcus | cocomac:631
+Superior temporal sulcus, dorsal | cocomac:2032
+Superior temporal sulcus, fundus	 | cocomac:2037
+Superior temporal sulcus, ventral	 | cocomac:2038
+Supplementary motor area	   | cocomac:1489
+Supplementary motor area | cocomac:315
+Supplementary motor area  | cocomac:386
+Supplementary motor area (=F3)	 | cocomac:1574
+Supplementary motor area (=F6) | cocomac:1034
+Supplementary motor cortex M2, face area    | cocomac:1645
+Supplementary motor cortex M2, forelimb area | cocomac:1646
+Supplementary motor cortex M2, hindlimb area | cocomac:1640
+Supplementary sensory area | cocomac:801
+Supratemporal cortex, granular | cocomac:1592
+Tectum according to GM-Definition | cocomac:1112
+Tectum mesencephali | cocomac:2351
+Telencephalon according to GM-Definition | cocomac:1113
+Temporal Lobe according to GM-Definition | cocomac:1116
+Temporal allocortex | cocomac:1853
+Temporal area TA | cocomac:49
+Temporal area TA2 | cocomac:282
+Temporal area TAa | cocomac:614
+Temporal area TE1 | cocomac:404
+Temporal area TE2 | cocomac:405
+Temporal area TE3 | cocomac:406
+Temporal area TEa | cocomac:407
+Temporal area TF   | cocomac:284
+Temporal area TF (orbital part) | cocomac:630
+Temporal area TH | cocomac:33
+Temporal area TH occipital part | cocomac:628
+Temporal area TH, occipital part | cocomac:656
+Temporal area TL	 | cocomac:616
+Temporal area TL (occipital part) | cocomac:629
+Temporal parietooccipital associated area in superior temporal sulcus | cocomac:410
+Temporal pole agranular area on medial side | cocomac:1412
+Temporal proisocortex	 | cocomac:1855
+Temporoparietal asscociated area (caudal part) | cocomac:890
+Temporoparietal associated area (intermediate part)	    | cocomac:891
+Temporoparietal associated area (rostral part) | cocomac:892
+Temporoparietal cortex	  | cocomac:621
+Temporopolar area TG	 | cocomac:285
+Temporopolar cortex | cocomac:1593
+Temporopolar periallocortex | cocomac:1854
+Temporopolar proisocortex  | cocomac:409
+Thalamus   | cocomac:1115
+The Ch1 cell group (medial septal nucleus) | cocomac:1605
+The Ch2 cell gorup (nucleus of the vertical limb of the diagonal band) | cocomac:1606
+The Ch3 cell group (nucleus of the horizontal limb of the diagonal band) | cocomac:1607
+The Hce1 cell group. With strong AChe reaction after DFP pretreatment. (hypothalamic area) | cocomac:1603
+The anterior subdivision of the Ch4 cell group. | cocomac:1609
+The core of the accumbens nucleus. | cocomac:945
+The lateral sector of the anterior subdivision of the Ch4 cell group. | cocomac:1610
+The medial sector of the anterior subdivision of the Ch4 cell group. | cocomac:1611
+The shell of the accumbens nucleus. | cocomac:956
+The ventral sector of the intermediate subdivision of the Ch4 cell group. | cocomac:1601
+The ventral sector of the intermediater subdivision of the Ch4 cell group. | cocomac:1600
+Third sensory cortex (=area 5) | cocomac:800
+Third temporal field	 | cocomac:1362
+Toe 1 area of primary sensory cortex	    | cocomac:494
+Toe 2 area of primary sensory cortex | cocomac:496
+Toe 3 and 4 area of primary sensory cortex | cocomac:499
+Toe 3 area of primary sensory cortex | cocomac:498
+Toe 4 and 5 area of primary sensory cortex | cocomac:501
+Toe 4 area of primary sensory cortex | cocomac:500
+Toe 5 area of primary sensory cortex | cocomac:502
+Toes 2,3 and 4 area of primary sensory cortex | cocomac:497
+Transition area between areas 36 or TF and area TE	 | cocomac:2036
+Transitional sensory area   | cocomac:1546
+Trunk area of primary sensory cortex | cocomac:503
+Trunk region of the primary motor cortex | cocomac:1386
+Trunk region of the primary sensory cortex | cocomac:1381
+Tuber cinereum	  | cocomac:2130
+Tuberculum olfactorium | cocomac:1696
+Upper bank of the intraparietal sulcus | cocomac:606
+Upper lip area of primary sensory cortex | cocomac:504
+V4 transitional area, posterior zone | cocomac:1499
+VLc-VPLo complex of the ventrolateral thalamus | cocomac:1583
+Ventral agranular insula	 | cocomac:1986
+Ventral area 10	 | cocomac:599
+Ventral area 10 | cocomac:389
+Ventral area 46		 | cocomac:600
+Ventral area 46 | cocomac:376
+Ventral area 6, dorsal subdivision | cocomac:879
+Ventral area 8 | cocomac:382
+Ventral area 8 | cocomac:603
+Ventral dysgranular area of temporal polar cortex	 | cocomac:852
+Ventral intraparietal area	 | cocomac:422
+Ventral lateral complex thalami, anterior nucleus | cocomac:1352
+Ventral lateral complex thalami, posterior nucleus | cocomac:1353
+Ventral medial geniculate nucleus | cocomac:1551
+Ventral occipitotemporal area		    | cocomac:922
+Ventral pallidum | cocomac:1942
+Ventral portion of area 8A	 | cocomac:1873
+Ventral posterior area	 | cocomac:517
+Ventral posterior lateral nucleus (thalamus) | cocomac:1205
+Ventral posterior parietal area | cocomac:579
+Ventral premotor cortex | cocomac:811
+Ventral tegmental area	 | cocomac:937
+Ventral temporal cortex (anterior part of lateral occipito-temporal cortex = fusiform gyrus) | cocomac:1111
+Ventrolateral area 12	 | cocomac:1651
+Ventrolateral area 14	 | cocomac:1745
+Ventrolateral prefrontal cortex | cocomac:1081
+Ventrolateral premotor cortex | cocomac:1087
+Ventromedial area 14	 | cocomac:1732
+Ventromedial nucleus, pars basalis (thalamus)	 | cocomac:363
+Ventromedial pole | cocomac:535
+Ventroposterior superior nucleus thalami		 | cocomac:1203
+Vermis (cerebelli) | cocomac:2133
+Visual anterior cortex | cocomac:1124
+Visual anterior cortex, dorsal part | cocomac:1125
+Visual anterior cortex, ventral part | cocomac:1126
+Visually responsive part of TF		   | cocomac:482
+Zona incerta	 | cocomac:1697
+Zona incerta | cocomac:756
+Zone of transformation between anterodorsal, ventral and posterodorsal medial geniculate nuclei | cocomac:1232
+accessory basal nucleus (amygdala) | cocomac:2
+accessory basal nucleus (amygdala), magnocellular subdivision | cocomac:68
+agranular insula    | cocomac:538
+amygdala | cocomac:2035
+amygdalohippocampal area | cocomac:10
+amygdaloid complex | cocomac:1251
+anterior amygdaloid area | cocomac:59
+anterior amygdaloid area | cocomac:1430
+anterior amygdaloid area | cocomac:1
+anterior area 24aÂ´ | cocomac:2338
+anterior area 24bÂ´ | cocomac:2339
+anterior area 24cÂ´ | cocomac:2332
+anterior body of the amygdala	 | cocomac:660
+anterior cortical nucleus | cocomac:471
+anterior hypothalamic area | cocomac:1969
+anterior inferotemporal area	 | cocomac:1003
+anterior lateral auditory association cortex | cocomac:265
+anterior lateral auditory belt | cocomac:1219
+anterior medio dorsal nucleus	 | cocomac:2257
+anterior part of area TE | cocomac:615
+anterior part of nucleus of lateral olfactory tract		 | cocomac:1438
+anterior pole of the nucleus reticularis thalami | cocomac:1271
+anterior pulvinar | cocomac:624
+anterior pulvinar nucleus thalami | cocomac:929
+anterior region of the motor thalamus as defined by MJ97 | cocomac:1579
+anterior zone of the dorsal premotor cortex | cocomac:1994
+anterodorsal medial geniculate nucleus | cocomac:1548
+anterodorsal medial geniculate nucleus | cocomac:562
+area 22a-alpha	 | cocomac:2327
+area 22a-beta | cocomac:2328
+area 22a-gamma | cocomac:2313
+area 24	 | cocomac:942
+area 5 (dorsal) | cocomac:1478
+area 5 (ventral) | cocomac:1479
+area 6V (lateral)  | cocomac:1481
+area 6Va (medial) | cocomac:1482
+area F2 around the pre-central dimple	 | cocomac:1558
+area dentata (dentate gyrus) | cocomac:111
+area in cortex that could possibly belong to area VIP (MV84, UD86) | cocomac:1721
+area in the fundus and anterior bank of the lunate and inferior occipital sulci | cocomac:1715
+area in the superior temporal sulcus | cocomac:1718
+area in the superior temporal sulcus | cocomac:1719
+area of tuber cinereum	 | cocomac:1971
+area on the annectant gyrus	 | cocomac:1720
+area on the anterior bank of the inferior occipital sulcus | cocomac:1716
+area on the posterior bank of the lunate sulcus | cocomac:1714
+area on the prelunate gyrus | cocomac:1717
+area prostriata	 | cocomac:1191
+areas 35, 36d, 36r, and 36c of the perirhinal cortex | cocomac:2030
+arm area of supplementory motor cortex	 | cocomac:1387
+auditory belt cortex	 | cocomac:1226
+auditory parabelt cortex | cocomac:1220
+auditory prokoniocortex	 | cocomac:651
+basal accessory nucleus, amygdala | cocomac:266
+basal accessory nucleus, magnocellular division | cocomac:1703
+basal accessory nucleus, magnocellular division | cocomac:267
+basal accessory nucleus, parvicellular division | cocomac:1709
+basal accessory nucleus, parvicellular division | cocomac:268
+basal amygdaloid nucleus | cocomac:1441
+basal amygdaloid nucleus | cocomac:102
+basal amygdaloid nucleus, magnocellular division | cocomac:104
+basal amygdaloid nucleus, paralaminar division | cocomac:270
+basal amygdaloid nucleus, parvicellular division | cocomac:60
+basal forebrain		 | cocomac:1929
+basal nucleus (paralaminar division of the amygdala) | cocomac:1262
+basolateral nucleus (amygdala) | cocomac:127
+basolateral nucleus (amygdala) magnocellular sector | cocomac:1044
+basolateral nucleus (amygdala) parvicellular sector | cocomac:1043
+basomedial nucleus (amygdala) magnocellular sector | cocomac:1040
+basomedial nucleus (amygdala) parvicellular sector | cocomac:1039
+basomedial nucleus amygdalae	 | cocomac:128
+bed nucleus of the stria terminalis | cocomac:967
+belt line of the sensory system according to CP99 | cocomac:860
+brachium of superior colliculus | cocomac:1202
+caudal auditory parabelt | cocomac:1228
+caudal cingulate motor cortex | cocomac:1544
+caudal inferior patietal lobule | cocomac:1525
+caudal lateral auditory (belt)	 | cocomac:2044
+caudal opercular stage of root_s | cocomac:866
+caudal parabelt area	 | cocomac:1395
+caudal part of area 10m | cocomac:2052
+caudal part of area TL	 | cocomac:657
+caudal part of the SMA | cocomac:1516
+caudal part of the dorsal premotor cortex as defined in GG95 | cocomac:1026
+caudal stage of root_s	    | cocomac:865
+caudal superior temporal polysensory | cocomac:888
+central amygdaloid nucleus | cocomac:926
+central amygdaloid nucleus | cocomac:1432
+central division of the PMm | cocomac:1024
+central nucleus of the amygdala | cocomac:12
+central nucleus of the inferior colliculus | cocomac:1009
+central nucleus, amygdala | cocomac:108
+cerebral peduncle | cocomac:941
+cingulate fasciculus | cocomac:1907
+cingulum bundle	  | cocomac:1623
+circular sulcus	 | cocomac:2046
+core line	 | cocomac:1174
+core line of the sensory system according to CP99 | cocomac:874
+core line of the sensorymotor system according to CP99 | cocomac:863
+core of ventral striatum | cocomac:924
+cortical amygdaloid nucleus | cocomac:1433
+cortical area 45a + cortical area 45b | cocomac:2212
+cortical area 45b + rostral area 8A | cocomac:2215
+cortical nucleus (amygdala) | cocomac:14
+cortical nucleus, anterior division | cocomac:63
+cortical nucleus, posterior division | cocomac:67
+cortico-amygdaloid transition area | cocomac:1431
+deep portion of medial part of basal amygdaloid nucleus | cocomac:1446
+dentate gyrus	 | cocomac:192
+dorsal Lateral geniculate nucleus | cocomac:558
+dorsal area 24	 | cocomac:1047
+dorsal area 9	 | cocomac:537
+dorsal bank of the superior temporal sulcus | cocomac:2042
+dorsal hypothalamic area | cocomac:2148
+dorsal hypothalamic area | cocomac:1973
+dorsal lateral geniculate nucleus, magnocellular region | cocomac:1157
+dorsal lateral geniculate nucleus, magnocellular region | cocomac:574
+dorsal lateral geniculate nucleus, magnocellular region, external part | cocomac:1158
+dorsal lateral geniculate nucleus, magnocellular region, internal part | cocomac:1159
+dorsal lateral geniculate nucleus, parvocellular region | cocomac:1160
+dorsal lateral geniculate nucleus, parvocellular region | cocomac:1655
+dorsal lateral geniculate nucleus, parvocellular region, external part | cocomac:1161
+dorsal lateral geniculate nucleus, parvocellular region, internal part | cocomac:1162
+dorsal part of cortical amygdaloid nucleus | cocomac:1434
+dorsal portion of the subdivision TE1-3 | cocomac:1495
+dorsal posterior cingulate cortex | cocomac:2330
+dorsal posterior cingulate cortex | cocomac:2329
+dorsal premotor cortex	 | cocomac:809
+dorsal raphe nucleus	 | cocomac:1254
+dorsal tegmental nucleus | cocomac:1255
+dorsolateral tegmental nucleus | cocomac:1473
+dorsolateral temporal pole (dysgranular cortex) | cocomac:520
+dorsolateral visual cortex	 | cocomac:1404
+dorsolateral visual cortex, caudal part	 | cocomac:578
+dorsolateral visual cortex, rostral part | cocomac:580
+dorsomedial nucleus (hypothalamus) | cocomac:1253
+dorsomedial part of area 10 | cocomac:1923
+dorsomedial temporal pole (agranular and dysgranular cortex) | cocomac:521
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1753
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1754
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1755
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1756
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1757
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1760
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1761
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1762
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1763
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1764
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1765
+electrophysiologically defined subfield of area 1 as defined in PGCK85 | cocomac:1766
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1771
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1772
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1774
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1777
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1778
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1780
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1781
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1782
+electrophysiologically defined subfield of area 2 as defined in PGCK85 | cocomac:1783
+endopiriform nucleus | cocomac:69
+entorhinal cortex | cocomac:1532
+external subdivision of area 23	   | cocomac:1389
+extreme capsule	  | cocomac:1908
+face region of supplementory motor cortex | cocomac:1369
+fascia dentata		 | cocomac:1417
+finger area of primary sensory cortex	 | cocomac:1376
+first electrophysiologic field of the pulvinar | cocomac:352
+fornix | cocomac:2034
+foveal representation of V2 | cocomac:1182
+frontal opercular area | cocomac:2051
+fronto-occipital fasciculus	 | cocomac:1903
+fundal division of area p24cÂ´	 | cocomac:2336
+globus pallidus	 | cocomac:928
+habenular nuclei | cocomac:1503
+head of nucleus caudatus intermediate central zone | cocomac:2371
+head of nucleus caudatus intermediate dorsal zone	    | cocomac:2372
+head of nucleus caudatus lateral central zone	 | cocomac:2373
+head of nucleus caudatus lateral dorsal zone | cocomac:2374
+head of nucleus caudatus medial dorsal zone | cocomac:2375
+head of nucleus caudatus medial ventral zone | cocomac:2376
+horizontal limb of the nucleus of the diagonal band | cocomac:1708
+inferior arcuate sulcus		   | cocomac:1524
+inferior colliculus | cocomac:1008
+inferior division of ventral cortical nucleus	 | cocomac:474
+inferior temporal areas TE1, TE2, and TE3 | cocomac:1494
+inferior temporal cortex posterodorsal part		 | cocomac:1019
+inferior temporal cortex posteroventral part | cocomac:2222
+inferior temporal cortex, posterodorsal part | cocomac:2261
+inferior temporal cortex, posteroventral part | cocomac:2262
+infundibular nucleus | cocomac:1974
+infundibulum | cocomac:1975
+inner opercular face	 | cocomac:1373
+insular proisocortex | cocomac:886
+intermediate division of ventral cortical nucleus | cocomac:475
+intermediate entorhinal cortex | cocomac:22
+intermediate lower field of V2	 | cocomac:1183
+internal subdivision of area 23	 | cocomac:1388
+intralaminar nuclei	 | cocomac:1927
+intralaminar parts of the LGN	   | cocomac:568
+intralaminar zones of the LGN	 | cocomac:2226
+intraparietal sulcus	 | cocomac:2043
+lateral amygdaloid nucleus	 | cocomac:1436
+lateral devision of tuberal hypothalamus | cocomac:1962
+lateral division if the pulvinar | cocomac:2265
+lateral entorhinal cortex | cocomac:655
+lateral entorhinal cortex lateral subregion | cocomac:2224
+lateral entorhinal cortex medial subregion	 | cocomac:2223
+lateral geniculate body | cocomac:704
+lateral hypothalamic region | cocomac:1257
+lateral intraparietal area (dorsal + ventral part) | cocomac:2211
+lateral mamillary nucleus	 | cocomac:318
+lateral mammillary nucleus	 | cocomac:2307
+lateral nucleus (amygdala), ventrolateral subdivision | cocomac:73
+lateral nucleus amygdala | cocomac:1042
+lateral nucleus amygdalae | cocomac:35
+lateral nucleus amygdalae | cocomac:109
+lateral nucleus, amygdala | cocomac:3
+lateral occipital parietal | cocomac:1488
+lateral pallidum | cocomac:1006
+lateral parabrachial nucleus | cocomac:2099
+lateral part of accessory basal amygdaloid nucleus	 | cocomac:1442
+lateral part of basal amygdaloid nucleus | cocomac:1444
+lateral portion of the pulvinar, external portion | cocomac:1725
+lateral pulvinar | cocomac:355
+lateral terminal nucleus | cocomac:2263
+laterar division of the pulvinar, internal portion | cocomac:371
+leg region of supplementory motor cortex | cocomac:1370
+leg representation in SII | cocomac:361
+limb area of primary motor cortex | cocomac:1384
+limb area of supplementory motor cortex			 | cocomac:1371
+lower SGS of the superior colliculus | cocomac:2291
+lower field representation of V2  | cocomac:1185
+lower visual quadrant in V1 | cocomac:1954
+magnocellular laminae of LGN	    | cocomac:1723
+magnocellular medial geniculate nucleus | cocomac:1549
+magnocellular part of MG nucleus | cocomac:368
+medial amygdaloid nucleus	 | cocomac:1437
+medial area	 | cocomac:581
+medial area 5 as defined in GG95 | cocomac:1035
+medial area PG | cocomac:397
+medial entorhinal cortex | cocomac:658
+medial geniculate body | cocomac:715
+medial geniculate complex transitional zone | cocomac:1204
+medial mamillary nucleus (hypothalamus) | cocomac:317
+medial mammillary nucleus pars basalis	 | cocomac:2308
+medial mammillary nucleus pars lateralis | cocomac:2310
+medial mammillary nucleus pars lateralis cap | cocomac:2311
+medial mammillary nucleus pars medialis | cocomac:2309
+medial nucleus of the pulvinar (thalamus) | cocomac:1264
+medial nucleus, amygdala | cocomac:163
+medial pallidum	 | cocomac:1007
+medial parabrachial nucleus | cocomac:2100
+medial part of accessory basal amygdaloid nucleus | cocomac:1443
+medial part of basal amygdaloid nucleus | cocomac:1445
+medial periallocortex | cocomac:1041
+medial pulvinar thalami	  | cocomac:1406
+medial rostrotemporal auditory belt | cocomac:1225
+medial septal nucleus | cocomac:1258
+medial superior temporal (medial) | cocomac:1492
+medial superior temporal area (dorsal, anterior) | cocomac:1490
+medial superior temporal area (dorsal, posterior)	 | cocomac:1491
+medial visual association area | cocomac:526
+mediofrontal periallocortex	 | cocomac:583
+mediofrontal proisocortex | cocomac:584
+medioventral division of area 4	 | cocomac:2335
+mesial part of area 7; area PGm | cocomac:1555
+middle lateral auditory belt	   | cocomac:1231
+middle longitudinal fasciculus | cocomac:1909
+middle region of the motor thalamus as defined by MJ97 | cocomac:1580
+middle temporal area, central visual field - lower quadrant | cocomac:2288
+middle temporal area, central visual field - upper quadrant | cocomac:2287
+middle temporal area, foveal | cocomac:2286
+middle temporal area, peripheral visual field - lower quadrant | cocomac:2290
+middle temporal area, peripheral visual field - upper quadrant | cocomac:2289
+neck area of primary motor cortex | cocomac:1385
+neck area of primary somatosensory cortex | cocomac:1379
+nucleus angularis thalami   | cocomac:726
+nucleus anterodorsalis thalami | cocomac:737
+nucleus anteromedialis thalami | cocomac:747
+nucleus anteroventralis thalami	 | cocomac:757
+nucleus centralis (thalamus) | cocomac:1269
+nucleus centralis lateralis thalami | cocomac:758
+nucleus centralis medialis thalami | cocomac:759
+nucleus centrum medianum (thalamus) | cocomac:367
+nucleus habenularis lateralis thalami | cocomac:760
+nucleus habenularis medialis thalami	 | cocomac:705
+nucleus interoanteromedialis thlami | cocomac:706
+nucleus interparataenialis thalami | cocomac:707
+nucleus lateralis anterolateralis thalami | cocomac:708
+nucleus lateralis anteromedialis thalami | cocomac:709
+nucleus lateralis anteromedialis thalami, pars anterior | cocomac:710
+nucleus lateralis anteromedialis thalami, pars posterior | cocomac:711
+nucleus lateralis dorsalis thalami | cocomac:712
+nucleus lateralis posterior thalami | cocomac:713
+nucleus lateralis posterior thalami, pars dorsalis | cocomac:714
+nucleus lateralis posterior thalami, pars lateralis		 | cocomac:716
+nucleus lateralis posterior thalami, pars medialis | cocomac:717
+nucleus limitans thalami | cocomac:718
+nucleus medialis dorsalis thalami | cocomac:719
+nucleus medialis dorsalis thalami, pars dorsolateralis | cocomac:720
+nucleus medialis dorsalis thalami, pars ventromedialis | cocomac:721
+nucleus medialis ventralis thalami | cocomac:722
+nucleus of the diagonal band of Broca | cocomac:1259
+nucleus of the optic tract | cocomac:674
+nucleus paracentralis (thalamus) | cocomac:930
+nucleus paracentralis thalami	 | cocomac:723
+nucleus parafascicularis thalami | cocomac:724
+nucleus parataenialis lateralis thalami	 | cocomac:725
+nucleus parataenialis medialis thalami | cocomac:727
+nucleus paraventricularis anterior thalami | cocomac:728
+nucleus paraventricularis posterior thalami | cocomac:729
+nucleus pulvinaris inferior thalami | cocomac:730
+nucleus pulvinaris lateralis thalami | cocomac:731
+nucleus pulvinaris lateralis thalami, pars inferior | cocomac:732
+nucleus pulvinaris lateralis thalami, pars superior | cocomac:733
+nucleus pulvinaris medialis thalami	 | cocomac:734
+nucleus pulvinaris medialis thalami, pars inferior | cocomac:735
+nucleus pulvinaris medialis thalami, pars intermedius	 | cocomac:736
+nucleus pulvinaris medialis thalami, pars medialis | cocomac:738
+nucleus pulvinaris medialis thalami, pars superior | cocomac:739
+nucleus reticularis thalami	 | cocomac:1993
+nucleus reticularis thalami	   | cocomac:240
+nucleus reticularis thalami | cocomac:1270
+nucleus subthalamicus | cocomac:740
+nucleus suprageniculatus thalami | cocomac:741
+nucleus ventralis anterolarteralis thalami | cocomac:742
+nucleus ventralis anterolarteralis thalami, pars dorsalis | cocomac:743
+nucleus ventralis anterolarteralis thalami, pars ventralis | cocomac:744
+nucleus ventralis anteromedialis thalami | cocomac:745
+nucleus ventralis anteromedialis thalami, pars dorsolateralis | cocomac:746
+nucleus ventralis anteromedialis thalami, pars ventromedialis | cocomac:748
+nucleus ventralis intermedius thalami | cocomac:749
+nucleus ventralis posteroinferior thalami | cocomac:750
+nucleus ventralis posterolateralis thalami | cocomac:751
+nucleus ventralis posteromedialis thalami | cocomac:752
+nucleus ventralis posteromedialis thalami, pars inferior | cocomac:753
+nucleus ventralis posteromedialis thalami, pars superior | cocomac:754
+olivary nucleus of the pretectum | cocomac:677
+orbital periallocortex	 | cocomac:585
+orbital periallocortex | cocomac:1049
+parabigeminal nucleus | cocomac:1474
+paralaminar division of the medial basal nucleus | cocomac:30
+paramammillary nucleus	 | cocomac:1964
+parasubiculum | cocomac:1414
+paraventricular nucleus (thalamus) | cocomac:773
+parietal association area  | cocomac:525
+part of V4 representing central visual field | cocomac:689
+part of V4 representing peripheral visual field | cocomac:690
+parvocellular laminae of LGN | cocomac:1724
+pedunculopontine tegmental nucleus | cocomac:1476
+periamygdaloid cortex | cocomac:81
+periaqueductal gray	 | cocomac:1260
+perifornical nucleus	  | cocomac:1966
+perimammillary nucleus	 | cocomac:1968
+peripeduncular nucleus	 | cocomac:1475
+perirhinal cortex | cocomac:1533
+posterior agranular insular cortex | cocomac:1565
+posterior area 24aÂ´ | cocomac:2340
+posterior area 24bÂ´ | cocomac:2341
+posterior area 24cÂ´	 | cocomac:2331
+posterior cingulate cortex | cocomac:1702
+posterior cortical nucleus | cocomac:478
+posterior hypothalamic area	 | cocomac:2055
+posterior hypothalamic area | cocomac:1965
+posterior inferotemporal area + inferotemporal area TE + temporal area TE3 | cocomac:2214
+posterior inferotemporal area + nferotemporal area TE | cocomac:2213
+posterior part of nucleus of lateral olfactory tract | cocomac:1439
+posterior region of the motor thalamus as defined by MJ97 | cocomac:1582
+posterior subdivision of 46 | cocomac:1477
+posterior zone of dorsal premotor cortex | cocomac:1995
+posterodorsal medial geniculate nucleus	 | cocomac:565
+posterodorsal medial geniculate nucleus | cocomac:1550
+precentral dimple | cocomac:814
+precentral motor cortex	 | cocomac:1518
+premamillary nucleus (hypothalamus)	 | cocomac:1263
+prepiriform cortex | cocomac:31
+presubiculum	 | cocomac:1415
+presubiculum	 | cocomac:808
+presubiculum | cocomac:288
+pretectal ventral lateral zone	 | cocomac:673
+primary sensory cortex, area 1 | cocomac:797
+primary sensory cortex, area 2	  | cocomac:798
+primary sensory cortex, area 3	 | cocomac:799
+principal (or posterior) pretectal nucleus | cocomac:679
+prosubiculum	 | cocomac:1418
+prosubiculum	 | cocomac:28
+proximal digit 1 area of primary sensory cortex | cocomac:495
+proximal upper Lip area of primary sensory cortex | cocomac:505
+regio inferior (hippocampus)	 | cocomac:121
+regio superior (hippocampus) | cocomac:122
+representation of the forelimb in primary motor area 4 as presented in GBP87 | cocomac:1020
+retrosplenial cortex	 | cocomac:1933
+retrosplenial cortex | cocomac:2219
+retrosplenial granular cortex | cocomac:653
+rhinal cortex	 | cocomac:1534
+root line	 | cocomac:1175
+root line of the sensory system according to CP99 | cocomac:864
+root line of the sensorymotor system according to CP99 | cocomac:869
+rostral auditory parabelt	    | cocomac:1222
+rostral cingulate motor cortex		   | cocomac:1543
+rostral parabelt area	   | cocomac:1396
+rostral part of SMA	 | cocomac:1517
+rostral part of area 10m | cocomac:2053
+rostral part of the dorsal premotor cortex as defined in GG95 | cocomac:1027
+rostral postcentral stage of belt_s | cocomac:872
+rostral subiculum	 | cocomac:850
+rostral superior temporal polysensory	    | cocomac:894
+second electrophysiologic field of the pulvinar	  | cocomac:353
+somatotopic arm of area 4 | cocomac:1273
+somototopic arm of area 6 | cocomac:1274
+sperior temporal cortex, intermediate part | cocomac:2273
+sperior temporal cortex, posterior part	 | cocomac:2274
+striate cortex | cocomac:464
+striatum | cocomac:943
+subarea of dorsal premotor cortex | cocomac:1585
+subarea of dorsal premotor cortex | cocomac:1584
+subarea of primary sensory cortex defined by K78 | cocomac:1380
+subarea of secondary sensory cortex defined by K78 | cocomac:1382
+subarea of ventral premotor cortex | cocomac:1586
+subarea of ventral premotor cortex | cocomac:1587
+subatantia perforata anterior | cocomac:2129
+subdivision from area 8	 | cocomac:1486
+subdivision of 7 near tip of intraparietal sulcus | cocomac:1484
+subfield a of CA3 | cocomac:1428
+subfield a of subiculum	 | cocomac:1423
+subfield b of CA3  | cocomac:1429
+subfield b of subiculum	 | cocomac:1424
+subfield c of CA3 | cocomac:1416
+sublentiform nucleus | cocomac:672
+substantia innominata	 | cocomac:32
+substantia nigra | cocomac:1198
+substantia nigra pars compacta | cocomac:1678
+substantia nigra pars reticulata | cocomac:1200
+subtantia grisea centralis | cocomac:2182
+subthalamic nucleus	  | cocomac:940
+sulcal entorhinal cortex | cocomac:659
+superficial layers of the LGN | cocomac:570
+superficial portion of medial part of basal amygdaloid nucleus | cocomac:1447
+superior colliculus	 | cocomac:755
+superior division of ventral cortical nucleus | cocomac:476
+superior longitudinal fasciculus | cocomac:1906
+superior longitudinal fasciculus bundle 1 | cocomac:1911
+superior parietal lobule (posterior dorsomedial parietal cortex above the intraparietal sulcus) | cocomac:2218
+superior temporal cortex | cocomac:1110
+superior temporal gyrus	 | cocomac:1243
+superior temporal gyrus (fundus) | cocomac:1244
+superior temporal gyrus (lateral)	    | cocomac:1246
+superior temporal gyrus (medial) | cocomac:1247
+superior temporal gyrus (opercular) | cocomac:1248
+superior temporal gyrus (operculum) | cocomac:1245
+superior temporal gyrus (posterior) | cocomac:1249
+superior temporal gyrus (radial) | cocomac:1250
+supramamillary area (hypothalamus)		 | cocomac:1266
+supramammillary nucleus		 | cocomac:1967
+tail of caudate	 | cocomac:211
+temporal opercular caudal | cocomac:1497
+temporal polar cortex, dorsal part | cocomac:2275
+temporal polar cortex, ventral part | cocomac:2276
+temporal visual association area 1 | cocomac:532
+temporal visual association area 2  | cocomac:533
+temporal visual association area in the lower bank of the superior temporal sulcus | cocomac:534
+thalamus (CCHR95) | cocomac:774
+transitional area between area 29 and prestriate cortex | cocomac:1391
+trunk area of supplementory motor cortex | cocomac:1372
+trunk representation in SII as defined in DLRPK03 | cocomac:362
+trunk representation in SMA as defined by TTNI97 | cocomac:2282
+tuberomamillary nucleus (hypothalamus)	 | cocomac:1267
+tuberomammillary nucleus (Hypothalamus)		 | cocomac:1963
+upper SGS of the superior colliculus | cocomac:2295
+ventral anterior nucleus (thalamus) | cocomac:123
+ventral area 24	    | cocomac:1046
+ventral area 9	 | cocomac:2337
+ventral cortical nucleus | cocomac:473
+ventral intraparietal (lateral) | cocomac:1500
+ventral intraparietal (medial)	  | cocomac:1501
+ventral lateral nucleus (thalamus)	 | cocomac:124
+ventral part of cortical amygdaloid nucleus		 | cocomac:1435
+ventral portion of the subdivision TE1-3 | cocomac:1496
+ventral stage of core_s | cocomac:862
+ventral striatal shell	 | cocomac:923
+ventral subdivision of area 23 | cocomac:1390
+ventrobasal nucleus thalami | cocomac:1898
+ventromedial nucleus | cocomac:1972
+zone 3 of auditory cortex | cocomac:1363
+zone 4 of auditory cortex | cocomac:1364
