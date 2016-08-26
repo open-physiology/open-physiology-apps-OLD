@@ -23,11 +23,13 @@ var TemplateValue = (function () {
     TemplateValue.prototype.ngOnInit = function () {
         if (this.item) {
             if (this.item instanceof Object) {
-                if (this.item.distribution)
-                    this.valueType = "Distribution";
-                else
-                    this.valueType = "Range";
                 this.valueSet = this.item;
+                if (this.item.distribution) {
+                    this.valueType = "Distribution";
+                }
+                else {
+                    this.valueType = "Range";
+                }
             }
             else {
                 this.value = this.item;
@@ -39,11 +41,10 @@ var TemplateValue = (function () {
             this.item = this.value;
         }
         else {
+            this.valueSet.distribution = (type == 'Distribution') ? "Normal" : undefined;
             this.item = this.valueSet;
         }
         this.valueType = type;
-        console.log("valueType", this.valueType);
-        console.log("value", this.item);
         this.updated.emit(this.item);
     };
     __decorate([
@@ -58,7 +59,7 @@ var TemplateValue = (function () {
         core_1.Component({
             "inputs": ["caption", "item", "min", "max", "step"],
             "selector": "template-value",
-            "template": "\n      <div class=\"input-control\">\n        <label for=\"caption\">{{caption}}:</label>\n        \n        <div class=\"btn-group\" style=\"float: left;\">\n          <button type=\"button\" class=\"btn btn-default btn-icon\" \n            [ngClass]=\"{'active': valueType == 'Value'}\" (click)=\"updateType('Value')\">\n            <span class=\"glyphicon glyphicon-th\"></span>\n          </button>\n          <button type=\"button\" class=\"btn btn-default btn-icon\" \n            [ngClass]=\"{'active': valueType == 'Range'}\" (click)=\"updateType('Range')\">\n            <span class=\"glyphicon glyphicon-transfer\"></span>\n          </button>\n          <button type=\"button\" class=\"btn btn-default btn-icon\" \n            [ngClass]=\"{'active': valueType == 'Distribution'}\" (click)=\"updateType('Distribution')\">\n            <span class=\"glyphicon glyphicon-random\"></span>\n          </button>\n        </div>\n        \n        <input *ngIf=\"valueType == 'Value'\" \n          type=\"number\" class=\"form-control\" \n           [min] =\"min? min: 0\" \n           [max] =\"max? max: 10\" \n           [step]=\"step? step: 1\" \n          [(ngModel)]=\"value\" (ngModelChange)=\"updated.emit(value)\"/>\n        \n        <fieldset *ngIf=\"valueType == 'Range' || valueType == 'Distribution'\">\n          <!--Min--> \n          <div class=\"input-control\">\n            <label for=\"min\">Min: </label>\n            <input type=\"number\" class=\"form-control\" \n              [min] =\"min? min: 0\" \n              [max] =\"max? max: 10\" \n              [step]=\"step? step: 1\" \n              required [(ngModel)]=\"valueSet.min\">\n          </div>\n          <!--Max-->\n          <div class=\"input-control\">\n            <label for=\"max\">Max: </label>\n            <input type=\"number\" class=\"form-control\" \n              [min] =\"min? min: 0\" \n              [max] =\"max? max: 10\" \n              [step]=\"step? step: 1\" \n              required [(ngModel)]=\"valueSet.max\">\n          </div>\n          <div *ngIf=\"valueType == 'Distribution'\">\n            <!--Mean-->\n            <div class=\"input-control\">\n              <label for=\"mean\">Mean: </label>\n              <input type=\"number\" class=\"form-control\" \n              [min] =\"min? min: 0\" \n              [max] =\"max? max: 10\" \n              [step]=\"step? step: 1\" \n              required [(ngModel)]=\"valueSet.mean\">\n            </div>\n            <!--Std-->\n            <div class=\"input-control\">\n              <label for=\"std\">Std: </label>\n              <input type=\"number\" class=\"form-control\" \n              [min] =\"min? min: 0\" \n              [max] =\"max? max: 10\" \n              [step]=\"step? step: 1\" \n              required [(ngModel)]=\"valueSet.std\">\n            </div>\n          </div>\n        </fieldset>\n        \n       </div>\n   ",
+            "template": "\n      <div class=\"input-control\">\n        <label for=\"caption\">{{caption}}:</label>\n        \n        <div class=\"btn-group\" style=\"float: left;\">\n          <button type=\"button\" class=\"btn btn-default btn-icon\" \n            [ngClass]=\"{'active': valueType == 'Value'}\" (click)=\"updateType('Value')\">\n            <span class=\"glyphicon glyphicon-th\"></span>\n          </button>\n          <button type=\"button\" class=\"btn btn-default btn-icon\" \n            [ngClass]=\"{'active': valueType == 'Range'}\" (click)=\"updateType('Range')\">\n            <span class=\"glyphicon glyphicon-transfer\"></span>\n          </button>\n          <button type=\"button\" class=\"btn btn-default btn-icon\" \n            [ngClass]=\"{'active': valueType == 'Distribution'}\" (click)=\"updateType('Distribution')\">\n            <span class=\"glyphicon glyphicon-random\"></span>\n          </button>\n        </div>\n        \n        <input *ngIf=\"valueType == 'Value'\" \n          type=\"number\" class=\"form-control\" \n           [min] =\"min? min: 0\" \n           [max] =\"max? max: 10\" \n           [step]=\"step? step: 1\" \n           [(ngModel)]=\"value\" \n           (ngModelChange)=\"updated.emit(value)\"/>\n        \n        <fieldset *ngIf=\"(valueType == 'Range') || (valueType == 'Distribution')\">\n          <!--Min--> \n          <div class=\"input-control\">\n            <label for=\"min\">Min: </label>\n            <input type=\"number\" class=\"form-control\" \n              [min] =\"min? min: 0\" \n              [max] =\"max? max: 10\" \n              [step]=\"step? step: 1\" \n              [(ngModel)]=\"valueSet.min\"\n              (ngModelChange)=\"updated.emit(valueSet)\">\n          </div>\n          <!--Max-->\n          <div class=\"input-control\">\n            <label for=\"max\">Max: </label>\n            <input type=\"number\" class=\"form-control\" \n              [min] =\"min? min: 0\" \n              [max] =\"max? max: 10\" \n              [step]=\"step? step: 1\" \n              [(ngModel)]=\"valueSet.max\"\n              (ngModelChange)=\"updated.emit(valueSet)\">\n          </div>\n          <div *ngIf=\"valueType == 'Distribution'\">\n            <!--Mean-->\n            <div class=\"input-control\">\n              <label for=\"mean\">Mean: </label>\n              <input type=\"number\" class=\"form-control\" \n              [min] =\"min? min: 0\" \n              [max] =\"max? max: 10\" \n              [step]=\"step? step: 1\" \n              [(ngModel)]=\"valueSet.mean\"\n              (ngModelChange)=\"updated.emit(valueSet)\">\n            </div>\n            <!--Std-->\n            <div class=\"input-control\">\n              <label for=\"std\">Std: </label>\n              <input type=\"number\" class=\"form-control\" \n              [min] =\"min? min: 0\" \n              [max] =\"max? max: 10\" \n              [step]=\"step? step: 1\" \n              [(ngModel)]=\"valueSet.std\"\n              (ngModelChange)=\"updated.emit(valueSet)\">\n            </div>\n          </div>\n        </fieldset>\n        \n       </div>\n   ",
             "styles": ["input {width: 60px;}"],
             "directives": [toolbar_form_1.FormToolbar]
         }), 

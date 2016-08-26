@@ -107,7 +107,7 @@ export class GraphWidget{
       new DragDropTool    (this.root.context);
       new ResizeTool      (this.root.context);
       new ZoomTool        (this.root.context);
-      //new PanTool         (this.root.context);
+      new PanTool         (this.root.context);
       new BorderToggleTool(this.root.context);
       this.drawingTool = new DrawingTool(this.root.context);
 
@@ -116,4 +116,4 @@ export class GraphWidget{
       });
     }
   }
-}
+} 

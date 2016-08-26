@@ -2,215 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4a12cf4-3915-4e95-b523-a7ac8b80426a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/border.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/causality.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/clinicalIndex.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/coalescence.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/correlation.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/cylindricalLyph.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/distribution.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/external.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/generate.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/graph.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/group.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/info.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/layers.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/levels.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/locatedMeasure.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/lyph.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/material.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/measurable.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/node.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/numbers.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/omegaTree.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/options.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/process.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/publication.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/random-process.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/random.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/resource.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/t.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/tree.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/type.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/value.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/values.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.dockerignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Dockerfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.select.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.select.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.select.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.templateValue.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.templateValue.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.templateValue.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.test.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/component.test.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.add.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.add.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.add.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.filter.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.filter.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.form.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.form.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.form.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.propertySettings.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.propertySettings.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.propertySettings.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.sort.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.sort.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/toolbar.sort.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.draggable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.draggable.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.draggable.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.dynamicLoader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.dynamicLoader.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.dynamicLoader.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.resizable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.resizable.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/directive.resizable.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.graph.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.graph.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.graph.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.omegaTrees.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.omegaTrees.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.omegaTrees.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.resources.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.resources.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/editors/editor.resources.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.graphEditor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.graphEditor.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.graphEditor.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.omegaTrees.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.omegaTrees.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.omegaTrees.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.resources.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.resources.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.resources.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/dispatch.resources.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/dispatch.resources.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/dispatch.resources.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.border.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.border.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.border.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.causality.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.causality.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.causality.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.coalescence.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.coalescence.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.coalescence.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.coalescenceScenario.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.coalescenceScenario.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.coalescenceScenario.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.correlation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.correlation.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.correlation.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.externalResource.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.externalResource.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.externalResource.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.group.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.group.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.group.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.lyph.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.lyph.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.lyph.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.material.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.material.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.material.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.measurable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.measurable.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.measurable.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.node.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.node.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.node.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.omegaTree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.omegaTree.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.omegaTree.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.process.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.process.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.process.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.resource.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.resource.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.resource.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.template.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.template.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.template.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.type.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.type.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/panels/panel.type.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.abstract.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.abstract.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.abstract.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.general.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.general.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.general.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.nested.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.nested.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/repos/repo.nested.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/service.eventsService.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/service.eventsService.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/service.highlight.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/service.highlight.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/service.resize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/service.resize.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/service.resize.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/utils.model.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/utils.model.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/utils.model.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/transformations/pipe.general.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/transformations/pipe.general.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/transformations/pipe.general.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.lyph.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.lyph.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.lyph.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.omegaTree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.omegaTree.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.omegaTree.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.relationGraph.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.relationGraph.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.relationGraph.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.relationTree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.relationTree.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/view.relationTree.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.graph.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.graph.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.graph.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.relations.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.relations.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.relations.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.resource.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.resource.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/widgets/widget.resource.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/e2e-spec.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/graphEditor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/karma-test-shim.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/omegaTreeEditor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protractor.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/cl-basicNames.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/cocomacID-Names.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/fmaNames.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/grouped-descriptions.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/styles.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tsconfig.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tslint.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typings.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typings/globals/core-js/index.d.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typings/globals/core-js/typings.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typings/globals/jasmine/index.d.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typings/globals/jasmine/typings.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typings/globals/node/index.d.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typings/globals/node/typings.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typings/index.d.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wallaby.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/EditorWidgets_node_modules.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/EditorWidgets.iml" afterPath="$PROJECT_DIR$/.idea/EditorWidgets.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/component.templateValue.js" afterPath="$PROJECT_DIR$/app/components/component.templateValue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/component.templateValue.js.map" afterPath="$PROJECT_DIR$/app/components/component.templateValue.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/widgets/widget.graph.js" afterPath="$PROJECT_DIR$/app/widgets/widget.graph.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/widgets/widget.graph.js.map" afterPath="$PROJECT_DIR$/app/widgets/widget.graph.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/widgets/widget.graph.ts" afterPath="$PROJECT_DIR$/app/widgets/widget.graph.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/globals/core-js/index.d.ts" afterPath="$PROJECT_DIR$/typings/globals/core-js/index.d.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/globals/jasmine/index.d.ts" afterPath="$PROJECT_DIR$/typings/globals/jasmine/index.d.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/globals/node/index.d.ts" afterPath="$PROJECT_DIR$/typings/globals/node/index.d.ts" />
     </list>
     <ignored path="EditorWidgets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26765,7 +26569,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -26775,11 +26578,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="graphEditor.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="graphEditor.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graphEditor.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+            <state relative-caret-position="437">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -26788,7 +26591,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
+            <state relative-caret-position="152">
               <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
               <folding />
             </state>
@@ -26798,14 +26601,10 @@
       <file leaf-file-name="editor.graph.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/editors/editor.graph.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1451">
+            <state relative-caret-position="589">
               <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
-                <marker date="1472157237262" expanded="true" signature="664:991" ph="..." />
-                <marker date="1472157237262" expanded="true" signature="691:990" ph="..." />
-                <marker date="1472157237262" expanded="true" signature="995:1190" ph="..." />
-                <marker date="1472157237262" expanded="true" signature="1026:1189" ph="..." />
               </folding>
             </state>
           </provider>
@@ -26814,23 +26613,23 @@
       <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="91" column="15" selection-start-line="91" selection-start-column="15" selection-end-line="91" selection-end-column="15" />
+            <state relative-caret-position="1729">
+              <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widget.graph.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="widget.graph.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/widgets/widget.graph.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+            <state relative-caret-position="824">
+              <caret line="118" column="2" selection-start-line="118" selection-start-column="2" selection-end-line="118" selection-end-column="2" />
               <folding>
                 <element signature="e#45#136#0" expanded="true" />
-                <marker date="1472158957255" expanded="true" signature="689:879" ph="..." />
-                <marker date="1472158957255" expanded="true" signature="780:798" ph="..." />
-                <marker date="1472158957255" expanded="true" signature="799:868" ph="..." />
+                <marker date="1472199251130" expanded="true" signature="689:879" ph="..." />
+                <marker date="1472199251130" expanded="false" signature="780:798" ph="..." />
+                <marker date="1472199251130" expanded="true" signature="799:868" ph="..." />
               </folding>
             </state>
           </provider>
@@ -26839,47 +26638,9 @@
       <file leaf-file-name="panel.lyph.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/panels/panel.lyph.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4950">
+            <state relative-caret-position="342">
               <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-              <folding>
-                <marker date="1472133043222" expanded="true" signature="696:10533" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="1031:1239" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="1097:1220" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="1335:1507" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="1597:1766" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="2414:7581" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="2511:2931" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="2575:2914" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="3048:3497" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="3118:3480" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="3606:4015" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="3671:3998" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="4136:4547" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="4203:4530" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="4653:5026" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="4719:5009" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="5139:5504" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="5203:5487" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="5617:5972" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="5685:5955" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="6093:6462" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="6164:6445" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="6595:6975" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="6671:6958" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="7106:7486" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="7182:7469" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="7649:9575" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="7776:8180" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="7910:8163" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="8307:8818" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="8473:8801" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="8946:9487" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="9130:9470" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="9684:10007" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="9830:9992" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="10120:10457" ph="..." />
-                <marker date="1472133043222" expanded="true" signature="10228:10442" ph="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -26907,7 +26668,6 @@
         <option value="$PROJECT_DIR$/lyphEditor.html" />
         <option value="$PROJECT_DIR$/app/main.lyphEditor.ts" />
         <option value="$PROJECT_DIR$/app/editors/editor.lyphs.ts" />
-        <option value="$PROJECT_DIR$/graphEditor.html" />
         <option value="$PROJECT_DIR$/app/widgets/view.omegaTree.ts" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/app/services/utils.model.ts" />
@@ -26950,6 +26710,7 @@
         <option value="$PROJECT_DIR$/app/panels/panel.border.ts" />
         <option value="$PROJECT_DIR$/app/panels/panel.process.ts" />
         <option value="$PROJECT_DIR$/app/editors/editor.graph.ts" />
+        <option value="$PROJECT_DIR$/graphEditor.html" />
         <option value="$PROJECT_DIR$/app/widgets/widget.graph.ts" />
       </list>
     </option>
@@ -26962,11 +26723,13 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1924" />
-    <option name="height" value="1042" />
+    <option name="x" value="-1" />
+    <option name="width" value="1922" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -27003,7 +26766,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -27018,16 +26780,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="EditorWidgets-NewVersion" />
+              <option name="myItemId" value="open-physiology-apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EditorWidgets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="open-physiology-apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EditorWidgets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="open-physiology-apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EditorWidgets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="open-physiology-apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
@@ -27053,14 +26862,15 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1225" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
+  <component name="PsiViewer.ProjectComponent">
+    <option name="HIGHLIGHT" value="false" />
+    <option name="FILTER_WHITESPACE" value="false" />
+    <option name="SHOW_PROPERTIES" value="true" />
+    <option name="SPLIT_DIVIDER_POSITION" value="300" />
+    <option name="AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion\app\services" />
-      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion\app\widgets" />
-      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion\app\editors" />
-      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion\app" />
-      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets\app\panels" />
       <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets\app\directives" />
@@ -27068,12 +26878,30 @@
       <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets\app" />
       <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets\app\components\templates" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/node_modules/lyph-edit-widget/dist" />
+      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion\app\services" />
+      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion\app\widgets" />
+      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion\app\editors" />
+      <recent name="C:\Users\Natallia\WebstormProjects\EditorWidgets-NewVersion\app" />
+    </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.omegaTreeEditor.html">
     <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/EditorWidgets/index.html">
       <method />
     </configuration>
     <configuration default="false" name="omegaTreeEditor.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/EditorWidgets/omegaTreeEditor.html">
+      <method />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -27208,6 +27036,8 @@
       <workItem from="1472121402468" duration="13060000" />
       <workItem from="1472142801807" duration="643000" />
       <workItem from="1472143817184" duration="13429000" />
+      <workItem from="1472166435100" duration="2754000" />
+      <workItem from="1472223808774" duration="26000" />
     </task>
     <task id="LOCAL-00001" summary="Hightlight service added&#10;">
       <created>1471966137860</created>
@@ -27227,7 +27057,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1580414000" />
+    <option name="totallyTimeSpent" value="1583194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -27239,27 +27069,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1924" height="1042" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22591007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2257721" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4962527" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22432113" sideWeight="0.8592077" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28689492" sideWeight="0.50374734" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43565527" sideWeight="0.56044537" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.008264462" sideWeight="0.4981452" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29968783" sideWeight="0.4981452" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Unicode Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12987013" sideWeight="0.5267666" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24037461" sideWeight="0.5267666" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.121605664" sideWeight="0.49363732" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22432113" sideWeight="0.8592077" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.117170624" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43565527" sideWeight="0.56044537" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.121605664" sideWeight="0.49363732" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4962527" order="6" side_tool="false" content_ui="tabs" />
@@ -27312,13 +27145,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../trees/js/scripts/apinatomy2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="1110" column="0" selection-start-line="1110" selection-start-column="0" selection-end-line="1110" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../trees/js/scripts/apinatomy2.js" />
     <entry file="file://$PROJECT_DIR$/app/widgets/view.omegaTree.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -27428,13 +27255,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
           <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
-          <folding>
-            <marker date="1471981479851" expanded="true" signature="513:1707" ph="..." />
-            <marker date="1471981479851" expanded="true" signature="907:1221" ph="..." />
-            <marker date="1471981479851" expanded="true" signature="1047:1206" ph="..." />
-            <marker date="1471981479851" expanded="true" signature="1318:1643" ph="..." />
-            <marker date="1471981479851" expanded="true" signature="1380:1628" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27463,9 +27283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#60#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27473,11 +27290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="97" column="17" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#92#0" expanded="false" />
-            <marker date="1472052242555" expanded="true" signature="831:1019" ph="..." />
-            <marker date="1472052242555" expanded="true" signature="1066:1227" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27492,13 +27304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="925">
           <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
-          <folding>
-            <marker date="1472050636946" expanded="true" signature="462:1700" ph="..." />
-            <marker date="1472050636946" expanded="true" signature="842:990" ph="..." />
-            <marker date="1472050636946" expanded="true" signature="1077:1228" ph="..." />
-            <marker date="1472050636946" expanded="true" signature="1349:1638" ph="..." />
-            <marker date="1472050636946" expanded="true" signature="1441:1625" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27513,10 +27318,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2025">
           <caret line="81" column="95" selection-start-line="81" selection-start-column="95" selection-end-line="81" selection-end-column="95" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <marker date="1472052318106" expanded="true" signature="772:936" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27559,7 +27360,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -27595,23 +27395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1400">
           <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
-          <folding>
-            <element signature="e#45#126#0" expanded="true" />
-            <marker date="1472051826913" expanded="true" signature="1255:3752" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="1337:3741" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="1416:3724" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="1436:1616" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="1456:1468" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="1494:1616" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="1718:1797" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="2364:3721" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="2600:3692" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="2773:3208" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="2789:3208" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="3016:3189" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="3257:3663" ph="..." />
-            <marker date="1472051826913" expanded="true" signature="3316:3632" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27619,9 +27402,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="118" column="42" selection-start-line="118" selection-start-column="38" selection-end-line="118" selection-end-column="42" />
-          <folding>
-            <element signature="e#281#2259#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27629,7 +27409,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1150">
           <caret line="46" column="27" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -27637,24 +27416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2275">
           <caret line="107" column="34" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
-          <folding>
-            <element signature="e#14#54#0" expanded="true" />
-            <marker date="1472138829938" expanded="true" signature="999:3860" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="1035:1423" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="1110:1408" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="1180:1390" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="1456:3847" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="1759:1852" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="2071:3825" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="2360:3794" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="2474:3320" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="2690:3320" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="2732:3301" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="2943:3272" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="3019:3247" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="3369:3748" ph="..." />
-            <marker date="1472138829938" expanded="true" signature="3442:3726" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27662,14 +27423,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2000">
           <caret line="85" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#45#125#0" expanded="true" />
-            <marker date="1472048600064" expanded="true" signature="689:974" ph="..." />
-            <marker date="1472048600064" expanded="true" signature="707:963" ph="..." />
-            <marker date="1472048600064" expanded="true" signature="2075:2344" ph="..." />
-            <marker date="1472048600064" expanded="true" signature="2093:2333" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27677,23 +27430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="950">
           <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
-          <folding>
-            <element signature="e#45#85#0" expanded="false" />
-            <marker date="1472135306784" expanded="true" signature="460:3221" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="854:1023" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="1124:1423" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="1260:1410" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="1458:1828" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="1527:1826" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="1663:1813" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="1865:2377" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="1936:2376" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="2001:2361" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="2474:2758" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="2601:2745" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="2856:3145" ph="..." />
-            <marker date="1472135306784" expanded="true" signature="2986:3132" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27701,29 +27437,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="888">
           <caret line="136" column="14" selection-start-line="136" selection-start-column="14" selection-end-line="136" selection-end-column="14" />
-          <folding>
-            <marker date="1472145916618" expanded="true" signature="582:4909" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="1004:1437" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="1025:1422" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="1226:1400" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="1552:1877" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="1702:1864" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="1980:2298" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="2128:2285" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="2401:2720" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="2549:2707" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="2823:3088" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="2959:3075" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="3183:3447" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="3319:3434" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="3556:3852" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="3692:3839" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="3885:4839" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="3981:4309" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="4046:4294" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="4414:4752" ph="..." />
-            <marker date="1472145916618" expanded="true" signature="4479:4737" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -27731,69 +27444,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1263">
           <caret line="59" column="2" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="2" />
-          <folding>
-            <marker date="1472145296102" expanded="true" signature="430:2354" ph="..." />
-            <marker date="1472145296102" expanded="true" signature="830:1193" ph="..." />
-            <marker date="1472145296102" expanded="true" signature="849:1180" ph="..." />
-            <marker date="1472145296102" expanded="true" signature="1008:1160" ph="..." />
-            <marker date="1472145296102" expanded="true" signature="1223:2279" ph="..." />
-            <marker date="1472145296102" expanded="true" signature="1317:1737" ph="..." />
-            <marker date="1472145296102" expanded="true" signature="1381:1720" ph="..." />
-            <marker date="1472145296102" expanded="true" signature="1843:2195" ph="..." />
-            <marker date="1472145296102" expanded="true" signature="1913:2178" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/panels/panel.lyph.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4950">
+        <state relative-caret-position="342">
           <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-          <folding>
-            <marker date="1472133043222" expanded="true" signature="696:10533" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="1031:1239" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="1097:1220" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="1335:1507" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="1597:1766" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="2414:7581" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="2511:2931" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="2575:2914" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="3048:3497" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="3118:3480" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="3606:4015" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="3671:3998" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="4136:4547" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="4203:4530" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="4653:5026" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="4719:5009" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="5139:5504" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="5203:5487" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="5617:5972" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="5685:5955" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="6093:6462" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="6164:6445" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="6595:6975" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="6671:6958" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="7106:7486" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="7182:7469" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="7649:9575" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="7776:8180" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="7910:8163" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="8307:8818" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="8473:8801" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="8946:9487" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="9130:9470" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="9684:10007" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="9830:9992" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="10120:10457" ph="..." />
-            <marker date="1472133043222" expanded="true" signature="10228:10442" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
+        <state relative-caret-position="152">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
           <folding />
         </state>
@@ -27801,44 +27465,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="91" column="15" selection-start-line="91" selection-start-column="15" selection-end-line="91" selection-end-column="15" />
+        <state relative-caret-position="1729">
+          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/editors/editor.graph.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1451">
+        <state relative-caret-position="589">
           <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
-            <marker date="1472157237262" expanded="true" signature="664:991" ph="..." />
-            <marker date="1472157237262" expanded="true" signature="691:990" ph="..." />
-            <marker date="1472157237262" expanded="true" signature="995:1190" ph="..." />
-            <marker date="1472157237262" expanded="true" signature="1026:1189" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/widgets/widget.graph.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding>
-            <element signature="e#45#136#0" expanded="true" />
-            <marker date="1472158957255" expanded="true" signature="689:879" ph="..." />
-            <marker date="1472158957255" expanded="true" signature="780:798" ph="..." />
-            <marker date="1472158957255" expanded="true" signature="799:868" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/graphEditor.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+        <state relative-caret-position="437">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/widgets/widget.graph.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="824">
+          <caret line="118" column="2" selection-start-line="118" selection-start-column="2" selection-end-line="118" selection-end-column="2" />
+          <folding>
+            <element signature="e#45#136#0" expanded="true" />
+            <marker date="1472199251130" expanded="true" signature="689:879" ph="..." />
+            <marker date="1472199251130" expanded="false" signature="780:798" ph="..." />
+            <marker date="1472199251130" expanded="true" signature="799:868" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

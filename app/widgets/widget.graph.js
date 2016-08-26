@@ -86,7 +86,7 @@ var GraphWidget = (function () {
             new lyph_edit_widget_1.DragDropTool(this.root.context);
             new lyph_edit_widget_1.ResizeTool(this.root.context);
             new lyph_edit_widget_1.ZoomTool(this.root.context);
-            //new PanTool         (this.root.context);
+            new lyph_edit_widget_1.PanTool(this.root.context);
             new lyph_edit_widget_1.BorderToggleTool(this.root.context);
             this.drawingTool = new lyph_edit_widget_1.DrawingTool(this.root.context);
             this.root.context.p('selected').subscribe(function (x) {
