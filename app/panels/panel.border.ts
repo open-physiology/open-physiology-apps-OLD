@@ -23,7 +23,7 @@ import {RepoNested} from "../repos/repo.nested";
       <div class="input-control" *ngIf="includeProperty('nature')">
         <fieldset>
           <legend>{{getPropertyLabel('nature')}}:</legend>
-           <checkbox-group [(ngModel)]="item.nature" (ngModelChange)="onSelectChange(item.nature)">
+           <checkbox-group [ngModel]="item.nature" (ngModelChange)="onSelectChange(item.nature)">
              <input type="checkbox" value="open">open&nbsp;
              <input type="checkbox" value="closed">closed<br/>
            </checkbox-group>
@@ -62,7 +62,8 @@ export class BorderPanel extends TemplatePanel{
 
   onSelectChange(value){
     let newNature = (Array.isArray(value))? value.slice(): value;
-    this.propertyUpdated.emit({property: 'nature', values: newNature});
+    //this.propertyUpdated.emit({property: 'nature', values: newNature});
+    this.updateProperty('nature', newNature);
   }
 
   ngOnInit(){

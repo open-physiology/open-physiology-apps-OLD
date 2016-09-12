@@ -111,10 +111,10 @@ export class TemplateValue{
     if (type == "Value"){
       this.item = this.value;
     } else {
-      this.valueSet.distribution = (type == 'Distribution')? "Normal": undefined;
       this.item = this.valueSet;
+      this.valueSet.distribution = (this.valueType == 'Distribution')? "Normal": undefined;
     }
-    this.valueType = type;
+
     this.updated.emit(this.item);
   }
 }
