@@ -25,7 +25,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/globals/core-js/index.d.ts" afterPath="$PROJECT_DIR$/typings/globals/core-js/index.d.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/globals/jasmine/index.d.ts" afterPath="$PROJECT_DIR$/typings/globals/jasmine/index.d.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/globals/node/index.d.ts" afterPath="$PROJECT_DIR$/typings/globals/node/index.d.ts" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
     </list>
     <ignored path="EditorWidgets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26593,12 +26596,17 @@
         <entry file="file://$PROJECT_DIR$/graphEditor.html">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="125">
               <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
 =======
             <state relative-caret-position="437">
               <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
 >>>>>>> origin/master
+=======
+            <state relative-caret-position="437">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
               <folding />
             </state>
           </provider>
@@ -26607,6 +26615,7 @@
       <file leaf-file-name="repo.nested.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/repos/repo.nested.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="255">
               <caret line="148" column="18" selection-start-line="148" selection-start-column="11" selection-end-line="148" selection-end-column="18" />
@@ -26628,6 +26637,8 @@
                 <marker date="1472200718079" expanded="true" signature="3316:3632" ph="..." />
               </folding>
 =======
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
             <state relative-caret-position="152">
               <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
               <folding />
@@ -26640,15 +26651,19 @@
         <entry file="file://$PROJECT_DIR$/app/directives/directive.draggable.ts">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="-3061">
               <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
 =======
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
             <state relative-caret-position="589">
               <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> origin/master
               </folding>
             </state>
@@ -26721,6 +26736,8 @@
                 <marker date="1472135391549" expanded="true" signature="1935:2093" ph="..." />
                 <marker date="1472135391549" expanded="true" signature="2213:2538" ph="..." />
                 <marker date="1472135391549" expanded="true" signature="2317:2525" ph="..." />
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
               </folding>
             </state>
           </provider>
@@ -26729,6 +26746,7 @@
       <file leaf-file-name="panel.material.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/panels/panel.material.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="-111">
               <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
               <folding>
@@ -26738,6 +26756,8 @@
                 <marker date="1472133628255" expanded="true" signature="982:1198" ph="..." />
               </folding>
 =======
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
             <state relative-caret-position="1729">
               <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
               <folding />
@@ -26746,6 +26766,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="panel.correlation.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/panels/panel.correlation.ts">
@@ -26762,6 +26783,8 @@
                 <marker date="1472050571557" expanded="true" signature="1991:2340" ph="..." />
                 <marker date="1472050571557" expanded="true" signature="2059:2325" ph="..." />
 =======
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
       <file leaf-file-name="widget.graph.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/widgets/widget.graph.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -26772,7 +26795,10 @@
                 <marker date="1472199251130" expanded="true" signature="689:879" ph="..." />
                 <marker date="1472199251130" expanded="false" signature="780:798" ph="..." />
                 <marker date="1472199251130" expanded="true" signature="799:868" ph="..." />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
               </folding>
             </state>
           </provider>
@@ -26781,6 +26807,7 @@
       <file leaf-file-name="panel.lyph.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/panels/panel.lyph.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="155">
               <caret line="169" column="65" selection-start-line="169" selection-start-column="65" selection-end-line="169" selection-end-column="65" />
@@ -26828,6 +26855,11 @@
               <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
               <folding />
 >>>>>>> origin/master
+=======
+            <state relative-caret-position="342">
+              <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+              <folding />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
             </state>
           </provider>
         </entry>
@@ -26891,11 +26923,15 @@
         <option value="$PROJECT_DIR$/app/panels/panel.process.ts" />
         <option value="$PROJECT_DIR$/app/editors/editor.graph.ts" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/styles.css" />
         <option value="$PROJECT_DIR$/app/repos/repo.abstract.ts" />
 =======
         <option value="$PROJECT_DIR$/graphEditor.html" />
 >>>>>>> origin/master
+=======
+        <option value="$PROJECT_DIR$/graphEditor.html" />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         <option value="$PROJECT_DIR$/app/widgets/widget.graph.ts" />
         <option value="$PROJECT_DIR$/app/repos/repo.general.ts" />
         <option value="$PROJECT_DIR$/app/repos/repo.nested.ts" />
@@ -27017,6 +27053,7 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="editors" />
+<<<<<<< HEAD
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -27041,6 +27078,8 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EditorWidgets-NewVersion" />
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -27263,7 +27302,10 @@
       <workItem from="1472143817184" duration="13429000" />
       <workItem from="1472166435100" duration="2754000" />
       <workItem from="1472223808774" duration="26000" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
     </task>
     <task id="LOCAL-00001" summary="Hightlight service added&#10;">
       <created>1471966137860</created>
@@ -27298,10 +27340,14 @@
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="1589674000" />
 =======
     <option name="totallyTimeSpent" value="1583194000" />
 >>>>>>> origin/master
+=======
+    <option name="totallyTimeSpent" value="1583194000" />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -27394,7 +27440,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../trees/js/scripts/apinatomy2.js" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
     <entry file="file://$PROJECT_DIR$/app/widgets/view.omegaTree.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -27532,6 +27581,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="97" column="17" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
+<<<<<<< HEAD
+=======
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/component.templateValue.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="21" column="19" selection-start-line="18" selection-start-column="9" selection-end-line="21" selection-end-column="19" />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         </state>
       </provider>
     </entry>
@@ -27554,12 +27613,15 @@
         <state relative-caret-position="2025">
           <caret line="81" column="95" selection-start-line="81" selection-start-column="95" selection-end-line="81" selection-end-column="95" />
 <<<<<<< HEAD
+<<<<<<< HEAD
           <folding>
             <element signature="e#0#52#0" expanded="false" />
             <marker date="1472052318106" expanded="true" signature="772:936" ph="..." />
           </folding>
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         </state>
       </provider>
     </entry>
@@ -27588,6 +27650,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="8" />
+<<<<<<< HEAD
+=======
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/repos/repo.abstract.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="119" column="7" selection-start-line="119" selection-start-column="7" selection-end-line="119" selection-end-column="7" />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         </state>
       </provider>
     </entry>
@@ -27670,6 +27742,7 @@
     <entry file="file://$PROJECT_DIR$/app/components/toolbar.filter.ts">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="525">
           <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
           <folding>
@@ -27686,11 +27759,16 @@
         <state relative-caret-position="1263">
           <caret line="59" column="2" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="2" />
 >>>>>>> origin/master
+=======
+        <state relative-caret-position="1263">
+          <caret line="59" column="2" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="2" />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/editors/editor.graph.ts">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="874">
           <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
@@ -27714,15 +27792,23 @@
         <state relative-caret-position="213">
           <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
           <folding />
+=======
+        <state relative-caret-position="342">
+          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+          <folding />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="101">
           <caret line="8" column="41" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="41" />
 =======
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         <state relative-caret-position="152">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
 >>>>>>> origin/master
@@ -27733,6 +27819,7 @@
     <entry file="file://$PROJECT_DIR$/app/widgets/widget.graph.ts">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="1285">
           <caret line="105" column="41" selection-start-line="105" selection-start-column="41" selection-end-line="105" selection-end-column="41" />
           <folding>
@@ -27742,6 +27829,8 @@
             <marker date="1472194235977" expanded="true" signature="799:868" ph="..." />
           </folding>
 =======
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         <state relative-caret-position="1729">
           <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
           <folding />
@@ -27752,15 +27841,19 @@
     <entry file="file://$PROJECT_DIR$/app/directives/directive.draggable.ts">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="-3061">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
 =======
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
         <state relative-caret-position="589">
           <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> origin/master
           </folding>
         </state>
@@ -27812,6 +27905,8 @@
             <marker date="1472135391549" expanded="true" signature="1935:2093" ph="..." />
             <marker date="1472135391549" expanded="true" signature="2213:2538" ph="..." />
             <marker date="1472135391549" expanded="true" signature="2317:2525" ph="..." />
+=======
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
           </folding>
 =======
     <entry file="file://$PROJECT_DIR$/graphEditor.html">
@@ -27823,8 +27918,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/widgets/widget.graph.ts">
+    <entry file="file://$PROJECT_DIR$/graphEditor.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="125">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
@@ -27989,6 +28085,23 @@
             <marker date="1473670019468" expanded="true" signature="2514:2723" ph="..." />
             <marker date="1473670019468" expanded="true" signature="2805:3134" ph="..." />
             <marker date="1473670019468" expanded="true" signature="2907:3115" ph="..." />
+=======
+        <state relative-caret-position="437">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/widgets/widget.graph.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="824">
+          <caret line="118" column="2" selection-start-line="118" selection-start-column="2" selection-end-line="118" selection-end-column="2" />
+          <folding>
+            <element signature="e#45#136#0" expanded="true" />
+            <marker date="1472199251130" expanded="true" signature="689:879" ph="..." />
+            <marker date="1472199251130" expanded="false" signature="780:798" ph="..." />
+            <marker date="1472199251130" expanded="true" signature="799:868" ph="..." />
+>>>>>>> a9c918264a66af21efe930c8e355951bd95ac0dc
           </folding>
         </state>
       </provider>
