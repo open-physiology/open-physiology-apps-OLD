@@ -21,6 +21,7 @@ declare var $: any;
       [items]="items | setToArray" 
       [caption]="'Resources'" 
       [options]="{showActive: true}"
+      [activeItem]="activeItem"
       (selectedItemChange)="updateSelected($event)"
       (activeItemChange)  ="updateActive($event)"  
       (highlightedItemChange) = "updateHighlightedRepo($event)"
@@ -30,6 +31,7 @@ declare var $: any;
       [activeItem]="activeItem" 
       [highlightedItem]="highlightedItem" 
       (highlightedItemChange) = "updateHighlightedWidget($event)"
+      (activeItemChange) = "updateActive($event)"
     ></graph-widget>
     <div id="main"></div>
   `,

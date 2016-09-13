@@ -152,7 +152,7 @@ var GraphEditor = (function () {
         core_1.Component({
             selector: 'app',
             providers: [service_resize_1.ResizeService, service_highlight_1.HighlightService],
-            template: "\n    <repo-general id=\"repo\"\n      [items]=\"items | setToArray\" \n      [caption]=\"'Resources'\" \n      [options]=\"{showActive: true}\"\n      (selectedItemChange)=\"updateSelected($event)\"\n      (activeItemChange)  =\"updateActive($event)\"  \n      (highlightedItemChange) = \"updateHighlightedRepo($event)\"\n      >\n    </repo-general>\n    <graph-widget id=\"graphWidget\" \n      [activeItem]=\"activeItem\" \n      [highlightedItem]=\"highlightedItem\" \n      (highlightedItemChange) = \"updateHighlightedWidget($event)\"\n    ></graph-widget>\n    <div id=\"main\"></div>\n  ",
+            template: "\n    <repo-general id=\"repo\"\n      [items]=\"items | setToArray\" \n      [caption]=\"'Resources'\" \n      [options]=\"{showActive: true}\"\n      [activeItem]=\"activeItem\"\n      (selectedItemChange)=\"updateSelected($event)\"\n      (activeItemChange)  =\"updateActive($event)\"  \n      (highlightedItemChange) = \"updateHighlightedRepo($event)\"\n      >\n    </repo-general>\n    <graph-widget id=\"graphWidget\" \n      [activeItem]=\"activeItem\" \n      [highlightedItem]=\"highlightedItem\" \n      (highlightedItemChange) = \"updateHighlightedWidget($event)\"\n      (activeItemChange) = \"updateActive($event)\"\n    ></graph-widget>\n    <div id=\"main\"></div>\n  ",
             styles: ["#main {width: 100%; height: 100%; border: 0; margin: 0; padding: 0}"],
             directives: [repo_general_1.RepoGeneral, repo_nested_1.RepoNested, widget_graph_1.GraphWidget],
             pipes: [pipe_general_1.SetToArray]

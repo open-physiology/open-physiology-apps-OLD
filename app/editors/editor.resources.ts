@@ -24,7 +24,7 @@ declare var $: any;
       (selectedItemChange)="onItemSelected($event)">
     </repo-general>
     <hierarchy-widget id = "hierarchy" [item]="selectedItem"></hierarchy-widget>
-    <!--<resource-widget id = "resource" [item]="selectedItem"></resource-widget>   -->
+    <resource-widget id = "resource" [item]="selectedItem"></resource-widget>   
     <div id="main"></div>
   `,
   styles: [`#main {width: 100%; height: 100%; border: 0; margin: 0; padding: 0}`],

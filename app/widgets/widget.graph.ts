@@ -7,7 +7,8 @@ import {Subscription}   from 'rxjs/Subscription';
 import {Canvas, SelectTool, DragDropTool, ResizeTool, ZoomTool,
   PanTool, BorderToggleTool, LyphRectangle, NodeGlyph, ProcessLine, DrawingTool} from "lyph-edit-widget";
 import {combineLatest} from "rxjs/observable/combineLatest";
-import {ResourceName} from '../services/utils.model';
+import {ResourceName, model} from '../services/utils.model';
+import {AddToolbar} from '../components/toolbar.add';
 
 declare var $:any;
 
@@ -18,16 +19,29 @@ declare var $:any;
      <div class="panel panel-success">
      <div class="panel-heading">Graph editor</div>
        <div class="panel-body" style="position: relative">
+          <add-toolbar [options]="types" style="position: absolute;" [transform]="getClassLabel" (added)="onAdded($event)"></add-toolbar>
           <svg id="graphSvg" class="svg-widget"></svg>
        </div>
     </div> 
-  `
+  `,
+  directives: [AddToolbar]
 })
 export class GraphWidget{
   @Input() activeItem: any;
   @Input() highlightedItem: any;
 
   @Output() highlightedItemChange = new EventEmitter();
+  @Output() activeItemChange = new EventEmitter();
+
+  types = [
+    ResourceName.Material,
+    ResourceName.Lyph,
+    ResourceName.LyphWithAxis,
+    ResourceName.Process,
+    ResourceName.Measurable,
+    ResourceName.Causality,
+    ResourceName.OmegaTree,
+    ResourceName.CoalescenceScenario];
 
   svg : any;
   root: any;
@@ -47,6 +61,27 @@ export class GraphWidget{
         this.setPanelSize(event.size);
       }
     });
+  }
+
+  onAdded(Class: any){
+    let options: any = {};
+    if (Class == ResourceName.LyphWithAxis) {
+      Class = ResourceName.Lyph;
+      options.createAxis = true;
+    }
+    if (Class == ResourceName.Lyph) {
+      options.createRadialBorders = true;
+    }
+
+    let newItem = model[Class].new({name: "New " + Class}, options);
+    let newType = model.Type.new({name: newItem.name, definition: newItem});
+    newItem.p('name').subscribe(newType.p('name'));
+
+    //Create template of given class
+    //Create the type for it and attach to the template
+    this.activeItemChange.emit(newItem);
+    //this.activeItem = newItem;
+    //this.createElement();
   }
 
   setPanelSize(size: any){
@@ -72,22 +107,6 @@ export class GraphWidget{
   createElement(){
     this.createCanvas();
     this.drawingTool.model = this.activeItem;
-
-    /*
-    //Creating elements for active item
-    if (this.elementExists(this.activeItem)) return;
-
-    if (this.activeItem.class == ResourceName.Lyph){
-      let element = new LyphRectangle({
-        model:  this.activeItem, x: 100, y: 100, width: 200, height: 150
-      });
-      element.parent = this.root;
-    }
-    if (this.activeItem.class == ResourceName.Process){
-      let element = new ProcessLine({model:  this.activeItem});
-      element.parent = this.root;
-    }
-    */
   }
 
   elementExists(model: any){
@@ -116,4 +135,4 @@ export class GraphWidget{
       });
     }
   }
-} 
+}

@@ -37,6 +37,7 @@ var TemplateValue = (function () {
         }
     };
     TemplateValue.prototype.updateType = function (type) {
+        this.valueType = type;
         if (type == "Value") {
             this.item = this.value;
         }

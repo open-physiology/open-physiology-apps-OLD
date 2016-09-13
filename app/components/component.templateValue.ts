@@ -108,6 +108,7 @@ export class TemplateValue{
   }
 
   updateType(type: string){
+    this.valueType = type;
     if (type == "Value"){
       this.item = this.value;
     } else {

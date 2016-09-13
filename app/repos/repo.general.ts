@@ -19,7 +19,7 @@ import {PropertyToolbar} from '../components/toolbar.propertySettings';
 
 @Component({
   selector: 'repo-general',
-  inputs: ['items', 'caption', 'ignore', 'types', 'selectedItem', 'options'],
+  inputs: ['items', 'caption', 'ignore', 'types', 'selectedItem', 'activeItem', 'options'],
   template:`
      <div class="panel panel-info repo">
         <div class="panel-heading">{{caption}}
@@ -103,12 +103,12 @@ export class RepoGeneral extends RepoAbstract{
         value: x
       }
     ));
+    //this.typeOptions.push({selected: !this.ignoreTypes.has("Type"), value: "Type"});
   }
 
   hiddenTypesChanged(option: any){
     if ( this.ignoreTypes.has(option.value) &&  option.selected) this.ignoreTypes.delete(option.value);
     if (!this.ignoreTypes.has(option.value) && !option.selected) this.ignoreTypes.add(option.value);
-
   }
 
   get hiddenTypes () {
