@@ -56,6 +56,7 @@ function getIcon(Class) {
         case ResourceName.Node: return "images/node.png";
         case ResourceName.Border: return "images/border.png";
         case ResourceName.Coalescence: return "images/coalescence.png";
+        case ResourceName.CoalescenceScenario: return "images/coalescenceScenario.png";
         case ResourceName.Group: return "images/group.png";
         case ResourceName.OmegaTree: return "images/omegaTree.png";
         case ResourceName.Publication: return "images/publication.png";

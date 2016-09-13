@@ -2,7 +2,6 @@
  * Created by Natallia on 6/21/2016.
  */
 import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {FormToolbar} from "./toolbar.form";
 
 @Component({
   "inputs": ["caption", "item", "min", "max", "step"],
@@ -81,8 +80,7 @@ import {FormToolbar} from "./toolbar.form";
         
        </div>
    `,
-  "styles": [`input {width: 60px;}`],
-  "directives": [FormToolbar]
+  "styles": [`input {width: 60px;}`]
 })
 export class TemplateValue{
   @Input() item: any;

@@ -17,7 +17,6 @@ declare var $:any;
   inputs: ['activeItem', 'highlightedItem'],
   template : `
      <div class="panel panel-success">
-     <div class="panel-heading">Graph editor</div>
        <div class="panel-body" style="position: relative">
           <add-toolbar [options]="types" style="position: absolute;" [transform]="getClassLabel" (added)="onAdded($event)"></add-toolbar>
           <svg id="graphSvg" class="svg-widget"></svg>
@@ -40,6 +39,7 @@ export class GraphWidget{
     ResourceName.Process,
     ResourceName.Measurable,
     ResourceName.Causality,
+    ResourceName.Node,
     ResourceName.OmegaTree,
     ResourceName.CoalescenceScenario];
 
@@ -76,6 +76,16 @@ export class GraphWidget{
     let newItem = model[Class].new({name: "New " + Class}, options);
     let newType = model.Type.new({name: newItem.name, definition: newItem});
     newItem.p('name').subscribe(newType.p('name'));
+
+    if (Class == ResourceName.CoalescenceScenario) {
+      let layer1 = model.Lyph.new({name: "Layer 1"});
+      let layer2 = model.Lyph.new({name: "Layer 2"});
+      let layer3 = model.Lyph.new({name: "Layer 3"});
+
+      let lyph1 = model.Lyph.new({name: "Lyph 1", layers: [layer1, layer2]}, {createAxis: true, createRadialBorders: true});
+      let lyph2 = model.Lyph.new({name: "Lyph 2", layers: [layer3, layer2]}, {createAxis: true, createRadialBorders: true});
+      newItem.lyphs = [lyph1, lyph2];
+    }
 
     //Create template of given class
     //Create the type for it and attach to the template
@@ -134,5 +144,13 @@ export class GraphWidget{
         if (x) this.highlightedItemChange.emit(x.model);
       });
     }
+  }
+
+  getClassLabel(option: string){
+    if (!option) return "";
+    let label = option;
+    label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
+    label = label[0].toUpperCase() + label.substring(1).toLowerCase();
+    return label;
   }
 }

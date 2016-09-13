@@ -31,6 +31,7 @@ var GraphWidget = (function () {
             utils_model_1.ResourceName.Process,
             utils_model_1.ResourceName.Measurable,
             utils_model_1.ResourceName.Causality,
+            utils_model_1.ResourceName.Node,
             utils_model_1.ResourceName.OmegaTree,
             utils_model_1.ResourceName.CoalescenceScenario];
         this.vp = { size: { width: 600, height: 600 },
@@ -54,6 +55,14 @@ var GraphWidget = (function () {
         var newItem = utils_model_1.model[Class].new({ name: "New " + Class }, options);
         var newType = utils_model_1.model.Type.new({ name: newItem.name, definition: newItem });
         newItem.p('name').subscribe(newType.p('name'));
+        if (Class == utils_model_1.ResourceName.CoalescenceScenario) {
+            var layer1 = utils_model_1.model.Lyph.new({ name: "Layer 1" });
+            var layer2 = utils_model_1.model.Lyph.new({ name: "Layer 2" });
+            var layer3 = utils_model_1.model.Lyph.new({ name: "Layer 3" });
+            var lyph1 = utils_model_1.model.Lyph.new({ name: "Lyph 1", layers: [layer1, layer2] }, { createAxis: true, createRadialBorders: true });
+            var lyph2 = utils_model_1.model.Lyph.new({ name: "Lyph 2", layers: [layer3, layer2] }, { createAxis: true, createRadialBorders: true });
+            newItem.lyphs = [lyph1, lyph2];
+        }
         //Create template of given class
         //Create the type for it and attach to the template
         this.activeItemChange.emit(newItem);
@@ -110,6 +119,14 @@ var GraphWidget = (function () {
             });
         }
     };
+    GraphWidget.prototype.getClassLabel = function (option) {
+        if (!option)
+            return "";
+        var label = option;
+        label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
+        label = label[0].toUpperCase() + label.substring(1).toLowerCase();
+        return label;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
@@ -130,7 +147,7 @@ var GraphWidget = (function () {
         core_1.Component({
             selector: 'graph-widget',
             inputs: ['activeItem', 'highlightedItem'],
-            template: "\n     <div class=\"panel panel-success\">\n     <div class=\"panel-heading\">Graph editor</div>\n       <div class=\"panel-body\" style=\"position: relative\">\n          <add-toolbar [options]=\"types\" style=\"position: absolute;\" [transform]=\"getClassLabel\" (added)=\"onAdded($event)\"></add-toolbar>\n          <svg id=\"graphSvg\" class=\"svg-widget\"></svg>\n       </div>\n    </div> \n  ",
+            template: "\n     <div class=\"panel panel-success\">\n       <div class=\"panel-body\" style=\"position: relative\">\n          <add-toolbar [options]=\"types\" style=\"position: absolute;\" [transform]=\"getClassLabel\" (added)=\"onAdded($event)\"></add-toolbar>\n          <svg id=\"graphSvg\" class=\"svg-widget\"></svg>\n       </div>\n    </div> \n  ",
             directives: [toolbar_add_1.AddToolbar]
         }), 
         __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef, service_resize_1.ResizeService])
