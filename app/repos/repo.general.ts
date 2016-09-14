@@ -103,12 +103,13 @@ export class RepoGeneral extends RepoAbstract{
         value: x
       }
     ));
-    //this.typeOptions.push({selected: !this.ignoreTypes.has("Type"), value: "Type"});
+    this.typeOptions.push({selected: !this.ignoreTypes.has("Type"), value: "Type"});
   }
 
   hiddenTypesChanged(option: any){
     if ( this.ignoreTypes.has(option.value) &&  option.selected) this.ignoreTypes.delete(option.value);
     if (!this.ignoreTypes.has(option.value) && !option.selected) this.ignoreTypes.add(option.value);
+    console.log(this.ignoreTypes);
   }
 
   get hiddenTypes () {

@@ -40,13 +40,14 @@ var RepoGeneral = (function (_super) {
         this.typeOptions = this.types.filter(function (x) { return x.class != utils_model_1.ResourceName.LyphWithAxis; }).map(function (x) { return ({ selected: !_this.ignoreTypes.has(x),
             value: x
         }); });
-        //this.typeOptions.push({selected: !this.ignoreTypes.has("Type"), value: "Type"});
+        this.typeOptions.push({ selected: !this.ignoreTypes.has("Type"), value: "Type" });
     };
     RepoGeneral.prototype.hiddenTypesChanged = function (option) {
         if (this.ignoreTypes.has(option.value) && option.selected)
             this.ignoreTypes.delete(option.value);
         if (!this.ignoreTypes.has(option.value) && !option.selected)
             this.ignoreTypes.add(option.value);
+        console.log(this.ignoreTypes);
     };
     Object.defineProperty(RepoGeneral.prototype, "hiddenTypes", {
         get: function () {

@@ -2,7 +2,7 @@
  * Created by Natallia on 7/8/2016.
  */
 import {Component, Input, Output, EventEmitter, Inject} from '@angular/core';
-import {ResourceName, model} from "../services/utils.model";
+import {ResourceName, getClassLabel, model} from "../services/utils.model";
 import {HighlightService} from "../services/service.highlight";
 import {Subscription}   from 'rxjs/Subscription';
 
@@ -62,6 +62,8 @@ export abstract class RepoAbstract{
   isSelectedOpen: boolean = false;
 
   hs: Subscription;
+
+  getClassLabel = getClassLabel;
 
   constructor(highlightService: HighlightService){
     this.hs = highlightService.highlightedItemChanged$.subscribe(item => {
@@ -195,11 +197,5 @@ export abstract class RepoAbstract{
     this.selectedItem = newItem;
   }
 
-  getClassLabel(option: string){
-    if (!option) return "";
-    let label = option;
-    label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
-    label = label[0].toUpperCase() + label.substring(1).toLowerCase();
-    return label;
-  }
+
 }

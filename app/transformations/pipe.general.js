@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by Natallia on 6/9/2016.
  */
 var core_1 = require('@angular/core');
+///////////////////////////////////////////////////
 var HideClass = (function () {
     function HideClass() {
     }
@@ -20,7 +21,11 @@ var HideClass = (function () {
             return items;
         if (classNames instanceof Set)
             classNames = Array.from(classNames);
-        return items.filter(function (x) { return (classNames.indexOf(x.class) < 0); });
+        var filteredItems = items.filter(function (x) { return (classNames.indexOf(x.class) < 0); });
+        if (classNames.indexOf('Type') > -1) {
+            filteredItems = filteredItems.filter(function (x) { return (x.class.indexOf('Type') < 0); });
+        }
+        return filteredItems;
     };
     HideClass = __decorate([
         core_1.Pipe({
@@ -31,6 +36,7 @@ var HideClass = (function () {
     return HideClass;
 }());
 exports.HideClass = HideClass;
+///////////////////////////////////////////////////
 var FilterBy = (function () {
     function FilterBy() {
     }
@@ -58,6 +64,7 @@ var FilterBy = (function () {
     return FilterBy;
 }());
 exports.FilterBy = FilterBy;
+///////////////////////////////////////////////////
 var FilterByClass = (function () {
     function FilterByClass() {
     }
@@ -75,6 +82,23 @@ var FilterByClass = (function () {
     return FilterByClass;
 }());
 exports.FilterByClass = FilterByClass;
+///////////////////////////////////////////////////
+var SetToArray = (function () {
+    function SetToArray() {
+    }
+    SetToArray.prototype.transform = function (items) {
+        return Array.from(items || []);
+    };
+    SetToArray = __decorate([
+        core_1.Pipe({
+            name: 'setToArray'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], SetToArray);
+    return SetToArray;
+}());
+exports.SetToArray = SetToArray;
+///////////////////////////////////////////////////
 var MapToOptions = (function () {
     function MapToOptions() {
     }
@@ -100,21 +124,7 @@ var MapToOptions = (function () {
     return MapToOptions;
 }());
 exports.MapToOptions = MapToOptions;
-var SetToArray = (function () {
-    function SetToArray() {
-    }
-    SetToArray.prototype.transform = function (items) {
-        return Array.from(items || []);
-    };
-    SetToArray = __decorate([
-        core_1.Pipe({
-            name: 'setToArray'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], SetToArray);
-    return SetToArray;
-}());
-exports.SetToArray = SetToArray;
+///////////////////////////////////////////////////
 var MapToCategories = (function () {
     function MapToCategories() {
     }
@@ -142,6 +152,7 @@ var MapToCategories = (function () {
     return MapToCategories;
 }());
 exports.MapToCategories = MapToCategories;
+////////////////////////////////////////////////////
 var OrderBy = (function () {
     function OrderBy() {
     }

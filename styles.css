@@ -4,7 +4,6 @@ body { margin: 4px;}
   height: 16px;
   width: 16px;
   padding: 0px;
-  margin-left: 8px;
 }
 
 .accordion-toggle:hover{
@@ -20,7 +19,6 @@ body { margin: 4px;}
 .btn:focus,.btn:active {
   outline: none !important;
 }
-
 
 .panel-body{
   padding: 0px;
@@ -249,7 +247,7 @@ div .dotted {
 .imtip {
   position: relative;
   bottom: 2px;
-  left: 12px;
+  left: 4px;
   width: 24px;
   height: 12px;
 }

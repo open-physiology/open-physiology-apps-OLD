@@ -15,7 +15,7 @@ var core_1 = require('@angular/core');
 var service_resize_1 = require('../services/service.resize');
 var lyph_edit_widget_1 = require("lyph-edit-widget");
 var utils_model_1 = require('../services/utils.model');
-var toolbar_add_1 = require('../components/toolbar.add');
+var toolbar_pallete_1 = require('../components/toolbar.pallete');
 var GraphWidget = (function () {
     function GraphWidget(renderer, el, resizeService) {
         var _this = this;
@@ -37,13 +37,14 @@ var GraphWidget = (function () {
         this.vp = { size: { width: 600, height: 600 },
             margin: { x: 20, y: 20 },
             node: { size: { width: 40, height: 40 } } };
+        this.getClassLabel = utils_model_1.getClassLabel;
         this.rs = resizeService.resize$.subscribe(function (event) {
             if (event.target == "graph-widget") {
                 _this.setPanelSize(event.size);
             }
         });
     }
-    GraphWidget.prototype.onAdded = function (Class) {
+    GraphWidget.prototype.onActiveItemChange = function (Class) {
         var options = {};
         if (Class == utils_model_1.ResourceName.LyphWithAxis) {
             Class = utils_model_1.ResourceName.Lyph;
@@ -63,11 +64,7 @@ var GraphWidget = (function () {
             var lyph2 = utils_model_1.model.Lyph.new({ name: "Lyph 2", layers: [layer3, layer2] }, { createAxis: true, createRadialBorders: true });
             newItem.lyphs = [lyph1, lyph2];
         }
-        //Create template of given class
-        //Create the type for it and attach to the template
         this.activeItemChange.emit(newItem);
-        //this.activeItem = newItem;
-        //this.createElement();
     };
     GraphWidget.prototype.setPanelSize = function (size) {
         var delta = 10;
@@ -119,14 +116,6 @@ var GraphWidget = (function () {
             });
         }
     };
-    GraphWidget.prototype.getClassLabel = function (option) {
-        if (!option)
-            return "";
-        var label = option;
-        label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
-        label = label[0].toUpperCase() + label.substring(1).toLowerCase();
-        return label;
-    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
@@ -147,8 +136,8 @@ var GraphWidget = (function () {
         core_1.Component({
             selector: 'graph-widget',
             inputs: ['activeItem', 'highlightedItem'],
-            template: "\n     <div class=\"panel panel-success\">\n       <div class=\"panel-body\" style=\"position: relative\">\n          <add-toolbar [options]=\"types\" style=\"position: absolute;\" [transform]=\"getClassLabel\" (added)=\"onAdded($event)\"></add-toolbar>\n          <svg id=\"graphSvg\" class=\"svg-widget\"></svg>\n       </div>\n    </div> \n  ",
-            directives: [toolbar_add_1.AddToolbar]
+            template: "\n     <div class=\"panel panel-success\">\n       <div class=\"panel-body\" style=\"position: relative\">\n          <pallete-toolbar [items]=\"types\" style=\"position: absolute;\" (activeItemChange)=\"onActiveItemChange($event)\"></pallete-toolbar>\n          <svg id=\"graphSvg\" class=\"svg-widget\"></svg>\n       </div>\n    </div> \n  ",
+            directives: [toolbar_pallete_1.PalleteToolbar]
         }), 
         __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef, service_resize_1.ResizeService])
     ], GraphWidget);

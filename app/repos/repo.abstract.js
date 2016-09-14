@@ -68,6 +68,7 @@ var RepoAbstract = (function () {
         this.filterByMode = "Name";
         this.searchString = "";
         this.isSelectedOpen = false;
+        this.getClassLabel = utils_model_1.getClassLabel;
         this.hs = highlightService.highlightedItemChanged$.subscribe(function (item) {
             if (_this.items.indexOf(item) > -1) {
                 _this._highlightedItem = item;
@@ -196,14 +197,6 @@ var RepoAbstract = (function () {
         this.updated.emit(this.items);
         this.added.emit(newItem);
         this.selectedItem = newItem;
-    };
-    RepoAbstract.prototype.getClassLabel = function (option) {
-        if (!option)
-            return "";
-        var label = option;
-        label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
-        label = label[0].toUpperCase() + label.substring(1).toLowerCase();
-        return label;
     };
     __decorate([
         core_1.Output(), 

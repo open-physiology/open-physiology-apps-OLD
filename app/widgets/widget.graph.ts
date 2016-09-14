@@ -7,8 +7,8 @@ import {Subscription}   from 'rxjs/Subscription';
 import {Canvas, SelectTool, DragDropTool, ResizeTool, ZoomTool,
   PanTool, BorderToggleTool, LyphRectangle, NodeGlyph, ProcessLine, DrawingTool} from "lyph-edit-widget";
 import {combineLatest} from "rxjs/observable/combineLatest";
-import {ResourceName, model} from '../services/utils.model';
-import {AddToolbar} from '../components/toolbar.add';
+import {ResourceName, getClassLabel, model} from '../services/utils.model';
+import {PalleteToolbar} from '../components/toolbar.pallete';
 
 declare var $:any;
 
@@ -18,12 +18,12 @@ declare var $:any;
   template : `
      <div class="panel panel-success">
        <div class="panel-body" style="position: relative">
-          <add-toolbar [options]="types" style="position: absolute;" [transform]="getClassLabel" (added)="onAdded($event)"></add-toolbar>
+          <pallete-toolbar [items]="types" style="position: absolute;" (activeItemChange)="onActiveItemChange($event)"></pallete-toolbar>
           <svg id="graphSvg" class="svg-widget"></svg>
        </div>
     </div> 
   `,
-  directives: [AddToolbar]
+  directives: [PalleteToolbar]
 })
 export class GraphWidget{
   @Input() activeItem: any;
@@ -52,6 +52,8 @@ export class GraphWidget{
 
   rs: Subscription; //GoldenLayout window resize events
 
+  getClassLabel = getClassLabel;
+
   constructor(public renderer: Renderer,
               public el: ElementRef,
               private resizeService: ResizeService) {
@@ -63,7 +65,7 @@ export class GraphWidget{
     });
   }
 
-  onAdded(Class: any){
+  onActiveItemChange(Class: any){
     let options: any = {};
     if (Class == ResourceName.LyphWithAxis) {
       Class = ResourceName.Lyph;
@@ -87,11 +89,7 @@ export class GraphWidget{
       newItem.lyphs = [lyph1, lyph2];
     }
 
-    //Create template of given class
-    //Create the type for it and attach to the template
     this.activeItemChange.emit(newItem);
-    //this.activeItem = newItem;
-    //this.createElement();
   }
 
   setPanelSize(size: any){
@@ -144,13 +142,5 @@ export class GraphWidget{
         if (x) this.highlightedItemChange.emit(x.model);
       });
     }
-  }
-
-  getClassLabel(option: string){
-    if (!option) return "";
-    let label = option;
-    label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
-    label = label[0].toUpperCase() + label.substring(1).toLowerCase();
-    return label;
   }
 }

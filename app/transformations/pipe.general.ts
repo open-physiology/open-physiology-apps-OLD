@@ -3,6 +3,7 @@
  */
 import {Pipe, PipeTransform, Injectable} from '@angular/core';
 
+///////////////////////////////////////////////////
 @Pipe({
   name: 'hideClass'
 })
@@ -10,9 +11,15 @@ export class HideClass implements PipeTransform {
   transform(items: any, classNames: any[]): any {
     if (!items) return items;
     if (classNames instanceof Set) classNames = Array.from(classNames);
-    return items.filter(x => (classNames.indexOf(x.class) < 0));
+    let filteredItems = items.filter(x => (classNames.indexOf(x.class) < 0));
+    if (classNames.indexOf('Type') > -1){
+      filteredItems = filteredItems.filter(x => (x.class.indexOf('Type') < 0))
+    }
+    return filteredItems;
   }
 }
+
+///////////////////////////////////////////////////
 
 @Pipe({
   name: 'filterBy'
@@ -31,6 +38,8 @@ export class FilterBy implements PipeTransform {
   }
 }
 
+///////////////////////////////////////////////////
+
 @Pipe({
   name: 'filterByClass'
 })
@@ -40,6 +49,19 @@ export class FilterByClass implements PipeTransform {
     return items.filter(item => (classNames.indexOf(item.class) !== -1));
   }
 }
+
+///////////////////////////////////////////////////
+
+@Pipe({
+  name: 'setToArray'
+})
+export class SetToArray implements PipeTransform {
+  transform(items: Set<any>): Array<any> {
+    return Array.from(items || []);
+  }
+}
+
+///////////////////////////////////////////////////
 
 @Pipe({
   name: 'mapToOptions'
@@ -62,14 +84,7 @@ export class MapToOptions implements PipeTransform {
   }
 }
 
-@Pipe({
-  name: 'setToArray'
-})
-export class SetToArray implements PipeTransform {
-  transform(items: Set<any>): Array<any> {
-    return Array.from(items || []);
-  }
-}
+///////////////////////////////////////////////////
 
 @Pipe({
   name: 'mapToCategories'
@@ -86,6 +101,8 @@ export class MapToCategories implements PipeTransform {
     return typedItems;
   }
 }
+
+////////////////////////////////////////////////////
 
 @Pipe({name: 'orderBy', pure: false})
 export class OrderBy implements PipeTransform {
@@ -111,6 +128,5 @@ export class OrderBy implements PipeTransform {
       }
     });
     return items;
-
   }
 }

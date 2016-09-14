@@ -45,6 +45,14 @@ export function getPropertyLabel(option: string): string{
   return label;
 }
 
+export function getClassLabel(option: string): string{
+  if (!option) return "";
+  let label = option;
+  label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
+  label = label[0].toUpperCase() + label.substring(1).toLowerCase();
+  return label;
+}
+
 export function getIcon(Class: any): string{
   if (Class){
     let index = Class.indexOf('Type');
@@ -54,8 +62,8 @@ export function getIcon(Class: any): string{
   switch (Class){
     case ResourceName.ExternalResource : return "images/external.png";
     case ResourceName.Material         : return "images/material.png";
-    case ResourceName.Lyph             : //return "images/lyph.png";
-    case ResourceName.LyphWithAxis     : return "images/cylindricalLyph.png";
+    case ResourceName.Lyph             : return "images/lyph.png";
+    case ResourceName.LyphWithAxis     : return "images/lyphWithAxis.png";
 
     case ResourceName.Process          : return "images/process.png";
     case ResourceName.Measurable       : return "images/measurable.png";
