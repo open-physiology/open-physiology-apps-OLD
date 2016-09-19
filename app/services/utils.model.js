@@ -75,6 +75,14 @@ function getIcon(Class) {
     return "images/resource.png";
 }
 exports.getIcon = getIcon;
+function getItemClass(item) {
+    if (item.class == ResourceName.Lyph) {
+        if (item.axis)
+            return ResourceName.LyphWithAxis;
+    }
+    return item.class;
+}
+exports.getItemClass = getItemClass;
 function getTreeData(item, relations, depth) {
     var data = {};
     if (!item)

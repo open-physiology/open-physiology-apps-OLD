@@ -4,7 +4,7 @@
 import {Component, Input, Output, ViewChild, ElementRef, Renderer, EventEmitter} from '@angular/core';
 import {ResizeService} from '../services/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
-import {LyphRectangle} from "lyph-edit-widget";
+import {Canvas, LyphRectangle} from "lyph-edit-widget";
 
 declare var $:any;
 
@@ -22,7 +22,9 @@ export class LyphWidget{
   @Input() item : any;
 
   svg : any;
+  root: any;
   model: any;
+
   vp: any = {size: {width: 600, height: 300},
     margin: {x: 20, y: 20},
     node: {size: {width: 40, height: 40}}};
@@ -37,6 +39,7 @@ export class LyphWidget{
         this.setPanelSize(event.size);
       }
     });
+
   }
 
   setPanelSize(size: any){
@@ -56,10 +59,14 @@ export class LyphWidget{
 
   ngOnChanges(changes: { [propName: string]: any }) {
     this.svg = $('#lyphSvg');
+    if (!this.root) this.root = new Canvas({element: this.svg});
+
     if (this.item) {
-      this.model = new LyphRectangle({model: this.item,
+      this.model = new LyphRectangle({
+        model: this.item,
         x: this.vp.margin.x, y: this.vp.margin.y,
         width: this.vp.size.width - 2 * this.vp.margin.x, height: this.vp.size.height - 2 * this.vp.margin.y});
+      this.model.parent = this.root;
       this.svg.append(this.model.element);
     }
   }

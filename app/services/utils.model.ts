@@ -83,6 +83,14 @@ export function getIcon(Class: any): string{
   return "images/resource.png";
 }
 
+
+export function getItemClass(item: any){
+  if (item.class == ResourceName.Lyph){
+    if (item.axis) return ResourceName.LyphWithAxis;
+  }
+  return item.class;
+}
+
 export function getTreeData(item: any, relations: Set<string>, depth: number) {//Format: {id: 1, name: "Parent", children: [{id: 2, name: "Child"},...]};
   let data:any = {};
   if (!item) return data;

@@ -84,6 +84,7 @@ var OmegaTreeWidget = (function () {
             .attr("transform", "translate(" + vp.margin.x + "," + vp.margin.y + ")")
             .call(zoom);
         var svgGroup = treeSvg.append("g");
+        var canvas = new lyph_edit_widget_1.Canvas({ element: svgGroup });
         var nodes = tree.nodes(data);
         var links = tree.links(nodes);
         var link = svgGroup.selectAll(".link")
@@ -119,8 +120,9 @@ var OmegaTreeWidget = (function () {
                 else {
                     var model_1 = new lyph_edit_widget_1.LyphRectangle({ model: d.target.resource,
                         x: position.x, y: position.y, width: vp.node.size.width, height: vp.node.size.height });
+                    model_1.parent = canvas;
                     $(svgGroup.node()).append(model_1.element);
-                    var lyph = d3.select(model_1.element).attr("transform", "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")");
+                    d3.select(model_1.element).attr("transform", "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")");
                 }
             }
         });

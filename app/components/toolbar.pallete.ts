@@ -1,31 +1,28 @@
 /**
  * Created by Natallia on 9/13/2016.
  */
-/**
- * Created by Natallia on 6/21/2016.
- */
 import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {getIcon} from "../services/utils.model";
+import {TOOLTIP_DIRECTIVES} from 'ng2-bootstrap/components/tooltip';
+import {TooltipDirective} from "../directives/directive.tooltip";
 
 @Component({
-  "inputs": ["items", "activeItem"],
+  "inputs": ["items", "activeItem", "transfrom", "imageProvider"],
   "selector": "pallete-toolbar",
   "template": `
       <div class="input-control">
         <div class="btn-group" style="float: left;">
-          <button *ngFor="let item of items" type="button" class="btn btn-default btn-icon" 
+          <label *ngFor="let item of items" type="button" class="btn btn-default btn-icon" 
+            tooltip="{{transform? transform(item): item}}" tooltipPlacement="bottom"
             [ngClass]="{'active': activeItem == item}" (click)="activeItemChange.emit(item)">
-            <img class="icon" src="{{getIcon(item)}}"/>
-          </button>
+            <img *ngIf="imageProvider" class="icon" src="{{imageProvider(item)}}"/>
+          </label>
         </div>
       </div>
-   `
+   `,
+  "directives": [TOOLTIP_DIRECTIVES, TooltipDirective]
 })
 export class PalleteToolbar{
   @Input() items: any;
   @Input() activeItem: any;
-
   @Output() activeItemChange = new EventEmitter();
-  
-  getIcon = getIcon;
 }

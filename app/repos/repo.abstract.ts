@@ -1,41 +1,10 @@
 /**
  * Created by Natallia on 7/8/2016.
  */
-import {Component, Input, Output, EventEmitter, Inject} from '@angular/core';
-import {ResourceName, getClassLabel, model} from "../services/utils.model";
+import {Input, Output, EventEmitter} from '@angular/core';
+import {ResourceName, getClassLabel, getIcon, getItemClass, model} from "../services/utils.model";
 import {HighlightService} from "../services/service.highlight";
 import {Subscription}   from 'rxjs/Subscription';
-
-@Component({
-  selector: 'item-header',
-  inputs: ['item', 'selectedItem', 'isSelectedOpen', 'icon'],
-  template: `
-      <i class="pull-left glyphicon"
-        [ngClass]="{
-          'glyphicon-chevron-down': (item == selectedItem) && isSelectedOpen, 
-          'glyphicon-chevron-right': (item != selectedItem) || !isSelectedOpen}"></i>&nbsp;
-        {{(item.id)? item.id: "?"}}: {{item.name}}
-        <span class="pull-right">
-          <img *ngIf="isType" class="imtip" src="images/type.png"/>
-          <img class="icon" src="{{icon}}"/>
-          <ng-content select="extra"></ng-content>
-        </span>
-  `
-})
-export class ItemHeader {
-  @Input() item: any;
-  @Input() selectedItem: any;
-  @Input() isSelectedOpen: boolean;
-  @Input() icon: string;
-
-  isType = false;
-
-  ngOnInit(){
-    if (this.item){
-      if (this.item.class.indexOf('Type') > -1) this.isType = true;
-    }
-  }
-}
 
 export abstract class RepoAbstract{
   @Output() added = new EventEmitter();
@@ -64,6 +33,9 @@ export abstract class RepoAbstract{
   hs: Subscription;
 
   getClassLabel = getClassLabel;
+  getIcon = getIcon;
+  getItemClass = getItemClass;
+
 
   constructor(highlightService: HighlightService){
     this.hs = highlightService.highlightedItemChanged$.subscribe(item => {

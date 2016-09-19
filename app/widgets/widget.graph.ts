@@ -7,7 +7,7 @@ import {Subscription}   from 'rxjs/Subscription';
 import {Canvas, SelectTool, DragDropTool, ResizeTool, ZoomTool,
   PanTool, BorderToggleTool, LyphRectangle, NodeGlyph, ProcessLine, DrawingTool} from "lyph-edit-widget";
 import {combineLatest} from "rxjs/observable/combineLatest";
-import {ResourceName, getClassLabel, model} from '../services/utils.model';
+import {ResourceName, getClassLabel, getItemClass, getIcon, model} from '../services/utils.model';
 import {PalleteToolbar} from '../components/toolbar.pallete';
 
 declare var $:any;
@@ -18,7 +18,8 @@ declare var $:any;
   template : `
      <div class="panel panel-success">
        <div class="panel-body" style="position: relative">
-          <pallete-toolbar [items]="types" style="position: absolute;" (activeItemChange)="onActiveItemChange($event)"></pallete-toolbar>
+          <pallete-toolbar [items]="types" [activeItem]="activeItem" [imageProvider]="getIcon" [transfrom]="getClassLabel"
+          style="position: absolute;" (activeItemChange)="onActiveItemChange($event)"></pallete-toolbar>
           <svg id="graphSvg" class="svg-widget"></svg>
        </div>
     </div> 
@@ -31,6 +32,7 @@ export class GraphWidget{
 
   @Output() highlightedItemChange = new EventEmitter();
   @Output() activeItemChange = new EventEmitter();
+
 
   types = [
     ResourceName.Material,
@@ -52,6 +54,7 @@ export class GraphWidget{
 
   rs: Subscription; //GoldenLayout window resize events
 
+  getIcon = getIcon;
   getClassLabel = getClassLabel;
 
   constructor(public renderer: Renderer,
@@ -66,6 +69,13 @@ export class GraphWidget{
   }
 
   onActiveItemChange(Class: any){
+    //Clear selection if button pressed again
+    // if (this.activeItem && (getItemClass(this.activeItem) == Class)) {
+    //   this.activeItemChange.emit(null);
+    //   console.log("Cancelled selection!!!");
+    //   return;
+    // }
+
     let options: any = {};
     if (Class == ResourceName.LyphWithAxis) {
       Class = ResourceName.Lyph;
@@ -108,7 +118,7 @@ export class GraphWidget{
 
   ngOnChanges(changes: { [propName: string]: any }) {
     if (changes['activeItem']){
-      if (this.activeItem) this.createElement();
+      this.createElement();
     }
   }
 

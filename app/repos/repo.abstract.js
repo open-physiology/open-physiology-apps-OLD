@@ -13,43 +13,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var core_1 = require('@angular/core');
 var utils_model_1 = require("../services/utils.model");
-var ItemHeader = (function () {
-    function ItemHeader() {
-        this.isType = false;
-    }
-    ItemHeader.prototype.ngOnInit = function () {
-        if (this.item) {
-            if (this.item.class.indexOf('Type') > -1)
-                this.isType = true;
-        }
-    };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ItemHeader.prototype, "item", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ItemHeader.prototype, "selectedItem", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], ItemHeader.prototype, "isSelectedOpen", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], ItemHeader.prototype, "icon", void 0);
-    ItemHeader = __decorate([
-        core_1.Component({
-            selector: 'item-header',
-            inputs: ['item', 'selectedItem', 'isSelectedOpen', 'icon'],
-            template: "\n      <i class=\"pull-left glyphicon\"\n        [ngClass]=\"{\n          'glyphicon-chevron-down': (item == selectedItem) && isSelectedOpen, \n          'glyphicon-chevron-right': (item != selectedItem) || !isSelectedOpen}\"></i>&nbsp;\n        {{(item.id)? item.id: \"?\"}}: {{item.name}}\n        <span class=\"pull-right\">\n          <img *ngIf=\"isType\" class=\"imtip\" src=\"images/type.png\"/>\n          <img class=\"icon\" src=\"{{icon}}\"/>\n          <ng-content select=\"extra\"></ng-content>\n        </span>\n  "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], ItemHeader);
-    return ItemHeader;
-}());
-exports.ItemHeader = ItemHeader;
 var RepoAbstract = (function () {
     function RepoAbstract(highlightService) {
         var _this = this;
@@ -69,6 +32,8 @@ var RepoAbstract = (function () {
         this.searchString = "";
         this.isSelectedOpen = false;
         this.getClassLabel = utils_model_1.getClassLabel;
+        this.getIcon = utils_model_1.getIcon;
+        this.getItemClass = utils_model_1.getItemClass;
         this.hs = highlightService.highlightedItemChanged$.subscribe(function (item) {
             if (_this.items.indexOf(item) > -1) {
                 _this._highlightedItem = item;

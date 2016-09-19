@@ -37,6 +37,7 @@ var GraphWidget = (function () {
         this.vp = { size: { width: 600, height: 600 },
             margin: { x: 20, y: 20 },
             node: { size: { width: 40, height: 40 } } };
+        this.getIcon = utils_model_1.getIcon;
         this.getClassLabel = utils_model_1.getClassLabel;
         this.rs = resizeService.resize$.subscribe(function (event) {
             if (event.target == "graph-widget") {
@@ -45,6 +46,12 @@ var GraphWidget = (function () {
         });
     }
     GraphWidget.prototype.onActiveItemChange = function (Class) {
+        //Clear selection if button pressed again
+        // if (this.activeItem && (getItemClass(this.activeItem) == Class)) {
+        //   this.activeItemChange.emit(null);
+        //   console.log("Cancelled selection!!!");
+        //   return;
+        // }
         var options = {};
         if (Class == utils_model_1.ResourceName.LyphWithAxis) {
             Class = utils_model_1.ResourceName.Lyph;
@@ -80,8 +87,7 @@ var GraphWidget = (function () {
     };
     GraphWidget.prototype.ngOnChanges = function (changes) {
         if (changes['activeItem']) {
-            if (this.activeItem)
-                this.createElement();
+            this.createElement();
         }
     };
     GraphWidget.prototype.createElement = function () {
@@ -136,7 +142,7 @@ var GraphWidget = (function () {
         core_1.Component({
             selector: 'graph-widget',
             inputs: ['activeItem', 'highlightedItem'],
-            template: "\n     <div class=\"panel panel-success\">\n       <div class=\"panel-body\" style=\"position: relative\">\n          <pallete-toolbar [items]=\"types\" style=\"position: absolute;\" (activeItemChange)=\"onActiveItemChange($event)\"></pallete-toolbar>\n          <svg id=\"graphSvg\" class=\"svg-widget\"></svg>\n       </div>\n    </div> \n  ",
+            template: "\n     <div class=\"panel panel-success\">\n       <div class=\"panel-body\" style=\"position: relative\">\n          <pallete-toolbar [items]=\"types\" [activeItem]=\"activeItem\" [imageProvider]=\"getIcon\" [transfrom]=\"getClassLabel\"\n          style=\"position: absolute;\" (activeItemChange)=\"onActiveItemChange($event)\"></pallete-toolbar>\n          <svg id=\"graphSvg\" class=\"svg-widget\"></svg>\n       </div>\n    </div> \n  ",
             directives: [toolbar_pallete_1.PalleteToolbar]
         }), 
         __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef, service_resize_1.ResizeService])

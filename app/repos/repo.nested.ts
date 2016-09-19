@@ -5,14 +5,15 @@ import {Component, forwardRef, Input, Output, EventEmitter} from '@angular/core'
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
 import {ACCORDION_DIRECTIVES} from 'ng2-bootstrap/components/accordion';
 import {DND_DIRECTIVES} from 'ng2-dnd/ng2-dnd';
-import {getIcon, compareLinkedParts, model} from '../services/utils.model';
+import {compareLinkedParts, model} from '../services/utils.model';
 
 import {AddToolbar} from '../components/toolbar.add';
 import {FilterToolbar} from '../components/toolbar.filter';
 import {SortToolbar} from '../components/toolbar.sort';
 
 import {PanelDispatchResources} from "../panels/dispatch.resources";
-import {ItemHeader, RepoAbstract} from "./repo.abstract";
+import {RepoAbstract} from "./repo.abstract";
+import {ItemHeader} from "./repo.itemHeader";
 import {OrderBy, FilterBy, SetToArray, FilterByClass} from "../transformations/pipe.general";
 import {SingleSelectInput} from "../components/component.select";
 
@@ -53,11 +54,11 @@ import {HighlightService} from "../services/service.highlight";
             <div accordion-heading 
               (click)="updateSelected(item)" 
               (mouseover)="updateHighlighted(item)" (mouseout)="cleanHighlighted(item)"
-              [ngClass]="{highlighted: _highlightedItem == item}">
+              [ngClass]="{highlighted: _highlightedItem === item}">
               <item-header [item]="item" 
                 [selectedItem]="selectedItem" 
                 [isSelectedOpen]="isSelectedOpen" 
-                [icon]="getIcon(item.class)">
+                [icon]="getIcon(getItemClass(item))">
               </item-header>
             </div>
 
@@ -84,7 +85,6 @@ import {HighlightService} from "../services/service.highlight";
   pipes: [OrderBy, FilterBy, SetToArray]
 })
 export class RepoNested extends RepoAbstract{
-  getIcon = getIcon;
   includeExisting = false;
   itemToInclude: any = null;
 

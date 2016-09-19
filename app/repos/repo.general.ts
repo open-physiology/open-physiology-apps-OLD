@@ -9,11 +9,12 @@ import {AddToolbar} from '../components/toolbar.add';
 import {FilterToolbar} from '../components/toolbar.filter';
 import {SortToolbar} from '../components/toolbar.sort';
 
-import {getIcon, ResourceName, model} from "../services/utils.model";
+import {getItemClass, ResourceName, model} from "../services/utils.model";
 
 import {OrderBy, FilterBy, HideClass} from "../transformations/pipe.general";
 import {PanelDispatchResources} from "../panels/dispatch.resources";
-import {ItemHeader, RepoAbstract} from "./repo.abstract";
+import {RepoAbstract} from "./repo.abstract";
+import {ItemHeader} from "./repo.itemHeader";
 import {HighlightService} from "../services/service.highlight";
 import {PropertyToolbar} from '../components/toolbar.propertySettings';
 
@@ -25,8 +26,8 @@ import {PropertyToolbar} from '../components/toolbar.propertySettings';
         <div class="panel-heading">{{caption}}
           <span class="pull-right" *ngIf="options?.showActive">
             <button type="button" class="btn btn-default btn-header" 
-              [ngClass]="{'active': activeItem == null}" (click)="updateActive(null)">
-              <span class = "glyphicon" [ngClass]="{'glyphicon-pencil': activeItem == null}"></span>
+              [ngClass]="{'active': activeItem === null}" (click)="updateActive(null)">
+              <span class = "glyphicon" [ngClass]="{'glyphicon-pencil': activeItem === null}"></span>
             </button>
           </span>
         </div>
@@ -49,16 +50,16 @@ import {PropertyToolbar} from '../components/toolbar.propertySettings';
             <div accordion-heading 
               (click)="updateSelected(item)" 
               (mouseover)="updateHighlighted(item)" (mouseout)="cleanHighlighted(item)"
-              [ngClass]="{highlighted: _highlightedItem == item}"
+              [ngClass]="{highlighted: _highlightedItem === item}"
               >
               <item-header [item]="item" 
                 [selectedItem]  ="selectedItem" 
                 [isSelectedOpen]="isSelectedOpen" 
-                [icon]          ="getIcon(item.class)">   
+                [icon]          ="getIcon(getItemClass(item))">   
                 <extra *ngIf="options?.showActive">
                   <button type="button" class="btn btn-default btn-header" 
-                    [ngClass]="{'active': activeItem == item}" (click)="updateActive(item)">
-                    <span class = "glyphicon" [ngClass]="{'glyphicon-pencil': activeItem == item}"></span>
+                    [ngClass]="{'active': activeItem === item}" (click)="updateActive(item)">
+                    <span class = "glyphicon" [ngClass]="{'glyphicon-pencil': activeItem === item}"></span>
                   </button>
                 </extra>
               </item-header>
@@ -88,7 +89,6 @@ import {PropertyToolbar} from '../components/toolbar.propertySettings';
   pipes: [OrderBy, FilterBy, HideClass]
 })
 export class RepoGeneral extends RepoAbstract{
-  getIcon = getIcon;
   ignoreTypes = new Set([ResourceName.Border, ResourceName.Node]);
   typeOptions = [];
 

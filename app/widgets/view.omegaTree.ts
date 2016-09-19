@@ -5,7 +5,7 @@ import {Component, Input, Output, ViewChild, ElementRef, Renderer, EventEmitter}
 import {ResizeService} from '../services/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
 import {getIcon, getColor, getTreeData, compareLinkedParts, ResourceName, model} from "../services/utils.model";
-import {LyphRectangle} from "lyph-edit-widget";
+import {Canvas, LyphRectangle} from "lyph-edit-widget";
 
 declare var d3:any;
 declare var $:any;
@@ -58,6 +58,7 @@ export class OmegaTreeWidget{
 
   ngOnChanges(changes: { [propName: string]: any }) {
     this.svg = d3.select(this.el.nativeElement).select('svg');
+
     if (this.item) {
       this.data = this.getOmegaTreeData(this.item);
       this.draw(this.svg, this.vp, this.data);
@@ -107,7 +108,8 @@ export class OmegaTreeWidget{
       .attr("transform", "translate(" + vp.margin.x + "," + vp.margin.y + ")")
       .call(zoom);
 
-    var svgGroup = treeSvg.append("g");
+    let svgGroup = treeSvg.append("g");
+    let canvas = new Canvas({element: svgGroup});
 
     let nodes = tree.nodes(data);
     let links = tree.links(nodes);
@@ -147,8 +149,11 @@ export class OmegaTreeWidget{
           } else {
             let model = new LyphRectangle({model: d.target.resource,
                 x: position.x, y: position.y, width: vp.node.size.width, height: vp.node.size.height});
+            model.parent = canvas;
             $(svgGroup.node()).append(model.element);
-            let lyph = d3.select(model.element).attr("transform", "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")")
+            
+            d3.select(model.element).attr("transform",
+              "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")")
           }
          }
       });
