@@ -30,8 +30,7 @@ import {HighlightService} from "../services/service.highlight";
       <div class="panel-heading">{{caption}}</div>
       <div class="panel-body" >
         <span  *ngIf = "!(options?.readOnly || options?.headersOnly)">
-          <select-input-1
-            style="float: left;" [item] = "itemToInclude"
+          <select-input-1 class="pull-left input-select" [item] = "itemToInclude"
            (updated) = "itemToInclude = $event"    
            [options] = "selectionOptions">
           </select-input-1>

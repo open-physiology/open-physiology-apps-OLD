@@ -34,7 +34,6 @@ var OmegaTreeEditor = (function () {
         this.el = el;
         this.ResourceName = utils_model_1.ResourceName;
         this.trees = [];
-        this.lyphs = [];
         this.selectedItem = {};
         this.layoutConfig = {
             settings: {
@@ -54,17 +53,8 @@ var OmegaTreeEditor = (function () {
                     type: 'row',
                     content: [
                         {
-                            type: 'column',
-                            content: [
-                                {
-                                    type: 'component',
-                                    componentName: 'OmegaTreePanel'
-                                },
-                                {
-                                    type: 'component',
-                                    componentName: 'LyphPanel'
-                                }
-                            ]
+                            type: 'component',
+                            componentName: 'OmegaTreePanel'
                         },
                         {
                             type: 'column',
@@ -82,7 +72,6 @@ var OmegaTreeEditor = (function () {
                     ]
                 }]
         };
-        this.sLyphs = utils_model_2.model.Lyph.p('all').subscribe(function (data) { _this.lyphs = data; });
         this.sOmegaTrees = utils_model_2.model.OmegaTree.p('all').subscribe(function (data) { _this.trees = data; });
         var self = this;
         (function () {
@@ -104,12 +93,10 @@ var OmegaTreeEditor = (function () {
                 yield kidney.commit();
                 var kidneyLobus = utils_model_2.model.Lyph.new({ name: "Kidney lobus", externals: [fma17881] });
                 yield kidneyLobus.commit();
-                self.selectedItem = kidney;
             });
         })();
     }
     OmegaTreeEditor.prototype.ngOnDestroy = function () {
-        this.sLyphs.unsubscribe();
         this.sOmegaTrees.unsubscribe();
     };
     OmegaTreeEditor.prototype.onItemSelected = function (item) {
@@ -124,11 +111,6 @@ var OmegaTreeEditor = (function () {
         this.mainLayout.registerComponent('OmegaTreePanel', function (container, componentState) {
             var panel = container.getElement();
             var content = $('app > #omegaTreeRepo');
-            content.detach().appendTo(panel);
-        });
-        this.mainLayout.registerComponent('LyphPanel', function (container, componentState) {
-            var panel = container.getElement();
-            var content = $('app > #lyphRepo');
             content.detach().appendTo(panel);
         });
         this.mainLayout.registerComponent('HierarchyPanel', function (container, componentState) {
@@ -170,7 +152,7 @@ var OmegaTreeEditor = (function () {
         core_1.Component({
             selector: 'app',
             providers: [service_resize_1.ResizeService, service_highlight_1.HighlightService],
-            template: "\n    <repo-general id=\"omegaTreeRepo\"\n      [items]=\"trees | setToArray\" \n      [caption]=\"'Omega trees'\"\n      [types]=\"[ResourceName.OmegaTree]\"\n      (selectedItemChange)=\"onItemSelected($event)\"\n      >\n    </repo-general>         \n    \n    <repo-general id=\"lyphRepo\"\n      [items]=\"lyphs | setToArray\" \n      [caption]=\"'Lyphs'\" \n      [types]=\"[ResourceName.Lyph]\"\n      (selected)=\"onItemSelected($event)\">\n    </repo-general>\n    \n    <hierarchy-widget id = \"hierarchy\" [item]=\"selectedItem\"></hierarchy-widget>\n    <resource-widget id = \"resource\" [item]=\"selectedItem\"></resource-widget>   \n    \n    <div id=\"main\"></div>\n  ",
+            template: "\n    <repo-general id=\"omegaTreeRepo\"\n      [items]=\"trees | setToArray\" \n      [caption]=\"'Omega trees'\"\n      [types]=\"[ResourceName.OmegaTree]\"\n      (selectedItemChange)=\"onItemSelected($event)\"\n    >\n    </repo-general>         \n    \n    <hierarchy-widget id = \"hierarchy\" [item]=\"selectedItem\"></hierarchy-widget>\n    <resource-widget id = \"resource\" [item]=\"selectedItem\"></resource-widget>   \n    \n    <div id=\"main\"></div>\n  ",
             styles: ["#main {width: 100%; height: 100%; border: 0; margin: 0; padding: 0}"],
             directives: [repo_general_1.RepoGeneral, repo_nested_1.RepoNested, widget_relations_1.RelationshipWidget, widget_resource_1.ResourceWidget],
             pipes: [pipe_general_1.SetToArray]

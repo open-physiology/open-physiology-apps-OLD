@@ -29,8 +29,8 @@ var FilterToolbar = (function () {
     FilterToolbar.prototype.updateValue = function (event) {
         this.filter = event.target.value;
         //Remove filter if search string is empty
-        if (this.filter.trim().length == 0)
-            this.applied.emit({ filter: this.filter, mode: this.mode });
+        //if (this.filter.trim().length == 0)
+        this.applied.emit({ filter: this.filter, mode: this.mode });
     };
     __decorate([
         core_1.Output(), 

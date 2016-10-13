@@ -111,19 +111,10 @@ var OmegaTreeWidget = (function () {
             .each(function (d) {
             if (d.target) {
                 var position = { x: (d.source.x + d.target.x) / 2 - dx, y: (d.source.y + d.target.y) / 2 - dy };
-                if (d.target.resource.class == utils_model_1.ResourceName.OmegaTree) {
-                    svgGroup.append("image")
-                        .attr("xlink:href", utils_model_1.getIcon(utils_model_1.ResourceName.OmegaTree))
-                        .attr("x", position.x + dx - 12).attr("y", position.y + dy - 12)
-                        .attr("width", 24).attr("height", 24);
-                }
-                else {
-                    var model_1 = new lyph_edit_widget_1.LyphRectangle({ model: d.target.resource,
-                        x: position.x, y: position.y, width: vp.node.size.width, height: vp.node.size.height });
-                    model_1.parent = canvas;
-                    $(svgGroup.node()).append(model_1.element);
-                    d3.select(model_1.element).attr("transform", "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")");
-                }
+                svgGroup.append("image")
+                    .attr("xlink:href", utils_model_1.getIcon(d.target.resource.class))
+                    .attr("x", position.x + dx - 12).attr("y", position.y + dy - 12)
+                    .attr("width", 24).attr("height", 24);
             }
         });
         var text = svgGroup.selectAll("nodeLabel")
@@ -179,7 +170,7 @@ var OmegaTreeWidget = (function () {
         }
         var root = { id: "#0", name: item.name, children: [] };
         var tree = linkParts(root, item);
-        var subtrees = tree.filter(function (x) { return (x.resource && (x.resource.class === utils_model_1.ResourceName.OmegaTree)); });
+        var subtrees = tree.filter(function (x) { return (x.resource && (x.resource.class == utils_model_1.ResourceName.OmegaTree)); });
         while (subtrees.length > 0) {
             for (var _i = 0, subtrees_1 = subtrees; _i < subtrees_1.length; _i++) {
                 var subtree = subtrees_1[_i];
@@ -201,6 +192,9 @@ var OmegaTreeWidget = (function () {
                                 if (leaves.length > 0) {
                                     next.parent = leaves[0];
                                     for (var j = 1; j < leaves.length; j++) {
+                                        //TODO: replicate following nodes
+                                        console.log("TEST", leaves[j]);
+                                        console.log("TEST 2", next);
                                     }
                                 }
                             }
@@ -208,7 +202,7 @@ var OmegaTreeWidget = (function () {
                     }
                 }
             }
-            subtrees = tree.filter(function (x) { return (x.resource && (x.resource.class === utils_model_1.ResourceName.OmegaTree)); });
+            subtrees = tree.filter(function (x) { return (x.resource && (x.resource.class == utils_model_1.ResourceName.OmegaTree)); });
         }
         return tree[0];
     };

@@ -4,6 +4,7 @@
 import {Component, Input, Output} from '@angular/core';
 import {RelationshipGraph} from "./view.relationGraph";
 import {RelationshipTree}  from "./view.relationTree";
+
 import {CORE_DIRECTIVES} from '@angular/common';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
 import {ResizeService} from '../services/service.resize';
@@ -53,8 +54,7 @@ import {getColor, getPropertyLabel, model} from "../services/utils.model";
       </div>     
     </div>
   `,
-  directives: [RelationshipGraph, RelationshipTree,
-    DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, PropertyToolbar]
+  directives: [RelationshipGraph, RelationshipTree, DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, PropertyToolbar]
 })
 export class RelationshipWidget{
   @Input() item: any;

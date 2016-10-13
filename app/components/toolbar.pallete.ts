@@ -9,14 +9,12 @@ import {TooltipDirective} from "../directives/directive.tooltip";
   "inputs": ["items", "activeItem", "transfrom", "imageProvider"],
   "selector": "pallete-toolbar",
   "template": `
-      <div class="input-control">
-        <div class="btn-group" style="float: left;">
-          <label *ngFor="let item of items" type="button" class="btn btn-default btn-icon" 
-            tooltip="{{transform? transform(item): item}}" tooltipPlacement="bottom"
-            [ngClass]="{'active': activeItem == item}" (click)="activeItemChange.emit(item)">
-            <img *ngIf="imageProvider" class="icon" src="{{imageProvider(item)}}"/>
-          </label>
-        </div>
+      <div class="btn-group" style="float: left;">
+        <label *ngFor="let item of items" type="button" class="btn btn-default btn-icon" 
+          tooltip="{{transform? transform(item): item}}" tooltipPlacement="bottom"
+          [ngClass]="{'active': activeItem == item}" (click)="activeItemChange.emit(item)">
+          <img *ngIf="imageProvider" class="icon" src="{{imageProvider(item)}}"/>
+        </label>
       </div>
    `,
   "directives": [TOOLTIP_DIRECTIVES, TooltipDirective]

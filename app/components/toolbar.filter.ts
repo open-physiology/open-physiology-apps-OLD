@@ -48,7 +48,7 @@ export class FilterToolbar {
   updateValue(event: any){
     this.filter = event.target.value;
     //Remove filter if search string is empty
-    if (this.filter.trim().length == 0)
+    //if (this.filter.trim().length == 0)
       this.applied.emit({filter: this.filter, mode: this.mode});
   }
 

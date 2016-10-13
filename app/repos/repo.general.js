@@ -47,7 +47,6 @@ var RepoGeneral = (function (_super) {
             this.ignoreTypes.delete(option.value);
         if (!this.ignoreTypes.has(option.value) && !option.selected)
             this.ignoreTypes.add(option.value);
-        console.log(this.ignoreTypes);
     };
     Object.defineProperty(RepoGeneral.prototype, "hiddenTypes", {
         get: function () {

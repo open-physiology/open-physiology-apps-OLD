@@ -20,7 +20,7 @@ import {RepoNested} from '../repos/repo.nested';
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
       
        <!--Quality-->
-      <div class="input-control" *ngIf="includeProperty('quality')">
+      <div class="input-control input-control-lg" *ngIf="includeProperty('quality')">
         <label for="quality">{{getPropertyLabel('quality')}}: </label>
         <input type="text" class="form-control" required [(ngModel)]="item.quality">
       </div>

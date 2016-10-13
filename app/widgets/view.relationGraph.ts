@@ -15,7 +15,7 @@ declare let d3: any;
       <nvd3 *ngIf="active" [options]="graphOptions" [data]="data"></nvd3>
     </div>
   `,
-  directives: [nvD3],
+  directives: [nvD3]
 })
 export class RelationshipGraph implements OnChanges, OnDestroy{
   @Input() item       : any;

@@ -25,6 +25,9 @@ System.config({
     "ng2-toasty": {
       "defaultExtension": "js"
     },
+    'ng2-bs3-modal': {
+      "defaultExtension": "js"
+    },
     "ng2-bootstrap": {
       "defaultExtension": "js"
     },
@@ -58,6 +61,7 @@ System.config({
       "main": "index.js",
       "defaultExtension": "js"
     },
+
     "@angular/common": {
       "main": "common.umd.js",
       "defaultExtension": "js"
@@ -114,6 +118,7 @@ System.config({
     "ng2-dropdown": "node_modules/ng2-dropdown",
     "ng2-toastr": "node_modules/ng2-toastr",
     "ng2-toasty": "node_modules/ng2-toasty",
+    'ng2-bs3-modal': "node_modules/ng2-bs3-modal",
     "nvd3": "npm:nvd3@1.8.4",
     "open-physiology-model": "node_modules/open-physiology-model/dist",
     "lyph-edit-widget": "node_modules/lyph-edit-widget/dist",

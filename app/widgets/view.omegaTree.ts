@@ -1,7 +1,7 @@
 /**
  * Created by Natallia on 7/14/2016.
  */
-import {Component, Input, Output, ViewChild, ElementRef, Renderer, EventEmitter} from '@angular/core';
+import {Component, Input, ElementRef, Renderer} from '@angular/core';
 import {ResizeService} from '../services/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
 import {getIcon, getColor, getTreeData, compareLinkedParts, ResourceName, model} from "../services/utils.model";
@@ -21,11 +21,11 @@ declare var $:any;
   directives: []
 })
 export class OmegaTreeWidget{
-  @Input() item       : any;
-  template: any;
+  @Input() item : any;
 
   svg : any;
   data: any;
+
   vp: any = {size: {width: 600, height: 400},
     margin: {x: 20, y: 20},
     node: {size: {width: 40, height: 40}}};
@@ -141,20 +141,27 @@ export class OmegaTreeWidget{
       .each((d: any) => {
         if (d.target){
           let position = {x: (d.source.x + d.target.x) / 2 - dx, y: (d.source.y + d.target.y) / 2 - dy};
-          if (d.target.resource.class == ResourceName.OmegaTree){
+
+          svgGroup.append("image")
+            .attr("xlink:href", getIcon(d.target.resource.class))
+            .attr("x", position.x + dx - 12).attr("y", position.y + dy - 12)
+            .attr("width", 24).attr("height", 24);
+
+         /* if (d.target.resource.class == ResourceName.OmegaTree){
             svgGroup.append("image")
               .attr("xlink:href", getIcon(ResourceName.OmegaTree))
               .attr("x", position.x + dx - 12).attr("y", position.y + dy - 12)
               .attr("width", 24).attr("height", 24);
           } else {
-            let model = new LyphRectangle({model: d.target.resource,
-                x: position.x, y: position.y, width: vp.node.size.width, height: vp.node.size.height});
-            model.parent = canvas;
-            $(svgGroup.node()).append(model.element);
-            
-            d3.select(model.element).attr("transform",
-              "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")")
-          }
+              let model = new LyphRectangle({model: d.target.resource,
+                  x: position.x, y: position.y, width: vp.node.size.width, height: vp.node.size.height});
+              model.parent = canvas;
+              //$(svgGroup.node()).append(model.element);
+              svgGroup.append(model.element);
+
+              d3.select(model.element).attr("transform",
+                "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")")
+          }*/
          }
       });
 
@@ -211,7 +218,7 @@ export class OmegaTreeWidget{
     let root: any = {id:  "#0", name: item.name, children: []};
     let tree = linkParts(root, item);
 
-    let subtrees = tree.filter(x => (x.resource && (x.resource.class === ResourceName.OmegaTree)));
+    let subtrees = tree.filter(x => (x.resource && (x.resource.class == ResourceName.OmegaTree)));
     while (subtrees.length > 0){
       for (let subtree of subtrees){
         let subtreeRoot = subtree.parent;
@@ -231,6 +238,11 @@ export class OmegaTreeWidget{
                   next.parent = leaves[0];
                   for (let j = 1; j < leaves.length; j++){
                     //TODO: replicate following nodes
+                    console.log("TEST", leaves[j]);
+                    console.log("TEST 2", next);
+
+                    /*let copyOfNext = Object.assign({}, next);
+                    copyOfNext.parent = leaves[j];*/
                   }
                 }
               }
@@ -238,7 +250,7 @@ export class OmegaTreeWidget{
           }
         }
       }
-      subtrees = tree.filter(x => (x.resource && (x.resource.class === ResourceName.OmegaTree)));
+      subtrees = tree.filter(x => (x.resource && (x.resource.class == ResourceName.OmegaTree)));
     }
 
     return tree[0];

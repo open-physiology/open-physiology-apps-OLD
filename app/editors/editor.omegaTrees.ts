@@ -22,15 +22,8 @@ declare var $: any;
       [caption]="'Omega trees'"
       [types]="[ResourceName.OmegaTree]"
       (selectedItemChange)="onItemSelected($event)"
-      >
+    >
     </repo-general>         
-    
-    <repo-general id="lyphRepo"
-      [items]="lyphs | setToArray" 
-      [caption]="'Lyphs'" 
-      [types]="[ResourceName.Lyph]"
-      (selected)="onItemSelected($event)">
-    </repo-general>
     
     <hierarchy-widget id = "hierarchy" [item]="selectedItem"></hierarchy-widget>
     <resource-widget id = "resource" [item]="selectedItem"></resource-widget>   
@@ -45,7 +38,6 @@ export class OmegaTreeEditor {
   protected ResourceName = ResourceName;
 
   trees        :Array<any> = [];
-  lyphs        :Array<any> = [];
   selectedItem :any        = {};
 
   layoutConfig = {
@@ -66,17 +58,8 @@ export class OmegaTreeEditor {
       type: 'row',
       content: [
         {
-          type: 'column',
-          content: [
-            {
-              type: 'component',
-              componentName: 'OmegaTreePanel'
-            },
-            {
-              type: 'component',
-              componentName: 'LyphPanel'
-            }
-          ]
+          type: 'component',
+          componentName: 'OmegaTreePanel'
         },
         {
           type: 'column',
@@ -96,13 +79,9 @@ export class OmegaTreeEditor {
   };
 
   mainLayout:any;
-  sLyphs: Subscription;
   sOmegaTrees: Subscription;
 
   constructor(private resizeService:ResizeService, private highlightService: HighlightService, public el:ElementRef) {
-
-    this.sLyphs = model.Lyph.p('all').subscribe(
-      (data:any) => {this.lyphs = data;});
 
     this.sOmegaTrees = model.OmegaTree.p('all').subscribe(
       (data:any) => {this.trees = data;});
@@ -133,13 +112,10 @@ export class OmegaTreeEditor {
       let kidneyLobus = model.Lyph.new({name: "Kidney lobus", externals: [fma17881]});
       await kidneyLobus.commit();
 
-      self.selectedItem = kidney;
-
     })();
   }
 
   ngOnDestroy() {
-    this.sLyphs.unsubscribe();
     this.sOmegaTrees.unsubscribe();
   }
 
@@ -156,12 +132,6 @@ export class OmegaTreeEditor {
     this.mainLayout.registerComponent('OmegaTreePanel', function (container:any, componentState:any) {
       let panel = container.getElement();
       let content = $('app > #omegaTreeRepo');
-      content.detach().appendTo(panel);
-    });
-
-    this.mainLayout.registerComponent('LyphPanel', function (container:any, componentState:any) {
-      let panel = container.getElement();
-      let content = $('app > #lyphRepo');
       content.detach().appendTo(panel);
     });
 

@@ -30,18 +30,18 @@ import {getPropertyLabel as generalPropertyLabel} from "../services/utils.model"
           <ng-content select="toolbar"></ng-content>
                     
           <div class="panel-content">
-              <div class="input-control" *ngIf="includeProperty('id')">
+              <div class="input-control input-control-lg" *ngIf="includeProperty('id')">
                 <label for="id">{{getPropertyLabel('id')}}: </label>
                 <input type="text" class="form-control" disabled readonly [ngModel]="item.id">
               </div>
 
-              <div class="input-control" *ngIf="includeProperty('href')">
+              <div class="input-control input-control-lg" *ngIf="includeProperty('href')">
                 <label for="href">{{getPropertyLabel('href')}}: </label>
                 <input type="text" class="form-control" disabled readonly [ngModel]="item.href">
               </div>
 
               <!--Name-->
-              <div class="input-control" *ngIf="includeProperty('name')">
+              <div class="input-control input-control-lg" *ngIf="includeProperty('name')">
                 <label for="name">{{getPropertyLabel('name')}}: </label>
                 <input type="text" class="form-control" [(ngModel)]="item.name">
               </div>
@@ -50,9 +50,10 @@ import {getPropertyLabel as generalPropertyLabel} from "../services/utils.model"
               <div class="input-control" *ngIf="includeProperty('externals')">
                 <label for="externals">{{getPropertyLabel('externals')}}: </label>
                 <select-input 
-                [items]="item.p('externals') | async" 
-                (updated)="updateProperty('externals', $event)" 
-                [options]="ExternalResource.p('all') | async"></select-input>
+                  [items]="item.p('externals') | async" 
+                  (updated)="updateProperty('externals', $event)" 
+                  [options]="ExternalResource.p('all') | async">
+                </select-input>
               </div>
               
               <ng-content></ng-content>
@@ -110,7 +111,7 @@ export class ResourcePanel {
 
         //Groups
         if (property.indexOf("Border") > -1) {
-          if (!this.properties.find(x => (x.value == "borders")))
+          if (!this.properties.find(x => (x.value.indexOf("borders") > -1)))
             this.properties.push({value: "borders", selected: !this.ignore.has("borders")});
           continue;
         }

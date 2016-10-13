@@ -13,6 +13,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var core_1 = require('@angular/core');
 var view_omegaTree_1 = require('./view.omegaTree');
+var view_omegaTreeInfo_1 = require('./view.omegaTreeInfo');
 var view_lyph_1 = require('./view.lyph');
 var utils_model_1 = require('../services/utils.model');
 var service_resize_1 = require('../services/service.resize');
@@ -20,6 +21,7 @@ var ResourceWidget = (function () {
     function ResourceWidget(resizeService) {
         var _this = this;
         this.resizeService = resizeService;
+        this.layout = 'resource';
         this.ResourceName = utils_model_1.ResourceName;
         this.subscription = resizeService.resize$.subscribe(function (event) {
             if (event.target == "resource-widget") {
@@ -43,8 +45,8 @@ var ResourceWidget = (function () {
         core_1.Component({
             selector: 'resource-widget',
             inputs: ['item'],
-            template: "\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">Resource <strong>{{item?.id}}{{(item)? ': ' + item.name : ''}}</strong></div>\n      <omega-tree *ngIf=\"item && (item.class == ResourceName.OmegaTree)\" [item]=\"item\"></omega-tree>  \n      <lyph *ngIf=\"item && (item.class == ResourceName.Lyph)\" [item]=\"item\"></lyph>  \n    </div> \n  ",
-            directives: [view_omegaTree_1.OmegaTreeWidget, view_lyph_1.LyphWidget]
+            template: "\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">Resource <strong>{{item?.id}}{{(item)? ': ' + item.name : ''}}</strong></div>\n      <div class=\"btn-group\" *ngIf=\"item && (item.class == ResourceName.OmegaTree)\">\n        <button type=\"button\" class=\"btn btn-default btn-icon\" \n          [ngClass]=\"{'active': layout == 'tree'}\" (click)=\"layout = 'resource'\">\n          <img class=\"icon\" src=\"images/resource.png\"/>\n        </button>\n        <button type=\"button\" class=\"btn btn-default btn-icon\" \n          [ngClass]=\"{'active': layout == 'stats'}\" (click)=\"layout = 'info'\">\n          <span class=\"glyphicon glyphicon-info-sign\"></span>\n        </button>\n      </div>\n\n      <omega-tree *ngIf=\"item && (layout == 'resource') && (item.class == ResourceName.OmegaTree)\" [item]=\"item\"></omega-tree>  \n      <omega-tree-info *ngIf=\"item && (layout == 'info') && (item.class == ResourceName.OmegaTree)\" [item]=\"item\"></omega-tree-info>  \n\n      <lyph *ngIf=\"item && (item.class == ResourceName.Lyph)\" [item]=\"item\"></lyph>  \n      \n    </div> \n  ",
+            directives: [view_omegaTree_1.OmegaTreeWidget, view_omegaTreeInfo_1.OmegaTreeInfoWidget, view_lyph_1.LyphWidget]
         }), 
         __metadata('design:paramtypes', [service_resize_1.ResizeService])
     ], ResourceWidget);

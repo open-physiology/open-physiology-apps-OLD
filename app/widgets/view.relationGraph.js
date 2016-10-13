@@ -112,7 +112,7 @@ var RelationshipGraph = (function () {
             selector: 'hierarchy-graph',
             inputs: ['item', 'relations', 'depth'],
             template: "\n    <div class=\"panel-body\">\n      <nvd3 *ngIf=\"active\" [options]=\"graphOptions\" [data]=\"data\"></nvd3>\n    </div>\n  ",
-            directives: [ng2_nvd3_1.nvD3],
+            directives: [ng2_nvd3_1.nvD3]
         }), 
         __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef, service_resize_1.ResizeService])
     ], RelationshipGraph);

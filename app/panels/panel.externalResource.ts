@@ -21,13 +21,13 @@ const {Resource} = model;
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
 
       <!--URI-->
-      <div class="input-control" *ngIf="includeProperty('uri')">
+      <div class="input-control input-control-lg" *ngIf="includeProperty('uri')">
         <label for="uri">{{getPropertyLabel('uri')}}: </label>
         <input type="text" class="form-control" [(ngModel)]="item.uri">
       </div>
   
       <!--Type-->
-      <div class="input-control" *ngIf="includeProperty('type')">
+      <div class="input-control input-control-lg" *ngIf="includeProperty('type')">
         <label for="type">{{getPropertyLabel('type')}}: </label>
         <input type="text" class="form-control" [(ngModel)]="item.type">
       </div>

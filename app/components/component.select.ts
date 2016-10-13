@@ -15,7 +15,7 @@ import {SELECT_DIRECTIVES} from 'ng2-select/ng2-select';
   inputs: ['items', 'options', 'disabled'],
   template:`
     <div *ngIf="active">
-      <ng-select
+      <ng-select 
         [items]       = "options | setToArray | mapToOptions"
         [initData]    = "items   | setToArray | mapToOptions"
         [multiple]    = "true"
@@ -25,7 +25,8 @@ import {SELECT_DIRECTIVES} from 'ng2-select/ng2-select';
     </div>
     `,
   directives: [SELECT_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES],
-  pipes: [MapToOptions, SetToArray]
+  pipes: [MapToOptions, SetToArray],
+
 })
 export class MultiSelectInput {
 

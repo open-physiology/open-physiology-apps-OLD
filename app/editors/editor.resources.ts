@@ -92,31 +92,23 @@ export class ResourceEditor {
       let renalH = model.Lyph.new({name: "Renal hilum"});
       let renalP = model.Lyph.new({name: "Renal parenchyma"});
       let renalC = model.Lyph.new({name: "Renal capsule"});
-
       var cLyphsGroup = [renalH, renalP, renalC];
-      //await Promise.all(cLyphsGroup.map(p => p.commit()));
-
+      await Promise.all(cLyphsGroup.map(p => p.commit()));
       let kidney = model.Lyph.new({name: "Kidney", layers: cLyphsGroup});
-      //await kidney.commit();
+      await kidney.commit();
+      let kidneyLobus = model.Lyph.new({name: "Kidney lobus"});
+      await kidneyLobus.commit();
 
-      let layers = Array.from(kidney.layers);
-      let parts = Array.from(kidney.parts);
+      let slp = model.OmegaTree.new({name: "Short Looped Nephrone"});
+      await slp.commit();
 
-      kidney.p('measurables').subscribe(
-        x => {
-          let measurablesP = Array.from(x);
-        }
-      );
+      let cytosol = model.Lyph.new({name: "Cytosol"});
+      await cytosol.commit();
+      let plasmaM = model.Lyph.new({name: "Plasma membrain"});
+      await plasmaM.commit();
 
-      let measurable1 = model.Measurable.new({name: "Measurable 1"});
-      kidney.measurables = [measurable1];
-
-      let measurable2 = model.Measurable.new({name: "Measurable 2"});
-      kidney.measurables.add(measurable2);
-
-      //let kidneyLobus = model.Lyph.new({name: "Kidney lobus"});
-      //await kidneyLobus.commit();
-
+      let cell = model.Lyph.new({name: "Cell", layers: [cytosol, plasmaM]});
+      await cell.commit();
     })();
 
   }

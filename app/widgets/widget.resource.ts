@@ -3,6 +3,7 @@
  */
 import {Component, Input} from '@angular/core';
 import {OmegaTreeWidget} from './view.omegaTree';
+import {OmegaTreeInfoWidget} from './view.omegaTreeInfo';
 import {LyphWidget} from './view.lyph';
 import {ResourceName} from '../services/utils.model';
 import {ResizeService} from '../services/service.resize';
@@ -14,14 +15,31 @@ import {Subscription}   from 'rxjs/Subscription';
   template : `
     <div class="panel panel-default">
       <div class="panel-heading">Resource <strong>{{item?.id}}{{(item)? ': ' + item.name : ''}}</strong></div>
-      <omega-tree *ngIf="item && (item.class == ResourceName.OmegaTree)" [item]="item"></omega-tree>  
+      <div class="btn-group" *ngIf="item && (item.class == ResourceName.OmegaTree)">
+        <button type="button" class="btn btn-default btn-icon" 
+          [ngClass]="{'active': layout == 'tree'}" (click)="layout = 'resource'">
+          <img class="icon" src="images/resource.png"/>
+        </button>
+        <button type="button" class="btn btn-default btn-icon" 
+          [ngClass]="{'active': layout == 'stats'}" (click)="layout = 'info'">
+          <span class="glyphicon glyphicon-info-sign"></span>
+        </button>
+      </div>
+
+      <omega-tree *ngIf="item && (layout == 'resource') && (item.class == ResourceName.OmegaTree)" [item]="item"></omega-tree>  
+      <omega-tree-info *ngIf="item && (layout == 'info') && (item.class == ResourceName.OmegaTree)" [item]="item"></omega-tree-info>  
+
       <lyph *ngIf="item && (item.class == ResourceName.Lyph)" [item]="item"></lyph>  
+      
     </div> 
   `,
-  directives: [OmegaTreeWidget, LyphWidget]
+  directives: [OmegaTreeWidget, OmegaTreeInfoWidget, LyphWidget]
 })
 export class ResourceWidget{
   @Input() item: any;
+
+  layout: string = 'resource';
+
   ResourceName = ResourceName;
   subscription: Subscription;
 
@@ -44,5 +62,4 @@ export class ResourceWidget{
   }
 
   ngOnDestroy() {this.subscription.unsubscribe();}
-
 }

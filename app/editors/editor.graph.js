@@ -87,13 +87,6 @@ var GraphEditor = (function () {
                 }, { createAxis: true, createRadialBorders: true });
                 var concentration = utils_model_1.model.Measurable.new({ name: "Concentration of water" });
                 concentration.locations.add(brain);
-                /*
-                        let body = model.Lyph.new({name: "Body"});
-                        let blood = model.Lyph.new({name: "Blood"});
-                        let bloodType = model.Type.new({name: blood.name, definition: blood});
-                        body.types.add(bloodType);
-                        body.commit();
-                */
             });
         })();
     }

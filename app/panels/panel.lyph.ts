@@ -1,7 +1,7 @@
 /**
  * Created by Natallia on 6/17/2016.
  */
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {MaterialPanel} from "./panel.material";
 import {MultiSelectInput, SingleSelectInput} from '../components/component.select';
 import {RepoNested} from '../repos/repo.nested';
@@ -11,6 +11,8 @@ import {TemplateValue} from '../components/component.templateValue';
 import {ResourceName} from '../services/utils.model';
 import {model} from "../services/utils.model";
 const {Measurable} = model;
+
+import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
   selector: 'lyph-panel',
@@ -44,18 +46,6 @@ const {Measurable} = model;
             [item]="item.length"
             (updated)="updateProperty('length', $event)">
         </template-value>
-        
-        <!--Auxilliary field: measurables to generate-->
-        <!--TODO: replace with modal-->
-        <!--<generateFromSupertype>-->
-          <!--<div class="generate-control">-->
-            <!--<label for="measurablesToReplicate"><img class="icon" src="images/measurable.png"/> Measurables to generate </label>-->
-            <!--<select-input [items]="measurablesToReplicate" -->
-              <!--(updated)="measurablesToReplicate = $event"-->
-              <!--[options]="supertypeMeasurables">-->
-            <!--</select-input>-->
-          <!--</div>-->
-        <!--</generateFromSupertype>-->
         
         <relationGroup>   
           <!--Nodes-->
@@ -216,10 +206,34 @@ const {Measurable} = model;
        
         <ng-content></ng-content>  
         
-    </material-panel>
+<!--
+        <button type="button" class="btn btn-default" (click)="modal.open()">Open me!</button>
+-->
+
+        <modal #myModal>
+          <modal-header [show-close]="true">
+              <h4 class="modal-title">Select supertype measurables to replicate</h4>
+          </modal-header>
+          <modal-body>
+              <li *ngFor="let option of supertypeMeasurables; let i = index">
+                <a class="small" href="#">
+                <input type="checkbox" 
+                  [(ngModel)]="option.selected" 
+                  (ngModelChange)="measurablesToReplicateChanged(option)"/>&nbsp;
+                {{option.value.name}}</a>
+              </li>
+          </modal-body>
+          <modal-footer>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismiss()">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="close()">Ok</button>
+          </modal-footer>
+        </modal>
+          
+    </material-panel>  
+    
   `,
   directives: [MaterialPanel, MultiSelectInput, SingleSelectInput,
-    RepoNested, BorderPanel, TemplateValue],
+    RepoNested, BorderPanel, TemplateValue, MODAL_DIRECTIVES],
   pipes: [SetToArray]
 })
 export class LyphPanel extends MaterialPanel{
@@ -236,40 +250,57 @@ export class LyphPanel extends MaterialPanel{
     this.patchesIgnore = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
     this.partsIgnore   = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
     this.segmentsIgnore = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
+ }
 
-/*  if (this.item){
-      this.item.p('layers').subscribe(x => {
-        console.log("Layers updated", x);
-      });
-      this.item.p('parts').subscribe(x => {
-        console.log("Parts updated", x);
-      })
-    }*/
+  //Measurable replication
+
+  supertypeMeasurables : Array <any> = [];
+  measurablesToReplicate: Set<any> = new Set<any>();
+
+  @ViewChild('myModal')
+  modal: ModalComponent;
+
+  close() {
+    if (this.measurablesToReplicate.size > 0){
+      let protoMeasurables = Array.from(this.measurablesToReplicate);
+      for (let protoMeasurable of protoMeasurables){
+        let newMeasurable = model.Measuarable.new(protoMeasurable);
+        newMeasurable.location = this.item;
+      }
+    }
   }
 
-  supertypeMeasurables  : Array <any> = [];
-  measurablesToReplicate: Array <any> = [];
+  open() {
+    this.modal.open();
+  }
+
+  dismiss() {}
 
   generateMeasurables() {
-    this.supertypeMeasurables = [];
+    let allSupertypeMeasurables = [];
     for (let type of this.item.types) {
       for (let supertype of type.supertypes) {
-        if (supertype.measurables) {
-          let supertypeMeasurables = Array.from(new Set(supertype.measurables.map((item:any) => item.type)));
+        if (supertype.definition && supertype.definition.measurables) {
+          let supertypeMeasurables = Array.from(new Set(supertype.definition.measurables.map((item:any) => item.type)));
           for (let supertypeMeasurable of supertypeMeasurables) {
-            if (this.supertypeMeasurables.indexOf(supertypeMeasurable) < 0)
-              this.supertypeMeasurables.push(supertypeMeasurable);
+            if (allSupertypeMeasurables.indexOf(supertypeMeasurable) < 0)
+              allSupertypeMeasurables.push(supertypeMeasurable);
           }
         }
       }
     }
-    console.log("Supertype measurables", this.supertypeMeasurables);
 
-    this.measurablesToReplicate = Array.from(this.supertypeMeasurables);
-    for (let measurable of this.measurablesToReplicate) {
-      delete measurable["id"];
-      let newMeasurable = Measurable.new(measurable);
-      newMeasurable.locations.add(this.item);
-    }
+    console.log("Supertype measurables", allSupertypeMeasurables);
+
+    this.supertypeMeasurables = Array.from(allSupertypeMeasurables).map(x => {return {value: x, selected: this.measurablesToReplicate.has(x)}});
+
+    this.open();
+  }
+
+  measurablesToReplicateChanged(option: any){
+    if ( this.measurablesToReplicate.has(option.value) && !option.selected)
+      this.measurablesToReplicate.delete(option.value);
+    if (!this.measurablesToReplicate.has(option.value) && option.selected)
+      this.measurablesToReplicate.add(option.value);
   }
 }

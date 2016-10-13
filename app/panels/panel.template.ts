@@ -26,7 +26,7 @@ import {SetToArray, HideClass} from "../transformations/pipe.general";
       </toolbar>
       
       <!--Species-->
-      <div class="input-control" *ngIf="includeProperty('species')">
+      <div class="input-control input-control-lg" *ngIf="includeProperty('species')">
         <label for="species">Species: </label>
         <input type="text" class="form-control" [(ngModel)]="item.species">
       </div>

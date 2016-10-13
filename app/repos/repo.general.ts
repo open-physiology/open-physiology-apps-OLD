@@ -109,7 +109,6 @@ export class RepoGeneral extends RepoAbstract{
   hiddenTypesChanged(option: any){
     if ( this.ignoreTypes.has(option.value) &&  option.selected) this.ignoreTypes.delete(option.value);
     if (!this.ignoreTypes.has(option.value) && !option.selected) this.ignoreTypes.add(option.value);
-    console.log(this.ignoreTypes);
   }
 
   get hiddenTypes () {

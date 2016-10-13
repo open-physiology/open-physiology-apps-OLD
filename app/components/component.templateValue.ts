@@ -7,7 +7,7 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
   "inputs": ["caption", "item", "min", "max", "step"],
   "selector": "template-value",
   "template": `
-      <div class="input-control">
+      <div class="input-control input-control-md">
         <label for="caption">{{caption}}:</label>
         
         <div class="btn-group" style="float: left;">
@@ -24,68 +24,76 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
             <span class="glyphicon glyphicon-random"></span>
           </button>
         </div>
-        
-        <input *ngIf="valueType == 'Value'" 
-          type="number" class="form-control" 
-           [min] ="min? min: 0" 
-           [max] ="max? max: 10" 
-           [step]="step? step: 1" 
+      </div>
+      
+      <div class="input-control input-control-sm" *ngIf="valueType == 'Value'">
+        <label>Value:</label>
+        <input type="number" class="form-control" 
+           [min] ="min" 
+           [max] ="max" 
+           [step]="step" 
            [(ngModel)]="value" 
            (ngModelChange)="updated.emit(value)"/>
-        
-        <fieldset *ngIf="(valueType == 'Range') || (valueType == 'Distribution')">
+      </div>
+
+      <div class="input-control" *ngIf="(valueType == 'Range') || (valueType == 'Distribution')">
+        <label>{{(valueType == 'Range')? "Range": "Distribution"}}:</label>
+        <fieldset >
           <!--Min--> 
-          <div class="input-control">
+          <div class="input-control input-control-sm">
             <label for="min">Min: </label>
             <input type="number" class="form-control" 
-              [min] ="min? min: 0" 
-              [max] ="max? max: 10" 
-              [step]="step? step: 1" 
+              [min] ="min" 
+              [max] ="max" 
+              [step]="step" 
               [(ngModel)]="valueSet.min"
               (ngModelChange)="updated.emit(valueSet)">
           </div>
           <!--Max-->
-          <div class="input-control">
+          <div class="input-control input-control-sm">
             <label for="max">Max: </label>
             <input type="number" class="form-control" 
-              [min] ="min? min: 0" 
-              [max] ="max? max: 10" 
-              [step]="step? step: 1" 
+              [min] ="min" 
+              [max] ="max" 
+              [step]="step" 
               [(ngModel)]="valueSet.max"
               (ngModelChange)="updated.emit(valueSet)">
           </div>
-          <div *ngIf="valueType == 'Distribution'">
+          <div *ngIf="valueType == 'Distribution'" style="display: inline-block">
             <!--Mean-->
-            <div class="input-control">
+            <div class="input-control input-control-sm">
               <label for="mean">Mean: </label>
               <input type="number" class="form-control" 
-              [min] ="min? min: 0" 
-              [max] ="max? max: 10" 
-              [step]="step? step: 1" 
+              [min] ="min" 
+              [max] ="max" 
+              [step]="step" 
               [(ngModel)]="valueSet.mean"
               (ngModelChange)="updated.emit(valueSet)">
             </div>
             <!--Std-->
-            <div class="input-control">
+            <div class="input-control input-control-sm">
               <label for="std">Std: </label>
               <input type="number" class="form-control" 
-              [min] ="min? min: 0" 
-              [max] ="max? max: 10" 
-              [step]="step? step: 1" 
+              [min] ="min" 
+              [max] ="max" 
+              [step]="step" 
               [(ngModel)]="valueSet.std"
               (ngModelChange)="updated.emit(valueSet)">
             </div>
           </div>
         </fieldset>
-        
-       </div>
+      </div>
    `,
   "styles": [`input {width: 60px;}`]
 })
 export class TemplateValue{
   @Input() item: any;
+  @Input() min: number = 0;
+  @Input() max: number = 10;
+  @Input() step: number = 1;
+
   value: number = 0;
-  valueSet: any = {min: 0, max: 0, std: 0, mean: 0};
+  valueSet: any = {};
   valueType: string = "Value";
   @Output() updated = new EventEmitter();
 

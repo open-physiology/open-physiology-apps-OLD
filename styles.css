@@ -1,4 +1,7 @@
-body { margin: 4px;}
+body {
+  margin: 4px;
+  overflow: hidden;
+}
 
 .icon {
   height: 16px;
@@ -37,7 +40,6 @@ body { margin: 4px;}
 }
 
 .panel-content{
-  /*padding: 4px;*/
   border: 1px solid #ccc;
 }
 
@@ -48,17 +50,37 @@ body { margin: 4px;}
   vertical-align:top;
 }
 
+.input-control-sm{
+  width: 68px;
+}
+
+.input-control-md{
+  width: 124px;
+}
+
+.input-control-lg{
+  width: 178px;
+}
+
+.input-select{
+  min-width: 100px;
+}
+
+#input{
+  width: 100%;
+}
+
 .input-control label {
   display: block;
 }
 
 .generate-control{
-  padding: 6px;
+  padding: 4px;
   display: inline-block;
   vertical-align:top;
   background-color: #eee;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 fieldset {
@@ -89,6 +111,16 @@ input[type=number] {
   height: 30px;
 }
 
+.form-control{
+  height: 30px;
+  box-shadow: none!important;
+}
+
+.form-control:focus {
+  border: 2px solid #ccc;
+  box-shadow: none!important;
+}
+
 .btn-header{
   width: 16px;
   height: 16px;
@@ -96,7 +128,7 @@ input[type=number] {
 }
 
 .control-group{
-  padding: 4px;
+  padding: 2px;
 }
 
 .dropdown-toggle{
@@ -206,6 +238,7 @@ div .dotted {
 /*Resizable windows styling*/
 
 .repo {
+  border: 0;
   border-right:3px #eee solid;
   min-width: 380px;
   min-height: 300px;
@@ -239,21 +272,17 @@ div .dotted {
   position: relative;
 }
 
-.form-control{
-  height: 30px;
-  box-shadow: none!important;
-}
-
-.form-control:focus {
-  border: 2px solid #ccc;
-  box-shadow: none!important;
-}
-
 .imtip {
   position: relative;
   bottom: 2px;
   left: 4px;
   width: 24px;
   height: 12px;
+}
+
+/*Select box height as in other inputs*/
+.ui-select-multiple.ui-select-bootstrap {
+  height: auto;
+  padding: 2px 0 0 2px;
 }
 

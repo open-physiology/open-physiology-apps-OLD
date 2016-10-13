@@ -81,20 +81,19 @@ var ResourceEditor = (function () {
                 var renalP = utils_model_1.model.Lyph.new({ name: "Renal parenchyma" });
                 var renalC = utils_model_1.model.Lyph.new({ name: "Renal capsule" });
                 var cLyphsGroup = [renalH, renalP, renalC];
-                //await Promise.all(cLyphsGroup.map(p => p.commit()));
+                yield Promise.all(cLyphsGroup.map(function (p) { return p.commit(); }));
                 var kidney = utils_model_1.model.Lyph.new({ name: "Kidney", layers: cLyphsGroup });
-                //await kidney.commit();
-                var layers = Array.from(kidney.layers);
-                var parts = Array.from(kidney.parts);
-                kidney.p('measurables').subscribe(function (x) {
-                    var measurablesP = Array.from(x);
-                });
-                var measurable1 = utils_model_1.model.Measurable.new({ name: "Measurable 1" });
-                kidney.measurables = [measurable1];
-                var measurable2 = utils_model_1.model.Measurable.new({ name: "Measurable 2" });
-                kidney.measurables.add(measurable2);
-                //let kidneyLobus = model.Lyph.new({name: "Kidney lobus"});
-                //await kidneyLobus.commit();
+                yield kidney.commit();
+                var kidneyLobus = utils_model_1.model.Lyph.new({ name: "Kidney lobus" });
+                yield kidneyLobus.commit();
+                var slp = utils_model_1.model.OmegaTree.new({ name: "Short Looped Nephrone" });
+                yield slp.commit();
+                var cytosol = utils_model_1.model.Lyph.new({ name: "Cytosol" });
+                yield cytosol.commit();
+                var plasmaM = utils_model_1.model.Lyph.new({ name: "Plasma membrain" });
+                yield plasmaM.commit();
+                var cell = utils_model_1.model.Lyph.new({ name: "Cell", layers: [cytosol, plasmaM] });
+                yield cell.commit();
             });
         })();
     }

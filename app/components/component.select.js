@@ -55,9 +55,9 @@ var MultiSelectInput = (function () {
         core_1.Component({
             selector: 'select-input',
             inputs: ['items', 'options', 'disabled'],
-            template: "\n    <div *ngIf=\"active\">\n      <ng-select\n        [items]       = \"options | setToArray | mapToOptions\"\n        [initData]    = \"items   | setToArray | mapToOptions\"\n        [multiple]    = \"true\"\n        [disabled]    = \"disabled\"\n        (data)        = \"refreshValue($event)\"\n      ></ng-select>\n    </div>\n    ",
+            template: "\n    <div *ngIf=\"active\">\n      <ng-select \n        [items]       = \"options | setToArray | mapToOptions\"\n        [initData]    = \"items   | setToArray | mapToOptions\"\n        [multiple]    = \"true\"\n        [disabled]    = \"disabled\"\n        (data)        = \"refreshValue($event)\"\n      ></ng-select>\n    </div>\n    ",
             directives: [ng2_select_1.SELECT_DIRECTIVES, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
-            pipes: [pipe_general_1.MapToOptions, pipe_general_1.SetToArray]
+            pipes: [pipe_general_1.MapToOptions, pipe_general_1.SetToArray],
         }), 
         __metadata('design:paramtypes', [])
     ], MultiSelectInput);

@@ -21,7 +21,7 @@ import {model} from "../services/utils.model";
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
       
         <!--Comment-->
-        <div class="input-control" *ngIf="includeProperty('comment')">
+        <div class="input-control input-control-lg" *ngIf="includeProperty('comment')">
           <label for="comment">{{getPropertyLabel('comment')}}: </label>
           <input type="text" [(ngModel)]="item.comment">
         </div>
