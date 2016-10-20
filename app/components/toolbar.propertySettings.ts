@@ -10,7 +10,7 @@ import {Draggable} from "../directives/directive.draggable";
   selector: 'property-toolbar',
   inputs: ['options', 'transform'],
   template: `
-    <div class="dropdown" dropdown>
+    <div class="dropdown pull-right" dropdown>
       <button type="button" class="btn btn-default btn-icon"  dropdown-open>
         <span class="glyphicon glyphicon-list"></span>
       </button>
@@ -24,7 +24,6 @@ import {Draggable} from "../directives/directive.draggable";
       </ul>
     </div>
     `,
-  styles: [':host {float: right;}'],
   directives:[DROPDOWN_DIRECTIVES, RADIO_GROUP_DIRECTIVES, Draggable]
 })
 export class PropertyToolbar {

@@ -33,119 +33,29 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
           </button>
         </toolbar>
         
-        <!--Thickness-->
-        <template-value *ngIf="includeProperty('thickness')" 
-          [caption]="getPropertyLabel('thickness')" 
-          [item]="item.thickness"
-          (updated)="updateProperty('thickness', $event)"
-        ></template-value>
+        <!--Thickness, Length-->
+        <sizeGroup *ngFor = "let property of ['thickness', 'length']">
+          <template-value *ngIf="includeProperty(property)" 
+            [caption]="getPropertyLabel(property)" 
+            [item]="item.p(property) | async"
+            (updated)="updateProperty(property, $event)">
+          </template-value>
+        </sizeGroup>
         
-        <!--Length-->
-        <template-value *ngIf="includeProperty('length')" 
-            [caption]="getPropertyLabel('length')" 
-            [item]="item.length"
-            (updated)="updateProperty('length', $event)">
-        </template-value>
-        
-        <relationGroup>   
-          <!--Nodes-->
-          <div class="input-control" *ngIf="includeProperty('nodes')">
-            <repo-nested [caption]="getPropertyLabel('nodes')" 
-            [items]  = "item.p('nodes') | async | setToArray" 
-            (updated) = "updateProperty('nodes', $event)"
-            [selectionOptions] = "item.fields['nodes'].p('possibleValues') | async "
-            [types]  = "[ResourceName.Node]"
+        <!--Nodes, Measurables, Layers, Segments, Patches, Parts, Processes, 
+        Coalescences, IncomingProcesses, OutgoingProcesses-->
+        <relationGroup *ngFor="let property of 
+          ['nodes', 'measurables', 
+          'layers', 'segments', 'patches', 'parts',
+          'processes', 'coalescences', 'incomingProcesses', 'outgoingProcesses']">   
+          <div class="input-control" *ngIf="includeProperty(property)">
+            <repo-nested [caption]="getPropertyLabel(property)" 
+            [items]  = "item.p(property) | async | setToArray" 
+            [types]  = "getTypes(property)"
+            [selectionOptions] = "item.fields[property].p('possibleValues') | async "
+            (updated) = "updateProperty(property, $event)"
             (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
           </div> 
-        
-           <!--Measurables-->
-          <div class="input-control" *ngIf="includeProperty('measurables')">
-            <repo-nested [caption]="getPropertyLabel('measurables')" 
-            [items]  = "item.p('measurables') | async | setToArray" 
-            (updated) = "updateProperty('measurables', $event)"
-            [selectionOptions] = "item.fields['measurables'].p('possibleValues') | async"
-            [types]  = "[ResourceName.Measurable]"
-            (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div> 
-           
-          <!--Layers-->
-          <div class="input-control" *ngIf="includeProperty('layers')">
-            <repo-nested [caption]="getPropertyLabel('layers')" 
-            [items]  = "item.p('layers') | async | setToArray" 
-            [ignore] = "layersIgnore"
-            [options]="{ordered: true}"
-            (updated)= "updateProperty('layers', $event)" 
-            [types]  = "[item.class]"
-            (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>     
-               
-          <!--Segments-->
-          <div class="input-control" *ngIf="includeProperty('segments')">
-            <repo-nested [caption]="getPropertyLabel('segments')" 
-            [items] = "item.p('segments') | async | setToArray" 
-            [ignore]="segmentsIgnore"
-            [options]="{ordered: true}"
-            (updated)= "updateProperty('segments', $event)" 
-            [types]="[item.class]"
-            (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>     
-  
-          <!--Patches-->
-          <div class="input-control" *ngIf="includeProperty('patches')">
-            <repo-nested [caption]="getPropertyLabel('patches')" 
-            [items]  = "item.p('patches') | async | setToArray" 
-            [ignore] = "patchesIgnore"
-            [types]  = "[item.class]"
-            (updated)= "updateProperty('patches', $event)" 
-            (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-                  
-          <!--Parts-->
-          <div class="input-control" *ngIf="includeProperty('parts')">
-            <repo-nested [caption]="getPropertyLabel('parts')" 
-            [items]  = "item.p('parts') | async | setToArray" 
-            [ignore] = "partsIgnore"
-            [types]  = "[item.class]"
-            (updated)= "updateProperty('parts', $event)" 
-            (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-          
-          <!--Processes-->
-          <div class="input-control" *ngIf="includeProperty('processes')">
-            <repo-nested [caption]="getPropertyLabel('processes')" 
-             [items]  = "item.p('processes') | async | setToArray" 
-             [types]  = "[ResourceName.Process]" 
-             (updated)= "updateProperty('processes', $event)" 
-             (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-          
-           <!--Coalescences-->
-           <div class="input-control" *ngIf="includeProperty('coalescences')">
-            <repo-nested [caption]="getPropertyLabel('coalescences')" 
-             [items]  = "item.p('coalescences') | async | setToArray" 
-             [types]  = "[ResourceName.Coalescence]" 
-             (updated) = "updateProperty('coalescences', $event)" 
-             (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-            
-          <!--Incoming processes-->
-           <div class="input-control" *ngIf="includeProperty('incomingProcesses')">
-            <repo-nested [caption]="getPropertyLabel('incomingProcesses')" 
-             [items]  = "item.p('incomingProcesses') | async | setToArray" 
-             [types]  = "[ResourceName.Process]" 
-             (updated) = "updateProperty('incomingProcesses', $event)" 
-             (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-          
-          <!--Outgoing processes-->
-           <div class="input-control" *ngIf="includeProperty('outgoingProcesses')">
-            <repo-nested [caption]="getPropertyLabel('outgoingProcesses')" 
-             [items]  = "item.p('outgoingProcesses') | async | setToArray" 
-             [types]  = "[ResourceName.Process]" 
-             (updated) = "updateProperty('outgoingProcesses', $event)" 
-             (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-          
           <ng-content select="relationGroup"></ng-content>
         </relationGroup>     
         
@@ -157,34 +67,23 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
             <label for="axis">{{getPropertyLabel('axis')}}: </label>
             <border-panel [item]="item.p('axis') | async" 
               [options]="borderOptions"
-              (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)"
+              (propertyUpdated) = "propertyUpdated.emit($event)" 
+              (highlightedItemChange)="highlightedItemChange.emit($event)"
               (saved)  = "updateProperty('axis', $event)">
             </border-panel>
           </div>              
         
-          <!--RadialBorders-->        
-          <div class="input-control" *ngIf="item.radialBorders">      
-            <label for="radialBorders">{{getPropertyLabel('radialBorders')}}: </label>
-             <repo-nested [caption]="getPropertyLabel('radialBorders')" 
-               [items]  = "item.p('radialBorders') | async | setToArray" 
-               [types]  = "[ResourceName.Border]" 
-               [options] = "borderOptions"
-               (updated) = "updateProperty('radialBorders', $event)"
-               (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-          
-          <!--LongitudinalBorders-->        
-          <div class="input-control"  *ngIf="item.longitudinalBorders">      
-            <label for="longitudinalBorders">{{getPropertyLabel('longitudinalBorders')}}: </label>
-             <repo-nested [caption]="getPropertyLabel('longitudinalBorders')" 
-               [items]  = "item.p('longitudinalBorders') | async | setToArray" 
-               [types]  = "[ResourceName.Border]" 
-               [options] = "borderOptions"
-               (updated) = "updateProperty('longitudinalBorders', $event)"
-               (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-          
-          <ng-content select="borderGroup"></ng-content>
+          <borderGroup *ngFor="let property of ['radialBorders', 'longitudinalBorders']">
+            <div class="input-control" *ngIf="item[property]">      
+              <repo-nested [caption]="getPropertyLabel(property)" 
+                 [items]  = "item.p(property) | async | setToArray" 
+                 [types]  = "getTypes(property)" 
+                 [options] = "borderOptions"
+                 (updated) = "updateProperty(property, $event)"
+                 (highlightedItemChange)="highlightedItemChange.emit($event)">
+              </repo-nested>
+            </div>
+          </borderGroup>
         </fieldset>
         
         <!--TreeParent-->
@@ -244,6 +143,24 @@ export class LyphPanel extends MaterialPanel{
   partsIgnore   : Set<string> = new Set<string>();
   segmentsIgnore: Set<string> = new Set<string>();
 
+  //TODO ignore Axis if not set
+
+  getTypes(property: string): any{
+    //console.log("fields[property]", this.item.fields[property]);
+    //console.log("fields[property].class", this.item.fields[property].class);
+    switch (property){
+      case "nodes": return [this.ResourceName.Node];
+      case "measurables": return [this.ResourceName.Measurable];
+      case "incomingProcesses":
+      case "outgoingProcesses":
+      case "processes": return [this.ResourceName.Process];
+      case "coalescences": return [this.ResourceName.Coalescence];
+      case "radialBorders":
+      case "longitudinalBorders": return [this.ResourceName.Border];
+    }
+    return [this.item.class];
+  }
+
   ngOnInit(){
     super.ngOnInit();
     this.layersIgnore  = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
@@ -290,7 +207,7 @@ export class LyphPanel extends MaterialPanel{
       }
     }
 
-    console.log("Supertype measurables", allSupertypeMeasurables);
+    //console.log("Supertype measurables", allSupertypeMeasurables);
 
     this.supertypeMeasurables = Array.from(allSupertypeMeasurables).map(x => {return {value: x, selected: this.measurablesToReplicate.has(x)}});
 

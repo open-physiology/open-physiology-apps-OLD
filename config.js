@@ -17,7 +17,10 @@ System.config({
       "main": "index.js",
       "defaultExtension": "js"
     },
-    'symbol-observable': { "defaultExtension": 'js', "main": 'index.js'},
+    "symbol-observable": {
+      "defaultExtension": "js",
+      "main": "index.js"
+    },
     "ng2-select": {
       "main": "notify.js",
       "defaultExtension": "js"
@@ -25,7 +28,7 @@ System.config({
     "ng2-toasty": {
       "defaultExtension": "js"
     },
-    'ng2-bs3-modal': {
+    "ng2-bs3-modal": {
       "defaultExtension": "js"
     },
     "ng2-bootstrap": {
@@ -61,7 +64,6 @@ System.config({
       "main": "index.js",
       "defaultExtension": "js"
     },
-
     "@angular/common": {
       "main": "common.umd.js",
       "defaultExtension": "js"
@@ -103,30 +105,31 @@ System.config({
   map: {
     "@angular": "node_modules/@angular",
     "angular2-in-memory-web-api": "node_modules/angular2-in-memory-web-api",
-    'symbol-observable': 'node_modules/symbol-observable',
-    "babel-polyfill": "jspm_packages/npm/babel-polyfill@6.9.1/dist/polyfill.js",
+    "babel-polyfill": "npm:babel-polyfill@6.9.1/dist/polyfill.js",
     "css": "github:systemjs/plugin-css@0.1.23",
+    "cytoscape": "npm:cytoscape@2.7.10",
     "d3": "npm:d3@4.1.1",
     "golden-layout": "npm:golden-layout@1.5.1",
     "jquery": "npm:jquery@3.1.0",
+    "lyph-edit-widget": "node_modules/lyph-edit-widget/dist",
     "ng2-bootstrap": "node_modules/ng2-bootstrap",
+    "ng2-bs3-modal": "node_modules/ng2-bs3-modal",
     "ng2-dnd": "node_modules/ng2-dnd",
+    "ng2-dropdown": "node_modules/ng2-dropdown",
     "ng2-nvd3": "node_modules/ng2-nvd3",
     "ng2-radio-group": "node_modules/ng2-radio-group",
     "ng2-select": "node_modules/ng2-select",
     "ng2-slider": "node_modules/ng2-slider-component",
-    "ng2-dropdown": "node_modules/ng2-dropdown",
     "ng2-toastr": "node_modules/ng2-toastr",
     "ng2-toasty": "node_modules/ng2-toasty",
-    'ng2-bs3-modal': "node_modules/ng2-bs3-modal",
     "nvd3": "npm:nvd3@1.8.4",
     "open-physiology-model": "node_modules/open-physiology-model/dist",
-    "lyph-edit-widget": "node_modules/lyph-edit-widget/dist",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.12",
     "plugin-babel-runtime": "npm:babel-runtime@5.8.38",
     "rx": "node_modules/rx",
     "rxjs": "node_modules/rxjs",
-    "systemjs-babel-build": "jspm_packages/npm/systemjs-plugin-babel@0.0.12/systemjs-babel-browser.js",
+    "symbol-observable": "node_modules/symbol-observable",
+    "systemjs-babel-build": "npm:systemjs-plugin-babel@0.0.12/systemjs-babel-browser.js",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
@@ -147,8 +150,14 @@ System.config({
     "github:jspm/nodelibs-https@0.1.0": {
       "https-browserify": "npm:https-browserify@0.0.0"
     },
+    "github:jspm/nodelibs-os@0.1.0": {
+      "os-browserify": "npm:os-browserify@0.1.2"
+    },
+    "github:jspm/nodelibs-path@0.1.0": {
+      "path-browserify": "npm:path-browserify@0.0.0"
+    },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.5"
+      "process": "npm:process@0.11.9"
     },
     "github:jspm/nodelibs-stream@0.1.0": {
       "stream-browserify": "npm:stream-browserify@1.0.0"
@@ -175,12 +184,18 @@ System.config({
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "ieee754": "npm:ieee754@1.1.6",
+      "ieee754": "npm:ieee754@1.1.8",
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:cytoscape@2.7.10": {
+      "os": "github:jspm/nodelibs-os@0.1.0",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:d3-brush@1.0.1": {
       "d3-dispatch": "npm:d3-dispatch@1.0.0",
@@ -299,7 +314,13 @@ System.config({
     "npm:nvd3@1.8.4": {
       "d3": "npm:d3@3.5.17"
     },
-    "npm:process@0.11.5": {
+    "npm:os-browserify@0.1.2": {
+      "os": "github:jspm/nodelibs-os@0.1.0"
+    },
+    "npm:path-browserify@0.0.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:process@0.11.9": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"

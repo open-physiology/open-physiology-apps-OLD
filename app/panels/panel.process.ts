@@ -19,7 +19,8 @@ import {RepoNested} from "../repos/repo.nested";
       (saved)    = "saved.emit($event)"
       (canceled) = "canceled.emit($event)"
       (removed)  = "removed.emit($event)"
-      (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
+      (propertyUpdated) = "propertyUpdated.emit($event)" 
+      (highlightedItemChange)="highlightedItemChange.emit($event)">
         
       <!--TransportPhenomenon-->
         <div class="input-control" *ngIf="includeProperty('transportPhenomenon')">
@@ -32,77 +33,45 @@ import {RepoNested} from "../repos/repo.nested";
           </fieldset>
         </div>
           
-        <!--ConveyingLyph-->
-      <div class="input-control" *ngIf="includeProperty('conveyingLyph')">
-        <label for="conveyingLyph">{{getPropertyLabel('conveyingLyph')}}: </label>
-        <select-input [items] = "item.p('conveyingLyph') | async"
-         (updated) = "updateProperty('conveyingLyph', $event)"    
-         [options] = "item.fields['conveyingLyph'].p('possibleValues') | async"></select-input>
-      </div>
-      
-      <!--SourceLyph-->
-      <div class="input-control" *ngIf="includeProperty('sourceLyph')">      
-        <label for="sourceLyph">{{getPropertyLabel('sourceLyph')}}: </label>
-        <select-input-1 [item] = "item.p('sourceLyph') | async" 
-          (updated) = "onLyphChange('sourceLyph', $event)"  
-          [options] = "item.fields['sourceLyph'].p('possibleValues') | async"></select-input-1>
-      </div>
-      
-      <!--TargetLyph-->
-      <div class="input-control" *ngIf="includeProperty('targetLyph')">      
-        <label for="targetLyph">{{getPropertyLabel('targetLyph')}}: </label>
-        <select-input-1 [item] = "item.p('targetLyph') | async" 
-          (updated) = "onLyphChange('targetLyph', $event)"   
-          [options] = "item.fields['targetLyph'].p('possibleValues') | async"></select-input-1>
-      </div>        
-      
-      <!--Source-->
-      <div class="input-control" *ngIf="includeProperty('source')">      
-        <label for="source">{{getPropertyLabel('source')}}: </label>
-        <select-input-1 [item] = "item.p('source') | async" 
-          (updated) = "updateProperty('source', $event)"   
-          [options] = "sourceOptions"></select-input-1>
-      </div>
-      
-      <!--Target-->
-      <div class="input-control" *ngIf="includeProperty('target')">      
-        <label for="target">{{getPropertyLabel('target')}}: </label>
-        <select-input-1 [item] = "item.p('target') | async" 
-          (updated) = "updateProperty('target', $event)"  
-          [options] = "targetOptions"></select-input-1>
-      </div>   
-          
-       <!--Materials-->
-      <div class="input-control" *ngIf="includeProperty('materials')">
-        <label for="meterials">{{getPropertyLabel('materials')}}: </label>
-        <select-input [items]="item.p('materials') | async" 
-        (updated)="updateProperty('materials', $event)" 
-         [options]="item.fields['materials'].p('possibleValues') | async"></select-input>
-      </div> 
-        
-       <relationGroup>
-        <!--Segments-->
-        <div class="input-control" *ngIf="includeProperty('segments')">
-          <repo-nested [caption]="getPropertyLabel('segments')" 
-          [items]="item.p('segments') | async | setToArray" 
-          (updated)="updateProperty('segments', $event)" 
-          [types]="[ResourceName.Process]"
-          (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
+      <!--ConveyingLyph, Materials-->
+      <multiSelectGroup *ngFor="let property of ['conveyingLyph','materials']">
+         <div class="input-control" *ngIf="includeProperty(property)">
+            <label>{{getPropertyLabel(property)}}: </label>
+            <select-input [items] = "item.p(property) | async"
+             (updated) = "updateProperty(property, $event)"    
+             [options] = "item.fields[property].p('possibleValues') | async">
+            </select-input>
         </div>
-        
-        <!--Channels-->
-        <div class="input-control" *ngIf="includeProperty('channels')">
-          <repo-nested [caption]="getPropertyLabel('channels')" 
-          [items]="item.p('channels') | async | setToArray" 
-          (updated)="updateProperty('channels', $event)"           
-          [types]="[ResourceName.Process]"
-          (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
+        <ng-content select="multiSelectGroup"></ng-content>
+      </multiSelectGroup>
+
+      <!--SourceLyph, TargetLyph, Source, Target-->
+      <selectGroup *ngFor="let property of ['sourceLyph','targetLyph', 'source', 'target']">
+        <div class="input-control" *ngIf="includeProperty(property)">      
+          <label>{{getPropertyLabel(property)}}: </label>
+          <select-input-1 [item] = "item.p(property) | async" 
+            (updated) = "updateProperty(property, $event)"  
+            [options] = "item.fields[property].p('possibleValues') | async">
+          </select-input-1>
         </div>
-      
+        <ng-content select="selectGroup"></ng-content>
+      </selectGroup>
+           
+      <!--Channels, Segments, Measurables-->  
+      <relationGroup *ngFor="let property of ['segments', 'channels', 'measurables']">
+        <div class="input-control" *ngIf="includeProperty(property)">
+          <repo-nested 
+            [caption]="getPropertyLabel(property)" 
+            [items]  ="item.p(property) | async | setToArray" 
+            [types]  ="getTypes(property)"
+            (updated)="updateProperty(property, $event)" 
+            (highlightedItemChange)="highlightedItemChange.emit($event)">
+          </repo-nested>
+        </div>
         <ng-content select="relationGroup"></ng-content>
       </relationGroup>
        
-        <ng-content></ng-content>  
+      <ng-content></ng-content>  
    
     </template-panel>
   `,
@@ -110,9 +79,15 @@ import {RepoNested} from "../repos/repo.nested";
   pipes: [SetToArray]
 })
 export class ProcessPanel extends TemplatePanel{
+  sourceOptions = [];
+  targetOptions = [];
 
-  sourceOptions = {};
-  targetOptions = {};
+  getTypes(property: string): any{
+    switch (property){
+      case "measurables": return [this.ResourceName.Measurable];
+    }
+    return [this.item.class];
+  }
 
   ngOnInit(){
     super.ngOnInit();
@@ -140,19 +115,19 @@ export class ProcessPanel extends TemplatePanel{
       });
   }
 
-  onLyphChange(property: string, lyph: any){
+  updateProperty(property: string, lyph: any){
     super.updateProperty(property, lyph);
     if (!lyph) return;
     if (property == "sourceLyph"){
       this.sourceOptions = lyph.nodes;
-      if (this.source){
-        if (this.sourceOptions.indexOf(this.source) < 0) this.source = null;
+      if (this.item.source){
+        if (this.sourceOptions.indexOf(this.item.source) < 0) this.item.source = null;
       }
     }
     if (property == "targetLyph"){
       this.targetOptions = lyph.nodes;
-      if (this.target){
-        if (this.targetOptions.indexOf(this.target) < 0) this.target = null;
+      if (this.item.target){
+        if (this.targetOptions.indexOf(this.item.target) < 0) this.item.target = null;
       }
     }
   }

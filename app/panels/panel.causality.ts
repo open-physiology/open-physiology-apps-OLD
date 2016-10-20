@@ -19,22 +19,17 @@ import {model} from "../services/utils.model";
       (removed)  = "removed.emit($event)"
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
       
-       <!--Cause-->
-      <div class="input-control" *ngIf="includeProperty('cause')">      
-        <label for="cause">{{getPropertyLabel('cause')}}: </label>
-        <select-input-1 [item] = "item.p('cause') | async" 
-          (updated)="updateProperty('cause', $event)"    
-          [options] = "item.fields['cause'].p('possibleValues') | async"></select-input-1>
-      </div>
-      
-      <!--Effect-->
-      <div class="input-control" *ngIf="includeProperty('effect')">      
-        <label for="effect">{{getPropertyLabel('effect')}}: </label>
-        <select-input-1 [item] = "item.p('effect') | async" 
-          (updated) = "updateProperty('effect', $event)"    
-          [options] = "item.fields['effect'].p('possibleValues') | async"></select-input-1>
-      </div>
-      
+      <!--Cause, Effect-->
+      <selectGroup *ngFor="let property of ['cause', 'effect']">
+        <div class="input-control" *ngIf="includeProperty(property)">      
+          <label>{{getPropertyLabel(property)}}: </label>
+          <select-input-1 [item] = "item.p(property) | async" 
+            (updated) = "updateProperty(property, $event)"  
+            [options] = "item.fields[property].p('possibleValues') | async">
+          </select-input-1>
+        </div>
+        <ng-content select="selectGroup"></ng-content>
+      </selectGroup>
       <ng-content></ng-content>      
     
     </template-panel>

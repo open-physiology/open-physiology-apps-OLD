@@ -1,8 +1,8 @@
 /**
  * Created by Natallia on 10/9/2016.
  */
-import {Component, Input, ElementRef, Renderer} from '@angular/core';
-import {getTreeData, compareLinkedParts, ResourceName} from "../services/utils.model";
+import {Component, Input} from '@angular/core';
+import {getTreeData, compareLinkedParts, ResourceName, getOmegaTreeData} from "../services/utils.model";
 import {nvD3} from 'ng2-nvd3/lib/ng2-nvd3';
 
 declare var $:any;
@@ -41,14 +41,14 @@ export class OmegaTreeInfoWidget{
 
   ngOnChanges(changes: { [propName: string]: any }) {
     if (this.item) {
-      this.getOmegaTreeInfo(this.item);
+      this.getDistributionData(this.item);
     } else {
       this.thicknessData = [];
       this.lengthData = [];
     }
   }
 
-  getOmegaTreeInfo(item: any){
+  getDistributionData(item: any){
     let relations = new Set<string>().add("parts");
     let treeData = getTreeData(item, relations, -1); //creates structure for d3 tree out of item.parts
     let parts = treeData.children;
@@ -101,4 +101,9 @@ export class OmegaTreeInfoWidget{
       }
     }
   }
+
+  getLevelSizeData(item: any){
+    let tree = getOmegaTreeData(item);
+  }
+
 }

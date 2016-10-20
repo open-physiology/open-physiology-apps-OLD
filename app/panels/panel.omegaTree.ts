@@ -21,14 +21,18 @@ import {model} from "../services/utils.model";
       (propertyUpdated) = "onPropertyUpdate($event)">
       
       <!--Root-->
-      <div class="input-control" *ngIf="includeProperty('root')">      
-        <label for="root">{{getPropertyLabel('root')}}: </label>
-        <select-input [items] = "item.p('root') | async" 
-          (updated) = "updateProperty('root', $event)"   
-          [options] = "item.fields['root'].p('possibleValues') | async"></select-input>
-      </div>
+      <multiSelectGroup *ngFor="let property of ['root']">
+         <div class="input-control" *ngIf="includeProperty(property)">
+            <label>{{getPropertyLabel(property)}}: </label>
+            <select-input [items] = "item.p(property) | async"
+             (updated) = "updateProperty(property, $event)"    
+             [options] = "item.fields[property].p('possibleValues') | async">
+            </select-input>
+        </div>
+        <ng-content select="multiSelectGroup"></ng-content>
+      </multiSelectGroup>
       
-       <relationGroup>
+      <relationGroup>
         <!--Parts-->
         <div class="input-control" *ngIf="includeProperty('parts')">
            <repo-nested [caption]="getPropertyLabel('parts')" 

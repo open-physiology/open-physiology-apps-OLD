@@ -18,29 +18,30 @@ import {TemplateValue} from '../components/component.templateValue';
       (removed)  = "removed.emit($event)"
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
       
-      <!--Supertypes-->
-      <div class="input-control" *ngIf="includeProperty('supertypes')">
-        <label for="supertypes">{{getPropertyLabel('supertypes')}}: </label>
-        <select-input [items]="item.p('supertypes') | async" 
-        (updated)="updateProperty('supertypes', $event)" 
-        [options]="item.constructor.p('all') | async"></select-input>
-      </div>
-      
-      <!--Subtypes-->
-      <div class="input-control" *ngIf="includeProperty('subtypes')">
-        <label for="subtypes">{{getPropertyLabel('subtypes')}}: </label>
-        <select-input [items]="item.p('subtypes') | async" 
-          (updated)="updateProperty('subtypes', $event)" 
-        [options]="item.constructor.p('all') | async"></select-input>
-      </div>
+      <!--Supertypes, SubTypes -->
+      <multiSelectGroup *ngFor="let property of ['supertypes', 'subtypes']">
+         <div class="input-control" *ngIf="includeProperty(property)">
+            <label>{{getPropertyLabel(property)}}: </label>
+            <select-input [items] = "item.p(property) | async"
+             (updated) = "updateProperty(property, $event)"    
+             [options] = "item.fields[property].p('possibleValues') | async">
+            </select-input>
+        </div>
+        <ng-content select="multiSelectGroup"></ng-content>
+      </multiSelectGroup>
       
       <!--Definition-->
-      <div class="input-control" *ngIf="includeProperty('definition')">      
-        <label for="target">{{getPropertyLabel('definition')}}: </label>
-         <select-input-1 [item] = "item.p('definition') | async"
-         (updated) = "updateProperty('definition', $event)"    
-         [options] = "item.fields['definition'].p('possibleValues') | async"></select-input-1>
-      </div>  
+      <selectGroup *ngFor="let property of ['definition']">
+        <div class="input-control" *ngIf="includeProperty(property)">      
+          <label>{{getPropertyLabel(property)}}: </label>
+          <select-input-1 [item] = "item.p(property) | async" 
+            (updated) = "updateProperty(property, $event)"  
+            [options] = "item.fields[property].p('possibleValues') | async">
+          </select-input-1>
+        </div>
+        <ng-content select="selectGroup"></ng-content>
+      </selectGroup>
+      
       <ng-content></ng-content>      
 
     </resource-panel>
@@ -49,5 +50,5 @@ import {TemplateValue} from '../components/component.templateValue';
 })
 export class TypePanel extends ResourcePanel{
   //return this.item.constructor.relationships['-->HasType'].codomain.resourceClass.p('all');
-  
+
 }

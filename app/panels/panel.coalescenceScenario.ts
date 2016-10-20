@@ -20,28 +20,38 @@ import {SetToArray} from '../transformations/pipe.general';
       (removed)  = "removed.emit($event)"
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
 
-      <!--Lyphs-->
-        <div class="input-control" *ngIf="includeProperty('lyphs')">
-          <repo-nested [caption]="getPropertyLabel('lyphs')" 
-          [items]="item.p('lyphs') | async | setToArray" 
-          (updated)="updateProperty('lyphs', $event)"          
-          [types]="[ResourceName.Lyph]"
-          (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
+       <!--Lyphs-->  
+      <relationGroup *ngFor="let property of ['lyphs']">
+        <div class="input-control" *ngIf="includeProperty(property)">
+          <repo-nested 
+            [caption]="getPropertyLabel(property)" 
+            [items]  ="item.p(property) | async | setToArray" 
+            [types]  ="getTypes(property)"
+            (updated)="updateProperty(property, $event)" 
+            (highlightedItemChange)="highlightedItemChange.emit($event)">
+          </repo-nested>
         </div>
+        <ng-content select="relationGroup"></ng-content>
+      </relationGroup>
       <ng-content></ng-content>      
 
     </template-panel>
   `,
-  directives: [TemplatePanel, MultiSelectInput, RepoNested],
+  directives: [TemplatePanel, RepoNested],
   pipes: [SetToArray]
 })
 export class CoalescenceScenarioPanel extends TemplatePanel{
 
+  getTypes(property: string): any{
+    switch (property){
+      case "lyphs": return [this.ResourceName.Lyph];
+    }
+    return [this.item.class];
+  }
+
   onSaved(event: any){
-    if (this.item && this.item.lyphs){
-      if (this.item.lyphs.size != 2){
-        console.log("Wrong number of lyphs", this.item.lyphs.size);
-      }
+    if (this.item && this.item.lyphs && (this.item.lyphs.size != 2)){
+      console.log("Wrong number of lyphs", this.item.lyphs.size);
     }
     this.saved.emit({createType: this.createType});
   }

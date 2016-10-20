@@ -20,63 +20,32 @@ import {model} from "../services/utils.model";
       (removed)  = "removed.emit($event)"
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
       
-      <!--Location-->
-      <div class="input-control" *ngIf="includeProperty('locations')">
-        <label for="location">{{getPropertyLabel('locations')}}: </label>
-        <select-input [items]="item.p('locations') | async" 
-        (updated)="updateProperty('locations', $event)"     
-        [options]="item.fields['locations'].p('possibleValues')"></select-input>
-      </div>   
-
-      <relationGroup>
-        <!--Locations-->
-<!--        <div class="input-control" *ngIf="includeProperty('locations')"> 
-        <repo-nested [caption]="getPropertyLabel('locations')" 
-          [items] = "item.p('locations') | async | setToArray" 
-          (updated)="updateProperty('locations', $event)"    
-          [selectionOptions] = "item.fields['locations'].p('possibleValues') | async "
-          [types]="[ResourceName.Lyph, ResourceName.Border]"
-          (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-        </div>-->
+      <!--Locations-->
+      <multiSelectGroup *ngFor="let property of ['locations']">
+         <div class="input-control" *ngIf="includeProperty(property)">
+            <label>{{getPropertyLabel(property)}}: </label>
+            <select-input [items] = "item.p(property) | async"
+             (updated) = "updateProperty(property, $event)"    
+             [options] = "item.fields[property].p('possibleValues') | async">
+            </select-input>
+         </div>
+         <ng-content select="multiSelectGroup"></ng-content>
+       </multiSelectGroup>       
       
-        <!--Channels-->
-        <div class="input-control" *ngIf="includeProperty('channels')"> 
-        <repo-nested [caption]="getPropertyLabel('channels')" 
-          [items] = "item.p('channels') | async | setToArray" 
-          (updated)="updateProperty('channels', $event)"     
-          [types]="[ResourceName.Node]"
-          (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-        </div>
-        
-        <!--Measurables-->
-        <div class="input-control" *ngIf="includeProperty('measurables')">
-          <repo-nested [caption]="getPropertyLabel('measurables')" 
-          [items]="item.p('measurables') | async | setToArray" 
-          (updated)="updateProperty('measurables', $event)" 
-          [types]="[ResourceName.Measurable]"
-          (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-        </div>
-        
-       <!--Incoming processes-->
-         <div class="input-control" *ngIf="includeProperty('incomingProcesses')">
-          <repo-nested [caption]="getPropertyLabel('incomingProcesses')" 
-           [items]  = "item.p('incomingProcesses') | async | setToArray" 
-           [types]  = "[ResourceName.Process]" 
-           (updated)= "updateProperty('incomingProcesses', $event)"           
-           (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-        </div>
-        
-        <!--Outgoing processes-->
-         <div class="input-control" *ngIf="includeProperty('outgoingProcesses')">
-          <repo-nested [caption]="getPropertyLabel('outgoingProcesses')" 
-           [items]  = "item.p('outgoingProcesses') | async | setToArray" 
-           [types]  = "[ResourceName.Process]" 
-           (updated)= "updateProperty('outgoingProcesses', $event)"           
-           (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-        </div>
-        
-        <ng-content select="relationGroup"></ng-content>
-      </relationGroup>   
+      <!--Channels, Measurables, IncomingProcesses, OutgoingProcesses-->
+        <relationGroup *ngFor="let property of 
+          ['channels', 'measurables', 
+          'incomingProcesses', 'outgoingProcesses']">   
+          <div class="input-control" *ngIf="includeProperty(property)">
+            <repo-nested [caption]="getPropertyLabel(property)" 
+            [items]  = "item.p(property) | async | setToArray" 
+            [types]  = "getTypes(property)"
+            [selectionOptions] = "item.fields[property].p('possibleValues') | async "
+            (updated) = "updateProperty(property, $event)"
+            (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
+          </div> 
+          <ng-content select="relationGroup"></ng-content>
+        </relationGroup>  
          
       <ng-content></ng-content>   
     
@@ -86,6 +55,16 @@ import {model} from "../services/utils.model";
   pipes: [SetToArray]
 })
 export class NodePanel extends TemplatePanel{
+
+  getTypes(property: string): any{
+    switch (property){
+      case "measurables": return [this.ResourceName.Measurable];
+      case "incomingProcesses":
+      case "outgoingProcesses": return [this.ResourceName.Process];
+    }
+    return [this.item.class];
+  }
+
   ngOnInit(){
     super.ngOnInit();
     this.ignore = this.ignore.add('cardinalityBase').add('cardinalityMultipliers');

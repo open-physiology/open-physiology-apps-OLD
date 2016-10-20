@@ -9,7 +9,7 @@ import {TooltipDirective} from "../directives/directive.tooltip";
   "inputs": ["items", "activeItem", "transfrom", "imageProvider"],
   "selector": "pallete-toolbar",
   "template": `
-      <div class="btn-group" style="float: left;">
+      <div class="btn-group pull-left">
         <label *ngFor="let item of items" type="button" class="btn btn-default btn-icon" 
           tooltip="{{transform? transform(item): item}}" tooltipPlacement="bottom"
           [ngClass]="{'active': activeItem == item}" (click)="activeItemChange.emit(item)">

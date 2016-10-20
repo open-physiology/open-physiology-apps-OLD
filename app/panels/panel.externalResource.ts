@@ -20,17 +20,13 @@ const {Resource} = model;
       (removed)  = "removed.emit($event)"
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
 
-      <!--URI-->
-      <div class="input-control input-control-lg" *ngIf="includeProperty('uri')">
-        <label for="uri">{{getPropertyLabel('uri')}}: </label>
-        <input type="text" class="form-control" [(ngModel)]="item.uri">
-      </div>
-  
-      <!--Type-->
-      <div class="input-control input-control-lg" *ngIf="includeProperty('type')">
-        <label for="type">{{getPropertyLabel('type')}}: </label>
-        <input type="text" class="form-control" [(ngModel)]="item.type">
-      </div>
+      <inputGroup *ngFor="let property of ['uri', 'type']">
+        <div class="input-control input-control-lg" *ngIf="includeProperty(property)">
+          <label for="comment">{{getPropertyLabel(property)}}: </label>
+          <input type="text" class="form-control" [(ngModel)]="item[property]">
+        </div>
+        <ng-content select="inputGroup"></ng-content>
+      </inputGroup>
       
       <!--Locals - TODO: map to categories-->
       <div class="input-control" *ngIf="includeProperty('locals')">

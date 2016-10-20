@@ -10,12 +10,11 @@ declare var d3:any;
   selector: 'hierarchy-tree',
   inputs: ['item', 'relations', 'depth'],
   template : `
-    <div class="panel-content">
       <svg #treeSvg class="svg-widget"></svg>
-    </div>
+    
   `
 })
-export class RelationshipTree{
+export class RelationTree{
   @Input() item       : any;
   @Input() relations  : Set<string> = new Set<string>();
   @Input() depth      : number = -1;

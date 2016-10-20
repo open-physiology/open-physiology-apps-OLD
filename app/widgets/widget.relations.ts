@@ -2,8 +2,8 @@
  * Created by Natallia on 7/15/2016.
  */
 import {Component, Input, Output} from '@angular/core';
-import {RelationshipGraph} from "./view.relationGraph";
-import {RelationshipTree}  from "./view.relationTree";
+import {RelationGraph} from "./view.relationGraph";
+import {RelationTree}  from "./view.relationTree";
 
 import {CORE_DIRECTIVES} from '@angular/common';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
@@ -21,40 +21,41 @@ import {getColor, getPropertyLabel, model} from "../services/utils.model";
         Relations of <strong>{{item?.id}}{{(item)? ': ' + item.name : ''}}</strong>
       </div>
       <div class="panel-body">
-          <!--Relations-->
-          <property-toolbar  
-            [options] = "relationOptions"
-            [transform] = "getPropertyLabel"
-            (selectionChanged) = "selectedRelationsChanged($event)">
-          </property-toolbar>
-          
-          <!--Depth-->
-          <div class="input-group input-group-sm" style="width: 150px; float: left;">
-            <span class="input-group-addon" id="basic-addon1">Depth</span>
-            <input type="number" class="form-control" aria-describedby="basic-addon1"
-              min="0" max="50" [(ngModel)]="depth" >
-          </div>
-          
-          <!--Layout-->
-          <div class="btn-group">
-            <button type="button" class="btn btn-default btn-icon" 
-              [ngClass]="{'active': layout == 'tree'}" (click)="layout = 'tree'">
-              <img class="icon" src="images/tree.png"/>
-            </button>
-            <button type="button" class="btn btn-default btn-icon" 
-              [ngClass]="{'active': layout == 'graph'}" (click)="layout = 'graph'">
-              <img class="icon" src="images/graph.png"/>
-            </button>
-          </div>
-
+        <!--Relations-->
+        <property-toolbar  
+          [options] = "relationOptions"
+          [transform] = "getPropertyLabel"
+          (selectionChanged) = "selectedRelationsChanged($event)">
+        </property-toolbar>
+        
+        <!--Depth-->
+        <div class="input-group input-control-md pull-left">
+          <span class="input-group-addon" id="basic-addon1">Depth</span>
+          <input type="number" class="form-control" aria-describedby="basic-addon1"
+            min="0" max="50" [(ngModel)]="depth" >
+        </div>
+        
+        <!--Layout-->
+        <div class="btn-group pull-left">
+          <button type="button" class="btn btn-default btn-icon" 
+            [ngClass]="{'active': layout == 'tree'}" (click)="layout = 'tree'">
+            <img class="icon" src="images/tree.png"/>
+          </button>
+          <button type="button" class="btn btn-default btn-icon" 
+            [ngClass]="{'active': layout == 'graph'}" (click)="layout = 'graph'">
+            <img class="icon" src="images/graph.png"/>
+          </button>
+        </div>
+        
         <hierarchy-tree *ngIf="layout == 'tree'" 
           [item]="item" [relations]="relations" [depth]="depth"></hierarchy-tree>
         <hierarchy-graph *ngIf="layout == 'graph'" 
           [item]="item" [relations]="relations" [depth]="depth"></hierarchy-graph>
+        
       </div>     
     </div>
   `,
-  directives: [RelationshipGraph, RelationshipTree, DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, PropertyToolbar]
+  directives: [RelationGraph, RelationTree, DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, PropertyToolbar]
 })
 export class RelationshipWidget{
   @Input() item: any;

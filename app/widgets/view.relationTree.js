@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var service_resize_1 = require('../services/service.resize');
 var utils_model_1 = require("../services/utils.model");
-var RelationshipTree = (function () {
-    function RelationshipTree(el, resizeService) {
+var RelationTree = (function () {
+    function RelationTree(el, resizeService) {
         var _this = this;
         this.el = el;
         this.resizeService = resizeService;
@@ -26,10 +26,10 @@ var RelationshipTree = (function () {
             }
         });
     }
-    RelationshipTree.prototype.ngOnDestroy = function () {
+    RelationTree.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
-    RelationshipTree.prototype.setPanelSize = function (size) {
+    RelationTree.prototype.setPanelSize = function (size) {
         var delta = 10;
         if ((Math.abs(this.vp.size.width - size.width) > delta) || (Math.abs(this.vp.size.height - size.height) > delta)) {
             this.vp.size = { width: size.width, height: size.height - 40 };
@@ -38,7 +38,7 @@ var RelationshipTree = (function () {
             }
         }
     };
-    RelationshipTree.prototype.ngOnChanges = function (changes) {
+    RelationTree.prototype.ngOnChanges = function (changes) {
         this.svg = d3.select(this.el.nativeElement).select('svg');
         if (this.item) {
             this.data = utils_model_1.getTreeData(this.item, this.relations, this.depth);
@@ -49,7 +49,7 @@ var RelationshipTree = (function () {
             this.svg.selectAll(".tree").remove();
         }
     };
-    RelationshipTree.prototype.draw = function (svg, vp, data) {
+    RelationTree.prototype.draw = function (svg, vp, data) {
         var w = vp.size.width - 2 * vp.margin.x;
         var h = vp.size.height - 2 * vp.margin.y;
         svg.selectAll(".tree").remove();
@@ -199,28 +199,28 @@ var RelationshipTree = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
-    ], RelationshipTree.prototype, "item", void 0);
+    ], RelationTree.prototype, "item", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Set)
-    ], RelationshipTree.prototype, "relations", void 0);
+    ], RelationTree.prototype, "relations", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
-    ], RelationshipTree.prototype, "depth", void 0);
+    ], RelationTree.prototype, "depth", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
-    ], RelationshipTree.prototype, "selected", void 0);
-    RelationshipTree = __decorate([
+    ], RelationTree.prototype, "selected", void 0);
+    RelationTree = __decorate([
         core_1.Component({
             selector: 'hierarchy-tree',
             inputs: ['item', 'relations', 'depth'],
-            template: "\n    <div class=\"panel-content\">\n      <svg #treeSvg class=\"svg-widget\"></svg>\n    </div>\n  "
+            template: "\n      <svg #treeSvg class=\"svg-widget\"></svg>\n    \n  "
         }), 
         __metadata('design:paramtypes', [core_1.ElementRef, service_resize_1.ResizeService])
-    ], RelationshipTree);
-    return RelationshipTree;
+    ], RelationTree);
+    return RelationTree;
 }());
-exports.RelationshipTree = RelationshipTree;
+exports.RelationTree = RelationTree;
 //# sourceMappingURL=view.relationTree.js.map

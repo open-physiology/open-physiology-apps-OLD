@@ -22,15 +22,17 @@ import {model} from "../services/utils.model";
         <ng-content select="toolbar"></ng-content>  
       </toolbar>
         
-        <!--Materials-->
-        <div class="input-control" *ngIf="includeProperty('materials')">
-          <label for="materials">{{getPropertyLabel('materials')}}: </label>
-          <select-input 
-            [items]="item.p('materials') | async" 
-            (updated)="updateProperty('materials', $event)" 
-            [options]="item.fields['materials'].p('possibleValues') | async">
-          </select-input>
-        </div>
+      <!--Materials-->
+      <multiSelectGroup *ngFor="let property of ['materials']">
+         <div class="input-control" *ngIf="includeProperty(property)">
+            <label>{{getPropertyLabel(property)}}: </label>
+            <select-input [items] = "item.p(property) | async"
+             (updated) = "updateProperty(property, $event)"    
+             [options] = "item.fields[property].p('possibleValues') | async">
+            </select-input>
+         </div>
+         <ng-content select="multiSelectGroup"></ng-content>
+       </multiSelectGroup>     
        
         <ng-content></ng-content>
         

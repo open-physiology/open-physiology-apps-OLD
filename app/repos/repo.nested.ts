@@ -26,8 +26,8 @@ import {HighlightService} from "../services/service.highlight";
   inputs: ['items', 'caption', 'ignore', 'types', 'selectedItem', 'options', 'selectionOptions'],
   providers: [ToastyService],
   template:`
-    <div class="panel panel-warning repo-nested">
-      <div class="panel-heading">{{caption}}</div>
+    <div class="panel repo-nested">
+      <div class="panel-heading"> <label>{{caption}}: </label></div>
       <div class="panel-body" >
         <span  *ngIf = "!(options?.readOnly || options?.headersOnly)">
           <select-input-1 class="pull-left input-select" [item] = "itemToInclude"

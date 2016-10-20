@@ -8,6 +8,7 @@ import {Subscription}   from 'rxjs/Subscription';
 import {SetToArray, HideClass} from "../transformations/pipe.general";
 import {model} from "../services/utils.model";
 import {HighlightService} from "../services/service.highlight";
+//import {NgCytoscape} from '../components/component.cytoscape';
 
 import 'rxjs/add/operator/map';
 
@@ -18,6 +19,8 @@ declare var $: any;
   selector: 'app',
   providers: [ResizeService, HighlightService],
   template: `
+     <!--<ng2-cytoscape></ng2-cytoscape>-->
+
     <repo-general id="repo"
       [items]="items | setToArray | hideClass : ['Border']" 
       [caption]="'Resources'" 
@@ -28,7 +31,7 @@ declare var $: any;
     <div id="main"></div>
   `,
   styles: [`#main {width: 100%; height: 100%; border: 0; margin: 0; padding: 0}`],
-  directives: [RepoGeneral, RepoNested, RelationshipWidget, ResourceWidget],
+  directives: [RepoGeneral, RepoNested, RelationshipWidget, ResourceWidget/*, NgCytoscape*/],
   pipes: [SetToArray, HideClass]
 })
 export class ResourceEditor {

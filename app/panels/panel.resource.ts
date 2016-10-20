@@ -30,31 +30,25 @@ import {getPropertyLabel as generalPropertyLabel} from "../services/utils.model"
           <ng-content select="toolbar"></ng-content>
                     
           <div class="panel-content">
-              <div class="input-control input-control-lg" *ngIf="includeProperty('id')">
-                <label for="id">{{getPropertyLabel('id')}}: </label>
-                <input type="text" class="form-control" disabled readonly [ngModel]="item.id">
-              </div>
+              <inputGroup *ngFor="let property of ['id', 'href', 'name']">
+                <div class="input-control input-control-lg" *ngIf="includeProperty(property)">
+                  <label for="comment">{{getPropertyLabel(property)}}: </label>
+                  <input type="text" class="form-control" [(ngModel)]="item[property]">
+                </div>
+                <ng-content select="inputGroup"></ng-content>
+              </inputGroup>
 
-              <div class="input-control input-control-lg" *ngIf="includeProperty('href')">
-                <label for="href">{{getPropertyLabel('href')}}: </label>
-                <input type="text" class="form-control" disabled readonly [ngModel]="item.href">
-              </div>
-
-              <!--Name-->
-              <div class="input-control input-control-lg" *ngIf="includeProperty('name')">
-                <label for="name">{{getPropertyLabel('name')}}: </label>
-                <input type="text" class="form-control" [(ngModel)]="item.name">
-              </div>
-              
               <!--Externals-->
-              <div class="input-control" *ngIf="includeProperty('externals')">
-                <label for="externals">{{getPropertyLabel('externals')}}: </label>
-                <select-input 
-                  [items]="item.p('externals') | async" 
-                  (updated)="updateProperty('externals', $event)" 
-                  [options]="ExternalResource.p('all') | async">
-                </select-input>
-              </div>
+              <multiSelectGroup *ngFor="let property of ['externals']">
+                 <div class="input-control" *ngIf="includeProperty(property)">
+                    <label>{{getPropertyLabel(property)}}: </label>
+                    <select-input [items] = "item.p(property) | async"
+                     (updated) = "updateProperty(property, $event)"    
+                     [options] = "item.fields[property].p('possibleValues') | async">
+                    </select-input>
+                </div>
+                <ng-content select="multiSelectGroup"></ng-content>
+              </multiSelectGroup>
               
               <ng-content></ng-content>
               
@@ -76,8 +70,6 @@ export class ResourcePanel {
   @Output() highlightedItemChange = new EventEmitter();
 
   protected ResourceName = ResourceName;
-
-  ExternalResource = model.ExternalResource;
 
   properties: any[] = [];
 

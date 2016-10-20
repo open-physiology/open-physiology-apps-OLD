@@ -5,8 +5,6 @@ import {Component} from '@angular/core';
 import {ResourcePanel} from "./panel.resource";
 import {MultiSelectInput} from '../components/component.select';
 import {RepoNested} from '../repos/repo.nested';
-import {model} from "../services/utils.model";
-const {Lyph} = model;
 import {SetToArray} from '../transformations/pipe.general';
 
 @Component({
@@ -22,23 +20,32 @@ import {SetToArray} from '../transformations/pipe.general';
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
 
       <!--Scenarios-->
-        <div class="input-control" *ngIf="includeProperty('scenarios')">
-          <label for="scenarios">{{getPropertyLabel('scenarios')}}: </label>
-          <select-input [items]="item.p('scenarios') | async" 
-          (updated)="updateProperty('scenarios', $event)"          
-          [options]="item.fields['scenarios'].p('possibleValues') | async"></select-input>
+       <selectGroup *ngFor="let property of ['scenarios']">
+         <div class="input-control" *ngIf="includeProperty(property)">
+            <label>{{getPropertyLabel(property)}}: </label>
+            <select-input [items] = "item.p(property) | async"
+             (updated) = "updateProperty(property, $event)"    
+             [options] = "item.fields[property].p('possibleValues') | async">
+            </select-input>
         </div>
-        
-      <!--Lyphs-->
-        <div class="input-control" *ngIf="includeProperty('lyphs')">
-          <repo-nested [caption]="getPropertyLabel('lyphs')" 
-          [items]="item.p('lyphs') | async | setToArray" 
-          (updated)="updateProperty('lyphs', $event)"          
-          [types]="[ResourceName.Lyph]"
-          (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
+        <ng-content select="selectGroup"></ng-content>
+       </selectGroup>
+                  
+      <!--Lyphs-->  
+      <relationGroup *ngFor="let property of ['lyphs']">
+        <div class="input-control" *ngIf="includeProperty(property)">
+          <repo-nested 
+            [caption]="getPropertyLabel(property)" 
+            [items]  ="item.p(property) | async | setToArray" 
+            [types]  ="getTypes(property)"
+            (updated)="updateProperty(property, $event)" 
+            (highlightedItemChange)="highlightedItemChange.emit($event)">
+          </repo-nested>
         </div>
-
-        <ng-content></ng-content>      
+        <ng-content select="relationGroup"></ng-content>
+      </relationGroup>
+      
+      <ng-content></ng-content>      
 
     </resource-panel>
   `,
@@ -46,5 +53,11 @@ import {SetToArray} from '../transformations/pipe.general';
   pipes: [SetToArray]
 })
 export class CoalescencePanel extends ResourcePanel{
-  Lyph = Lyph;
+
+  getTypes(property: string): any{
+    switch (property){
+      case "lyphs": return [this.ResourceName.Lyph];
+    }
+    return [this.item.class];
+  }
 }

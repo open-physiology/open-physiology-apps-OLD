@@ -26,10 +26,25 @@ import {SetToArray, HideClass} from "../transformations/pipe.general";
       </toolbar>
       
       <!--Species-->
-      <div class="input-control input-control-lg" *ngIf="includeProperty('species')">
-        <label for="species">Species: </label>
-        <input type="text" class="form-control" [(ngModel)]="item.species">
-      </div>
+      <inputGroup *ngFor="let property of ['species']">
+        <div class="input-control input-control-lg" *ngIf="includeProperty(property)">
+          <label for="comment">{{getPropertyLabel(property)}}: </label>
+          <input type="text" class="form-control" [(ngModel)]="item[property]">
+        </div>
+        <ng-content select="inputGroup"></ng-content>
+      </inputGroup>
+      
+      <!--Defines type-->
+<!--      <selectGroup *ngFor="let property of ['definesType']">
+        <div class="input-control" *ngIf="includeProperty(property)">      
+          <label>{{getPropertyLabel(property)}}: </label>
+          <select-input-1 [item] = "item.p(property) | async" 
+            (updated) = "updateProperty(property, $event)"  
+            [options] = "item.fields[property].p('possibleValues') | async">
+          </select-input-1>
+        </div>
+        <ng-content select="selectGroup"></ng-content>
+      </selectGroup>-->
 
       <!--Cardinality base-->
       <template-value *ngIf="includeProperty('cardinalityBase')" 
@@ -39,21 +54,17 @@ import {SetToArray, HideClass} from "../transformations/pipe.general";
         (updated)="updateProperty('cardinalityBase', $event)"
       ></template-value>
       
-      <!--Cardinality multipliers-->
-      <div class="input-control" *ngIf="includeProperty('cardinalityMultipliers')">
-        <label for="cardinalityMultipliers">{{getPropertyLabel('cardinalityMultipliers')}}: </label>
-          <select-input [items]="item.p('cardinalityMultipliers') | async" 
-          (updated)="updateProperty('cardinalityMultipliers', $event)"          
-          [options]="cardinalityMultipliers"></select-input>  
-      </div>
-      
-      <!--Types-->
-      <div class="input-control" *ngIf="includeProperty('types')">
-        <label for="types">{{getPropertyLabel('types')}}: </label>
-          <select-input [items]="item.p('types') | async" 
-          (updated)="updateProperty('types', $event)"          
-          [options]="item.fields['types'].p('possibleValues') | async"></select-input>  
-      </div>
+      <!--Cardinality multipliers, Types-->
+      <multiSelectGroup *ngFor="let property of ['cardinalityMultipliers', 'types']">
+         <div class="input-control" *ngIf="includeProperty(property)">
+            <label>{{getPropertyLabel(property)}}: </label>
+            <select-input [items] = "item.p(property) | async"
+             (updated) = "updateProperty(property, $event)"    
+             [options] = "item.fields[property].p('possibleValues') | async">
+            </select-input>
+        </div>
+        <ng-content select="multiSelectGroup"></ng-content>
+      </multiSelectGroup>
       
       <ng-content select="relationGroup"></ng-content>
       

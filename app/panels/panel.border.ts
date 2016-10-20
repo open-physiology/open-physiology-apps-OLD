@@ -30,25 +30,16 @@ import {RepoNested} from "../repos/repo.nested";
         </fieldset>
       </div>
       
-       <relationGroup>
-          <!--Nodes-->
-          <div class="input-control" *ngIf="includeProperty('nodes')">
-            <repo-nested [caption]="getPropertyLabel('nodes')" 
-            [items]  = "item.p('nodes') | async | setToArray" 
-            (updated) = "updateProperty('nodes', $event)"
-            [selectionOptions] = "item.fields['nodes'].p('possibleValues') | async "
-            [types]  = "[ResourceName.Node]"
+       <relationGroup *ngFor="let property of ['nodes', 'measurables']">
+          <div class="input-control" *ngIf="includeProperty(property)">
+            <repo-nested [caption]="getPropertyLabel(property)" 
+            [items]  = "item.p(property) | async | setToArray" 
+            [types]  = "getTypes(property)"
+            [selectionOptions] = "item.fields[property].p('possibleValues') | async "
+            (updated) = "updateProperty(property, $event)"
             (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-          <!--Measurables-->
-          <div class="input-control" *ngIf="includeProperty('measurables')">
-            <repo-nested [caption]="getPropertyLabel('measurables')" 
-            [items]="item.p('measurables') | async | setToArray" 
-            (updated)="updateProperty('measurables', $event)" 
-            [types]="[ResourceName.Measurable]"
-            (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div>
-           <ng-content select="relationGroup"></ng-content>
+          </div> 
+          <ng-content select="relationGroup"></ng-content>
        </relationGroup>
       
      <ng-content></ng-content>  
@@ -60,15 +51,31 @@ import {RepoNested} from "../repos/repo.nested";
 })
 export class BorderPanel extends TemplatePanel{
 
+  getTypes(property: string): any{
+    switch (property){
+      case "nodes": return [this.ResourceName.Node];
+      case "measurables": return [this.ResourceName.Measurable];
+    }
+    return [this.item.class];
+  }
+
+
   onSelectChange(value){
     let newNature = (Array.isArray(value))? value.slice(): value;
-    //this.propertyUpdated.emit({property: 'nature', values: newNature});
     this.updateProperty('nature', newNature);
+    //this.propertyUpdated.emit({property: 'nature', values: newNature});
   }
 
   ngOnInit(){
     super.ngOnInit();
-    this.ignore = this.ignore.add('externals').add('species')
-      .add('measurables').add('name').add('types').add('nodes').add('cardinalityBase').add('cardinalityMultipliers');
+    this.ignore = this.ignore
+      .add('externals')
+      .add('species')
+      .add('measurables')
+      .add('name')
+      .add('types')
+      .add('nodes')
+      .add('cardinalityBase')
+      .add('cardinalityMultipliers');
   }
 }

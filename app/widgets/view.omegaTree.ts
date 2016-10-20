@@ -4,7 +4,7 @@
 import {Component, Input, ElementRef, Renderer} from '@angular/core';
 import {ResizeService} from '../services/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
-import {getIcon, getColor, getTreeData, compareLinkedParts, ResourceName, model} from "../services/utils.model";
+import {getIcon, getColor, getOmegaTreeData} from "../services/utils.model";
 import {Canvas, LyphRectangle} from "lyph-edit-widget";
 
 declare var d3:any;
@@ -26,7 +26,7 @@ export class OmegaTreeWidget{
   svg : any;
   data: any;
 
-  vp: any = {size: {width: 600, height: 400},
+  vp: any = {size: {width: 600, height: 300},
     margin: {x: 20, y: 20},
     node: {size: {width: 40, height: 40}}};
   subscription: Subscription;
@@ -60,7 +60,7 @@ export class OmegaTreeWidget{
     this.svg = d3.select(this.el.nativeElement).select('svg');
 
     if (this.item) {
-      this.data = this.getOmegaTreeData(this.item);
+      this.data = getOmegaTreeData(this.item);
       this.draw(this.svg, this.vp, this.data);
     } else {
       this.data = {};
@@ -180,79 +180,5 @@ export class OmegaTreeWidget{
     function transform(d: any): string {
       return "translate(" + d.x + "," + d.y + ")";
     }
-  }
-
-  getOmegaTreeData(item: any) {
-    if (!item) return {};
-
-    function linkParts(root, item) {
-      let relations = new Set<string>().add("parts");
-      let treeData = getTreeData(item, relations, -1); //creates structure for d3 tree out of item.parts
-      let parts = treeData.children;
-
-      let queue: Array<any> = [root];
-      if (!parts) return queue;
-      parts.sort((a, b) => compareLinkedParts(a.resource, b.resource));
-
-      for (let i = 0; i < parts.length; i++) {
-        let child: any = {id: parts[i].id, name: parts[i].name, resource: parts[i].resource};
-        let link = parts[i].resource.treeParent;
-        if (!link){
-          root.children.push(child);
-          child.parent = root;
-        } else {
-            let parent = queue.find(x => (x.resource == link));
-            if (parent){
-              if (!parent.children) parent.children = [];
-              parent.children.push(child);
-              child.parent = parent;
-            }
-        }
-        if (!queue.find(x => (x.resource === parts[i].resource))){
-          queue.push(child);
-        }
-      }
-      return queue;
-    }
-
-    let root: any = {id:  "#0", name: item.name, children: []};
-    let tree = linkParts(root, item);
-
-    let subtrees = tree.filter(x => (x.resource && (x.resource.class == ResourceName.OmegaTree)));
-    while (subtrees.length > 0){
-      for (let subtree of subtrees){
-        let subtreeRoot = subtree.parent;
-        if (subtreeRoot) {
-          let i = subtreeRoot.children.indexOf(subtree);
-          if (i > -1) subtreeRoot.children.splice(i, 1);
-        }
-        if (subtree.resource.type){
-          let expandedTree = linkParts(subtreeRoot, subtree.resource.type);
-          //replace subtree in the main tree with expanded view
-          if (expandedTree){
-            if (subtree.children) {
-              //relink items following the expanded tree to its leaves
-              for (let next of subtree.children) {
-                let leaves = expandedTree.filter(x => !x.children);
-                if (leaves.length > 0){
-                  next.parent = leaves[0];
-                  for (let j = 1; j < leaves.length; j++){
-                    //TODO: replicate following nodes
-                    console.log("TEST", leaves[j]);
-                    console.log("TEST 2", next);
-
-                    /*let copyOfNext = Object.assign({}, next);
-                    copyOfNext.parent = leaves[j];*/
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      subtrees = tree.filter(x => (x.resource && (x.resource.class == ResourceName.OmegaTree)));
-    }
-
-    return tree[0];
   }
 }

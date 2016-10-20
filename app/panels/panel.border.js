@@ -26,21 +26,35 @@ var BorderPanel = (function (_super) {
     function BorderPanel() {
         _super.apply(this, arguments);
     }
+    BorderPanel.prototype.getTypes = function (property) {
+        switch (property) {
+            case "nodes": return [this.ResourceName.Node];
+            case "measurables": return [this.ResourceName.Measurable];
+        }
+        return [this.item.class];
+    };
     BorderPanel.prototype.onSelectChange = function (value) {
         var newNature = (Array.isArray(value)) ? value.slice() : value;
-        //this.propertyUpdated.emit({property: 'nature', values: newNature});
         this.updateProperty('nature', newNature);
+        //this.propertyUpdated.emit({property: 'nature', values: newNature});
     };
     BorderPanel.prototype.ngOnInit = function () {
         _super.prototype.ngOnInit.call(this);
-        this.ignore = this.ignore.add('externals').add('species')
-            .add('measurables').add('name').add('types').add('nodes').add('cardinalityBase').add('cardinalityMultipliers');
+        this.ignore = this.ignore
+            .add('externals')
+            .add('species')
+            .add('measurables')
+            .add('name')
+            .add('types')
+            .add('nodes')
+            .add('cardinalityBase')
+            .add('cardinalityMultipliers');
     };
     BorderPanel = __decorate([
         core_1.Component({
             selector: 'border-panel',
             inputs: ['item', 'ignore', 'options'],
-            template: "\n    <template-panel [item] = \"item\" \n      [ignore] = \"ignore\"\n      [options]  = \"options\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n            \n      <!--Nature-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('nature')\">\n        <fieldset>\n          <legend>{{getPropertyLabel('nature')}}:</legend>\n           <checkbox-group [ngModel]=\"item.nature\" (ngModelChange)=\"onSelectChange(item.nature)\">\n             <input type=\"checkbox\" value=\"open\">open&nbsp;\n             <input type=\"checkbox\" value=\"closed\">closed<br/>\n           </checkbox-group>\n        </fieldset>\n      </div>\n      \n       <relationGroup>\n          <!--Nodes-->\n          <div class=\"input-control\" *ngIf=\"includeProperty('nodes')\">\n            <repo-nested [caption]=\"getPropertyLabel('nodes')\" \n            [items]  = \"item.p('nodes') | async | setToArray\" \n            (updated) = \"updateProperty('nodes', $event)\"\n            [selectionOptions] = \"item.fields['nodes'].p('possibleValues') | async \"\n            [types]  = \"[ResourceName.Node]\"\n            (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></repo-nested>\n          </div>\n          <!--Measurables-->\n          <div class=\"input-control\" *ngIf=\"includeProperty('measurables')\">\n            <repo-nested [caption]=\"getPropertyLabel('measurables')\" \n            [items]=\"item.p('measurables') | async | setToArray\" \n            (updated)=\"updateProperty('measurables', $event)\" \n            [types]=\"[ResourceName.Measurable]\"\n            (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></repo-nested>\n          </div>\n           <ng-content select=\"relationGroup\"></ng-content>\n       </relationGroup>\n      \n     <ng-content></ng-content>  \n            \n    </template-panel>\n  ",
+            template: "\n    <template-panel [item] = \"item\" \n      [ignore] = \"ignore\"\n      [options]  = \"options\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n            \n      <!--Nature-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('nature')\">\n        <fieldset>\n          <legend>{{getPropertyLabel('nature')}}:</legend>\n           <checkbox-group [ngModel]=\"item.nature\" (ngModelChange)=\"onSelectChange(item.nature)\">\n             <input type=\"checkbox\" value=\"open\">open&nbsp;\n             <input type=\"checkbox\" value=\"closed\">closed<br/>\n           </checkbox-group>\n        </fieldset>\n      </div>\n      \n       <relationGroup *ngFor=\"let property of ['nodes', 'measurables']\">\n          <div class=\"input-control\" *ngIf=\"includeProperty(property)\">\n            <repo-nested [caption]=\"getPropertyLabel(property)\" \n            [items]  = \"item.p(property) | async | setToArray\" \n            [types]  = \"getTypes(property)\"\n            [selectionOptions] = \"item.fields[property].p('possibleValues') | async \"\n            (updated) = \"updateProperty(property, $event)\"\n            (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></repo-nested>\n          </div> \n          <ng-content select=\"relationGroup\"></ng-content>\n       </relationGroup>\n      \n     <ng-content></ng-content>  \n            \n    </template-panel>\n  ",
             directives: [panel_template_1.TemplatePanel, repo_nested_1.RepoNested, ng2_radio_group_1.RADIO_GROUP_DIRECTIVES],
             pipes: [pipe_general_1.SetToArray]
         }), 

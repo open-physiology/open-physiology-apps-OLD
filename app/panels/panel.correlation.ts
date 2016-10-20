@@ -20,42 +20,70 @@ import {model} from "../services/utils.model";
       (removed)  = "removed.emit($event)"
       (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
       
-        <!--Comment-->
-        <div class="input-control input-control-lg" *ngIf="includeProperty('comment')">
-          <label for="comment">{{getPropertyLabel('comment')}}: </label>
-          <input type="text" [(ngModel)]="item.comment">
+      <!--Comment-->
+      <inputGroup *ngFor="let property of ['comment']">
+        <div class="input-control input-control-lg" *ngIf="includeProperty(property)">
+          <label for="comment">{{getPropertyLabel(property)}}: </label>
+          <input type="text" class="form-control" [(ngModel)]="item[property]">
         </div>
+        <ng-content select="inputGroup"></ng-content>
+      </inputGroup>
         
-        <!--Publication-->
-        <div>
-          <label for="publication">{{getPropertyLabel('publication')}}: </label>
-          <select-input-1 [item] = "item.p('publication') | async" 
-            (updated) = "updateProperty('publication', $event)"  
-            [options] = "item.fields['publication'].p('possibleValues') | async"></select-input-1>
+      <!--Publication-->
+      <selectGroup *ngFor="let property of ['publication']">
+        <div class="input-control" *ngIf="includeProperty(property)">      
+          <label>{{getPropertyLabel(property)}}: </label>
+          <select-input-1 [item] = "item.p(property) | async" 
+            (updated) = "updateProperty(property, $event)"  
+            [options] = "item.fields[property].p('possibleValues') | async">
+          </select-input-1>
         </div>
-        
-        <!--ClinicalIndex-->
-        <div class="input-control" *ngIf="includeProperty('clinicalIndices')">
-          <label for="clinicalIndices">{{getPropertyLabel('clinicalIndices')}}: </label>
-          <select-input [items]="item.p('clinicalIndices') | async" 
-          (updated)="updateProperty('clinicalIndices', $event)"
-          [options]="item.fields['clinicalIndices'].p('possibleValues') | async"></select-input>
+        <ng-content select="selectGroup"></ng-content>
+      </selectGroup>
+      
+      <!--ClinicalIndices-->
+      <multiSelectGroup *ngFor="let property of ['clinicalIndices']">
+         <div class="input-control" *ngIf="includeProperty(property)">
+            <label>{{getPropertyLabel(property)}}: </label>
+            <select-input [items] = "item.p(property) | async"
+             (updated) = "updateProperty(property, $event)"    
+             [options] = "item.fields[property].p('possibleValues') | async">
+            </select-input>
+         </div>
+        <ng-content select="multiSelectGroup"></ng-content>
+      </multiSelectGroup>
+           
+      <!--Measurables-->  
+      <relationGroup *ngFor="let property of ['measurables']">
+        <div class="input-control" *ngIf="includeProperty(property)">
+          <repo-nested 
+            [caption]="getPropertyLabel(property)" 
+            [items]  ="item.p(property) | async | setToArray" 
+            [types]  ="getTypes(property)"
+            (updated)="updateProperty(property, $event)" 
+            (highlightedItemChange)="highlightedItemChange.emit($event)">
+          </repo-nested>
         </div>
+        <ng-content select="relationGroup"></ng-content>
+      </relationGroup>
         
-        <!--Measurables-->
-        <div class="input-control" *ngIf="includeProperty('measurables')">
-          <repo-nested [caption]="getPropertyLabel('measurables')" 
-          [items]="item.p('measurables') | async | setToArray" 
-          (updated)="updateProperty('measurables', $event)"          
-          [types]="[ResourceName.Measurable]"
-          (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-        </div>
-        
-        <ng-content></ng-content>      
+      <ng-content></ng-content>      
     
     </resource-panel>
   `,
   directives: [ResourcePanel, SingleSelectInput, MultiSelectInput, RepoNested],
   pipes: [SetToArray]
 })
-export class CorrelationPanel extends ResourcePanel{}
+export class CorrelationPanel extends ResourcePanel{
+  getTypes(property: string): any{
+    switch (property){
+      case "measurables": return [this.ResourceName.Measurable];
+    }
+    return [this.item.class];
+  }
+
+  selectTemplate = `
+
+
+`
+}

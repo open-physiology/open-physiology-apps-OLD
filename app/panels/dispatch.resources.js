@@ -59,7 +59,7 @@ var PanelDispatchResources = (function () {
             console.error(reason);
             _this.toastyService.error(errorMsg);
         });
-        console.log("Saving panel", event);
+        //console.log("Saving panel", event);
         //create type
         if (event.createType) {
             var template_1 = this.item;
@@ -70,7 +70,7 @@ var PanelDispatchResources = (function () {
                     yield newType.commit();
                     //TODO: create only if types does not exist
                     //let type = template['-->DefinesType'][2];
-                    console.log("Type created", newType);
+                    //console.log("Type created", newType);
                 });
             })();
         }

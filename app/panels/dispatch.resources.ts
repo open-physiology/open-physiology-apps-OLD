@@ -137,7 +137,7 @@ export class PanelDispatchResources{
           this.toastyService.error(errorMsg);
         });
 
-    console.log("Saving panel", event);
+    //console.log("Saving panel", event);
 
     //create type
     if (event.createType){
@@ -149,7 +149,7 @@ export class PanelDispatchResources{
          await newType.commit();
          //TODO: create only if types does not exist
          //let type = template['-->DefinesType'][2];
-         console.log("Type created", newType);
+         //console.log("Type created", newType);
        })();
     }
 

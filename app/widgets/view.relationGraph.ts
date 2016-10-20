@@ -1,7 +1,7 @@
 import {Component, Input, Output, OnChanges, OnDestroy, ElementRef, Renderer, EventEmitter} from '@angular/core';
 import {nvD3} from 'ng2-nvd3/lib/ng2-nvd3';
 import {ResizeService} from '../services/service.resize';
-import {Subscription}   from 'rxjs/Subscription';
+import {Subscription} from 'rxjs/Subscription';
 
 import {getIcon, getColor, getGraphData, model} from "../services/utils.model";
 
@@ -11,22 +11,19 @@ declare let d3: any;
   selector: 'hierarchy-graph',
   inputs: ['item', 'relations', 'depth'],
   template : `
-    <div class="panel-body">
-      <nvd3 *ngIf="active" [options]="graphOptions" [data]="data"></nvd3>
-    </div>
+     <nvd3 *ngIf="active" [options]="graphOptions" [data]="data"></nvd3>
   `,
   directives: [nvD3]
 })
-export class RelationshipGraph implements OnChanges, OnDestroy{
+export class RelationGraph implements OnChanges, OnDestroy{
   @Input() item       : any;
   @Input() relations  : Set<string> = new Set<string>();
   @Input() depth      : number = -1;
 
   active   : boolean = true;
 
-  svg: any;
   data: any;
-  vp: any = {size  : {width: 600, height: 400},
+  vp: any = {size  : {width: 600, height: 300},
              margin: {x: 20, y: 20},
              node  : {size: {width: 40, height: 20}}};
 
@@ -67,8 +64,8 @@ export class RelationshipGraph implements OnChanges, OnDestroy{
     if ((Math.abs(this.vp.size.width - size.width) > delta) || (Math.abs(this.vp.size.height - size.height) > delta)){
       this.vp.size = size;
       if (this.graphOptions){
-        this.graphOptions.width = this.vp.size.width;
-        this.graphOptions.height = this.vp.size.height;
+        this.graphOptions.chart.width = this.vp.size.width;
+        this.graphOptions.chart.height = this.vp.size.height;
         setTimeout(() => {this.active = false}, 0);
         setTimeout(() => {this.active = true}, 0);
       }

@@ -12,15 +12,15 @@ var core_1 = require('@angular/core');
 var ng2_nvd3_1 = require('ng2-nvd3/lib/ng2-nvd3');
 var service_resize_1 = require('../services/service.resize');
 var utils_model_1 = require("../services/utils.model");
-var RelationshipGraph = (function () {
-    function RelationshipGraph(renderer, el, resizeService) {
+var RelationGraph = (function () {
+    function RelationGraph(renderer, el, resizeService) {
         this.renderer = renderer;
         this.el = el;
         this.resizeService = resizeService;
         this.relations = new Set();
         this.depth = -1;
         this.active = true;
-        this.vp = { size: { width: 600, height: 400 },
+        this.vp = { size: { width: 600, height: 300 },
             margin: { x: 20, y: 20 },
             node: { size: { width: 40, height: 20 } } };
         var self = this;
@@ -30,14 +30,14 @@ var RelationshipGraph = (function () {
             }
         });
     }
-    RelationshipGraph.prototype.ngOnDestroy = function () {
+    RelationGraph.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
-    RelationshipGraph.prototype.ngOnInit = function () {
+    RelationGraph.prototype.ngOnInit = function () {
         if (this.item)
             this.setGraphOptions();
     };
-    RelationshipGraph.prototype.ngOnChanges = function (changes) {
+    RelationGraph.prototype.ngOnChanges = function (changes) {
         if (this.item) {
             this.data = utils_model_1.getGraphData(this.item, this.relations, this.depth);
         }
@@ -45,20 +45,20 @@ var RelationshipGraph = (function () {
             this.data = {};
         }
     };
-    RelationshipGraph.prototype.setPanelSize = function (size) {
+    RelationGraph.prototype.setPanelSize = function (size) {
         var _this = this;
         var delta = 10;
         if ((Math.abs(this.vp.size.width - size.width) > delta) || (Math.abs(this.vp.size.height - size.height) > delta)) {
             this.vp.size = size;
             if (this.graphOptions) {
-                this.graphOptions.width = this.vp.size.width;
-                this.graphOptions.height = this.vp.size.height;
+                this.graphOptions.chart.width = this.vp.size.width;
+                this.graphOptions.chart.height = this.vp.size.height;
                 setTimeout(function () { _this.active = false; }, 0);
                 setTimeout(function () { _this.active = true; }, 0);
             }
         }
     };
-    RelationshipGraph.prototype.setGraphOptions = function () {
+    RelationGraph.prototype.setGraphOptions = function () {
         var properties = Object.assign({}, this.item.constructor.properties);
         function formatValue(value) {
             var res = "[";
@@ -98,25 +98,25 @@ var RelationshipGraph = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
-    ], RelationshipGraph.prototype, "item", void 0);
+    ], RelationGraph.prototype, "item", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Set)
-    ], RelationshipGraph.prototype, "relations", void 0);
+    ], RelationGraph.prototype, "relations", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
-    ], RelationshipGraph.prototype, "depth", void 0);
-    RelationshipGraph = __decorate([
+    ], RelationGraph.prototype, "depth", void 0);
+    RelationGraph = __decorate([
         core_1.Component({
             selector: 'hierarchy-graph',
             inputs: ['item', 'relations', 'depth'],
-            template: "\n    <div class=\"panel-body\">\n      <nvd3 *ngIf=\"active\" [options]=\"graphOptions\" [data]=\"data\"></nvd3>\n    </div>\n  ",
+            template: "\n     <nvd3 *ngIf=\"active\" [options]=\"graphOptions\" [data]=\"data\"></nvd3>\n  ",
             directives: [ng2_nvd3_1.nvD3]
         }), 
         __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef, service_resize_1.ResizeService])
-    ], RelationshipGraph);
-    return RelationshipGraph;
+    ], RelationGraph);
+    return RelationGraph;
 }());
-exports.RelationshipGraph = RelationshipGraph;
+exports.RelationGraph = RelationGraph;
 //# sourceMappingURL=view.relationGraph.js.map
