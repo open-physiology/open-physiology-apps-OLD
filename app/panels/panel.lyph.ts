@@ -145,22 +145,6 @@ export class LyphPanel extends MaterialPanel{
 
   //TODO ignore Axis if not set
 
-  getTypes(property: string): any{
-    //console.log("fields[property]", this.item.fields[property]);
-    //console.log("fields[property].class", this.item.fields[property].class);
-    switch (property){
-      case "nodes": return [this.ResourceName.Node];
-      case "measurables": return [this.ResourceName.Measurable];
-      case "incomingProcesses":
-      case "outgoingProcesses":
-      case "processes": return [this.ResourceName.Process];
-      case "coalescences": return [this.ResourceName.Coalescence];
-      case "radialBorders":
-      case "longitudinalBorders": return [this.ResourceName.Border];
-    }
-    return [this.item.class];
-  }
-
   ngOnInit(){
     super.ngOnInit();
     this.layersIgnore  = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);

@@ -82,6 +82,23 @@ export class ResourcePanel {
     return generalPropertyLabel(option);
   }
 
+  getTypes(property: string): any{
+    switch (property){
+      case "nodes": return [this.ResourceName.Node];
+      case "measurables": return [this.ResourceName.Measurable];
+      case "lyphs": return [this.ResourceName.Lyph];
+
+      case "incomingProcesses":
+      case "outgoingProcesses":
+      case "processes": return [this.ResourceName.Process];
+      case "coalescences": return [this.ResourceName.Coalescence];
+      case "radialBorders":
+      case "longitudinalBorders": return [this.ResourceName.Border];
+    }
+    return [this.item.class];
+  }
+
+
   ngOnInit(){
     if (!this.ignore) this.ignore = new Set<string>();
     this.ignore = this.ignore.add("id").add("href");
@@ -101,7 +118,7 @@ export class ResourcePanel {
         //Unsupported fields
         if (privateProperties.has(property)) continue;
 
-        //Groups
+        //Property groups
         if (property.indexOf("Border") > -1) {
           if (!this.properties.find(x => (x.value.indexOf("borders") > -1)))
             this.properties.push({value: "borders", selected: !this.ignore.has("borders")});

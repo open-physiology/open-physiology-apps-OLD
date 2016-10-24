@@ -53,11 +53,4 @@ import {SetToArray} from '../transformations/pipe.general';
   pipes: [SetToArray]
 })
 export class CoalescencePanel extends ResourcePanel{
-
-  getTypes(property: string): any{
-    switch (property){
-      case "lyphs": return [this.ResourceName.Lyph];
-    }
-    return [this.item.class];
-  }
 }

@@ -26,12 +26,6 @@ var CoalescencePanel = (function (_super) {
     function CoalescencePanel() {
         _super.apply(this, arguments);
     }
-    CoalescencePanel.prototype.getTypes = function (property) {
-        switch (property) {
-            case "lyphs": return [this.ResourceName.Lyph];
-        }
-        return [this.item.class];
-    };
     CoalescencePanel = __decorate([
         core_1.Component({
             selector: 'coalescence-panel',

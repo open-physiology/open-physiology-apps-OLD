@@ -82,13 +82,6 @@ export class ProcessPanel extends TemplatePanel{
   sourceOptions = [];
   targetOptions = [];
 
-  getTypes(property: string): any{
-    switch (property){
-      case "measurables": return [this.ResourceName.Measurable];
-    }
-    return [this.item.class];
-  }
-
   ngOnInit(){
     super.ngOnInit();
     if (!this.item.transportPhenomenon) this.item.transportPhenomenon = [];

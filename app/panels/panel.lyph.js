@@ -40,21 +40,6 @@ var LyphPanel = (function (_super) {
         this.measurablesToReplicate = new Set();
     }
     //TODO ignore Axis if not set
-    LyphPanel.prototype.getTypes = function (property) {
-        //console.log("fields[property]", this.item.fields[property]);
-        //console.log("fields[property].class", this.item.fields[property].class);
-        switch (property) {
-            case "nodes": return [this.ResourceName.Node];
-            case "measurables": return [this.ResourceName.Measurable];
-            case "incomingProcesses":
-            case "outgoingProcesses":
-            case "processes": return [this.ResourceName.Process];
-            case "coalescences": return [this.ResourceName.Coalescence];
-            case "radialBorders":
-            case "longitudinalBorders": return [this.ResourceName.Border];
-        }
-        return [this.item.class];
-    };
     LyphPanel.prototype.ngOnInit = function () {
         _super.prototype.ngOnInit.call(this);
         this.layersIgnore = new Set(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);

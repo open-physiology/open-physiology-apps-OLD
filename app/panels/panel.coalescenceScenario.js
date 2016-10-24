@@ -25,12 +25,6 @@ var CoalescenceScenarioPanel = (function (_super) {
     function CoalescenceScenarioPanel() {
         _super.apply(this, arguments);
     }
-    CoalescenceScenarioPanel.prototype.getTypes = function (property) {
-        switch (property) {
-            case "lyphs": return [this.ResourceName.Lyph];
-        }
-        return [this.item.class];
-    };
     CoalescenceScenarioPanel.prototype.onSaved = function (event) {
         if (this.item && this.item.lyphs && (this.item.lyphs.size != 2)) {
             console.log("Wrong number of lyphs", this.item.lyphs.size);

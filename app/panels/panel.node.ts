@@ -56,15 +56,6 @@ import {model} from "../services/utils.model";
 })
 export class NodePanel extends TemplatePanel{
 
-  getTypes(property: string): any{
-    switch (property){
-      case "measurables": return [this.ResourceName.Measurable];
-      case "incomingProcesses":
-      case "outgoingProcesses": return [this.ResourceName.Process];
-    }
-    return [this.item.class];
-  }
-
   ngOnInit(){
     super.ngOnInit();
     this.ignore = this.ignore.add('cardinalityBase').add('cardinalityMultipliers');

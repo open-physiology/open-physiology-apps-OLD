@@ -29,12 +29,6 @@ var ProcessPanel = (function (_super) {
         this.sourceOptions = [];
         this.targetOptions = [];
     }
-    ProcessPanel.prototype.getTypes = function (property) {
-        switch (property) {
-            case "measurables": return [this.ResourceName.Measurable];
-        }
-        return [this.item.class];
-    };
     ProcessPanel.prototype.ngOnInit = function () {
         var _this = this;
         _super.prototype.ngOnInit.call(this);

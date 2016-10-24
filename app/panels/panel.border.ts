@@ -51,15 +51,6 @@ import {RepoNested} from "../repos/repo.nested";
 })
 export class BorderPanel extends TemplatePanel{
 
-  getTypes(property: string): any{
-    switch (property){
-      case "nodes": return [this.ResourceName.Node];
-      case "measurables": return [this.ResourceName.Measurable];
-    }
-    return [this.item.class];
-  }
-
-
   onSelectChange(value){
     let newNature = (Array.isArray(value))? value.slice(): value;
     this.updateProperty('nature', newNature);

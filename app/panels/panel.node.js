@@ -26,14 +26,6 @@ var NodePanel = (function (_super) {
     function NodePanel() {
         _super.apply(this, arguments);
     }
-    NodePanel.prototype.getTypes = function (property) {
-        switch (property) {
-            case "measurables": return [this.ResourceName.Measurable];
-            case "incomingProcesses":
-            case "outgoingProcesses": return [this.ResourceName.Process];
-        }
-        return [this.item.class];
-    };
     NodePanel.prototype.ngOnInit = function () {
         _super.prototype.ngOnInit.call(this);
         this.ignore = this.ignore.add('cardinalityBase').add('cardinalityMultipliers');

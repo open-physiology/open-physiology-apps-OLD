@@ -75,15 +75,4 @@ import {model} from "../services/utils.model";
   pipes: [SetToArray]
 })
 export class CorrelationPanel extends ResourcePanel{
-  getTypes(property: string): any{
-    switch (property){
-      case "measurables": return [this.ResourceName.Measurable];
-    }
-    return [this.item.class];
-  }
-
-  selectTemplate = `
-
-
-`
 }

@@ -26,13 +26,6 @@ var BorderPanel = (function (_super) {
     function BorderPanel() {
         _super.apply(this, arguments);
     }
-    BorderPanel.prototype.getTypes = function (property) {
-        switch (property) {
-            case "nodes": return [this.ResourceName.Node];
-            case "measurables": return [this.ResourceName.Measurable];
-        }
-        return [this.item.class];
-    };
     BorderPanel.prototype.onSelectChange = function (value) {
         var newNature = (Array.isArray(value)) ? value.slice() : value;
         this.updateProperty('nature', newNature);

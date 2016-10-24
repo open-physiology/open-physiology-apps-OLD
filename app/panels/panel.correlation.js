@@ -25,14 +25,7 @@ var CorrelationPanel = (function (_super) {
     __extends(CorrelationPanel, _super);
     function CorrelationPanel() {
         _super.apply(this, arguments);
-        this.selectTemplate = "\n\n\n";
     }
-    CorrelationPanel.prototype.getTypes = function (property) {
-        switch (property) {
-            case "measurables": return [this.ResourceName.Measurable];
-        }
-        return [this.item.class];
-    };
     CorrelationPanel = __decorate([
         core_1.Component({
             selector: 'correlation-panel',
