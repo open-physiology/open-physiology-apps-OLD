@@ -2,16 +2,18 @@
  * Created by Natallia on 6/14/2016.
  */
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MultiSelectInput} from '../components/component.select';
+import {SingleSelectInput, MultiSelectInput} from '../components/component.select';
 import {FormToolbar} from '../components/toolbar.form';
 import {MapToCategories} from "../transformations/pipe.general";
 import {PropertyToolbar} from '../components/toolbar.propertySettings';
-import {model, ResourceName} from "../services/utils.model";
+import {ResourceName} from "../services/utils.model";
 import {getPropertyLabel as generalPropertyLabel} from "../services/utils.model";
+import {RepoNested} from "../repos/repo.nested";
+import {SetToArray} from "../transformations/pipe.general";
 
 @Component({
   selector: 'resource-panel',
-  inputs: ['item', 'ignore', 'options'],
+  inputs: ['item', 'ignore', 'options', 'custom'],
   template:`
     <div class="panel">
         <div class="panel-body">
@@ -30,38 +32,67 @@ import {getPropertyLabel as generalPropertyLabel} from "../services/utils.model"
           <ng-content select="toolbar"></ng-content>
                     
           <div class="panel-content">
-              <inputGroup *ngFor="let property of ['id', 'href', 'name']">
-                <div class="input-control input-control-lg" *ngIf="includeProperty(property)">
-                  <label for="comment">{{getPropertyLabel(property)}}: </label>
-                  <input type="text" class="form-control" [(ngModel)]="item[property]">
-                </div>
-                <ng-content select="inputGroup"></ng-content>
-              </inputGroup>
+            <!--INPUT-->
+            <inputGroup *ngFor="let property of inputGroup">
+              <div class="input-control input-control-lg" *ngIf="includeProperty(property)">
+                <label for="comment">{{getPropertyLabel(property)}}: </label>
+                <input type="text" class="form-control" [(ngModel)]="item[property]">
+              </div>
+              <ng-content select="inputGroup"></ng-content>
+            </inputGroup>
+            
+            <!--SINGLE SELECT-->
+            <selectGroup *ngFor="let property of selectGroup">
+              <div class="input-control" *ngIf="includeProperty(property)">      
+                <label>{{getPropertyLabel(property)}}: </label>
+                <select-input-1 [item] = "item.p(property) | async" 
+                  (updated) = "updateProperty(property, $event)"  
+                  [options] = "item.fields[property].p('possibleValues') | async">
+                </select-input-1>
+              </div>
+              <ng-content select="selectGroup"></ng-content>
+            </selectGroup>
 
-              <!--Externals-->
-              <multiSelectGroup *ngFor="let property of ['externals']">
-                 <div class="input-control" *ngIf="includeProperty(property)">
-                    <label>{{getPropertyLabel(property)}}: </label>
-                    <select-input [items] = "item.p(property) | async"
-                     (updated) = "updateProperty(property, $event)"    
-                     [options] = "item.fields[property].p('possibleValues') | async">
-                    </select-input>
-                </div>
-                <ng-content select="multiSelectGroup"></ng-content>
-              </multiSelectGroup>
-              
-              <ng-content></ng-content>
+            <!--MULTI SELECT-->
+            <multiSelectGroup *ngFor="let property of multiSelectGroup">
+               <div class="input-control" *ngIf="includeProperty(property)">
+                  <label>{{getPropertyLabel(property)}}: </label>
+                  <select-input [items] = "item.p(property) | async"
+                   (updated) = "updateProperty(property, $event)"    
+                   [options] = "item.fields[property].p('possibleValues') | async">
+                  </select-input>
+              </div>
+              <ng-content select="multiSelectGroup"></ng-content>
+            </multiSelectGroup>
+            
+            <!--NESTED RESOURCES-->
+            <relationGroup *ngFor="let property of relationGroup">
+              <div class="input-control" *ngIf="includeProperty(property)">
+                <repo-nested 
+                  [caption]="getPropertyLabel(property)" 
+                  [items]  ="item.p(property) | async | setToArray" 
+                  [types]  ="getTypes(property)"
+                  (updated)="updateProperty(property, $event)" 
+                  (highlightedItemChange)="highlightedItemChange.emit($event)">
+                </repo-nested>
+              </div>
+              <ng-content select="relationGroup"></ng-content>
+            </relationGroup> 
+            
+            <ng-content></ng-content>
               
           </div>
         </div>
     </div>
   `,
-  directives: [FormToolbar, PropertyToolbar, MultiSelectInput],
-  pipes: [MapToCategories]
+  directives: [FormToolbar, PropertyToolbar, SingleSelectInput, MultiSelectInput, RepoNested],
+  pipes: [MapToCategories, SetToArray]
 })
 export class ResourcePanel {
   @Input() item: any;
   @Input() ignore: Set<string> = new Set<string>();
+  @Input() options: any;
+  @Input() custom: Set<string> = new Set<string>();
 
   @Output() saved = new EventEmitter();
   @Output() canceled = new EventEmitter();
@@ -70,8 +101,22 @@ export class ResourcePanel {
   @Output() highlightedItemChange = new EventEmitter();
 
   protected ResourceName = ResourceName;
+  protected privateProperties: Set<string> = new Set([
+    "class", "themes", "parents", "children"
+  ]);
+  protected multiSelectProperties: Set<string> = new Set([
+    'externals',
+    'subtypes', 'supertypes',
+    'clinicalIndices', 'correlations',
+    'cardinalityMultipliers', 'types',
+    'materials', 'locations',
+    'causes','effects']);
 
-  properties: any[] = [];
+  protected properties: any[] = [];
+  protected multiSelectGroup = [];
+  protected inputGroup       = [];
+  protected selectGroup      = [];
+  protected relationGroup    = [];
 
   protected getPropertyLabel(option: string){
     if (this.item)
@@ -83,48 +128,48 @@ export class ResourcePanel {
   }
 
   getTypes(property: string): any{
-    switch (property){
-      case "nodes": return [this.ResourceName.Node];
-      case "measurables": return [this.ResourceName.Measurable];
-      case "lyphs": return [this.ResourceName.Lyph];
-
-      case "incomingProcesses":
-      case "outgoingProcesses":
-      case "processes": return [this.ResourceName.Process];
-      case "coalescences": return [this.ResourceName.Coalescence];
-      case "radialBorders":
-      case "longitudinalBorders": return [this.ResourceName.Border];
-    }
-    return [this.item.class];
+    let partnerClass = this.item.constructor.relationshipShortcuts[property].codomain.resourceClass;
+    //TODO: replace abstract classes with decendants
+    return [partnerClass.name];
   }
 
-
   ngOnInit(){
-    if (!this.ignore) this.ignore = new Set<string>();
-    this.ignore = this.ignore.add("id").add("href");
-
+    this.ignore.add("id").add("href");
     this.setPropertySettings();
+
+    /*Auto-generated visual groups*/
+
+    //Properties
+    let properties = Object.entries(this.item.constructor.properties)
+      .filter(x => !this.privateProperties.has(x[0]) && !this.custom.has(x[0]));
+    //Relations
+    let relations = Object.entries(this.item.constructor.relationshipShortcuts)
+      .filter(x => !this.privateProperties.has(x[0]) && !this.custom.has(x[0]));
+
+    //Input fields
+    this.inputGroup = properties.filter(x => (x[1].type == "string")).map(x => x[0]);
+    //Nested resources
+    this.relationGroup = relations.filter(x =>
+      ((x[1].cardinality.max == "Infinity") && !this.multiSelectProperties.has(x[0]))).map(x => x[0]);
+    //Multi-select combo box
+    this.multiSelectGroup = relations.filter(x =>
+      ((x[1].cardinality.max == "Infinity") && this.multiSelectProperties.has(x[0]))).map(x => x[0]);
+    //Single-select combo-box
+    this.selectGroup = relations.filter(x => (x[1].cardinality.max == 1)).map(x => x[0]);
   }
 
   setPropertySettings(){
-    let privateProperties: Set<string> = new Set(["class", "themes", "parents", "children"]);
-
     if (this.item && this.item.constructor) {
-      let properties = Object.assign({}, this.item.constructor.properties,
-        this.item.constructor.relationshipShortcuts);
+      let properties = Object.assign({}, this.item.constructor.properties, this.item.constructor.relationshipShortcuts);
 
       for (let property in properties) {
+        if (this.privateProperties.has(property)) continue;
 
-        //Unsupported fields
-        if (privateProperties.has(property)) continue;
-
-        //Property groups
-        if (property.indexOf("Border") > -1) {
-          if (!this.properties.find(x => (x.value.indexOf("borders") > -1)))
+        if ((property == 'radialBorders') || (property == 'longitudinalBorders')) {
+          if (!this.properties.find(x => (x == "borders")))
             this.properties.push({value: "borders", selected: !this.ignore.has("borders")});
           continue;
         }
-
         this.properties.push({value: property, selected: !this.ignore.has(property)});
       }
     }

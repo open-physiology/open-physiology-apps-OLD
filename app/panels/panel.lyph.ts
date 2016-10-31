@@ -2,25 +2,21 @@
  * Created by Natallia on 6/17/2016.
  */
 import {Component, ViewChild} from '@angular/core';
-import {MaterialPanel} from "./panel.material";
-import {MultiSelectInput, SingleSelectInput} from '../components/component.select';
-import {RepoNested} from '../repos/repo.nested';
+import {TemplatePanel} from "./panel.template";
 import {SetToArray} from "../transformations/pipe.general";
 import {BorderPanel} from "./panel.border";
 import {TemplateValue} from '../components/component.templateValue';
-import {ResourceName} from '../services/utils.model';
 import {model} from "../services/utils.model";
-const {Measurable} = model;
-
 import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
   selector: 'lyph-panel',
   inputs: ['item', 'ignore', 'options'],
   template:`
-    <material-panel [item]="item" 
+    <template-panel [item]="item" 
         [ignore]  = "ignore"
         [options] = "options"
+        [custom]  = "custom" 
         (saved)   = "saved.emit($event)"
         (canceled)= "canceled.emit($event)"
         (removed) = "removed.emit($event)"
@@ -41,23 +37,6 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
             (updated)="updateProperty(property, $event)">
           </template-value>
         </sizeGroup>
-        
-        <!--Nodes, Measurables, Layers, Segments, Patches, Parts, Processes, 
-        Coalescences, IncomingProcesses, OutgoingProcesses-->
-        <relationGroup *ngFor="let property of 
-          ['nodes', 'measurables', 
-          'layers', 'segments', 'patches', 'parts',
-          'processes', 'coalescences', 'incomingProcesses', 'outgoingProcesses']">   
-          <div class="input-control" *ngIf="includeProperty(property)">
-            <repo-nested [caption]="getPropertyLabel(property)" 
-            [items]  = "item.p(property) | async | setToArray" 
-            [types]  = "getTypes(property)"
-            [selectionOptions] = "item.fields[property].p('possibleValues') | async "
-            (updated) = "updateProperty(property, $event)"
-            (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-          </div> 
-          <ng-content select="relationGroup"></ng-content>
-        </relationGroup>     
         
         <fieldset *ngIf="includeProperty('borders')" >  
           <legend>Borders</legend>
@@ -105,10 +84,6 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
        
         <ng-content></ng-content>  
         
-<!--
-        <button type="button" class="btn btn-default" (click)="modal.open()">Open me!</button>
--->
-
         <modal #myModal>
           <modal-header [show-close]="true">
               <h4 class="modal-title">Select supertype measurables to replicate</h4>
@@ -123,19 +98,18 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
               </li>
           </modal-body>
           <modal-footer>
-            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismiss()">Cancel</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-primary" (click)="close()">Ok</button>
           </modal-footer>
         </modal>
           
-    </material-panel>  
+    </template-panel>  
     
   `,
-  directives: [MaterialPanel, MultiSelectInput, SingleSelectInput,
-    RepoNested, BorderPanel, TemplateValue, MODAL_DIRECTIVES],
+  directives: [TemplatePanel, BorderPanel, TemplateValue, MODAL_DIRECTIVES],
   pipes: [SetToArray]
 })
-export class LyphPanel extends MaterialPanel{
+export class LyphPanel extends TemplatePanel{
   borderOptions = {'readOnly': true, 'hideRemove': true, 'hideCreateType': true};
 
   layersIgnore  : Set<string> = new Set<string>();
@@ -143,39 +117,26 @@ export class LyphPanel extends MaterialPanel{
   partsIgnore   : Set<string> = new Set<string>();
   segmentsIgnore: Set<string> = new Set<string>();
 
-  //TODO ignore Axis if not set
-
   ngOnInit(){
+    this.custom = new Set<string>([
+      'thickness', 'length',
+      'axis', 'radialBorders', 'longitudinalBorders',
+      'treeParent', 'treeChildren']);
+    if (!this.item.axis) this.ignore.add('axis');
     super.ngOnInit();
-    this.layersIgnore  = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
-    this.patchesIgnore = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
-    this.partsIgnore   = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
+
+    this.layersIgnore   = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
+    this.patchesIgnore  = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
+    this.partsIgnore    = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
     this.segmentsIgnore = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
  }
 
   //Measurable replication
-
   supertypeMeasurables : Array <any> = [];
   measurablesToReplicate: Set<any> = new Set<any>();
 
   @ViewChild('myModal')
   modal: ModalComponent;
-
-  close() {
-    if (this.measurablesToReplicate.size > 0){
-      let protoMeasurables = Array.from(this.measurablesToReplicate);
-      for (let protoMeasurable of protoMeasurables){
-        let newMeasurable = model.Measuarable.new(protoMeasurable);
-        newMeasurable.location = this.item;
-      }
-    }
-  }
-
-  open() {
-    this.modal.open();
-  }
-
-  dismiss() {}
 
   generateMeasurables() {
     let allSupertypeMeasurables = [];
@@ -190,12 +151,19 @@ export class LyphPanel extends MaterialPanel{
         }
       }
     }
+    this.supertypeMeasurables = allSupertypeMeasurables.map(x =>
+      {return {value: x, selected: this.measurablesToReplicate.has(x)}});
+    this.modal.open();
+  }
 
-    //console.log("Supertype measurables", allSupertypeMeasurables);
-
-    this.supertypeMeasurables = Array.from(allSupertypeMeasurables).map(x => {return {value: x, selected: this.measurablesToReplicate.has(x)}});
-
-    this.open();
+  close() {
+    if (this.measurablesToReplicate.size > 0){
+      let protoMeasurables = Array.from(this.measurablesToReplicate);
+      for (let protoMeasurable of protoMeasurables){
+        let newMeasurable = model.Measuarable.new(protoMeasurable);
+        newMeasurable.location = this.item;
+      }
+    }
   }
 
   measurablesToReplicateChanged(option: any){

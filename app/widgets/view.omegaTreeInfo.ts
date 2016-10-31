@@ -76,7 +76,7 @@ export class OmegaTreeInfoWidget{
         whisker_low: d.min,
         whisker_high: d.max,
         outliers: [0, 10]
-      }
+      };
       return values;
     }
 

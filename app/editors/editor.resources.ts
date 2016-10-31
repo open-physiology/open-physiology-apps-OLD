@@ -22,7 +22,7 @@ declare var $: any;
      <!--<ng2-cytoscape></ng2-cytoscape>-->
 
     <repo-general id="repo"
-      [items]="items | setToArray | hideClass : ['Border']" 
+      [items]="items | setToArray" 
       [caption]="'Resources'" 
       (selectedItemChange)="onItemSelected($event)">
     </repo-general>
@@ -32,7 +32,7 @@ declare var $: any;
   `,
   styles: [`#main {width: 100%; height: 100%; border: 0; margin: 0; padding: 0}`],
   directives: [RepoGeneral, RepoNested, RelationshipWidget, ResourceWidget/*, NgCytoscape*/],
-  pipes: [SetToArray, HideClass]
+  pipes: [SetToArray]
 })
 export class ResourceEditor {
   items:Array<any>;

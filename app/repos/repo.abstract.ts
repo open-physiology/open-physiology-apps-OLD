@@ -40,8 +40,8 @@ export abstract class RepoAbstract{
   constructor(highlightService: HighlightService){
     this.hs = highlightService.highlightedItemChanged$.subscribe(item => {
       if (this.items.indexOf(item) > -1){
-        this._highlightedItem = item;
-        //console.log("One of my items is highlighted!", this.items);
+        if (this._highlightedItem != item)
+          this._highlightedItem = item;
       }
     })
   }

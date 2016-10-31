@@ -56,6 +56,10 @@ function getIcon(Class) {
     }
     switch (Class) {
         case ResourceName.ExternalResource: return "images/external.png";
+        case ResourceName.Publication: return "images/publication.png";
+        case ResourceName.Correlation: return "images/correlation.png";
+        case ResourceName.ClinicalIndex: return "images/clinicalIndex.png";
+        case ResourceName.Coalescence: return "images/coalescence.png";
         case ResourceName.Material: return "images/material.png";
         case ResourceName.Lyph: return "images/lyph.png";
         case ResourceName.LyphWithAxis: return "images/lyphWithAxis.png";
@@ -64,13 +68,9 @@ function getIcon(Class) {
         case ResourceName.Causality: return "images/causality.png";
         case ResourceName.Node: return "images/node.png";
         case ResourceName.Border: return "images/border.png";
-        case ResourceName.Coalescence: return "images/coalescence.png";
         case ResourceName.CoalescenceScenario: return "images/coalescenceScenario.png";
         case ResourceName.Group: return "images/group.png";
         case ResourceName.OmegaTree: return "images/omegaTree.png";
-        case ResourceName.Publication: return "images/publication.png";
-        case ResourceName.Correlation: return "images/correlation.png";
-        case ResourceName.ClinicalIndex: return "images/clinicalIndex.png";
     }
     return "images/resource.png";
 }
@@ -84,6 +84,7 @@ function getItemClass(item) {
 }
 exports.getItemClass = getItemClass;
 function getTreeData(item, relations, depth) {
+    //Format: {id: 1, name: "Parent", children: [{id: 2, name: "Child"},...]};
     var data = {};
     if (!item)
         return data;
@@ -242,8 +243,6 @@ function getOmegaTreeData(item) {
                             var leaves = expandedTree.filter(function (x) { return !x.children; });
                             if (leaves.length > 0) {
                                 next.parent = leaves[0];
-                                for (var j = 1; j < leaves.length; j++) {
-                                }
                             }
                         }
                     }

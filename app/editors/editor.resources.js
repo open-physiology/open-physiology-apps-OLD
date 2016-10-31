@@ -153,10 +153,10 @@ var ResourceEditor = (function () {
         core_1.Component({
             selector: 'app',
             providers: [service_resize_1.ResizeService, service_highlight_1.HighlightService],
-            template: "\n     <!--<ng2-cytoscape></ng2-cytoscape>-->\n\n    <repo-general id=\"repo\"\n      [items]=\"items | setToArray | hideClass : ['Border']\" \n      [caption]=\"'Resources'\" \n      (selectedItemChange)=\"onItemSelected($event)\">\n    </repo-general>\n    <hierarchy-widget id = \"hierarchy\" [item]=\"selectedItem\"></hierarchy-widget>\n    <resource-widget id = \"resource\" [item]=\"selectedItem\"></resource-widget>   \n    <div id=\"main\"></div>\n  ",
+            template: "\n     <!--<ng2-cytoscape></ng2-cytoscape>-->\n\n    <repo-general id=\"repo\"\n      [items]=\"items | setToArray\" \n      [caption]=\"'Resources'\" \n      (selectedItemChange)=\"onItemSelected($event)\">\n    </repo-general>\n    <hierarchy-widget id = \"hierarchy\" [item]=\"selectedItem\"></hierarchy-widget>\n    <resource-widget id = \"resource\" [item]=\"selectedItem\"></resource-widget>   \n    <div id=\"main\"></div>\n  ",
             styles: ["#main {width: 100%; height: 100%; border: 0; margin: 0; padding: 0}"],
             directives: [repo_general_1.RepoGeneral, repo_nested_1.RepoNested, widget_relations_1.RelationshipWidget, widget_resource_1.ResourceWidget /*, NgCytoscape*/],
-            pipes: [pipe_general_1.SetToArray, pipe_general_1.HideClass]
+            pipes: [pipe_general_1.SetToArray]
         }), 
         __metadata('design:paramtypes', [service_resize_1.ResizeService, service_highlight_1.HighlightService, core_1.ElementRef])
     ], ResourceEditor);

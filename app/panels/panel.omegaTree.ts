@@ -2,48 +2,21 @@
  * Created by Natallia on 6/17/2016.
  */
 import {Component} from '@angular/core';
-import {GroupPanel} from "./panel.group";
-import {MultiSelectInput, SingleSelectInput} from '../components/component.select';
+import {TemplatePanel} from "./panel.template";
 import {SetToArray} from "../transformations/pipe.general";
-import {RepoNested} from '../repos/repo.nested';
-import {model} from "../services/utils.model";
 
 @Component({
   selector: 'omegaTree-panel',
   inputs: ['item', 'ignore', 'options'],
   template:`
     <group-panel [item]="item" 
-      [ignore] = "ignore"
-      [options] = "options"
+      [ignore]   = "ignore"
+      [options]  = "options"
+      [custom]   = ""
       (saved)    = "saved.emit($event)"
       (canceled) = "canceled.emit($event)"
       (removed)  = "removed.emit($event)"
       (propertyUpdated) = "onPropertyUpdate($event)">
-      
-      <!--Root-->
-      <multiSelectGroup *ngFor="let property of ['root']">
-         <div class="input-control" *ngIf="includeProperty(property)">
-            <label>{{getPropertyLabel(property)}}: </label>
-            <select-input [items] = "item.p(property) | async"
-             (updated) = "updateProperty(property, $event)"    
-             [options] = "item.fields[property].p('possibleValues') | async">
-            </select-input>
-        </div>
-        <ng-content select="multiSelectGroup"></ng-content>
-      </multiSelectGroup>
-      
-      <relationGroup>
-        <!--Parts-->
-        <div class="input-control" *ngIf="includeProperty('parts')">
-           <repo-nested [caption]="getPropertyLabel('parts')" 
-           [items] = "item.p('parts') | async | setToArray" 
-           (updated)="updateProperty('parts', $event)"
-           [options]="{linked: true}"
-           [types]="[ResourceName.Lyph, ResourceName.OmegaTree]"
-           (highlightedItemChange)="highlightedItemChange.emit($event)"></repo-nested>
-        </div>
-         <ng-content select="relationGroup"></ng-content> 
-      </relationGroup>
       
       <!--TreeParent-->
       <div  *ngIf="includeProperty('type')" class="input-control">
@@ -66,12 +39,14 @@ import {model} from "../services/utils.model";
     
     </group-panel>
   `,
-  directives: [GroupPanel, MultiSelectInput, SingleSelectInput, RepoNested],
+  directives: [TemplatePanel],
   pipes: [SetToArray]
 })
-export class OmegaTreePanel extends GroupPanel{
+export class OmegaTreePanel extends TemplatePanel{
 
   ngOnInit(){
+    this.custom = new Set<string>(['treeParent', 'treeChildren']);
+
     super.ngOnInit();
     this.ignore = this.ignore.add('supertypes').add('subtypes').add('elements')
       .add('cardinalityMultipliers').add('treeParent').add('treeChildren');

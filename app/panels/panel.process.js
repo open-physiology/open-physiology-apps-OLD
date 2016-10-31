@@ -18,10 +18,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var core_1 = require('@angular/core');
 var panel_template_1 = require("./panel.template");
-var component_select_1 = require('../components/component.select');
 var ng2_radio_group_1 = require("ng2-radio-group");
 var pipe_general_1 = require("../transformations/pipe.general");
-var repo_nested_1 = require("../repos/repo.nested");
 var ProcessPanel = (function (_super) {
     __extends(ProcessPanel, _super);
     function ProcessPanel() {
@@ -31,6 +29,7 @@ var ProcessPanel = (function (_super) {
     }
     ProcessPanel.prototype.ngOnInit = function () {
         var _this = this;
+        this.custom.add('transportPhenomenon');
         _super.prototype.ngOnInit.call(this);
         if (!this.item.transportPhenomenon)
             this.item.transportPhenomenon = [];
@@ -78,9 +77,9 @@ var ProcessPanel = (function (_super) {
     ProcessPanel = __decorate([
         core_1.Component({
             selector: 'process-panel',
-            inputs: ['item', 'ignore', "options"],
-            template: "\n    <template-panel [item]=\"item\" \n      [ignore]  =\"ignore\"\n      [options] =\"options\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" \n      (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n        \n      <!--TransportPhenomenon-->\n        <div class=\"input-control\" *ngIf=\"includeProperty('transportPhenomenon')\">\n          <fieldset>\n            <legend>{{getPropertyLabel('transportPhenomenon')}}:</legend>\n            <checkbox-group [(ngModel)]=\"item.transportPhenomenon\" (ngModelChange)=\"onSelectChange(item.transportPhenomenon)\">\n               <input type=\"checkbox\" value=\"diffusion\">diffusion&nbsp;\n               <input type=\"checkbox\" value=\"advection\">advection<br/>\n             </checkbox-group>\n          </fieldset>\n        </div>\n          \n      <!--ConveyingLyph, Materials-->\n      <multiSelectGroup *ngFor=\"let property of ['conveyingLyph','materials']\">\n         <div class=\"input-control\" *ngIf=\"includeProperty(property)\">\n            <label>{{getPropertyLabel(property)}}: </label>\n            <select-input [items] = \"item.p(property) | async\"\n             (updated) = \"updateProperty(property, $event)\"    \n             [options] = \"item.fields[property].p('possibleValues') | async\">\n            </select-input>\n        </div>\n        <ng-content select=\"multiSelectGroup\"></ng-content>\n      </multiSelectGroup>\n\n      <!--SourceLyph, TargetLyph, Source, Target-->\n      <selectGroup *ngFor=\"let property of ['sourceLyph','targetLyph', 'source', 'target']\">\n        <div class=\"input-control\" *ngIf=\"includeProperty(property)\">      \n          <label>{{getPropertyLabel(property)}}: </label>\n          <select-input-1 [item] = \"item.p(property) | async\" \n            (updated) = \"updateProperty(property, $event)\"  \n            [options] = \"item.fields[property].p('possibleValues') | async\">\n          </select-input-1>\n        </div>\n        <ng-content select=\"selectGroup\"></ng-content>\n      </selectGroup>\n           \n      <!--Channels, Segments, Measurables-->  \n      <relationGroup *ngFor=\"let property of ['segments', 'channels', 'measurables']\">\n        <div class=\"input-control\" *ngIf=\"includeProperty(property)\">\n          <repo-nested \n            [caption]=\"getPropertyLabel(property)\" \n            [items]  =\"item.p(property) | async | setToArray\" \n            [types]  =\"getTypes(property)\"\n            (updated)=\"updateProperty(property, $event)\" \n            (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n          </repo-nested>\n        </div>\n        <ng-content select=\"relationGroup\"></ng-content>\n      </relationGroup>\n       \n      <ng-content></ng-content>  \n   \n    </template-panel>\n  ",
-            directives: [panel_template_1.TemplatePanel, component_select_1.MultiSelectInput, component_select_1.SingleSelectInput, repo_nested_1.RepoNested, ng2_radio_group_1.RADIO_GROUP_DIRECTIVES],
+            inputs: ['item', 'ignore', "options", "custom"],
+            template: "\n    <template-panel [item]=\"item\" \n      [ignore]   = \"ignore\"\n      [options]  = \"options\"\n      [custom]   = \"custom\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" \n      (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n        \n      <!--TransportPhenomenon-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('transportPhenomenon')\">\n        <fieldset>\n          <legend>{{getPropertyLabel('transportPhenomenon')}}:</legend>\n          <checkbox-group [(ngModel)]=\"item.transportPhenomenon\" (ngModelChange)=\"onSelectChange(item.transportPhenomenon)\">\n             <input type=\"checkbox\" value=\"diffusion\">diffusion&nbsp;\n             <input type=\"checkbox\" value=\"advection\">advection<br/>\n           </checkbox-group>\n        </fieldset>\n      </div>\n\n      <ng-content></ng-content>  \n   \n    </template-panel>\n  ",
+            directives: [panel_template_1.TemplatePanel, ng2_radio_group_1.RADIO_GROUP_DIRECTIVES],
             pipes: [pipe_general_1.SetToArray]
         }), 
         __metadata('design:paramtypes', [])

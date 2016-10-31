@@ -131,9 +131,6 @@ export class RepoNested extends RepoAbstract{
           return (a['-->HasLayer'].relativePosition - b['-->HasLayer'].relativePosition)
         });
       }
-      /*if ((this.types.length == 1)) {
-        console.log("Nested repo " + this.types[0], this.items);
-      }*/
     }
   }
 

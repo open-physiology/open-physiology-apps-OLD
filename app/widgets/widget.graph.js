@@ -46,12 +46,6 @@ var GraphWidget = (function () {
         });
     }
     GraphWidget.prototype.onActiveItemChange = function (Class) {
-        //Clear selection if button pressed again
-        // if (this.activeItem && (getItemClass(this.activeItem) == Class)) {
-        //   this.activeItemChange.emit(null);
-        //   console.log("Cancelled selection!!!");
-        //   return;
-        // }
         var options = {};
         if (Class == utils_model_1.ResourceName.LyphWithAxis) {
             Class = utils_model_1.ResourceName.Lyph;

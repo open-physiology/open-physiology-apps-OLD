@@ -17,16 +17,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by Natallia on 6/17/2016.
  */
 var core_1 = require('@angular/core');
-var panel_group_1 = require("./panel.group");
-var component_select_1 = require('../components/component.select');
+var panel_template_1 = require("./panel.template");
 var pipe_general_1 = require("../transformations/pipe.general");
-var repo_nested_1 = require('../repos/repo.nested');
 var OmegaTreePanel = (function (_super) {
     __extends(OmegaTreePanel, _super);
     function OmegaTreePanel() {
         _super.apply(this, arguments);
     }
     OmegaTreePanel.prototype.ngOnInit = function () {
+        this.custom = new Set(['treeParent', 'treeChildren']);
         _super.prototype.ngOnInit.call(this);
         this.ignore = this.ignore.add('supertypes').add('subtypes').add('elements')
             .add('cardinalityMultipliers').add('treeParent').add('treeChildren');
@@ -38,13 +37,13 @@ var OmegaTreePanel = (function (_super) {
         core_1.Component({
             selector: 'omegaTree-panel',
             inputs: ['item', 'ignore', 'options'],
-            template: "\n    <group-panel [item]=\"item\" \n      [ignore] = \"ignore\"\n      [options] = \"options\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"onPropertyUpdate($event)\">\n      \n      <!--Root-->\n      <multiSelectGroup *ngFor=\"let property of ['root']\">\n         <div class=\"input-control\" *ngIf=\"includeProperty(property)\">\n            <label>{{getPropertyLabel(property)}}: </label>\n            <select-input [items] = \"item.p(property) | async\"\n             (updated) = \"updateProperty(property, $event)\"    \n             [options] = \"item.fields[property].p('possibleValues') | async\">\n            </select-input>\n        </div>\n        <ng-content select=\"multiSelectGroup\"></ng-content>\n      </multiSelectGroup>\n      \n      <relationGroup>\n        <!--Parts-->\n        <div class=\"input-control\" *ngIf=\"includeProperty('parts')\">\n           <repo-nested [caption]=\"getPropertyLabel('parts')\" \n           [items] = \"item.p('parts') | async | setToArray\" \n           (updated)=\"updateProperty('parts', $event)\"\n           [options]=\"{linked: true}\"\n           [types]=\"[ResourceName.Lyph, ResourceName.OmegaTree]\"\n           (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></repo-nested>\n        </div>\n         <ng-content select=\"relationGroup\"></ng-content> \n      </relationGroup>\n      \n      <!--TreeParent-->\n      <div  *ngIf=\"includeProperty('type')\" class=\"input-control\">\n        <label for=\"treeParent\">{{getPropertyLabel('treeParent')}}: </label>\n        <select-input-1 [item] = \"item.p('treeParent') | async\"\n         (updated) = \"updateProperty('treeParent', $event)\"    \n         [options] = \"item.fields['treeParent'].p('possibleValues') | async\"></select-input-1>\n      </div>\n      \n      <!--TreeChildren-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('treeChildren')\">\n        <label for=\"treeChildren\">{{getPropertyLabel('treeChildren')}}: </label>\n        <select-input \n          [items]=\"item.p('treeChildren') | async\" \n          (updated)=\"updateProperty('treeChildren', $event)\" \n          [options]=\"item.fields['treeChildren'].p('possibleValues') | async\"></select-input>\n      </div>  \n\n      <ng-content></ng-content> \n    \n    </group-panel>\n  ",
-            directives: [panel_group_1.GroupPanel, component_select_1.MultiSelectInput, component_select_1.SingleSelectInput, repo_nested_1.RepoNested],
+            template: "\n    <group-panel [item]=\"item\" \n      [ignore]   = \"ignore\"\n      [options]  = \"options\"\n      [custom]   = \"\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"onPropertyUpdate($event)\">\n      \n      <!--TreeParent-->\n      <div  *ngIf=\"includeProperty('type')\" class=\"input-control\">\n        <label for=\"treeParent\">{{getPropertyLabel('treeParent')}}: </label>\n        <select-input-1 [item] = \"item.p('treeParent') | async\"\n         (updated) = \"updateProperty('treeParent', $event)\"    \n         [options] = \"item.fields['treeParent'].p('possibleValues') | async\"></select-input-1>\n      </div>\n      \n      <!--TreeChildren-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('treeChildren')\">\n        <label for=\"treeChildren\">{{getPropertyLabel('treeChildren')}}: </label>\n        <select-input \n          [items]=\"item.p('treeChildren') | async\" \n          (updated)=\"updateProperty('treeChildren', $event)\" \n          [options]=\"item.fields['treeChildren'].p('possibleValues') | async\"></select-input>\n      </div>  \n\n      <ng-content></ng-content> \n    \n    </group-panel>\n  ",
+            directives: [panel_template_1.TemplatePanel],
             pipes: [pipe_general_1.SetToArray]
         }), 
         __metadata('design:paramtypes', [])
     ], OmegaTreePanel);
     return OmegaTreePanel;
-}(panel_group_1.GroupPanel));
+}(panel_template_1.TemplatePanel));
 exports.OmegaTreePanel = OmegaTreePanel;
 //# sourceMappingURL=panel.omegaTree.js.map

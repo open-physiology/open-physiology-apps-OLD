@@ -36,7 +36,8 @@ var RepoAbstract = (function () {
         this.getItemClass = utils_model_1.getItemClass;
         this.hs = highlightService.highlightedItemChanged$.subscribe(function (item) {
             if (_this.items.indexOf(item) > -1) {
-                _this._highlightedItem = item;
+                if (_this._highlightedItem != item)
+                    _this._highlightedItem = item;
             }
         });
     }

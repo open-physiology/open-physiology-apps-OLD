@@ -61,6 +61,12 @@ export function getIcon(Class: any): string{
 
   switch (Class){
     case ResourceName.ExternalResource : return "images/external.png";
+    case ResourceName.Publication      : return "images/publication.png";
+    case ResourceName.Correlation      : return "images/correlation.png";
+    case ResourceName.ClinicalIndex    : return "images/clinicalIndex.png";
+
+    case ResourceName.Coalescence      : return "images/coalescence.png";
+
     case ResourceName.Material         : return "images/material.png";
     case ResourceName.Lyph             : return "images/lyph.png";
     case ResourceName.LyphWithAxis     : return "images/lyphWithAxis.png";
@@ -70,15 +76,10 @@ export function getIcon(Class: any): string{
     case ResourceName.Causality        : return "images/causality.png";
     case ResourceName.Node             : return "images/node.png";
     case ResourceName.Border           : return "images/border.png";
-    case ResourceName.Coalescence      : return "images/coalescence.png";
     case ResourceName.CoalescenceScenario      : return "images/coalescenceScenario.png";
 
     case ResourceName.Group            : return "images/group.png";
     case ResourceName.OmegaTree        : return "images/omegaTree.png";
-
-    case ResourceName.Publication      : return "images/publication.png";
-    case ResourceName.Correlation      : return "images/correlation.png";
-    case ResourceName.ClinicalIndex    : return "images/clinicalIndex.png";
   }
   return "images/resource.png";
 }
@@ -91,7 +92,8 @@ export function getItemClass(item: any){
   return item.class;
 }
 
-export function getTreeData(item: any, relations: Set<string>, depth: number) {//Format: {id: 1, name: "Parent", children: [{id: 2, name: "Child"},...]};
+export function getTreeData(item: any, relations: Set<string>, depth: number) {
+  //Format: {id: 1, name: "Parent", children: [{id: 2, name: "Child"},...]};
   let data:any = {};
   if (!item) return data;
   data = {id: item.id, name: item.name, resource: item, children: []};
@@ -223,14 +225,7 @@ export function getOmegaTreeData(item: any) {
               let leaves = expandedTree.filter(x => !x.children);
               if (leaves.length > 0){
                 next.parent = leaves[0];
-                for (let j = 1; j < leaves.length; j++){
-                  //TODO: replicate following nodes
-                  // console.log("Leaves[j]", leaves[j]);
-                  // console.log("Next", next);
-
-                  /*let copyOfNext = Object.assign({}, next);
-                   copyOfNext.parent = leaves[j];*/
-                }
+                //NOTE: leaves.length <= 1 because we do not allow extending branching omega trees
               }
             }
           }

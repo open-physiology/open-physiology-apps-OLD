@@ -7,7 +7,7 @@ import {Subscription}   from 'rxjs/Subscription';
 import {Canvas, SelectTool, DragDropTool, ResizeTool, ZoomTool,
   PanTool, BorderToggleTool, LyphRectangle, NodeGlyph, ProcessLine, DrawingTool} from "lyph-edit-widget";
 import {combineLatest} from "rxjs/observable/combineLatest";
-import {ResourceName, getClassLabel, getItemClass, getIcon, model} from '../services/utils.model';
+import {ResourceName, getClassLabel, getIcon, model} from '../services/utils.model';
 import {PalleteToolbar} from '../components/toolbar.pallete';
 
 declare var $:any;
@@ -50,7 +50,7 @@ export class GraphWidget{
   drawingTool: any;
   vp: any = {size: {width: 600, height: 600},
     margin: {x: 20, y: 20},
-    node: {size: {width: 40, height: 40}}};
+    node:   {size: {width: 40, height: 40}}};
 
   rs: Subscription; //GoldenLayout window resize events
 
@@ -69,13 +69,6 @@ export class GraphWidget{
   }
 
   onActiveItemChange(Class: any){
-    //Clear selection if button pressed again
-    // if (this.activeItem && (getItemClass(this.activeItem) == Class)) {
-    //   this.activeItemChange.emit(null);
-    //   console.log("Cancelled selection!!!");
-    //   return;
-    // }
-
     let options: any = {};
     if (Class == ResourceName.LyphWithAxis) {
       Class = ResourceName.Lyph;
