@@ -99,6 +99,7 @@ export class PanelDispatchResources{
         let errorMsg = "Failed to commit resource: Relationship constraints violated! \n" +
           "See browser console (Ctrl+Shift+J) for technical details.";
         this.toastyService.error(errorMsg);
+        console.log(reason);
       });
 
     //Create type

@@ -29,6 +29,7 @@ var BorderPanel = (function (_super) {
         this.updateProperty('nature', newNature);
     };
     BorderPanel.prototype.ngOnInit = function () {
+        this.custom = new Set(['nature']);
         _super.prototype.ngOnInit.call(this);
         this.ignore = this.ignore
             .add('externals')
@@ -45,7 +46,7 @@ var BorderPanel = (function (_super) {
         core_1.Component({
             selector: 'border-panel',
             inputs: ['item', 'ignore', 'options'],
-            template: "\n    <template-panel [item] = \"item\" \n      [ignore] = \"ignore\"\n      [options]  = \"options\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n            \n      <!--Nature-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('nature')\">\n        <fieldset>\n          <legend>{{getPropertyLabel('nature')}}:</legend>\n           <checkbox-group [ngModel]=\"item.nature\" (ngModelChange)=\"onSelectChange(item.nature)\">\n             <input type=\"checkbox\" value=\"open\">open&nbsp;\n             <input type=\"checkbox\" value=\"closed\">closed<br/>\n           </checkbox-group>\n        </fieldset>\n      </div>\n      \n     <ng-content></ng-content>  \n            \n    </template-panel>\n  ",
+            template: "\n    <template-panel [item] = \"item\" \n      [ignore]   = \"ignore\"\n      [options]  = \"options\"\n      [custom]   = \"custom\" \n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" \n      (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n            \n      <!--Nature-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('nature')\">\n        <fieldset>\n          <legend>{{getPropertyLabel('nature')}}:</legend>\n           <checkbox-group [ngModel]=\"item.nature\" (ngModelChange)=\"onSelectChange(item.nature)\">\n             <input type=\"checkbox\" value=\"open\">open&nbsp;\n             <input type=\"checkbox\" value=\"closed\">closed<br/>\n           </checkbox-group>\n        </fieldset>\n      </div>\n      \n     <ng-content></ng-content>  \n            \n    </template-panel>\n  ",
             directives: [panel_template_1.TemplatePanel, ng2_radio_group_1.RADIO_GROUP_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])

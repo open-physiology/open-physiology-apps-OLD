@@ -3,11 +3,13 @@
  */
 import {Component, ViewChild} from '@angular/core';
 import {TemplatePanel} from "./panel.template";
+import {SingleSelectInput, MultiSelectInput} from '../components/component.select';
 import {SetToArray} from "../transformations/pipe.general";
 import {BorderPanel} from "./panel.border";
 import {TemplateValue} from '../components/component.templateValue';
+import {RepoNested} from "../repos/repo.nested";
 import {model} from "../services/utils.model";
-import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+import {MODAL_DIRECTIVES, ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
   selector: 'lyph-panel',
@@ -20,7 +22,8 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
         (saved)   = "saved.emit($event)"
         (canceled)= "canceled.emit($event)"
         (removed) = "removed.emit($event)"
-        (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
+        (propertyUpdated) = "propertyUpdated.emit($event)" 
+        (highlightedItemChange)="highlightedItemChange.emit($event)">
         
         <toolbar>
           <button type="button" class="btn btn-default btn-icon" 
@@ -81,9 +84,7 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
             (updated)="updateProperty('treeChildren', $event)" 
             [options]="item.fields['treeChildren'].p('possibleValues') | async"></select-input>
         </div> 
-       
-        <ng-content></ng-content>  
-        
+               
         <modal #myModal>
           <modal-header [show-close]="true">
               <h4 class="modal-title">Select supertype measurables to replicate</h4>
@@ -102,11 +103,13 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
             <button type="button" class="btn btn-primary" (click)="close()">Ok</button>
           </modal-footer>
         </modal>
-          
+        
+        <ng-content></ng-content>  
+
     </template-panel>  
     
   `,
-  directives: [TemplatePanel, BorderPanel, TemplateValue, MODAL_DIRECTIVES],
+  directives: [TemplatePanel, BorderPanel, TemplateValue,  SingleSelectInput, MultiSelectInput, RepoNested, MODAL_DIRECTIVES],
   pipes: [SetToArray]
 })
 export class LyphPanel extends TemplatePanel{
@@ -122,8 +125,8 @@ export class LyphPanel extends TemplatePanel{
       'thickness', 'length',
       'axis', 'radialBorders', 'longitudinalBorders',
       'treeParent', 'treeChildren']);
-    if (!this.item.axis) this.ignore.add('axis');
     super.ngOnInit();
+    if (!this.item.axis) this.ignore.add('axis');
 
     this.layersIgnore   = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
     this.patchesIgnore  = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);

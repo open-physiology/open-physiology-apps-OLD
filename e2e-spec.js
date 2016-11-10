@@ -1,8 +1,6 @@
-
 describe('QuickStart E2E Tests', function () {
 
-	var expectedMsg = 'My First Angular 2 App';
-
+  var expectedMsg = 'Editor Widgets';
 
   beforeEach(function () {
     browser.get('');

@@ -63,6 +63,7 @@ var PanelDispatchResources = (function () {
             var errorMsg = "Failed to commit resource: Relationship constraints violated! \n" +
                 "See browser console (Ctrl+Shift+J) for technical details.";
             _this.toastyService.error(errorMsg);
+            console.log(reason);
         });
         //Create type
         if (event.createType) {

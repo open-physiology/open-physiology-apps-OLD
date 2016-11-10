@@ -18,6 +18,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var core_1 = require('@angular/core');
 var panel_template_1 = require("./panel.template");
+var component_select_1 = require('../components/component.select');
 var pipe_general_1 = require("../transformations/pipe.general");
 var OmegaTreePanel = (function (_super) {
     __extends(OmegaTreePanel, _super);
@@ -37,8 +38,8 @@ var OmegaTreePanel = (function (_super) {
         core_1.Component({
             selector: 'omegaTree-panel',
             inputs: ['item', 'ignore', 'options'],
-            template: "\n    <group-panel [item]=\"item\" \n      [ignore]   = \"ignore\"\n      [options]  = \"options\"\n      [custom]   = \"\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"onPropertyUpdate($event)\">\n      \n      <!--TreeParent-->\n      <div  *ngIf=\"includeProperty('type')\" class=\"input-control\">\n        <label for=\"treeParent\">{{getPropertyLabel('treeParent')}}: </label>\n        <select-input-1 [item] = \"item.p('treeParent') | async\"\n         (updated) = \"updateProperty('treeParent', $event)\"    \n         [options] = \"item.fields['treeParent'].p('possibleValues') | async\"></select-input-1>\n      </div>\n      \n      <!--TreeChildren-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('treeChildren')\">\n        <label for=\"treeChildren\">{{getPropertyLabel('treeChildren')}}: </label>\n        <select-input \n          [items]=\"item.p('treeChildren') | async\" \n          (updated)=\"updateProperty('treeChildren', $event)\" \n          [options]=\"item.fields['treeChildren'].p('possibleValues') | async\"></select-input>\n      </div>  \n\n      <ng-content></ng-content> \n    \n    </group-panel>\n  ",
-            directives: [panel_template_1.TemplatePanel],
+            template: "\n    <template-panel [item]=\"item\" \n      [ignore]   = \"ignore\"\n      [options]  = \"options\"\n      [custom]   = \"custom\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"onPropertyUpdate($event)\"\n      (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n      \n      <!--TreeParent-->\n      <div  *ngIf=\"includeProperty('type')\" class=\"input-control\">\n        <label for=\"treeParent\">{{getPropertyLabel('treeParent')}}: </label>\n        <select-input-1 [item] = \"item.p('treeParent') | async\"\n         (updated) = \"updateProperty('treeParent', $event)\"    \n         [options] = \"item.fields['treeParent'].p('possibleValues') | async\"></select-input-1>\n      </div>\n      \n      <!--TreeChildren-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('treeChildren')\">\n        <label for=\"treeChildren\">{{getPropertyLabel('treeChildren')}}: </label>\n        <select-input \n          [items]=\"item.p('treeChildren') | async\" \n          (updated)=\"updateProperty('treeChildren', $event)\" \n          [options]=\"item.fields['treeChildren'].p('possibleValues') | async\"></select-input>\n      </div>  \n\n      <ng-content></ng-content> \n    \n    </template-panel>\n  ",
+            directives: [panel_template_1.TemplatePanel, component_select_1.SingleSelectInput, component_select_1.MultiSelectInput],
             pipes: [pipe_general_1.SetToArray]
         }), 
         __metadata('design:paramtypes', [])

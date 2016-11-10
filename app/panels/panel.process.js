@@ -29,7 +29,7 @@ var ProcessPanel = (function (_super) {
     }
     ProcessPanel.prototype.ngOnInit = function () {
         var _this = this;
-        this.custom.add('transportPhenomenon');
+        this.custom = new Set(['transportPhenomenon']);
         _super.prototype.ngOnInit.call(this);
         if (!this.item.transportPhenomenon)
             this.item.transportPhenomenon = [];
@@ -77,7 +77,7 @@ var ProcessPanel = (function (_super) {
     ProcessPanel = __decorate([
         core_1.Component({
             selector: 'process-panel',
-            inputs: ['item', 'ignore', "options", "custom"],
+            inputs: ['item', 'ignore', "options"],
             template: "\n    <template-panel [item]=\"item\" \n      [ignore]   = \"ignore\"\n      [options]  = \"options\"\n      [custom]   = \"custom\"\n      (saved)    = \"saved.emit($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" \n      (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n        \n      <!--TransportPhenomenon-->\n      <div class=\"input-control\" *ngIf=\"includeProperty('transportPhenomenon')\">\n        <fieldset>\n          <legend>{{getPropertyLabel('transportPhenomenon')}}:</legend>\n          <checkbox-group [(ngModel)]=\"item.transportPhenomenon\" (ngModelChange)=\"onSelectChange(item.transportPhenomenon)\">\n             <input type=\"checkbox\" value=\"diffusion\">diffusion&nbsp;\n             <input type=\"checkbox\" value=\"advection\">advection<br/>\n           </checkbox-group>\n        </fieldset>\n      </div>\n\n      <ng-content></ng-content>  \n   \n    </template-panel>\n  ",
             directives: [panel_template_1.TemplatePanel, ng2_radio_group_1.RADIO_GROUP_DIRECTIVES],
             pipes: [pipe_general_1.SetToArray]

@@ -36,7 +36,9 @@ import {SetToArray} from "../transformations/pipe.general";
             <inputGroup *ngFor="let property of inputGroup">
               <div class="input-control input-control-lg" *ngIf="includeProperty(property)">
                 <label for="comment">{{getPropertyLabel(property)}}: </label>
-                <input type="text" class="form-control" [(ngModel)]="item[property]">
+                <input class="form-control" 
+                  [type]="inputGroupParams[property].type" 
+                  [(ngModel)]="item[property]">
               </div>
               <ng-content select="inputGroup"></ng-content>
             </inputGroup>
@@ -112,11 +114,13 @@ export class ResourcePanel {
     'materials', 'locations',
     'causes','effects']);
 
-  protected properties: any[] = [];
+  protected properties       = [];
   protected multiSelectGroup = [];
   protected inputGroup       = [];
   protected selectGroup      = [];
   protected relationGroup    = [];
+
+  protected inputGroupParams  = {};
 
   protected getPropertyLabel(option: string){
     if (this.item)
@@ -133,6 +137,9 @@ export class ResourcePanel {
     return [partnerClass.name];
   }
 
+  //TODO: input fields - choose type
+  //TODO: disable readOnly fields
+
   ngOnInit(){
     this.ignore.add("id").add("href");
     this.setPropertySettings();
@@ -147,15 +154,22 @@ export class ResourcePanel {
       .filter(x => !this.privateProperties.has(x[0]) && !this.custom.has(x[0]));
 
     //Input fields
-    this.inputGroup = properties.filter(x => (x[1].type == "string")).map(x => x[0]);
+    this.inputGroup = properties.map(x => x[0]);
+    for (let x of properties){
+      this.inputGroupParams[x[0]] = {
+          type: ((x[1].type === "integer") || (x[1].type === "number"))? "number": "text",
+          step: (x[1].type === "number")? 0.1: 1
+        }
+    }
+
     //Nested resources
     this.relationGroup = relations.filter(x =>
-      ((x[1].cardinality.max == "Infinity") && !this.multiSelectProperties.has(x[0]))).map(x => x[0]);
+      ((x[1].cardinality.max !== 1) && !this.multiSelectProperties.has(x[0]))).map(x => x[0]);
     //Multi-select combo box
     this.multiSelectGroup = relations.filter(x =>
-      ((x[1].cardinality.max == "Infinity") && this.multiSelectProperties.has(x[0]))).map(x => x[0]);
+      ((x[1].cardinality.max !== 1) && this.multiSelectProperties.has(x[0]))).map(x => x[0]);
     //Single-select combo-box
-    this.selectGroup = relations.filter(x => (x[1].cardinality.max == 1)).map(x => x[0]);
+    this.selectGroup = relations.filter(x => (x[1].cardinality.max === 1)).map(x => x[0]);
   }
 
   setPropertySettings(){
@@ -166,7 +180,7 @@ export class ResourcePanel {
         if (this.privateProperties.has(property)) continue;
 
         if ((property == 'radialBorders') || (property == 'longitudinalBorders')) {
-          if (!this.properties.find(x => (x == "borders")))
+          if (!this.properties.find(x => (x.value === "borders")))
             this.properties.push({value: "borders", selected: !this.ignore.has("borders")});
           continue;
         }

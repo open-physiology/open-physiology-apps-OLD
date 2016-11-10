@@ -10,12 +10,14 @@ import {RADIO_GROUP_DIRECTIVES} from "ng2-radio-group";
   inputs: ['item', 'ignore', 'options'],
   template:`
     <template-panel [item] = "item" 
-      [ignore] = "ignore"
+      [ignore]   = "ignore"
       [options]  = "options"
+      [custom]   = "custom" 
       (saved)    = "saved.emit($event)"
       (canceled) = "canceled.emit($event)"
       (removed)  = "removed.emit($event)"
-      (propertyUpdated) = "propertyUpdated.emit($event)" (highlightedItemChange)="highlightedItemChange.emit($event)">
+      (propertyUpdated) = "propertyUpdated.emit($event)" 
+      (highlightedItemChange)="highlightedItemChange.emit($event)">
             
       <!--Nature-->
       <div class="input-control" *ngIf="includeProperty('nature')">
@@ -42,6 +44,7 @@ export class BorderPanel extends TemplatePanel{
   }
 
   ngOnInit(){
+    this.custom = new Set<string>(['nature']);
     super.ngOnInit();
     this.ignore = this.ignore
       .add('externals')

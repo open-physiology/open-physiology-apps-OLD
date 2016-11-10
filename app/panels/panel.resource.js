@@ -45,6 +45,7 @@ var ResourcePanel = (function () {
         this.inputGroup = [];
         this.selectGroup = [];
         this.relationGroup = [];
+        this.inputGroupParams = {};
     }
     ResourcePanel.prototype.getPropertyLabel = function (option) {
         if (this.item)
@@ -60,6 +61,8 @@ var ResourcePanel = (function () {
         //TODO: replace abstract classes with decendants
         return [partnerClass.name];
     };
+    //TODO: input fields - choose type
+    //TODO: disable readOnly fields
     ResourcePanel.prototype.ngOnInit = function () {
         var _this = this;
         this.ignore.add("id").add("href");
@@ -72,17 +75,24 @@ var ResourcePanel = (function () {
         var relations = Object.entries(this.item.constructor.relationshipShortcuts)
             .filter(function (x) { return !_this.privateProperties.has(x[0]) && !_this.custom.has(x[0]); });
         //Input fields
-        this.inputGroup = properties.filter(function (x) { return (x[1].type == "string"); }).map(function (x) { return x[0]; });
+        this.inputGroup = properties.map(function (x) { return x[0]; });
+        for (var _i = 0, properties_1 = properties; _i < properties_1.length; _i++) {
+            var x = properties_1[_i];
+            this.inputGroupParams[x[0]] = {
+                type: ((x[1].type === "integer") || (x[1].type === "number")) ? "number" : "text",
+                step: (x[1].type === "number") ? 0.1 : 1
+            };
+        }
         //Nested resources
         this.relationGroup = relations.filter(function (x) {
-            return ((x[1].cardinality.max == "Infinity") && !_this.multiSelectProperties.has(x[0]));
+            return ((x[1].cardinality.max !== 1) && !_this.multiSelectProperties.has(x[0]));
         }).map(function (x) { return x[0]; });
         //Multi-select combo box
         this.multiSelectGroup = relations.filter(function (x) {
-            return ((x[1].cardinality.max == "Infinity") && _this.multiSelectProperties.has(x[0]));
+            return ((x[1].cardinality.max !== 1) && _this.multiSelectProperties.has(x[0]));
         }).map(function (x) { return x[0]; });
         //Single-select combo-box
-        this.selectGroup = relations.filter(function (x) { return (x[1].cardinality.max == 1); }).map(function (x) { return x[0]; });
+        this.selectGroup = relations.filter(function (x) { return (x[1].cardinality.max === 1); }).map(function (x) { return x[0]; });
     };
     ResourcePanel.prototype.setPropertySettings = function () {
         if (this.item && this.item.constructor) {
@@ -91,7 +101,7 @@ var ResourcePanel = (function () {
                 if (this.privateProperties.has(property))
                     continue;
                 if ((property == 'radialBorders') || (property == 'longitudinalBorders')) {
-                    if (!this.properties.find(function (x) { return (x == "borders"); }))
+                    if (!this.properties.find(function (x) { return (x.value === "borders"); }))
                         this.properties.push({ value: "borders", selected: !this.ignore.has("borders") });
                     continue;
                 }
@@ -167,7 +177,7 @@ var ResourcePanel = (function () {
         core_1.Component({
             selector: 'resource-panel',
             inputs: ['item', 'ignore', 'options', 'custom'],
-            template: "\n    <div class=\"panel\">\n        <div class=\"panel-body\">\n          <form-toolbar  \n            [options]  = \"options\"\n            (saved)    = \"saved.emit(item)\"\n            (canceled) = \"canceled.emit(item)\"\n            (removed)  = \"removed.emit(item)\">            \n          </form-toolbar>\n          <property-toolbar  \n            [options] = \"properties\"\n            [transform] = \"getPropertyLabel\"\n            (selectionChanged) = \"selectionChanged($event)\">\n          </property-toolbar>\n          \n          <ng-content select=\"toolbar\"></ng-content>\n                    \n          <div class=\"panel-content\">\n            <!--INPUT-->\n            <inputGroup *ngFor=\"let property of inputGroup\">\n              <div class=\"input-control input-control-lg\" *ngIf=\"includeProperty(property)\">\n                <label for=\"comment\">{{getPropertyLabel(property)}}: </label>\n                <input type=\"text\" class=\"form-control\" [(ngModel)]=\"item[property]\">\n              </div>\n              <ng-content select=\"inputGroup\"></ng-content>\n            </inputGroup>\n            \n            <!--SINGLE SELECT-->\n            <selectGroup *ngFor=\"let property of selectGroup\">\n              <div class=\"input-control\" *ngIf=\"includeProperty(property)\">      \n                <label>{{getPropertyLabel(property)}}: </label>\n                <select-input-1 [item] = \"item.p(property) | async\" \n                  (updated) = \"updateProperty(property, $event)\"  \n                  [options] = \"item.fields[property].p('possibleValues') | async\">\n                </select-input-1>\n              </div>\n              <ng-content select=\"selectGroup\"></ng-content>\n            </selectGroup>\n\n            <!--MULTI SELECT-->\n            <multiSelectGroup *ngFor=\"let property of multiSelectGroup\">\n               <div class=\"input-control\" *ngIf=\"includeProperty(property)\">\n                  <label>{{getPropertyLabel(property)}}: </label>\n                  <select-input [items] = \"item.p(property) | async\"\n                   (updated) = \"updateProperty(property, $event)\"    \n                   [options] = \"item.fields[property].p('possibleValues') | async\">\n                  </select-input>\n              </div>\n              <ng-content select=\"multiSelectGroup\"></ng-content>\n            </multiSelectGroup>\n            \n            <!--NESTED RESOURCES-->\n            <relationGroup *ngFor=\"let property of relationGroup\">\n              <div class=\"input-control\" *ngIf=\"includeProperty(property)\">\n                <repo-nested \n                  [caption]=\"getPropertyLabel(property)\" \n                  [items]  =\"item.p(property) | async | setToArray\" \n                  [types]  =\"getTypes(property)\"\n                  (updated)=\"updateProperty(property, $event)\" \n                  (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n                </repo-nested>\n              </div>\n              <ng-content select=\"relationGroup\"></ng-content>\n            </relationGroup> \n            \n            <ng-content></ng-content>\n              \n          </div>\n        </div>\n    </div>\n  ",
+            template: "\n    <div class=\"panel\">\n        <div class=\"panel-body\">\n          <form-toolbar  \n            [options]  = \"options\"\n            (saved)    = \"saved.emit(item)\"\n            (canceled) = \"canceled.emit(item)\"\n            (removed)  = \"removed.emit(item)\">            \n          </form-toolbar>\n          <property-toolbar  \n            [options] = \"properties\"\n            [transform] = \"getPropertyLabel\"\n            (selectionChanged) = \"selectionChanged($event)\">\n          </property-toolbar>\n          \n          <ng-content select=\"toolbar\"></ng-content>\n                    \n          <div class=\"panel-content\">\n            <!--INPUT-->\n            <inputGroup *ngFor=\"let property of inputGroup\">\n              <div class=\"input-control input-control-lg\" *ngIf=\"includeProperty(property)\">\n                <label for=\"comment\">{{getPropertyLabel(property)}}: </label>\n                <input class=\"form-control\" \n                  [type]=\"inputGroupParams[property].type\" \n                  [(ngModel)]=\"item[property]\">\n              </div>\n              <ng-content select=\"inputGroup\"></ng-content>\n            </inputGroup>\n            \n            <!--SINGLE SELECT-->\n            <selectGroup *ngFor=\"let property of selectGroup\">\n              <div class=\"input-control\" *ngIf=\"includeProperty(property)\">      \n                <label>{{getPropertyLabel(property)}}: </label>\n                <select-input-1 [item] = \"item.p(property) | async\" \n                  (updated) = \"updateProperty(property, $event)\"  \n                  [options] = \"item.fields[property].p('possibleValues') | async\">\n                </select-input-1>\n              </div>\n              <ng-content select=\"selectGroup\"></ng-content>\n            </selectGroup>\n\n            <!--MULTI SELECT-->\n            <multiSelectGroup *ngFor=\"let property of multiSelectGroup\">\n               <div class=\"input-control\" *ngIf=\"includeProperty(property)\">\n                  <label>{{getPropertyLabel(property)}}: </label>\n                  <select-input [items] = \"item.p(property) | async\"\n                   (updated) = \"updateProperty(property, $event)\"    \n                   [options] = \"item.fields[property].p('possibleValues') | async\">\n                  </select-input>\n              </div>\n              <ng-content select=\"multiSelectGroup\"></ng-content>\n            </multiSelectGroup>\n            \n            <!--NESTED RESOURCES-->\n            <relationGroup *ngFor=\"let property of relationGroup\">\n              <div class=\"input-control\" *ngIf=\"includeProperty(property)\">\n                <repo-nested \n                  [caption]=\"getPropertyLabel(property)\" \n                  [items]  =\"item.p(property) | async | setToArray\" \n                  [types]  =\"getTypes(property)\"\n                  (updated)=\"updateProperty(property, $event)\" \n                  (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n                </repo-nested>\n              </div>\n              <ng-content select=\"relationGroup\"></ng-content>\n            </relationGroup> \n            \n            <ng-content></ng-content>\n              \n          </div>\n        </div>\n    </div>\n  ",
             directives: [toolbar_form_1.FormToolbar, toolbar_propertySettings_1.PropertyToolbar, component_select_1.SingleSelectInput, component_select_1.MultiSelectInput, repo_nested_1.RepoNested],
             pipes: [pipe_general_1.MapToCategories, pipe_general_2.SetToArray]
         }), 

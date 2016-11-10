@@ -8,7 +8,7 @@ import {SetToArray} from "../transformations/pipe.general";
 
 @Component({
   selector: 'process-panel',
-  inputs: ['item', 'ignore', "options", "custom"],
+  inputs: ['item', 'ignore', "options"],
   template:`
     <template-panel [item]="item" 
       [ignore]   = "ignore"
@@ -43,7 +43,7 @@ export class ProcessPanel extends TemplatePanel{
   targetOptions = [];
 
   ngOnInit(){
-    this.custom.add('transportPhenomenon');
+    this.custom = new Set<string>(['transportPhenomenon']);
 
     super.ngOnInit();
 

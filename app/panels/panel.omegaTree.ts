@@ -3,20 +3,22 @@
  */
 import {Component} from '@angular/core';
 import {TemplatePanel} from "./panel.template";
+import {SingleSelectInput, MultiSelectInput} from '../components/component.select';
 import {SetToArray} from "../transformations/pipe.general";
 
 @Component({
   selector: 'omegaTree-panel',
   inputs: ['item', 'ignore', 'options'],
   template:`
-    <group-panel [item]="item" 
+    <template-panel [item]="item" 
       [ignore]   = "ignore"
       [options]  = "options"
-      [custom]   = ""
+      [custom]   = "custom"
       (saved)    = "saved.emit($event)"
       (canceled) = "canceled.emit($event)"
       (removed)  = "removed.emit($event)"
-      (propertyUpdated) = "onPropertyUpdate($event)">
+      (propertyUpdated) = "onPropertyUpdate($event)"
+      (highlightedItemChange)="highlightedItemChange.emit($event)">
       
       <!--TreeParent-->
       <div  *ngIf="includeProperty('type')" class="input-control">
@@ -37,16 +39,15 @@ import {SetToArray} from "../transformations/pipe.general";
 
       <ng-content></ng-content> 
     
-    </group-panel>
+    </template-panel>
   `,
-  directives: [TemplatePanel],
+  directives: [TemplatePanel, SingleSelectInput, MultiSelectInput],
   pipes: [SetToArray]
 })
 export class OmegaTreePanel extends TemplatePanel{
 
   ngOnInit(){
     this.custom = new Set<string>(['treeParent', 'treeChildren']);
-
     super.ngOnInit();
     this.ignore = this.ignore.add('supertypes').add('subtypes').add('elements')
       .add('cardinalityMultipliers').add('treeParent').add('treeChildren');
