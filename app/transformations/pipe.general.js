@@ -21,10 +21,7 @@ var HideClass = (function () {
             return items;
         if (classNames instanceof Set)
             classNames = Array.from(classNames);
-        var filteredItems = items.filter(function (x) { return (classNames.indexOf(x.class) < 0); });
-        if (classNames.indexOf('Type') > -1) {
-            filteredItems = filteredItems.filter(function (x) { return (x.class.indexOf('Type') < 0); });
-        }
+        var filteredItems = items.filter(function (x) { return !classNames.includes(x.class); });
         return filteredItems;
     };
     HideClass = __decorate([
@@ -45,14 +42,14 @@ var FilterBy = (function () {
             return items;
         if (!args || args.length < 2)
             return items;
-        if (args[0].length == 0)
+        if (args[0].length === 0)
             return items;
         var filter = args[0];
         var property = args[1];
         return items.filter(function (item) {
             return (typeof (item[property]) === 'string') ?
                 item[property].toLowerCase().indexOf(filter.toLowerCase()) !== -1 :
-                item[property] == filter;
+                item[property] === filter;
         });
     };
     FilterBy = __decorate([
@@ -129,12 +126,12 @@ var MapToCategories = (function () {
     function MapToCategories() {
     }
     MapToCategories.prototype.transform = function (items) {
-        if (!items || (items.length == 0))
+        if (!items || (items.length === 0))
             return [];
         var types = Array.from(new Set(items.map(function (item) { return item.type; })));
         var typedItems = [];
         var _loop_1 = function(type) {
-            var typed = items.filter(function (item) { return (item.type == type); });
+            var typed = items.filter(function (item) { return (item.type === type); });
             typedItems.push({ text: type, children: typed });
         };
         for (var _i = 0, types_1 = types; _i < types_1.length; _i++) {

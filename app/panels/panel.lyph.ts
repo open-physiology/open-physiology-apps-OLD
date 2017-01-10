@@ -1,7 +1,7 @@
 /**
  * Created by Natallia on 6/17/2016.
  */
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, EventEmitter, Input, Output} from '@angular/core';
 import {TemplatePanel} from "./panel.template";
 import {SingleSelectInput, MultiSelectInput} from '../components/component.select';
 import {SetToArray} from "../transformations/pipe.general";
@@ -68,23 +68,6 @@ import {MODAL_DIRECTIVES, ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
           </borderGroup>
         </fieldset>
         
-        <!--TreeParent-->
-        <div *ngIf="includeProperty('treeParent')" class="input-control">
-          <label for="treeParent">{{getPropertyLabel('treeParent')}}: </label>
-          <select-input-1 [item] = "item.p('treeParent') | async"
-           (updated) = "updateProperty('treeParent', $event)"    
-           [options] = "item.fields['treeParent'].p('possibleValues') | async"></select-input-1>
-        </div>
-        
-        <!--TreeChildren-->
-        <div class="input-control" *ngIf="includeProperty('treeChildren')">
-          <label for="treeChildren">{{getPropertyLabel('treeChildren')}}: </label>
-          <select-input 
-            [items]="item.p('treeChildren') | async" 
-            (updated)="updateProperty('treeChildren', $event)" 
-            [options]="item.fields['treeChildren'].p('possibleValues') | async"></select-input>
-        </div> 
-               
         <modal #myModal>
           <modal-header [show-close]="true">
               <h4 class="modal-title">Select supertype measurables to replicate</h4>
@@ -109,10 +92,17 @@ import {MODAL_DIRECTIVES, ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
     </template-panel>  
     
   `,
-  directives: [TemplatePanel, BorderPanel, TemplateValue,  SingleSelectInput, MultiSelectInput, RepoNested, MODAL_DIRECTIVES],
+  directives: [TemplatePanel,
+    BorderPanel, TemplateValue,  SingleSelectInput, MultiSelectInput, RepoNested, MODAL_DIRECTIVES],
   pipes: [SetToArray]
 })
 export class LyphPanel extends TemplatePanel{
+  @Output() saved = new EventEmitter();
+  @Output() canceled = new EventEmitter();
+  @Output() removed = new EventEmitter();
+  @Output() propertyUpdated = new EventEmitter();
+  @Output() highlightedItemChange = new EventEmitter();
+
   borderOptions = {'readOnly': true, 'hideRemove': true, 'hideCreateType': true};
 
   layersIgnore  : Set<string> = new Set<string>();
@@ -123,15 +113,16 @@ export class LyphPanel extends TemplatePanel{
   ngOnInit(){
     this.custom = new Set<string>([
       'thickness', 'length',
-      'axis', 'radialBorders', 'longitudinalBorders',
-      'treeParent', 'treeChildren']);
+      'axis', 'radialBorders', 'longitudinalBorders']);
     super.ngOnInit();
-    if (!this.item.axis) this.ignore.add('axis');
+    if (!this.item.axis) {
+      this.ignore.add('axis');
+    }
 
-    this.layersIgnore   = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
-    this.patchesIgnore  = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
-    this.partsIgnore    = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
-    this.segmentsIgnore = new Set<string>(['cardinalityBase', 'cardinalityMultipliers', 'treeParent', 'treeChildren']);
+    this.layersIgnore   = new Set<string>(['cardinalityBase', 'cardinalityMultipliers']);
+    this.patchesIgnore  = new Set<string>(['cardinalityBase', 'cardinalityMultipliers']);
+    this.partsIgnore    = new Set<string>(['cardinalityBase', 'cardinalityMultipliers']);
+    this.segmentsIgnore = new Set<string>(['cardinalityBase', 'cardinalityMultipliers']);
  }
 
   //Measurable replication
@@ -175,4 +166,5 @@ export class LyphPanel extends TemplatePanel{
     if (!this.measurablesToReplicate.has(option.value) && option.selected)
       this.measurablesToReplicate.add(option.value);
   }
+
 }

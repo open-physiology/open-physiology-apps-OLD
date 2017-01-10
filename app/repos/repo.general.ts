@@ -9,7 +9,7 @@ import {AddToolbar} from '../components/toolbar.add';
 import {FilterToolbar} from '../components/toolbar.filter';
 import {SortToolbar} from '../components/toolbar.sort';
 
-import {getItemClass, ResourceName, model} from "../services/utils.model";
+import {ResourceName, model} from "../services/utils.model";
 
 import {OrderBy, FilterBy, HideClass} from "../transformations/pipe.general";
 import {PanelDispatchResources} from "../panels/dispatch.resources";
@@ -55,7 +55,7 @@ import {PropertyToolbar} from '../components/toolbar.propertySettings';
               <item-header [item]="item" 
                 [selectedItem]  ="selectedItem" 
                 [isSelectedOpen]="isSelectedOpen" 
-                [icon]          ="getIcon(getItemClass(item))">   
+                [icon]          ="getResourceIcon(item)">   
                 <extra *ngIf="options?.showActive">
                   <button type="button" class="btn btn-default btn-header" 
                     [ngClass]="{'active': activeItem === item}" (click)="updateActive(item)">
@@ -66,7 +66,7 @@ import {PropertyToolbar} from '../components/toolbar.propertySettings';
             </div>
 
             <div *ngIf="!options?.headersOnly">
-              <panel-general *ngIf="item == selectedItem" [item]="item"
+              <panel-general *ngIf="item === selectedItem" [item]="item"
                 [ignore]="ignore"
                 (saved)="onSaved(item, $event)" 
                 (canceled)="onCanceled($event)"
@@ -98,10 +98,8 @@ export class RepoGeneral extends RepoAbstract{
 
   ngOnInit(){
     super.ngOnInit();
-    this.typeOptions = this.types.filter(x => x.class != ResourceName.LyphWithAxis).map(x => (
-      {selected: !this.ignoreTypes.has(x),
-        value: x
-      }
+    this.typeOptions = this.types.filter(x => x.class !== ResourceName.LyphWithAxis).map(x => (
+      { selected: !this.ignoreTypes.has(x), value: x }
     ));
     this.typeOptions.push({selected: !this.ignoreTypes.has("Type"), value: "Type"});
   }

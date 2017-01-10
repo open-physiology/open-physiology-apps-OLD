@@ -16,13 +16,13 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
         <ul class="dropdown-menu" role="menu" aria-labelledby="SortAsc">
           <li role="menuitem" (click)="onClick('unsorted')">
             <a class="dropdown-item" href="#">
-            <span *ngIf="sortByMode == 'unsorted'">&#10004;</span>
+            <span *ngIf="sortByMode === 'unsorted'">&#10004;</span>
             (unsorted)</a>
           </li>
           <li class="divider"></li>
           <li *ngFor="let option of options; let i = index" role="menuitem" (click)="onClick(option)">
             <a class="dropdown-item" href="#">
-              <span *ngIf="sortByMode == option">&#10004;</span>
+              <span *ngIf="sortByMode === option">&#10004;</span>
               {{option}}
             </a>
           </li>
@@ -35,7 +35,7 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
         <ul class="dropdown-menu" role="menu" aria-labelledby="SortDesc">
           <li *ngFor="let option of options; let i = index" role="menuitem" (click)="onClick('-'+option)">
             <a class="dropdown-item" href="#">
-             <span *ngIf="sortByMode == '-'+option">&#10004;</span>
+             <span *ngIf="sortByMode === '-'+option">&#10004;</span>
              {{option}}
             </a>
           </li>

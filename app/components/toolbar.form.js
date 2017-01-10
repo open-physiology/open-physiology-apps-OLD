@@ -38,7 +38,7 @@ var FormToolbar = (function () {
         core_1.Component({
             selector: 'form-toolbar',
             inputs: ["options"],
-            template: "\n    <button *ngIf=\"!(options && options.hideRemove)\"\n      type=\"button\" class=\"btn btn-default btn-icon\" aria-label=\"Remove\" (click)=\"removed.emit()\">\n      <span class=\"glyphicon glyphicon-remove\"></span>\n    </button>\n    <button *ngIf=\"!(options && options.hideSave)\" \n      type=\"button\" class=\"btn btn-default btn-icon\" aria-label=\"Save\" (click)=\"saved.emit()\">\n      <span class=\"glyphicon glyphicon-check\"></span>\n    </button>\n    <button \n      *ngIf=\"!(options && options.hideRestore)\" \n      type=\"button\" class=\"btn btn-default btn-icon\" aria-label=\"Restore\" (click)=\"canceled.emit()\">\n      <span class=\"glyphicon glyphicon-refresh\"></span>\n    </button>    \n  "
+            template: "\n    <button *ngIf=\"!options?.hideRemove\"\n      type=\"button\" class=\"btn btn-default btn-icon\" aria-label=\"Remove\" (click)=\"removed.emit()\">\n      <span class=\"glyphicon glyphicon-remove\"></span>\n    </button>\n    <button *ngIf=\"!options?.hideSave\" \n      type=\"button\" class=\"btn btn-default btn-icon\" aria-label=\"Save\" (click)=\"saved.emit()\">\n      <span class=\"glyphicon glyphicon-check\"></span>\n    </button>\n    <button \n      *ngIf=\"!options?.hideRestore\" \n      type=\"button\" class=\"btn btn-default btn-icon\" aria-label=\"Restore\" (click)=\"canceled.emit()\">\n      <span class=\"glyphicon glyphicon-refresh\"></span>\n    </button>    \n  "
         }), 
         __metadata('design:paramtypes', [])
     ], FormToolbar);

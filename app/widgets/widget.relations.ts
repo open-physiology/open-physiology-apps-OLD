@@ -14,7 +14,7 @@ import {getColor, getPropertyLabel, model} from "../services/utils.model";
 
 @Component({
   selector: 'hierarchy-widget',
-  inputs: ['item', 'relations', 'depth'],
+  inputs: ['item', 'depth'],
   template : `
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -107,9 +107,8 @@ export class RelationshipWidget{
 
     this.relationOptions = [];
     if (this.item){
-      let relations = Object.assign({}, this.item.constructor.relationshipShortcuts);
-      for (let relation in relations) {
-        if (privateRelations.has(relation)) continue;
+      for (let relation of Object.keys(this.item.constructor.relationshipShortcuts)) {
+        if (privateRelations.has(relation)) { continue; }
         this.relationOptions.push({value: relation, selected: false, color: getColor(relation)});
       }
       if (this.relationOptions.length > 0) this.relationOptions[0].selected = true;

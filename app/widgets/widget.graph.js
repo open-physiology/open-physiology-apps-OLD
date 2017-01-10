@@ -32,7 +32,7 @@ var GraphWidget = (function () {
             utils_model_1.ResourceName.Measurable,
             utils_model_1.ResourceName.Causality,
             utils_model_1.ResourceName.Node,
-            utils_model_1.ResourceName.OmegaTree,
+            utils_model_1.ResourceName.CanonicalTree,
             utils_model_1.ResourceName.CoalescenceScenario];
         this.vp = { size: { width: 600, height: 600 },
             margin: { x: 20, y: 20 },
@@ -40,24 +40,24 @@ var GraphWidget = (function () {
         this.getIcon = utils_model_1.getIcon;
         this.getClassLabel = utils_model_1.getClassLabel;
         this.rs = resizeService.resize$.subscribe(function (event) {
-            if (event.target == "graph-widget") {
+            if (event.target === "graph-widget") {
                 _this.setPanelSize(event.size);
             }
         });
     }
     GraphWidget.prototype.onActiveItemChange = function (Class) {
         var options = {};
-        if (Class == utils_model_1.ResourceName.LyphWithAxis) {
+        if (Class === utils_model_1.ResourceName.LyphWithAxis) {
             Class = utils_model_1.ResourceName.Lyph;
             options.createAxis = true;
         }
-        if (Class == utils_model_1.ResourceName.Lyph) {
+        if (Class === utils_model_1.ResourceName.Lyph) {
             options.createRadialBorders = true;
         }
         var newItem = utils_model_1.model[Class].new({ name: "New " + Class }, options);
         var newType = utils_model_1.model.Type.new({ name: newItem.name, definition: newItem });
         newItem.p('name').subscribe(newType.p('name'));
-        if (Class == utils_model_1.ResourceName.CoalescenceScenario) {
+        if (Class === utils_model_1.ResourceName.CoalescenceScenario) {
             var layer1 = utils_model_1.model.Lyph.new({ name: "Layer 1" });
             var layer2 = utils_model_1.model.Lyph.new({ name: "Layer 2" });
             var layer3 = utils_model_1.model.Lyph.new({ name: "Layer 3" });
@@ -92,7 +92,7 @@ var GraphWidget = (function () {
         if (this.root && this.root.children) {
             for (var _i = 0, _a = this.root.children; _i < _a.length; _i++) {
                 var x = _a[_i];
-                if (x.model == model)
+                if (x.model === model)
                     return true;
             }
         }

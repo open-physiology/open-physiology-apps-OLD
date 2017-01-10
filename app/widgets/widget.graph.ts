@@ -42,7 +42,7 @@ export class GraphWidget{
     ResourceName.Measurable,
     ResourceName.Causality,
     ResourceName.Node,
-    ResourceName.OmegaTree,
+    ResourceName.CanonicalTree,
     ResourceName.CoalescenceScenario];
 
   svg : any;
@@ -62,7 +62,7 @@ export class GraphWidget{
               private resizeService: ResizeService) {
     this.rs = resizeService.resize$.subscribe(
     (event:any) => {
-      if (event.target == "graph-widget") {
+      if (event.target === "graph-widget") {
         this.setPanelSize(event.size);
       }
     });
@@ -70,11 +70,11 @@ export class GraphWidget{
 
   onActiveItemChange(Class: any){
     let options: any = {};
-    if (Class == ResourceName.LyphWithAxis) {
+    if (Class === ResourceName.LyphWithAxis) {
       Class = ResourceName.Lyph;
       options.createAxis = true;
     }
-    if (Class == ResourceName.Lyph) {
+    if (Class === ResourceName.Lyph) {
       options.createRadialBorders = true;
     }
 
@@ -82,7 +82,7 @@ export class GraphWidget{
     let newType = model.Type.new({name: newItem.name, definition: newItem});
     newItem.p('name').subscribe(newType.p('name'));
 
-    if (Class == ResourceName.CoalescenceScenario) {
+    if (Class === ResourceName.CoalescenceScenario) {
       let layer1 = model.Lyph.new({name: "Layer 1"});
       let layer2 = model.Lyph.new({name: "Layer 2"});
       let layer3 = model.Lyph.new({name: "Layer 3"});
@@ -123,7 +123,7 @@ export class GraphWidget{
   elementExists(model: any){
     if (this.root && this.root.children){
       for (let x of this.root.children){
-        if (x.model == model) return true;
+        if (x.model === model) return true;
       }
     }
     return false;

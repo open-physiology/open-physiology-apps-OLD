@@ -17,10 +17,10 @@ declare var $: any;
   selector: 'app',
   providers: [ResizeService, HighlightService],
   template: `
-    <repo-general id="omegaTreeRepo"
+    <repo-general id="canonicalTreeRepo"
       [items]="trees | setToArray" 
-      [caption]="'Omega trees'"
-      [types]="[ResourceName.OmegaTree]"
+      [caption]="'Canonical trees'"
+      [types]="[ResourceName.CanonicalTree]"
       (selectedItemChange)="onItemSelected($event)"
     >
     </repo-general>         
@@ -34,7 +34,7 @@ declare var $: any;
   directives: [RepoGeneral, RepoNested, RelationshipWidget, ResourceWidget],
   pipes: [SetToArray]
 })
-export class OmegaTreeEditor {
+export class CanonicalTreeEditor {
   protected ResourceName = ResourceName;
 
   trees        :Array<any> = [];
@@ -59,7 +59,7 @@ export class OmegaTreeEditor {
       content: [
         {
           type: 'component',
-          componentName: 'OmegaTreePanel'
+          componentName: 'CanonicalTreePanel'
         },
         {
           type: 'column',
@@ -79,11 +79,11 @@ export class OmegaTreeEditor {
   };
 
   mainLayout:any;
-  sOmegaTrees: Subscription;
+  sCanonicalTrees: Subscription;
 
   constructor(private resizeService:ResizeService, private highlightService: HighlightService, public el:ElementRef) {
 
-    this.sOmegaTrees = model.OmegaTree.p('all').subscribe(
+    this.sCanonicalTrees = model.CanonicalTree.p('all').subscribe(
       (data:any) => {this.trees = data;});
 
     let self = this;
@@ -116,7 +116,7 @@ export class OmegaTreeEditor {
   }
 
   ngOnDestroy() {
-    this.sOmegaTrees.unsubscribe();
+    this.sCanonicalTrees.unsubscribe();
   }
 
   onItemSelected(item:any) {
@@ -129,9 +129,9 @@ export class OmegaTreeEditor {
     let main = $('app > #main');
     this.mainLayout = new GoldenLayout(this.layoutConfig, main);
 
-    this.mainLayout.registerComponent('OmegaTreePanel', function (container:any, componentState:any) {
+    this.mainLayout.registerComponent('CanonicalTreePanel', function (container:any, componentState:any) {
       let panel = container.getElement();
-      let content = $('app > #omegaTreeRepo');
+      let content = $('app > #canonicalTreeRepo');
       content.detach().appendTo(panel);
     });
 

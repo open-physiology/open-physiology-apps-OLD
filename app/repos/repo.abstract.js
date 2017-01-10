@@ -32,11 +32,10 @@ var RepoAbstract = (function () {
         this.searchString = "";
         this.isSelectedOpen = false;
         this.getClassLabel = utils_model_1.getClassLabel;
-        this.getIcon = utils_model_1.getIcon;
-        this.getItemClass = utils_model_1.getItemClass;
+        this.getResourceIcon = utils_model_1.getResourceIcon;
         this.hs = highlightService.highlightedItemChanged$.subscribe(function (item) {
             if (_this.items.indexOf(item) > -1) {
-                if (_this._highlightedItem != item)
+                if (_this._highlightedItem !== item)
                     _this._highlightedItem = item;
             }
         });
@@ -50,7 +49,7 @@ var RepoAbstract = (function () {
             return this._selectedItem;
         },
         set: function (item) {
-            if (this._selectedItem != item) {
+            if (this._selectedItem !== item) {
                 this._selectedItem = item;
                 this.selectedItemChange.emit(item);
             }
@@ -63,7 +62,7 @@ var RepoAbstract = (function () {
             return this._activeItem;
         },
         set: function (item) {
-            if (this._activeItem != item) {
+            if (this._activeItem !== item) {
                 this._activeItem = item;
                 this.activeItemChange.emit(item);
             }
@@ -73,7 +72,7 @@ var RepoAbstract = (function () {
     });
     Object.defineProperty(RepoAbstract.prototype, "highlightedItem", {
         set: function (item) {
-            if (this.highlightedItem != item) {
+            if (this.highlightedItem !== item) {
                 this._highlightedItem = item;
                 this.highlightedItemChange.emit(item);
             }
@@ -94,8 +93,9 @@ var RepoAbstract = (function () {
         if (this.items[0] || !this.selectedItem)
             this.selectedItem = this.items[0];
         //Resources
-        if (this.types.length == 0) {
-            for (var x in utils_model_1.ResourceName) {
+        if (this.types.length === 0) {
+            for (var _i = 0, _a = Object.keys(utils_model_1.ResourceName); _i < _a.length; _i++) {
+                var x = _a[_i];
                 this.types.push(x);
             }
         }
@@ -105,7 +105,7 @@ var RepoAbstract = (function () {
         this.highlightedItem = item;
     };
     RepoAbstract.prototype.cleanHighlighted = function (item) {
-        if (this.highlightedItem == item)
+        if (this.highlightedItem === item)
             this.highlightedItem = null;
     };
     RepoAbstract.prototype.updateActive = function (item) {
@@ -124,7 +124,7 @@ var RepoAbstract = (function () {
     };
     RepoAbstract.prototype.onSaved = function (item, updatedItem) {
         this.updated.emit(this.items);
-        if (item == this.selectedItem) {
+        if (item === this.selectedItem) {
             this.selectedItemChange.emit(this.selectedItem);
         }
     };
@@ -135,7 +135,7 @@ var RepoAbstract = (function () {
         var index = this.items.indexOf(item);
         if (index > -1)
             this.items.splice(index, 1);
-        if (item == this.selectedItem) {
+        if (item === this.selectedItem) {
             if (this.items.length > 0)
                 this.selectedItem = this.items[0];
             else
@@ -145,17 +145,17 @@ var RepoAbstract = (function () {
         this.removed.emit(item);
         this.updated.emit(this.items);
     };
-    RepoAbstract.prototype.onAdded = function (Class) {
+    RepoAbstract.prototype.onAdded = function (clsName) {
         var options = {};
-        if (Class == utils_model_1.ResourceName.LyphWithAxis) {
-            Class = utils_model_1.ResourceName.Lyph;
+        if (clsName === utils_model_1.ResourceName.LyphWithAxis) {
+            clsName = utils_model_1.ResourceName.Lyph;
             options.createAxis = true;
         }
-        if (Class == utils_model_1.ResourceName.Lyph) {
+        if (clsName === utils_model_1.ResourceName.Lyph) {
             options.createRadialBorders = true;
         }
-        var newItem = utils_model_1.model[Class].new({ name: "New " + Class }, options);
-        if (Class == utils_model_1.ResourceName.Material) {
+        var newItem = utils_model_1.model[clsName].new({ name: "New " + clsName }, options);
+        if (clsName === utils_model_1.ResourceName.Material) {
             var newType = utils_model_1.model.Type.new({ name: newItem.name, definition: newItem });
             newItem.p('name').subscribe(newType.p('name'));
         }

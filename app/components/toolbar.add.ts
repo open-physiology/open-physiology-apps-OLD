@@ -9,7 +9,7 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
   selector: 'add-toolbar',
   inputs: ['options', 'transform'],
   template: `
-      <div *ngIf="options && (options.length > 1)" class="btn-group" dropdown>
+      <div *ngIf="options?.length > 1" class="btn-group" dropdown>
         <button type="button" class="btn btn-default btn-icon dropdown-toggle" aria-label="Add" dropdownToggle>
           <span class="glyphicon glyphicon-plus"></span>
         </button>
@@ -19,7 +19,7 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
           </li>
         </ul>
       </div>
-      <button *ngIf="options && (options.length == 1)" 
+      <button *ngIf="options?.length === 1" 
         type="button" class="btn btn-default btn-icon" (click)="added.emit(options[0])">
         <span class="glyphicon glyphicon-plus"></span>
       </button>

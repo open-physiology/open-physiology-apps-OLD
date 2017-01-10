@@ -12,7 +12,7 @@ import {TooltipDirective} from "../directives/directive.tooltip";
       <div class="btn-group pull-left">
         <label *ngFor="let item of items" type="button" class="btn btn-default btn-icon" 
           tooltip="{{transform? transform(item): item}}" tooltipPlacement="bottom"
-          [ngClass]="{'active': activeItem == item}" (click)="activeItemChange.emit(item)">
+          [ngClass]="{'active': activeItem === item}" (click)="activeItemChange.emit(item)">
           <img *ngIf="imageProvider" class="icon" src="{{imageProvider(item)}}"/>
         </label>
       </div>

@@ -85,7 +85,7 @@ export class ResourceEditor {
   constructor(private resizeService:ResizeService, private highlightService: HighlightService, public el:ElementRef) {
     this.rs = model.Resource.p('all').subscribe(
       (data: any) => {
-        this.items = data
+        this.items = data;
       });
 
     let self = this;
@@ -95,23 +95,58 @@ export class ResourceEditor {
       let renalH = model.Lyph.new({name: "Renal hilum"});
       let renalP = model.Lyph.new({name: "Renal parenchyma"});
       let renalC = model.Lyph.new({name: "Renal capsule"});
-      var cLyphsGroup = [renalH, renalP, renalC];
+      let cLyphsGroup = [renalH, renalP, renalC];
       await Promise.all(cLyphsGroup.map(p => p.commit()));
+
       let kidney = model.Lyph.new({name: "Kidney", layers: cLyphsGroup});
       await kidney.commit();
+
       let kidneyLobus = model.Lyph.new({name: "Kidney lobus"});
       await kidneyLobus.commit();
 
-      let slp = model.OmegaTree.new({name: "Short Looped Nephrone"});
-      await slp.commit();
-
       let cytosol = model.Lyph.new({name: "Cytosol"});
       await cytosol.commit();
+
       let plasmaM = model.Lyph.new({name: "Plasma membrain"});
       await plasmaM.commit();
 
       let cell = model.Lyph.new({name: "Cell", layers: [cytosol, plasmaM]});
       await cell.commit();
+
+      let plasmaMType = model.Type.new({name: "Plasma membrain type", definition: plasmaM});
+      await plasmaMType.commit();
+
+      let cellType = model.Type.new({name: "Cell type", definition: cell});
+      await cellType.commit();
+
+      let sln = model.CanonicalTree.new({name: "Short Looped Nephrone"});
+      await sln.commit();
+
+      let sln1 = model.CanonicalTree.new({name: "SLN tail 1"});
+      await sln1.commit();
+
+      let sln2 = model.CanonicalTree.new({name: "SLN tail 2"});
+      await sln2.commit();
+
+      let branch1 = model.CanonicalTreeBranch.new({name: "SLN level 1",
+        parentTree: sln, childTree: sln1, conveyingLyphType: cellType});
+      await branch1.commit();
+
+      let branch2 = model.CanonicalTreeBranch.new({name: "SLN level 2",
+        parentTree: sln1, childTree: sln2, conveyingLyphType: plasmaMType});
+      await branch2.commit();
+
+      // const resources = {};
+      // const relationships = {};
+      //
+      // for (let [key, value] of Object.entries(model)){
+      //   if (value.isResource) {resources[key] = value;}
+      //   if (value.isRelationship) {relationships[key] = value;}
+      // }
+      //
+      // console.log("Resources", resources);
+      // console.log("Relationships", relationships);
+
     })();
 
   }

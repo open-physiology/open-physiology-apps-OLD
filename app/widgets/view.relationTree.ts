@@ -2,7 +2,7 @@ import {Component, Input, Output, ElementRef, EventEmitter} from '@angular/core'
 import {ResizeService} from '../services/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
 
-import {getIcon, getColor, getTreeData} from "../services/utils.model";
+import {getResourceIcon, getColor, getTreeData} from "../services/utils.model";
 
 declare var d3:any;
 
@@ -29,7 +29,7 @@ export class RelationTree{
   constructor(public el: ElementRef, private resizeService: ResizeService){
     this.subscription = resizeService.resize$.subscribe(
       (event: any) => {
-        if (event.target == "hierarchy-tree"){
+        if (event.target === "hierarchy-tree"){
           this.setPanelSize(event.size);
         }
       });
@@ -189,7 +189,7 @@ export class RelationTree{
         .on('click', click);
 
       nodeEnter.append("image")
-        .attr("xlink:href", function (d: any) {return (d.resource)? getIcon(d.resource.class): "images/resource.png";})
+        .attr("xlink:href", function (d: any) {return (d.resource)? getResourceIcon(d.resource): "images/resource.png";})
         .attr("x", 0).attr("y", 0)
         .attr("width", 0).attr("height", 0);
 

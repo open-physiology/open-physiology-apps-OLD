@@ -124,17 +124,19 @@ export class ResourcePanel {
 
   protected getPropertyLabel(option: string){
     if (this.item)
-      if ((this.item.class == ResourceName.Lyph) ||
-        (this.item.class == ResourceName.OmegaTree)) {
-        if (option == "cardinalityBase") return "Branching factor";
+      if ((this.item.class === ResourceName.Lyph) ||
+        (this.item.class === ResourceName.CanonicalTree)) {
+        if (option === "cardinalityBase") return "Branching factor";
       }
     return generalPropertyLabel(option);
   }
 
   getTypes(property: string): any{
     let partnerClass = this.item.constructor.relationshipShortcuts[property].codomain.resourceClass;
-    //TODO: replace abstract classes with decendants
-    return [partnerClass.name];
+    let subClasses = /*(partnerClass.allSubclasses)?
+      Object.keys(partnerClass.allSubclasses()).filter(x => !x.abstract).map(x => x.name):*/
+      [partnerClass.name];
+    return subClasses;
   }
 
   //TODO: input fields - choose type
@@ -151,7 +153,10 @@ export class ResourcePanel {
       .filter(x => !this.privateProperties.has(x[0]) && !this.custom.has(x[0]));
     //Relations
     let relations = Object.entries(this.item.constructor.relationshipShortcuts)
-      .filter(x => !this.privateProperties.has(x[0]) && !this.custom.has(x[0]));
+      .filter(x => !x[1].abstract && !this.privateProperties.has(x[0]) && !this.custom.has(x[0]));
+
+    //console.log("Properties", properties);
+    //console.log("Relations", relations);
 
     //Input fields
     this.inputGroup = properties.map(x => x[0]);
@@ -176,10 +181,10 @@ export class ResourcePanel {
     if (this.item && this.item.constructor) {
       let properties = Object.assign({}, this.item.constructor.properties, this.item.constructor.relationshipShortcuts);
 
-      for (let property in properties) {
-        if (this.privateProperties.has(property)) continue;
+      for (let property of Object.keys(properties)) {
+        if (this.privateProperties.has(property)) { continue; }
 
-        if ((property == 'radialBorders') || (property == 'longitudinalBorders')) {
+        if ((property === 'radialBorders') || (property === 'longitudinalBorders')) {
           if (!this.properties.find(x => (x.value === "borders")))
             this.properties.push({value: "borders", selected: !this.ignore.has("borders")});
           continue;

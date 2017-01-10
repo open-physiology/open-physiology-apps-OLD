@@ -12,8 +12,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by Natallia on 7/23/2016.
  */
 var core_1 = require('@angular/core');
-var view_omegaTree_1 = require('./view.omegaTree');
-var view_omegaTreeInfo_1 = require('./view.omegaTreeInfo');
+var view_canonicalTree_1 = require('./view.canonicalTree');
+var view_canonicalTreeInfo_1 = require('./view.canonicalTreeInfo');
 var view_lyph_1 = require('./view.lyph');
 var utils_model_1 = require('../services/utils.model');
 var service_resize_1 = require('../services/service.resize');
@@ -24,16 +24,16 @@ var ResourceWidget = (function () {
         this.layout = 'resource';
         this.ResourceName = utils_model_1.ResourceName;
         this.subscription = resizeService.resize$.subscribe(function (event) {
-            if (event.target == "resource-widget") {
+            if (event.target === "resource-widget") {
                 _this.onSetPanelSize(event);
             }
         });
     }
     ResourceWidget.prototype.ngOnChanges = function (changes) {
-        if (this.item && (this.item.class == utils_model_1.ResourceName.Lyph)) { }
+        if (this.item && (this.item.class === utils_model_1.ResourceName.Lyph)) { }
     };
     ResourceWidget.prototype.onSetPanelSize = function (event) {
-        this.resizeService.announceResize({ target: "omega-tree", size: event.size });
+        this.resizeService.announceResize({ target: "canonical-tree", size: event.size });
         this.resizeService.announceResize({ target: "lyph", size: event.size });
     };
     ResourceWidget.prototype.ngOnDestroy = function () { this.subscription.unsubscribe(); };
@@ -45,8 +45,8 @@ var ResourceWidget = (function () {
         core_1.Component({
             selector: 'resource-widget',
             inputs: ['item'],
-            template: "\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">Resource <strong>{{item?.id}}{{(item)? ': ' + item.name : ''}}</strong></div>\n      <div class=\"btn-group\" *ngIf=\"item && (item.class == ResourceName.OmegaTree)\">\n        <button type=\"button\" class=\"btn btn-default btn-icon\" \n          [ngClass]=\"{'active': layout == 'tree'}\" (click)=\"layout = 'resource'\">\n          <img class=\"icon\" src=\"images/resource.png\"/>\n        </button>\n        <button type=\"button\" class=\"btn btn-default btn-icon\" \n          [ngClass]=\"{'active': layout == 'stats'}\" (click)=\"layout = 'info'\">\n          <span class=\"glyphicon glyphicon-info-sign\"></span>\n        </button>\n      </div>\n\n      <omega-tree *ngIf=\"item && (layout == 'resource') && (item.class == ResourceName.OmegaTree)\" [item]=\"item\"></omega-tree>  \n      <omega-tree-info *ngIf=\"item && (layout == 'info') && (item.class == ResourceName.OmegaTree)\" [item]=\"item\"></omega-tree-info>  \n\n      <lyph *ngIf=\"item && (item.class == ResourceName.Lyph)\" [item]=\"item\"></lyph>  \n      \n    </div> \n  ",
-            directives: [view_omegaTree_1.OmegaTreeWidget, view_omegaTreeInfo_1.OmegaTreeInfoWidget, view_lyph_1.LyphWidget]
+            template: "\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">Resource <strong>{{item?.id}}{{(item)? ': ' + item.name : ''}}</strong></div>\n      <div class=\"btn-group\" *ngIf=\"item && (item.class === ResourceName.CanonicalTree)\">\n        <button type=\"button\" class=\"btn btn-default btn-icon\" \n          [ngClass]=\"{'active': layout === 'tree'}\" (click)=\"layout = 'resource'\">\n          <img class=\"icon\" src=\"images/resource.png\"/>\n        </button>\n        <button type=\"button\" class=\"btn btn-default btn-icon\" \n          [ngClass]=\"{'active': layout === 'stats'}\" (click)=\"layout = 'info'\">\n          <span class=\"glyphicon glyphicon-info-sign\"></span>\n        </button>\n      </div>\n\n      <canonical-tree *ngIf=\"(layout === 'resource') && (item?.class === ResourceName.CanonicalTree)\" [item]=\"item\"></canonical-tree>  \n      <canonical-tree-info *ngIf=\"(layout === 'info') && (item?.class === ResourceName.CanonicalTree)\" [item]=\"item\"></canonical-tree-info>  \n\n      <lyph *ngIf=\"item?.class === ResourceName.Lyph\" [item]=\"item\"></lyph>  \n      \n    </div> \n  ",
+            directives: [view_canonicalTree_1.CanonicalTreeWidget, view_canonicalTreeInfo_1.CanonicalTreeInfoWidget, view_lyph_1.LyphWidget]
         }), 
         __metadata('design:paramtypes', [service_resize_1.ResizeService])
     ], ResourceWidget);

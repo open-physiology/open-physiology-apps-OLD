@@ -25,7 +25,7 @@ var RelationGraph = (function () {
             node: { size: { width: 40, height: 20 } } };
         var self = this;
         this.subscription = resizeService.resize$.subscribe(function (event) {
-            if (event.target == "hierarchy-graph") {
+            if (event.target === "hierarchy-graph") {
                 self.setPanelSize(event.size);
             }
         });

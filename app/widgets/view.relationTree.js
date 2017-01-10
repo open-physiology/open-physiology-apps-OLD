@@ -21,7 +21,7 @@ var RelationTree = (function () {
         this.vp = { size: { width: 600, height: 400 }, margin: { x: 20, y: 20 }, node: { size: { width: 40, height: 20 } } };
         this.selected = new core_1.EventEmitter();
         this.subscription = resizeService.resize$.subscribe(function (event) {
-            if (event.target == "hierarchy-tree") {
+            if (event.target === "hierarchy-tree") {
                 _this.setPanelSize(event.size);
             }
         });
@@ -156,7 +156,7 @@ var RelationTree = (function () {
                 .attr("transform", function (d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
                 .on('click', click);
             nodeEnter.append("image")
-                .attr("xlink:href", function (d) { return (d.resource) ? utils_model_1.getIcon(d.resource.class) : "images/resource.png"; })
+                .attr("xlink:href", function (d) { return (d.resource) ? utils_model_1.getResourceIcon(d.resource) : "images/resource.png"; })
                 .attr("x", 0).attr("y", 0)
                 .attr("width", 0).attr("height", 0);
             nodeEnter.append("text")

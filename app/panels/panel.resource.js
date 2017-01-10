@@ -49,17 +49,17 @@ var ResourcePanel = (function () {
     }
     ResourcePanel.prototype.getPropertyLabel = function (option) {
         if (this.item)
-            if ((this.item.class == utils_model_1.ResourceName.Lyph) ||
-                (this.item.class == utils_model_1.ResourceName.OmegaTree)) {
-                if (option == "cardinalityBase")
+            if ((this.item.class === utils_model_1.ResourceName.Lyph) ||
+                (this.item.class === utils_model_1.ResourceName.CanonicalTree)) {
+                if (option === "cardinalityBase")
                     return "Branching factor";
             }
         return utils_model_2.getPropertyLabel(option);
     };
     ResourcePanel.prototype.getTypes = function (property) {
         var partnerClass = this.item.constructor.relationshipShortcuts[property].codomain.resourceClass;
-        //TODO: replace abstract classes with decendants
-        return [partnerClass.name];
+        var subClasses = [partnerClass.name];
+        return subClasses;
     };
     //TODO: input fields - choose type
     //TODO: disable readOnly fields
@@ -73,7 +73,9 @@ var ResourcePanel = (function () {
             .filter(function (x) { return !_this.privateProperties.has(x[0]) && !_this.custom.has(x[0]); });
         //Relations
         var relations = Object.entries(this.item.constructor.relationshipShortcuts)
-            .filter(function (x) { return !_this.privateProperties.has(x[0]) && !_this.custom.has(x[0]); });
+            .filter(function (x) { return !x[1].abstract && !_this.privateProperties.has(x[0]) && !_this.custom.has(x[0]); });
+        //console.log("Properties", properties);
+        //console.log("Relations", relations);
         //Input fields
         this.inputGroup = properties.map(function (x) { return x[0]; });
         for (var _i = 0, properties_1 = properties; _i < properties_1.length; _i++) {
@@ -97,10 +99,12 @@ var ResourcePanel = (function () {
     ResourcePanel.prototype.setPropertySettings = function () {
         if (this.item && this.item.constructor) {
             var properties = Object.assign({}, this.item.constructor.properties, this.item.constructor.relationshipShortcuts);
-            for (var property in properties) {
-                if (this.privateProperties.has(property))
+            for (var _i = 0, _a = Object.keys(properties); _i < _a.length; _i++) {
+                var property = _a[_i];
+                if (this.privateProperties.has(property)) {
                     continue;
-                if ((property == 'radialBorders') || (property == 'longitudinalBorders')) {
+                }
+                if ((property === 'radialBorders') || (property === 'longitudinalBorders')) {
                     if (!this.properties.find(function (x) { return (x.value === "borders"); }))
                         this.properties.push({ value: "borders", selected: !this.ignore.has("borders") });
                     continue;

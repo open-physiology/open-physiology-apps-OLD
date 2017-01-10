@@ -74,12 +74,12 @@ function getListData(item, property, depth) {
             return;
         if (!root[property])
             return;
-        if (depth == 0)
+        if (depth === 0)
             return root;
         var children = root[property];
         for (var _i = 0, children_1 = children; _i < children_1.length; _i++) {
             var child = children_1[_i];
-            if (data.indexOf(child) == -1)
+            if (data.indexOf(child) === -1)
                 data.push(child);
             traverse(child, property, depth - 1, data);
         }

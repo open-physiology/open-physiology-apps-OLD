@@ -44,7 +44,7 @@ var RepoNested = (function (_super) {
         _super.prototype.ngOnInit.call(this);
         //If selectionOptions are not provided by parent, subscribe and get all for given types
         if (!this.selectionOptions) {
-            if (this.types.length == 1) {
+            if (this.types.length === 1) {
                 this.ts = utils_model_1.model[this.types[0]].p('all').subscribe(function (data) {
                     _this.selectionOptions = data;
                 });
@@ -63,12 +63,8 @@ var RepoNested = (function (_super) {
             this.ts.unsubscribe();
     };
     RepoNested.prototype.ngOnChanges = function (changes) {
-        //Set correct initial order for linked set]
         if (this.items) {
-            if (this.options.linked) {
-                this.items.sort(function (a, b) { return utils_model_1.compareLinkedParts(a, b); });
-            }
-            else if (this.options.ordered) {
+            if (this.options.ordered) {
                 this.items.sort(function (a, b) {
                     return (a['-->HasLayer'].relativePosition - b['-->HasLayer'].relativePosition);
                 });
@@ -77,30 +73,16 @@ var RepoNested = (function (_super) {
     };
     RepoNested.prototype.onDragStart = function (index) { };
     RepoNested.prototype.onDragEnd = function (index) {
-        if (this.options.linked) {
-            this.items[0].treeParent = null;
-            for (var i = 1; i < this.items.length; i++) {
-                this.items[i].treeParent = this.items[i - 1];
-            }
-            this.updated.emit(this.items);
-        }
-        else if (this.options.ordered) {
+        if (this.options.ordered) {
             for (var i = 0; i < this.items.length; i++) {
                 this.items[i]['-->HasLayer'].relativePosition = i;
             }
             this.updated.emit(this.items);
         }
     };
-    RepoNested.prototype.onAdded = function (Class) {
-        _super.prototype.onAdded.call(this, Class);
-        if (this.options.linked)
-            this.linkAdded();
-    };
     RepoNested.prototype.onIncluded = function (newItem) {
         if (newItem) {
             if (this.items.indexOf(newItem) < 0) {
-                if (this.options.linked)
-                    this.linkAdded();
                 this.items.push(newItem);
                 this.updated.emit(this.items);
                 this.added.emit(newItem);
@@ -111,20 +93,12 @@ var RepoNested = (function (_super) {
             }
         }
     };
-    RepoNested.prototype.linkAdded = function () {
-        if (this.selectedItem) {
-            var index = this.items.indexOf(this.selectedItem);
-            if (index > 0) {
-                this.selectedItem.treeParent = this.items[index - 1];
-            }
-        }
-    };
     RepoNested = __decorate([
         core_1.Component({
             selector: 'repo-nested',
             inputs: ['items', 'caption', 'ignore', 'types', 'selectedItem', 'options', 'selectionOptions'],
             providers: [ng2_toasty_1.ToastyService],
-            template: "\n    <div class=\"panel repo-nested\">\n      <div class=\"panel-heading\"> <label>{{caption}}: </label></div>\n      <div class=\"panel-body\" >\n        <span  *ngIf = \"!(options?.readOnly || options?.headersOnly)\">\n          <select-input-1 class=\"pull-left input-select\" [item] = \"itemToInclude\"\n           (updated) = \"itemToInclude = $event\"    \n           [options] = \"selectionOptions\">\n          </select-input-1>\n          <button type=\"button\" class=\"btn btn-default btn-icon\" (click)=\"onIncluded(itemToInclude)\">\n            <span class=\"glyphicon glyphicon-save\"></span>\n          </button>\n        </span>\n        \n        <sort-toolbar   *ngIf =  \"options?.sortToolbar\"  [options]=\"['Name', 'ID', 'Class']\" (sorted)=\"onSorted($event)\"></sort-toolbar>\n        <add-toolbar    *ngIf = \"!(options?.readOnly || options?.headersOnly)\"  [options]=\"types\" [transform]=\"getClassLabel\" (added)=\"onAdded($event)\"></add-toolbar>\n        <filter-toolbar *ngIf =  \"options?.filterToolbar\" [options]=\"['Name', 'ID', 'Class']\" [filter]=\"searchString\" (applied)=\"onFiltered($event)\"></filter-toolbar>\n          \n        <accordion class=\"list-group\" [closeOthers]=\"true\"\n          dnd-sortable-container [dropZones]=\"zones\" [sortableData]=\"items\">\n          <accordion-group *ngFor=\"let item of items \n            | orderBy : sortByMode \n            | filterBy: [searchString, filterByMode]; let i = index\" \n            class=\"list-group-item\" dnd-sortable (onDragStart)=\"onDragStart()\" (onDragEnd)=\"onDragEnd()\"\n           [sortableIndex]=\"i\">\n            <div accordion-heading \n              (click)=\"updateSelected(item)\" \n              (mouseover)=\"updateHighlighted(item)\" (mouseout)=\"cleanHighlighted(item)\"\n              [ngClass]=\"{highlighted: _highlightedItem === item}\">\n              <item-header [item]=\"item\" \n                [selectedItem]=\"selectedItem\" \n                [isSelectedOpen]=\"isSelectedOpen\" \n                [icon]=\"getIcon(getItemClass(item))\">\n              </item-header>\n            </div>\n\n            <div *ngIf=\"!options?.headersOnly\">\n              <panel-general *ngIf=\"item == selectedItem\" \n                [item]    =\"item\" \n                [ignore]  =\"ignore\"\n                [options] =\"options\"\n                (saved)   =\"onSaved(item, $event)\" \n                (removed) =\"onRemoved(item)\"\n                (highlightedItemChange)=\"highlightedItemChange.emit($event)\"\n                ></panel-general>            \n            </div>\n          </accordion-group>        \n        </accordion>       \n      </div>\n    </div>\n    <ng2-toasty></ng2-toasty>\n  ",
+            template: "\n    <div class=\"panel repo-nested\">\n      <div class=\"panel-heading\"> <label>{{caption}}: </label></div>\n      <div class=\"panel-body\" >\n        <span  *ngIf = \"!(options?.readOnly || options?.headersOnly)\">\n          <select-input-1 class=\"pull-left input-select\" [item] = \"itemToInclude\"\n           (updated) = \"itemToInclude = $event\"    \n           [options] = \"selectionOptions\">\n          </select-input-1>\n          <button type=\"button\" class=\"btn btn-default btn-icon\" (click)=\"onIncluded(itemToInclude)\">\n            <span class=\"glyphicon glyphicon-save\"></span>\n          </button>\n        </span>\n        \n        <sort-toolbar   *ngIf =  \"options?.sortToolbar\"  [options]=\"['Name', 'ID', 'Class']\" (sorted)=\"onSorted($event)\"></sort-toolbar>\n        <add-toolbar    *ngIf = \"!(options?.readOnly || options?.headersOnly)\"  [options]=\"types\" [transform]=\"getClassLabel\" (added)=\"onAdded($event)\"></add-toolbar>\n        <filter-toolbar *ngIf =  \"options?.filterToolbar\" [options]=\"['Name', 'ID', 'Class']\" [filter]=\"searchString\" (applied)=\"onFiltered($event)\"></filter-toolbar>\n          \n        <accordion class=\"list-group\" [closeOthers]=\"true\"\n          dnd-sortable-container [dropZones]=\"zones\" [sortableData]=\"items\">\n          <accordion-group *ngFor=\"let item of items \n            | orderBy : sortByMode \n            | filterBy: [searchString, filterByMode]; let i = index\" \n            class=\"list-group-item\" dnd-sortable (onDragStart)=\"onDragStart()\" (onDragEnd)=\"onDragEnd()\"\n           [sortableIndex]=\"i\">\n            <div accordion-heading \n              (click)=\"updateSelected(item)\" \n              (mouseover)=\"updateHighlighted(item)\" (mouseout)=\"cleanHighlighted(item)\"\n              [ngClass]=\"{highlighted: _highlightedItem === item}\">\n              <item-header [item]=\"item\" \n                [selectedItem]=\"selectedItem\" \n                [isSelectedOpen]=\"isSelectedOpen\" \n                [icon]=\"getResourceIcon(item)\">\n              </item-header>\n            </div>\n\n            <div *ngIf=\"!options?.headersOnly\">\n              <panel-general *ngIf=\"item === selectedItem\" \n                [item]    =\"item\" \n                [ignore]  =\"ignore\"\n                [options] =\"options\"\n                (saved)   =\"onSaved(item, $event)\" \n                (removed) =\"onRemoved(item)\"\n                (highlightedItemChange)=\"highlightedItemChange.emit($event)\"\n                ></panel-general>            \n            </div>\n          </accordion-group>        \n        </accordion>       \n      </div>\n    </div>\n    <ng2-toasty></ng2-toasty>\n  ",
             directives: [repo_itemHeader_1.ItemHeader, toolbar_sort_1.SortToolbar, toolbar_add_1.AddToolbar, toolbar_filter_1.FilterToolbar, component_select_1.SingleSelectInput,
                 core_1.forwardRef(function () { return dispatch_resources_1.PanelDispatchResources; }),
                 accordion_1.ACCORDION_DIRECTIVES, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, ng2_dnd_1.DND_DIRECTIVES,

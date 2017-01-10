@@ -12,21 +12,21 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
         
         <div class="btn-group" style="float: left;">
           <button type="button" class="btn btn-default btn-icon" 
-            [ngClass]="{'active': valueType == 'Value'}" (click)="updateType('Value')">
+            [ngClass]="{'active': valueType === 'Value'}" (click)="updateType('Value')">
             <span class="glyphicon glyphicon-th"></span>
           </button>
           <button type="button" class="btn btn-default btn-icon" 
-            [ngClass]="{'active': valueType == 'Range'}" (click)="updateType('Range')">
+            [ngClass]="{'active': valueType === 'Range'}" (click)="updateType('Range')">
             <span class="glyphicon glyphicon-transfer"></span>
           </button>
           <button type="button" class="btn btn-default btn-icon" 
-            [ngClass]="{'active': valueType == 'Distribution'}" (click)="updateType('Distribution')">
+            [ngClass]="{'active': valueType === 'Distribution'}" (click)="updateType('Distribution')">
             <span class="glyphicon glyphicon-random"></span>
           </button>
         </div>
       </div>
       
-      <div class="input-control input-control-sm" *ngIf="valueType == 'Value'">
+      <div class="input-control input-control-sm" *ngIf="valueType === 'Value'">
         <label>Value:</label>
         <input type="number" class="form-control" 
            [min] ="min" 
@@ -36,8 +36,8 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
            (ngModelChange)="updated.emit(value)"/>
       </div>
 
-      <div class="input-control" *ngIf="(valueType == 'Range') || (valueType == 'Distribution')">
-        <label>{{(valueType == 'Range')? "Range": "Distribution"}}:</label>
+      <div class="input-control" *ngIf="(valueType === 'Range') || (valueType === 'Distribution')">
+        <label>{{(valueType === 'Range')? "Range": "Distribution"}}:</label>
         <fieldset >
           <!--Min--> 
           <div class="input-control input-control-sm">
@@ -59,7 +59,7 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
               [(ngModel)]="valueSet.max"
               (ngModelChange)="updated.emit(valueSet)">
           </div>
-          <div *ngIf="valueType == 'Distribution'" style="display: inline-block">
+          <div *ngIf="valueType === 'Distribution'" style="display: inline-block">
             <!--Mean-->
             <div class="input-control input-control-sm">
               <label for="mean">Mean: </label>
@@ -115,11 +115,11 @@ export class TemplateValue{
 
   updateType(type: string){
     this.valueType = type;
-    if (type == "Value"){
+    if (type === "Value"){
       this.item = this.value;
     } else {
       this.item = this.valueSet;
-      this.valueSet.distribution = (this.valueType == 'Distribution')? "Normal": undefined;
+      this.valueSet.distribution = (this.valueType === 'Distribution')? "Normal": undefined;
     }
 
     this.updated.emit(this.item);

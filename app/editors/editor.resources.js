@@ -87,14 +87,38 @@ var ResourceEditor = (function () {
                 yield kidney.commit();
                 var kidneyLobus = utils_model_1.model.Lyph.new({ name: "Kidney lobus" });
                 yield kidneyLobus.commit();
-                var slp = utils_model_1.model.OmegaTree.new({ name: "Short Looped Nephrone" });
-                yield slp.commit();
                 var cytosol = utils_model_1.model.Lyph.new({ name: "Cytosol" });
                 yield cytosol.commit();
                 var plasmaM = utils_model_1.model.Lyph.new({ name: "Plasma membrain" });
                 yield plasmaM.commit();
                 var cell = utils_model_1.model.Lyph.new({ name: "Cell", layers: [cytosol, plasmaM] });
                 yield cell.commit();
+                var plasmaMType = utils_model_1.model.Type.new({ name: "Plasma membrain type", definition: plasmaM });
+                yield plasmaMType.commit();
+                var cellType = utils_model_1.model.Type.new({ name: "Cell type", definition: cell });
+                yield cellType.commit();
+                var sln = utils_model_1.model.CanonicalTree.new({ name: "Short Looped Nephrone" });
+                yield sln.commit();
+                var sln1 = utils_model_1.model.CanonicalTree.new({ name: "SLN tail 1" });
+                yield sln1.commit();
+                var sln2 = utils_model_1.model.CanonicalTree.new({ name: "SLN tail 2" });
+                yield sln2.commit();
+                var branch1 = utils_model_1.model.CanonicalTreeBranch.new({ name: "SLN level 1",
+                    parentTree: sln, childTree: sln1, conveyingLyphType: cellType });
+                yield branch1.commit();
+                var branch2 = utils_model_1.model.CanonicalTreeBranch.new({ name: "SLN level 2",
+                    parentTree: sln1, childTree: sln2, conveyingLyphType: plasmaMType });
+                yield branch2.commit();
+                // const resources = {};
+                // const relationships = {};
+                //
+                // for (let [key, value] of Object.entries(model)){
+                //   if (value.isResource) {resources[key] = value;}
+                //   if (value.isRelationship) {relationships[key] = value;}
+                // }
+                //
+                // console.log("Resources", resources);
+                // console.log("Relationships", relationships);
             });
         })();
     }

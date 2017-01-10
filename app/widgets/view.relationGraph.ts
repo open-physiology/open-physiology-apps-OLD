@@ -36,7 +36,7 @@ export class RelationGraph implements OnChanges, OnDestroy{
     let self = this;
     this.subscription = resizeService.resize$.subscribe(
       (event: any) => {
-        if (event.target == "hierarchy-graph"){
+        if (event.target === "hierarchy-graph"){
           self.setPanelSize(event.size);
         }
       });

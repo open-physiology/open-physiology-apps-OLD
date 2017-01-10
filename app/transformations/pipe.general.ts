@@ -11,10 +11,7 @@ export class HideClass implements PipeTransform {
   transform(items: any, classNames: any[]): any {
     if (!items) return items;
     if (classNames instanceof Set) classNames = Array.from(classNames);
-    let filteredItems = items.filter(x => (classNames.indexOf(x.class) < 0));
-    if (classNames.indexOf('Type') > -1){
-      filteredItems = filteredItems.filter(x => (x.class.indexOf('Type') < 0))
-    }
+    let filteredItems = items.filter(x => !classNames.includes(x.class));
     return filteredItems;
   }
 }
@@ -28,13 +25,13 @@ export class FilterBy implements PipeTransform {
   transform(items: any[], args: any[]): any {
     if (!items) return items;
     if (!args || args.length < 2) return items;
-    if (args[0].length == 0) return items;
+    if (args[0].length === 0) return items;
     let filter = args[0];
     let property = args[1];
     return items.filter(item =>
       (typeof(item[property]) === 'string')?
       item[property].toLowerCase().indexOf(filter.toLowerCase()) !== -1 :
-      item[property] == filter);
+      item[property] === filter);
   }
 }
 
@@ -91,11 +88,11 @@ export class MapToOptions implements PipeTransform {
 })
 export class MapToCategories implements PipeTransform {
   transform(items: any[]): any {
-    if (!items || (items.length == 0)) return [];
+    if (!items || (items.length === 0)) return [];
     let types = Array.from(new Set(items.map(item => item.type)));
     let typedItems: any[] = [];
     for (let type of types){
-      let typed = items.filter(item => (item.type == type));
+      let typed = items.filter(item => (item.type === type));
       typedItems.push({text: type, children: typed});
     }
     return typedItems;

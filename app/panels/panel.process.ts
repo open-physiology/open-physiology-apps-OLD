@@ -74,13 +74,13 @@ export class ProcessPanel extends TemplatePanel{
   updateProperty(property: string, lyph: any){
     super.updateProperty(property, lyph);
     if (!lyph) return;
-    if (property == "sourceLyph"){
+    if (property === "sourceLyph"){
       this.sourceOptions = lyph.nodes;
       if (this.item.source){
         if (this.sourceOptions.indexOf(this.item.source) < 0) this.item.source = null;
       }
     }
-    if (property == "targetLyph"){
+    if (property === "targetLyph"){
       this.targetOptions = lyph.nodes;
       if (this.item.target){
         if (this.targetOptions.indexOf(this.item.target) < 0) this.item.target = null;

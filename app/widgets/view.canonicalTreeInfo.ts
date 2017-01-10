@@ -2,13 +2,13 @@
  * Created by Natallia on 10/9/2016.
  */
 import {Component, Input} from '@angular/core';
-import {getTreeData, compareLinkedParts, ResourceName, getOmegaTreeData} from "../services/utils.model";
+import {getCanonicalTreeData, ResourceName} from "../services/utils.model";
 import {nvD3} from 'ng2-nvd3/lib/ng2-nvd3';
 
 declare var $:any;
 
 @Component({
-  selector: 'omega-tree-info',
+  selector: 'canonical-tree-info',
   inputs: ['item'],
   template : `
      <div class="panel-body">
@@ -21,7 +21,7 @@ declare var $:any;
   `,
   directives: [nvD3]
 })
-export class OmegaTreeInfoWidget{
+export class CanonicalTreeInfoWidget{
   @Input() item : any;
 
   options: any = {
@@ -49,15 +49,10 @@ export class OmegaTreeInfoWidget{
   }
 
   getDistributionData(item: any){
-    let relations = new Set<string>().add("parts");
-    let treeData = getTreeData(item, relations, -1); //creates structure for d3 tree out of item.parts
-    let parts = treeData.children;
+    let treeData = getCanonicalTreeData(item, -1);
 
     this.thicknessData = [];
     this.lengthData = [];
-
-    if (!parts) return;
-    parts.sort((a, b) => compareLinkedParts(a.resource, b.resource));
 
     function getEntry(d: any){
       //Normal distribution
@@ -69,41 +64,24 @@ export class OmegaTreeInfoWidget{
         std = (d.min + d.max) / 4;
         Z = 1;
       }
-      let values = {
-        Q1: mean - Z * std,
-        Q2: mean,
-        Q3: mean + Z * std,
-        whisker_low: d.min,
-        whisker_high: d.max,
+      return {
+        Q1: mean - Z * std, Q2: mean, Q3: mean + Z * std,
+        whisker_low: d.min, whisker_high: d.max,
         outliers: [0, 10]
       };
-      return values;
     }
 
-    for (let i = 0; i < parts.length; i++) {
-      if ((parts[i].resource.class == ResourceName.Lyph) || (parts[i].resource.class == ResourceName.LyphWithAxis)) {
-        if (parts[i].resource.thickness){
-          let d = parts[i].resource.thickness;
-          let entry = {
-            label: parts[i].name,
-            values: getEntry(d)
-          };
-          this.thicknessData.push(entry);
+    for (let child of treeData.children) {
+      let lyphType = child.parentBranch.conveyingLyphType;
+      if (lyphType && lyphType.definition) {
+        let lyph = lyphType.definition;
+        if (lyph.thickness) {
+          this.thicknessData.push({ label: lyph.name, values: getEntry(lyph.thickness) });
         }
-        if (parts[i].resource.length){
-          let d = parts[i].resource.length;
-          let entry = {
-            label: parts[i].name,
-            values: getEntry(d)
-          };
-          this.lengthData.push(entry);
+        if (lyph.length) {
+          this.lengthData.push({ label: lyph.name, values: getEntry(lyph.length) });
         }
       }
     }
   }
-
-  getLevelSizeData(item: any){
-    let tree = getOmegaTreeData(item);
-  }
-
 }

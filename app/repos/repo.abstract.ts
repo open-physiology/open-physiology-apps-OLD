@@ -2,7 +2,7 @@
  * Created by Natallia on 7/8/2016.
  */
 import {Input, Output, EventEmitter} from '@angular/core';
-import {ResourceName, getClassLabel, getIcon, getItemClass, model} from "../services/utils.model";
+import {ResourceName, getClassLabel, getResourceIcon, model} from "../services/utils.model";
 import {HighlightService} from "../services/service.highlight";
 import {Subscription}   from 'rxjs/Subscription';
 
@@ -33,14 +33,12 @@ export abstract class RepoAbstract{
   hs: Subscription;
 
   getClassLabel = getClassLabel;
-  getIcon = getIcon;
-  getItemClass = getItemClass;
-
+  getResourceIcon = getResourceIcon;
 
   constructor(highlightService: HighlightService){
     this.hs = highlightService.highlightedItemChanged$.subscribe(item => {
       if (this.items.indexOf(item) > -1){
-        if (this._highlightedItem != item)
+        if (this._highlightedItem !== item)
           this._highlightedItem = item;
       }
     })
@@ -51,7 +49,7 @@ export abstract class RepoAbstract{
   }
 
   public set selectedItem (item: any) {
-    if (this._selectedItem != item){
+    if (this._selectedItem !== item){
       this._selectedItem = item;
       this.selectedItemChange.emit(item);
     }
@@ -62,7 +60,7 @@ export abstract class RepoAbstract{
   }
 
   public set activeItem (item: any) {
-    if (this._activeItem != item){
+    if (this._activeItem !== item){
       this._activeItem = item;
       this.activeItemChange.emit(item);
     }
@@ -73,7 +71,7 @@ export abstract class RepoAbstract{
   }
 
   public set highlightedItem (item: any) {
-    if (this.highlightedItem != item){
+    if (this.highlightedItem !== item){
       this._highlightedItem = item;
       this.highlightedItemChange.emit(item);
     }
@@ -88,8 +86,8 @@ export abstract class RepoAbstract{
     if (this.items[0] || !this.selectedItem)
       this.selectedItem = this.items[0];
     //Resources
-    if (this.types.length == 0) {
-      for (let x in ResourceName) {
+    if (this.types.length === 0) {
+      for (let x of Object.keys(ResourceName)) {
         this.types.push(x);
       }
     }
@@ -101,7 +99,7 @@ export abstract class RepoAbstract{
   }
 
   protected cleanHighlighted(item){
-    if (this.highlightedItem == item) this.highlightedItem = null;
+    if (this.highlightedItem === item) this.highlightedItem = null;
   }
 
   protected updateActive(item: any){
@@ -124,7 +122,7 @@ export abstract class RepoAbstract{
 
   protected onSaved(item: any, updatedItem: any){
     this.updated.emit(this.items);
-    if (item == this.selectedItem){
+    if (item === this.selectedItem){
        this.selectedItemChange.emit(this.selectedItem);
     }
   }
@@ -135,7 +133,7 @@ export abstract class RepoAbstract{
     if (!this.items) return;
     let index = this.items.indexOf(item);
     if (index > -1) this.items.splice(index, 1);
-    if (item == this.selectedItem){
+    if (item === this.selectedItem){
       if (this.items.length > 0)
         this.selectedItem = this.items[0];
       else
@@ -146,19 +144,19 @@ export abstract class RepoAbstract{
     this.updated.emit(this.items);
   }
 
-  protected onAdded(Class: any){
+  protected onAdded(clsName: any){
     let options: any = {};
-    if (Class == ResourceName.LyphWithAxis) {
-      Class = ResourceName.Lyph;
+    if (clsName === ResourceName.LyphWithAxis) {
+      clsName = ResourceName.Lyph;
       options.createAxis = true;
     }
-    if (Class == ResourceName.Lyph) {
+    if (clsName === ResourceName.Lyph) {
       options.createRadialBorders = true;
     }
 
-    let newItem = model[Class].new({name: "New " + Class}, options);
+    let newItem = model[clsName].new({name: "New " + clsName}, options);
 
-    if (Class == ResourceName.Material) {
+    if (clsName === ResourceName.Material) {
       let newType = model.Type.new({name: newItem.name, definition: newItem});
       newItem.p('name').subscribe(newType.p('name'));
     }

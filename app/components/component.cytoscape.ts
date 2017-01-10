@@ -127,8 +127,6 @@ export class NgCytoscape{
       style: this.style,
       elements: this.elements,
     });
-    console.log("Graph", cy);
-
   }
 
 }

@@ -22,7 +22,6 @@ var panel_template_1 = require('./panel.template');
 var panel_lyph_1 = require('./panel.lyph');
 var panel_process_1 = require('./panel.process');
 var panel_border_1 = require('./panel.border');
-var panel_omegaTree_1 = require('./panel.omegaTree');
 var utils_model_1 = require("../services/utils.model");
 var ng2_toasty_1 = require('ng2-toasty/ng2-toasty');
 var PanelDispatchResources = (function () {
@@ -38,19 +37,23 @@ var PanelDispatchResources = (function () {
     }
     PanelDispatchResources.prototype.ngOnInit = function () {
         if (this.item) {
-            if ((this.item.class == utils_model_1.ResourceName.Causality) ||
-                (this.item.class == utils_model_1.ResourceName.Node) ||
-                (this.item.class == utils_model_1.ResourceName.Measurable) ||
-                (this.item.class == utils_model_1.ResourceName.Material) ||
-                (this.item.class == utils_model_1.ResourceName.CoalescenceScenario)) {
+            if ([utils_model_1.ResourceName.Causality,
+                utils_model_1.ResourceName.Node,
+                utils_model_1.ResourceName.Measurable,
+                utils_model_1.ResourceName.Material,
+                utils_model_1.ResourceName.CoalescenceScenario,
+                utils_model_1.ResourceName.CanonicalTree,
+                utils_model_1.ResourceName.CanonicalTreeBranch
+            ].includes(this.item.class)) {
                 this.useResourcePanel = false;
                 this.useTemplatePanel = true;
             }
             else {
-                if ((this.item.class == utils_model_1.ResourceName.Border) ||
-                    (this.item.class == utils_model_1.ResourceName.Lyph) ||
-                    (this.item.class == utils_model_1.ResourceName.Process) ||
-                    (this.item.class == utils_model_1.ResourceName.OmegaTree)) {
+                //Custom panels
+                if ([utils_model_1.ResourceName.Border,
+                    utils_model_1.ResourceName.Lyph,
+                    utils_model_1.ResourceName.Process
+                ].includes(this.item.class)) {
                     this.useResourcePanel = false;
                 }
             }
@@ -65,19 +68,17 @@ var PanelDispatchResources = (function () {
             _this.toastyService.error(errorMsg);
             console.log(reason);
         });
-        //Create type
         if (event.createType) {
             var template_1 = this.item;
-            (function () {
-                return __awaiter(this, void 0, void 0, function* () {
-                    var newType = utils_model_1.model.Type.new({ definition: template_1 });
-                    template_1.p('name').subscribe(newType.p('name'));
-                    yield newType.commit();
-                    //TODO: create only if types does not exist
-                    //let type = template['-->DefinesType'][2];
-                    console.log("Type created", newType);
-                });
-            })();
+            if (!template_1['-->DefinesType']) {
+                (function () {
+                    return __awaiter(this, void 0, void 0, function* () {
+                        var newType = utils_model_1.model.Type.new({ definition: template_1 });
+                        template_1.p('name').subscribe(newType.p('name'));
+                        yield newType.commit();
+                    });
+                })();
+            }
         }
         this.saved.emit(this.item);
     };
@@ -118,11 +119,10 @@ var PanelDispatchResources = (function () {
             selector: 'panel-general',
             inputs: ['item', 'ignore', 'options'],
             providers: [ng2_toasty_1.ToastyService],
-            template: "\n     <resource-panel *ngIf=\"useResourcePanel\"\n       [ignore]=\"ignore\" [options]=\"options\" [item]=\"item\" \n       (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n       (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></resource-panel>\n       \n     <template-panel *ngIf=\"useTemplatePanel\"\n       [ignore]=\"ignore\" [options]=\"options\" [item]=\"item\" \n       (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n       (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></template-panel>\n     \n     <!--Borders-->\n     <border-panel *ngIf=\"item.class==ResourceName.Border\" [ignore]=\"ignore\" [options]=\"options\"\n     [item]=\"item\" (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n     (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></border-panel>\n\n     <!--Processes-->      \n     <process-panel *ngIf=\"item.class==ResourceName.Process\" [ignore]=\"ignore\" [options]=\"options\"\n     [item]=\"item\" (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n     (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></process-panel>\n\n     <!--Lyphs-->      \n     <lyph-panel *ngIf=\"item.class==ResourceName.Lyph\" [ignore]=\"ignore\" [options]=\"options\"\n     [item]=\"item\" (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n     (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></lyph-panel>\n\n     <!--Omega trees-->\n     <omegaTree-panel *ngIf=\"item.class==ResourceName.OmegaTree\" [ignore]=\"ignore\" [options]=\"options\"\n     [item]=\"item\" (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n     (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></omegaTree-panel>\n\n     <ng2-toasty></ng2-toasty>\n  ",
+            template: "\n     <resource-panel *ngIf=\"useResourcePanel\"\n       [ignore]=\"ignore\" [options]=\"options\" [item]=\"item\" \n       (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n       (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></resource-panel>\n       \n     <template-panel *ngIf=\"useTemplatePanel\"\n       [ignore]=\"ignore\" [options]=\"options\" [item]=\"item\" \n       (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n       (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></template-panel>\n     \n     <!--Borders-->\n     <border-panel *ngIf=\"item?.class===ResourceName.Border\" [ignore]=\"ignore\" [options]=\"options\"\n     [item]=\"item\" (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n     (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></border-panel>\n\n     <!--Processes-->      \n     <process-panel *ngIf=\"item?.class===ResourceName.Process\" [ignore]=\"ignore\" [options]=\"options\"\n     [item]=\"item\" (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n     (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></process-panel>\n\n     <!--Lyphs-->      \n     <lyph-panel *ngIf=\"item?.class===ResourceName.Lyph\" [ignore]=\"ignore\" [options]=\"options\"\n     [item]=\"item\" (saved)=\"onSaved($event)\" (canceled)=\"onCanceled($event)\" (removed)=\"removed.emit($event)\" \n     (highlightedItemChange)=\"highlightedItemChange.emit($event)\"></lyph-panel>\n\n     <ng2-toasty></ng2-toasty>\n  ",
             directives: [
-                panel_resource_1.ResourcePanel,
-                panel_template_1.TemplatePanel,
-                panel_border_1.BorderPanel, panel_process_1.ProcessPanel, panel_lyph_1.LyphPanel, panel_omegaTree_1.OmegaTreePanel,
+                panel_resource_1.ResourcePanel, panel_template_1.TemplatePanel,
+                panel_border_1.BorderPanel, panel_process_1.ProcessPanel, panel_lyph_1.LyphPanel,
                 ng2_toasty_1.Toasty
             ]
         }), 

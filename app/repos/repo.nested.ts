@@ -5,7 +5,7 @@ import {Component, forwardRef, Input, Output, EventEmitter} from '@angular/core'
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
 import {ACCORDION_DIRECTIVES} from 'ng2-bootstrap/components/accordion';
 import {DND_DIRECTIVES} from 'ng2-dnd/ng2-dnd';
-import {compareLinkedParts, model} from '../services/utils.model';
+import {model} from '../services/utils.model';
 
 import {AddToolbar} from '../components/toolbar.add';
 import {FilterToolbar} from '../components/toolbar.filter';
@@ -57,12 +57,12 @@ import {HighlightService} from "../services/service.highlight";
               <item-header [item]="item" 
                 [selectedItem]="selectedItem" 
                 [isSelectedOpen]="isSelectedOpen" 
-                [icon]="getIcon(getItemClass(item))">
+                [icon]="getResourceIcon(item)">
               </item-header>
             </div>
 
             <div *ngIf="!options?.headersOnly">
-              <panel-general *ngIf="item == selectedItem" 
+              <panel-general *ngIf="item === selectedItem" 
                 [item]    ="item" 
                 [ignore]  ="ignore"
                 [options] ="options"
@@ -98,7 +98,7 @@ export class RepoNested extends RepoAbstract{
 
     //If selectionOptions are not provided by parent, subscribe and get all for given types
     if (!this.selectionOptions) {
-      if (this.types.length == 1){
+      if (this.types.length === 1){
         this.ts = model[this.types[0]].p('all').subscribe(
           (data: any) => {
             this.selectionOptions = data;
@@ -121,12 +121,8 @@ export class RepoNested extends RepoAbstract{
   }
 
   ngOnChanges(changes: { [propName: string]: any }) {
-    //Set correct initial order for linked set]
     if (this.items) {
-      if (this.options.linked) {
-        this.items.sort((a, b) => compareLinkedParts(a, b));
-      }
-      else if (this.options.ordered) {
+      if (this.options.ordered) {
         this.items.sort((a, b) => {
           return (a['-->HasLayer'].relativePosition - b['-->HasLayer'].relativePosition)
         });
@@ -137,31 +133,17 @@ export class RepoNested extends RepoAbstract{
   onDragStart(index: number){ }
 
   onDragEnd(index: number){
-    if (this.options.linked){
-      this.items[0].treeParent = null;
-      for (let i = 1; i < this.items.length; i++){
-        this.items[i].treeParent = this.items[i - 1];
-      }
-      this.updated.emit(this.items);
-    }
-    else
-      if (this.options.ordered){
+    if (this.options.ordered){
         for (let i = 0; i < this.items.length; i++){
           this.items[i]['-->HasLayer'].relativePosition = i;
         }
         this.updated.emit(this.items);
-      }
-  }
-
-  protected onAdded(Class: any){
-    super.onAdded(Class);
-    if (this.options.linked) this.linkAdded();
+    }
   }
 
   onIncluded(newItem: any){
     if (newItem){
       if (this.items.indexOf(newItem) < 0){
-        if (this.options.linked) this.linkAdded();
 
         this.items.push(newItem);
         this.updated.emit(this.items);
@@ -170,15 +152,6 @@ export class RepoNested extends RepoAbstract{
 
       } else {
         this.toastyService.error("Selected resource is already included to the set!");
-      }
-    }
-  }
-
-  linkAdded(){
-    if (this.selectedItem){
-      let index = this.items.indexOf(this.selectedItem);
-      if (index > 0) {
-        this.selectedItem.treeParent = this.items[index -1];
       }
     }
   }

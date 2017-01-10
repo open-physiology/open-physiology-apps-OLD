@@ -9,8 +9,8 @@ import {Component, Input} from '@angular/core';
   template: `
       <i class="pull-left glyphicon"
         [ngClass]="{
-          'glyphicon-chevron-down': (item == selectedItem) && isSelectedOpen, 
-          'glyphicon-chevron-right': (item != selectedItem) || !isSelectedOpen}"></i>&nbsp;
+          'glyphicon-chevron-down': (item === selectedItem) && isSelectedOpen, 
+          'glyphicon-chevron-right': (item !== selectedItem) || !isSelectedOpen}"></i>&nbsp;
         {{(item.id)? item.id: "?"}}: {{item.name}}
         <span class="pull-right">
           <img *ngIf="isType" class="imtip" src="images/type.png"/>
@@ -28,8 +28,6 @@ export class ItemHeader {
   isType = false;
 
   ngOnInit(){
-    if (this.item){
-      if (this.item.class.indexOf('Type') > -1) this.isType = true;
-    }
+    this.isType = this.item && (this.item.class === "Type");
   }
 }

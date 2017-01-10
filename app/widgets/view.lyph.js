@@ -24,7 +24,7 @@ var LyphWidget = (function () {
             margin: { x: 20, y: 20 },
             node: { size: { width: 40, height: 40 } } };
         this.subscription = resizeService.resize$.subscribe(function (event) {
-            if (event.target == "lyph") {
+            if (event.target === "lyph") {
                 _this.setPanelSize(event.size);
             }
         });
@@ -44,14 +44,17 @@ var LyphWidget = (function () {
     };
     LyphWidget.prototype.ngOnChanges = function (changes) {
         this.svg = $('#lyphSvg');
-        if (!this.root)
-            this.root = new lyph_edit_widget_1.Canvas({ element: this.svg });
+        if (!this.canvas) {
+            this.canvas = new lyph_edit_widget_1.Canvas({ element: this.svg });
+        }
         if (this.item) {
             this.model = new lyph_edit_widget_1.LyphRectangle({
                 model: this.item,
-                x: this.vp.margin.x, y: this.vp.margin.y,
-                width: this.vp.size.width - 2 * this.vp.margin.x, height: this.vp.size.height - 2 * this.vp.margin.y });
-            this.model.parent = this.root;
+                x: this.vp.margin.x,
+                y: this.vp.margin.y,
+                width: this.vp.size.width - 2 * this.vp.margin.x,
+                height: this.vp.size.height - 2 * this.vp.margin.y });
+            this.model.parent = this.canvas;
             this.svg.append(this.model.element);
         }
     };

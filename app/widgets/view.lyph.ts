@@ -22,7 +22,7 @@ export class LyphWidget{
   @Input() item : any;
 
   svg : any;
-  root: any;
+  canvas: any;
   model: any;
 
   vp: any = {size: {width: 600, height: 300},
@@ -35,11 +35,10 @@ export class LyphWidget{
               private resizeService: ResizeService) {
     this.subscription = resizeService.resize$.subscribe(
     (event:any) => {
-      if (event.target == "lyph") {
+      if (event.target === "lyph") {
         this.setPanelSize(event.size);
       }
     });
-
   }
 
   setPanelSize(size: any){
@@ -59,14 +58,16 @@ export class LyphWidget{
 
   ngOnChanges(changes: { [propName: string]: any }) {
     this.svg = $('#lyphSvg');
-    if (!this.root) this.root = new Canvas({element: this.svg});
+    if (!this.canvas) { this.canvas = new Canvas({element: this.svg}); }
 
     if (this.item) {
       this.model = new LyphRectangle({
         model: this.item,
-        x: this.vp.margin.x, y: this.vp.margin.y,
-        width: this.vp.size.width - 2 * this.vp.margin.x, height: this.vp.size.height - 2 * this.vp.margin.y});
-      this.model.parent = this.root;
+        x: this.vp.margin.x,
+        y: this.vp.margin.y,
+        width: this.vp.size.width - 2 * this.vp.margin.x,
+        height: this.vp.size.height - 2 * this.vp.margin.y});
+      this.model.parent = this.canvas;
       this.svg.append(this.model.element);
     }
   }

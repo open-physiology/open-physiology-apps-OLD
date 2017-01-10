@@ -19,7 +19,7 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
           </button>
           <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="Filter">
             <li *ngFor="let option of options; let i = index" (click)="updateMode(option)">
-              <a class="dropdown-item" href="#"> <span *ngIf="mode == option">&#10004;</span>{{option}}</a>
+              <a class="dropdown-item" href="#"> <span *ngIf="mode === option">&#10004;</span>{{option}}</a>
             </li>            
           </ul>
         </div>
@@ -37,7 +37,9 @@ export class FilterToolbar {
   constructor(){}
 
   ngOnInit(){
-    if (this.options && (this.options.length > 0)) this.mode = this.options[0];
+    if (this.options && (this.options.length > 0)) {
+      this.mode = this.options[0];
+    }
   }
 
   updateMode(option: string){
@@ -48,7 +50,7 @@ export class FilterToolbar {
   updateValue(event: any){
     this.filter = event.target.value;
     //Remove filter if search string is empty
-    //if (this.filter.trim().length == 0)
+    //if (this.filter.trim().length === 0)
       this.applied.emit({filter: this.filter, mode: this.mode});
   }
 

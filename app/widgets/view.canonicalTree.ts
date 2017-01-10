@@ -4,14 +4,14 @@
 import {Component, Input, ElementRef, Renderer} from '@angular/core';
 import {ResizeService} from '../services/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
-import {getIcon, getColor, getOmegaTreeData} from "../services/utils.model";
+import {getResourceIcon, getColor, getCanonicalTreeData} from "../services/utils.model";
 import {Canvas, LyphRectangle} from "lyph-edit-widget";
 
 declare var d3:any;
 declare var $:any;
 
 @Component({
-  selector: 'omega-tree',
+  selector: 'canonical-tree',
   inputs: ['item'],
   template : `
      <div class="panel-body">
@@ -20,10 +20,11 @@ declare var $:any;
   `,
   directives: []
 })
-export class OmegaTreeWidget{
+export class CanonicalTreeWidget{
   @Input() item : any;
 
   svg : any;
+  rootSvg: any;
   data: any;
 
   vp: any = {size: {width: 600, height: 300},
@@ -36,7 +37,7 @@ export class OmegaTreeWidget{
               private resizeService: ResizeService) {
     this.subscription = resizeService.resize$.subscribe(
     (event:any) => {
-      if (event.target == "omega-tree") {
+      if (event.target === "canonical-tree") {
         this.setPanelSize(event.size);
       }
     });
@@ -58,9 +59,10 @@ export class OmegaTreeWidget{
 
   ngOnChanges(changes: { [propName: string]: any }) {
     this.svg = d3.select(this.el.nativeElement).select('svg');
+    this.rootSvg = $('#treeSvg');
 
     if (this.item) {
-      this.data = getOmegaTreeData(this.item);
+      this.data = getCanonicalTreeData(this.item, -1);
       this.draw(this.svg, this.vp, this.data);
     } else {
       this.data = {};
@@ -95,13 +97,9 @@ export class OmegaTreeWidget{
       d3.select(this).classed("dragging", true);
     }
 
-    function dragged(d) {
-      d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
-    }
+    function dragged(d) { d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y); }
 
-    function dragended(d) {
-      d3.select(this).classed("dragging", false);
-    }
+    function dragended(d) { d3.select(this).classed("dragging", false); }
 
     let treeSvg = svg.append("g").attr("class", "tree").attr("width",
       vp.size.width).attr("height", vp.size.height)
@@ -109,7 +107,6 @@ export class OmegaTreeWidget{
       .call(zoom);
 
     let svgGroup = treeSvg.append("g");
-    let canvas = new Canvas({element: svgGroup});
 
     let nodes = tree.nodes(data);
     let links = tree.links(nodes);
@@ -118,7 +115,7 @@ export class OmegaTreeWidget{
      .data(links)
      .enter().append("path")
      .attr("class", "link")
-     .attr("stroke", d => getColor(d.relation))
+     .attr("stroke", d => getColor('childBranches'))
      .attr("d", diagonal);
 
     let node = svgGroup.selectAll(".node")
@@ -139,29 +136,28 @@ export class OmegaTreeWidget{
       .append("g")
       .attr("class", "icon")
       .each((d: any) => {
-        if (d.target){
+        if (d.target && d.target.parentBranch){
           let position = {x: (d.source.x + d.target.x) / 2 - dx, y: (d.source.y + d.target.y) / 2 - dy};
 
           svgGroup.append("image")
-            .attr("xlink:href", getIcon(d.target.resource.class))
+            .attr("xlink:href", getResourceIcon(d.target.parentBranch))
             .attr("x", position.x + dx - 12).attr("y", position.y + dy - 12)
             .attr("width", 24).attr("height", 24);
 
-         /* if (d.target.resource.class == ResourceName.OmegaTree){
-            svgGroup.append("image")
-              .attr("xlink:href", getIcon(ResourceName.OmegaTree))
-              .attr("x", position.x + dx - 12).attr("y", position.y + dy - 12)
-              .attr("width", 24).attr("height", 24);
-          } else {
-              let model = new LyphRectangle({model: d.target.resource,
-                  x: position.x, y: position.y, width: vp.node.size.width, height: vp.node.size.height});
+            let lyphType = d.target.parentBranch.conveyingLyphType;
+            if (lyphType){
+              let lyph = lyphType.definition;
+              let model = new LyphRectangle({model: lyph,
+                x: position.x,
+                y: position.y,
+                width: vp.node.size.width,
+                height: vp.node.size.height});
+              let lyphSvg = $(svgGroup.node());
+              let canvas = new Canvas({element: lyphSvg});
               model.parent = canvas;
-              //$(svgGroup.node()).append(model.element);
-              svgGroup.append(model.element);
-
-              d3.select(model.element).attr("transform",
-                "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")")
-          }*/
+              //d3.select(model.element).attr("transform",
+              //   "rotate(" + 90 + ',' + (position.x + dx) + ',' + (position.y + dy) + ")")
+            }
          }
       });
 
@@ -175,7 +171,7 @@ export class OmegaTreeWidget{
       .style("text-anchor", "end")
       .attr("x", d => (d.source.x + d.target.x) / 2 - dx)
       .attr("y", d => (d.source.y + d.target.y) / 2)
-      .text((d: any) => ("level " + (d.target.depth) + ": " + d.target.name));
+      .text((d: any) => ("level " + (d.target.depth) + ": " + d.target.parentBranch.name));
 
     function transform(d: any): string {
       return "translate(" + d.x + "," + d.y + ")";

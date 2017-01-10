@@ -26,17 +26,21 @@ var TemplatePanel = (function (_super) {
     function TemplatePanel() {
         _super.apply(this, arguments);
         this.createType = false;
+        this.typeCreated = false;
         this.cardinalityMultipliers = {};
     }
     TemplatePanel.prototype.ngOnInit = function () {
         var _this = this;
-        if (!this.ignore)
+        if (!this.ignore) {
             this.ignore = new Set(["cardinalityBase", "cardinalityMultipliers", "definedType"]);
-        if (!this.custom)
+        }
+        if (!this.custom) {
             this.custom = new Set();
+        }
         this.custom.add("cardinalityBase");
         _super.prototype.ngOnInit.call(this);
         if (this.item) {
+            this.typeCreated = !!this.item['-->DefinesType'];
             //Options for cardinality multipliers
             this.item.fields['cardinalityMultipliers'].p('possibleValues').subscribe(function (data) {
                 _this.cardinalityMultipliers =
@@ -45,17 +49,18 @@ var TemplatePanel = (function (_super) {
         }
     };
     TemplatePanel.prototype.onSaved = function (event) {
-        if (this.item.class == utils_model_1.ResourceName.CoalescenceScenario)
-            if (this.item && this.item.lyphs && (this.item.lyphs.size != 2)) {
+        if (this.item.class === utils_model_1.ResourceName.CoalescenceScenario) {
+            if (this.item.lyphs && (this.item.lyphs.size !== 2)) {
                 console.log("Wrong number of lyphs", this.item.lyphs.size);
             }
+        }
         this.saved.emit({ createType: this.createType });
     };
     TemplatePanel = __decorate([
         core_1.Component({
             selector: 'template-panel',
             inputs: ['item', 'ignore', 'options', 'custom'],
-            template: "\n    <resource-panel [item]=\"item\" \n      [ignore]   = \"ignore\"\n      [options]  = \"options\"\n      [custom]   = \"custom\"\n      (saved)    = \"onSaved($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" \n      (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n      \n      <toolbar *ngIf=\"!(options && options.hideCreateType)\" >\n        <ng-content select=\"toolbar\"></ng-content>\n        <input type=\"checkbox\" [(ngModel)]=\"createType\">Create type\n      </toolbar>\n      \n      <!--Cardinality base-->\n      <templateGroup *ngFor = \"let property of ['cardinalityBase']\">\n        <template-value *ngIf=\"includeProperty(property)\" \n          [caption]=\"getPropertyLabel(property)\" \n          [item]=\"item.p(property) | async\"\n          [step]=\"0.1\"\n          (updated)=\"updateProperty(property, $event)\">\n        </template-value>\n      </templateGroup>   \n    \n      <ng-content></ng-content>      \n\n    </resource-panel>\n  ",
+            template: "\n    <resource-panel [item]=\"item\" \n      [ignore]   = \"ignore\"\n      [options]  = \"options\"\n      [custom]   = \"custom\"\n      (saved)    = \"onSaved($event)\"\n      (canceled) = \"canceled.emit($event)\"\n      (removed)  = \"removed.emit($event)\"\n      (propertyUpdated) = \"propertyUpdated.emit($event)\" \n      (highlightedItemChange)=\"highlightedItemChange.emit($event)\">\n      \n      <toolbar *ngIf=\"!options?.hideCreateType\" >\n        <ng-content select=\"toolbar\"></ng-content>\n        <input type=\"checkbox\" [disabled]=\"typeCreated\" [(ngModel)]=\"createType\">Create type\n      </toolbar>\n      \n      <!--Cardinality base-->\n      <templateGroup *ngFor = \"let property of ['cardinalityBase']\">\n        <template-value *ngIf=\"includeProperty(property)\" \n          [caption]=\"getPropertyLabel(property)\" \n          [item]=\"item.p(property) | async\"\n          [step]=\"0.1\"\n          (updated)=\"updateProperty(property, $event)\">\n        </template-value>\n      </templateGroup>   \n    \n      <ng-content></ng-content>      \n\n    </resource-panel>\n  ",
             directives: [panel_resource_1.ResourcePanel, component_templateValue_1.TemplateValue]
         }), 
         __metadata('design:paramtypes', [])

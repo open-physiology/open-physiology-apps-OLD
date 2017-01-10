@@ -58,10 +58,11 @@ var RelationshipWidget = (function () {
         var privateRelations = new Set(["themes"]);
         this.relationOptions = [];
         if (this.item) {
-            var relations = Object.assign({}, this.item.constructor.relationshipShortcuts);
-            for (var relation in relations) {
-                if (privateRelations.has(relation))
+            for (var _i = 0, _a = Object.keys(this.item.constructor.relationshipShortcuts); _i < _a.length; _i++) {
+                var relation = _a[_i];
+                if (privateRelations.has(relation)) {
                     continue;
+                }
                 this.relationOptions.push({ value: relation, selected: false, color: utils_model_1.getColor(relation) });
             }
             if (this.relationOptions.length > 0)
@@ -94,7 +95,7 @@ var RelationshipWidget = (function () {
     RelationshipWidget = __decorate([
         core_1.Component({
             selector: 'hierarchy-widget',
-            inputs: ['item', 'relations', 'depth'],
+            inputs: ['item', 'depth'],
             template: "\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        Relations of <strong>{{item?.id}}{{(item)? ': ' + item.name : ''}}</strong>\n      </div>\n      <div class=\"panel-body\">\n        <!--Relations-->\n        <property-toolbar  \n          [options] = \"relationOptions\"\n          [transform] = \"getPropertyLabel\"\n          (selectionChanged) = \"selectedRelationsChanged($event)\">\n        </property-toolbar>\n        \n        <!--Depth-->\n        <div class=\"input-group input-control-md pull-left\">\n          <span class=\"input-group-addon\" id=\"basic-addon1\">Depth</span>\n          <input type=\"number\" class=\"form-control\" aria-describedby=\"basic-addon1\"\n            min=\"0\" max=\"50\" [(ngModel)]=\"depth\" >\n        </div>\n        \n        <!--Layout-->\n        <div class=\"btn-group pull-left\">\n          <button type=\"button\" class=\"btn btn-default btn-icon\" \n            [ngClass]=\"{'active': layout == 'tree'}\" (click)=\"layout = 'tree'\">\n            <img class=\"icon\" src=\"images/tree.png\"/>\n          </button>\n          <button type=\"button\" class=\"btn btn-default btn-icon\" \n            [ngClass]=\"{'active': layout == 'graph'}\" (click)=\"layout = 'graph'\">\n            <img class=\"icon\" src=\"images/graph.png\"/>\n          </button>\n        </div>\n        \n        <hierarchy-tree *ngIf=\"layout == 'tree'\" \n          [item]=\"item\" [relations]=\"relations\" [depth]=\"depth\"></hierarchy-tree>\n        <hierarchy-graph *ngIf=\"layout == 'graph'\" \n          [item]=\"item\" [relations]=\"relations\" [depth]=\"depth\"></hierarchy-graph>\n        \n      </div>     \n    </div>\n  ",
             directives: [view_relationGraph_1.RelationGraph, view_relationTree_1.RelationTree, dropdown_1.DROPDOWN_DIRECTIVES, common_1.CORE_DIRECTIVES, toolbar_propertySettings_1.PropertyToolbar]
         }), 

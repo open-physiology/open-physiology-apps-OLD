@@ -3,9 +3,8 @@ import {ResourcePanel}         from './panel.resource';
 import {TemplatePanel}         from './panel.template';
 
 import {LyphPanel}             from './panel.lyph';
-import {ProcessPanel}     from './panel.process';
-import {BorderPanel}      from './panel.border';
-import {OmegaTreePanel}   from './panel.omegaTree';
+import {ProcessPanel}          from './panel.process';
+import {BorderPanel}           from './panel.border';
 
 import {ResourceName, model}   from "../services/utils.model";
 import {ToastyService, Toasty} from 'ng2-toasty/ng2-toasty';
@@ -26,32 +25,26 @@ import {ToastyService, Toasty} from 'ng2-toasty/ng2-toasty';
        (highlightedItemChange)="highlightedItemChange.emit($event)"></template-panel>
      
      <!--Borders-->
-     <border-panel *ngIf="item.class==ResourceName.Border" [ignore]="ignore" [options]="options"
+     <border-panel *ngIf="item?.class===ResourceName.Border" [ignore]="ignore" [options]="options"
      [item]="item" (saved)="onSaved($event)" (canceled)="onCanceled($event)" (removed)="removed.emit($event)" 
      (highlightedItemChange)="highlightedItemChange.emit($event)"></border-panel>
 
      <!--Processes-->      
-     <process-panel *ngIf="item.class==ResourceName.Process" [ignore]="ignore" [options]="options"
+     <process-panel *ngIf="item?.class===ResourceName.Process" [ignore]="ignore" [options]="options"
      [item]="item" (saved)="onSaved($event)" (canceled)="onCanceled($event)" (removed)="removed.emit($event)" 
      (highlightedItemChange)="highlightedItemChange.emit($event)"></process-panel>
 
      <!--Lyphs-->      
-     <lyph-panel *ngIf="item.class==ResourceName.Lyph" [ignore]="ignore" [options]="options"
+     <lyph-panel *ngIf="item?.class===ResourceName.Lyph" [ignore]="ignore" [options]="options"
      [item]="item" (saved)="onSaved($event)" (canceled)="onCanceled($event)" (removed)="removed.emit($event)" 
      (highlightedItemChange)="highlightedItemChange.emit($event)"></lyph-panel>
-
-     <!--Omega trees-->
-     <omegaTree-panel *ngIf="item.class==ResourceName.OmegaTree" [ignore]="ignore" [options]="options"
-     [item]="item" (saved)="onSaved($event)" (canceled)="onCanceled($event)" (removed)="removed.emit($event)" 
-     (highlightedItemChange)="highlightedItemChange.emit($event)"></omegaTree-panel>
 
      <ng2-toasty></ng2-toasty>
   `,
   directives:
     [
-      ResourcePanel,
-      TemplatePanel,
-      BorderPanel, ProcessPanel, LyphPanel, OmegaTreePanel,
+      ResourcePanel, TemplatePanel,
+      BorderPanel, ProcessPanel, LyphPanel,
       Toasty
     ]
 })
@@ -73,22 +66,22 @@ export class PanelDispatchResources{
 
   ngOnInit(){
     if (this.item){
-      if (
-        (this.item.class == ResourceName.Causality) ||
-        (this.item.class == ResourceName.Node) ||
-        (this.item.class == ResourceName.Measurable) ||
-        (this.item.class == ResourceName.Material) ||
-        (this.item.class == ResourceName.CoalescenceScenario)) {
+      if ([ResourceName.Causality,
+          ResourceName.Node,
+          ResourceName.Measurable,
+          ResourceName.Material,
+          ResourceName.CoalescenceScenario,
+          ResourceName.CanonicalTree,
+          ResourceName.CanonicalTreeBranch
+        ].includes(this.item.class)) {
           this.useResourcePanel = false;
           this.useTemplatePanel = true;
       } else {
-        if (
-          (this.item.class == ResourceName.Border) ||
-          (this.item.class == ResourceName.Lyph) ||
-          (this.item.class == ResourceName.Process) ||
-          (this.item.class == ResourceName.OmegaTree)){
-          this.useResourcePanel = false;
-        }
+        //Custom panels
+        if ([ResourceName.Border,
+            ResourceName.Lyph,
+            ResourceName.Process
+          ].includes(this.item.class)){ this.useResourcePanel = false; }
       }
     }
   }
@@ -102,18 +95,16 @@ export class PanelDispatchResources{
         console.log(reason);
       });
 
-    //Create type
     if (event.createType){
        let template = this.item;
-       (async function() {
-         let newType = model.Type.new({definition: template});
-         template.p('name').subscribe(newType.p('name'));
+       if (!template['-->DefinesType']){
+         (async function() {
+           let newType = model.Type.new({definition: template});
+           template.p('name').subscribe(newType.p('name'));
 
-         await newType.commit();
-         //TODO: create only if types does not exist
-         //let type = template['-->DefinesType'][2];
-         console.log("Type created", newType);
-       })();
+           await newType.commit();
+         })();
+       }
     }
 
     this.saved.emit(this.item);

@@ -21,9 +21,9 @@ import {SetToArray, HideClass} from "../transformations/pipe.general";
       (propertyUpdated) = "propertyUpdated.emit($event)" 
       (highlightedItemChange)="highlightedItemChange.emit($event)">
       
-      <toolbar *ngIf="!(options && options.hideCreateType)" >
+      <toolbar *ngIf="!options?.hideCreateType" >
         <ng-content select="toolbar"></ng-content>
-        <input type="checkbox" [(ngModel)]="createType">Create type
+        <input type="checkbox" [disabled]="typeCreated" [(ngModel)]="createType">Create type
       </toolbar>
       
       <!--Cardinality base-->
@@ -44,16 +44,22 @@ import {SetToArray, HideClass} from "../transformations/pipe.general";
 })
 export class TemplatePanel extends ResourcePanel{
   createType = false;
+  typeCreated = false;
   cardinalityMultipliers = {};
 
   ngOnInit(){
-    if (!this.ignore) this.ignore = new Set<string>(["cardinalityBase", "cardinalityMultipliers", "definedType"]);
-    if (!this.custom) this.custom = new Set<string>();
+    if (!this.ignore) {
+      this.ignore = new Set<string>(["cardinalityBase", "cardinalityMultipliers", "definedType"]);
+    }
+    if (!this.custom) {
+      this.custom = new Set<string>();
+    }
     this.custom.add("cardinalityBase");
 
     super.ngOnInit();
 
     if (this.item){
+      this.typeCreated = !!this.item['-->DefinesType'];
       //Options for cardinality multipliers
       this.item.fields['cardinalityMultipliers'].p('possibleValues').subscribe(
           (data: any) => {
@@ -65,10 +71,11 @@ export class TemplatePanel extends ResourcePanel{
   }
 
   onSaved(event: any){
-    if (this.item.class == ResourceName.CoalescenceScenario)
-      if (this.item && this.item.lyphs && (this.item.lyphs.size != 2)){
+    if (this.item.class === ResourceName.CoalescenceScenario){
+      if (this.item.lyphs && (this.item.lyphs.size !== 2)){
         console.log("Wrong number of lyphs", this.item.lyphs.size);
       }
+    }
     this.saved.emit({createType: this.createType});
   }
 }
