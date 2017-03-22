@@ -25,13 +25,13 @@ declare var $: any;
     >
     </repo-general>         
     
-    <hierarchy-widget id = "hierarchy" [item]="selectedItem"></hierarchy-widget>
+    <!--<hierarchy-widget id = "hierarchy" [item]="selectedItem"></hierarchy-widget>-->
     <resource-widget id = "resource" [item]="selectedItem"></resource-widget>   
     
     <div id="main"></div>
   `,
   styles: [`#main {width: 100%; height: 100%; border: 0; margin: 0; padding: 0}`],
-  directives: [RepoGeneral, RepoNested, RelationshipWidget, ResourceWidget],
+  directives: [RepoGeneral, RepoNested, /*RelationshipWidget,*/ ResourceWidget],
   pipes: [SetToArray]
 })
 export class CanonicalTreeEditor {
@@ -96,7 +96,7 @@ export class CanonicalTreeEditor {
       let fma17881 = model.ExternalResource.new({name: "FMA:17881", uri: ""});
 
       var externals = [fma7203, fma15610, fma66610, fma17881];
-      await Promise.all(externals.map(p => p.commit()));
+      //await Promise.all(externals.map(p => p.commit()));
 
       /*Lyphs*/
       let renalH = model.Lyph.new({name: "Renal hilum", externals: [fma15610]});
@@ -104,13 +104,13 @@ export class CanonicalTreeEditor {
       let renalC = model.Lyph.new({name: "Renal capsule", externals: [fma66610]});
 
       var cLyphsGroup = [renalH, renalP, renalC];
-      await Promise.all(cLyphsGroup.map(p => p.commit()));
+      //await Promise.all(cLyphsGroup.map(p => p.commit()));
 
       let kidney = model.Lyph.new({name: "Kidney", externals: [fma7203]});
-      await kidney.commit();
+      //await kidney.commit();
 
       let kidneyLobus = model.Lyph.new({name: "Kidney lobus", externals: [fma17881]});
-      await kidneyLobus.commit();
+      //await kidneyLobus.commit();
 
     })();
   }

@@ -1,6 +1,109 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments)).next());
+    });
+};
 var open_physiology_model_1 = require("open-physiology-model");
-exports.modelRef = open_physiology_model_1.default();
+function ajaxBackend() {
+    /* a way for test suites to register the environment to these mock-handlers */
+    var environment, ajax, baseURL;
+    function register(_a) {
+        var e = _a.environment, ajx = _a.ajax, burl = _a.baseURL;
+        environment = e;
+        ajax = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            return Promise.resolve(ajx.apply(void 0, args));
+        };
+        baseURL = burl;
+    }
+    /* the interface to hand to the library when instantiating a module */
+    var backend = {
+        commit_new: function (_a) {
+            var values = _a.values;
+            var cls = exports.model[values.class];
+            var classPath = cls.isResource ? toCamelCase(cls.plural) : cls.name;
+            console.log("Committing value", JSON.stringify(values));
+            return ajax({
+                url: baseURL + "/" + classPath,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(values)
+            });
+        },
+        commit_edit: function (_a) {
+            var entity = _a.entity, newValues = _a.newValues;
+            var cls = entity.constructor;
+            var classPath = cls.isResource ? toCamelCase(cls.plural) : cls.name;
+            return ajax({
+                url: entity.href ||
+                    baseURL + "/" + classPath + "/" + entity.id,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(newValues)
+            });
+        },
+        commit_delete: function (_a) {
+            var entity = _a.entity;
+            var cls = entity.constructor;
+            var classPath = cls.isResource ? toCamelCase(cls.plural) : cls.name;
+            return ajax({
+                url: entity.href ||
+                    baseURL + "/" + classPath + "/" + entity.id,
+                method: 'DELETE',
+                contentType: 'application/json'
+            });
+        },
+        load: function (addresses, options) {
+            if (options === void 0) { options = {}; }
+            //TODO: this is a quick implementation for testing, needs rewriting to stack requests for the same entity class
+            (function () {
+                return __awaiter(this, void 0, void 0, function* () {
+                    var responses = [];
+                    yield Promise.all(Object.values(addresses).map(function (address) {
+                        var cls = address.class;
+                        var classPath = cls.isResource ? toCamelCase(cls.plural) : cls.name;
+                        var href2Id = function (href) { return Number.parseInt(href.substring(href.lastIndexOf("/") + 1)); };
+                        var id = href2Id(address.href);
+                        ajax({
+                            url: baseURL + "/" + classPath + "/" + id,
+                            method: 'GET',
+                            contentType: 'application/json'
+                        }).then(function (res) {
+                            responses.push(res);
+                        }).catch(function (e) {
+                            console.log("Error in load ", address);
+                            throw e;
+                        });
+                    }));
+                    return responses;
+                });
+            })();
+        },
+        loadAll: function (cls, options) {
+            if (options === void 0) { options = {}; }
+            return ajax({
+                url: baseURL + "/" + (cls.isResource ? cls.plural : cls.name),
+                method: 'GET',
+                contentType: 'application/json'
+            });
+        }
+    };
+    return { backend: backend, register: register };
+}
+var _a = ajaxBackend(), backend = _a.backend, register = _a.register;
+exports.modelRef = open_physiology_model_1.default(backend);
+register({
+    environment: exports.modelRef,
+    baseURL: 'http://localhost:8888',
+    ajax: $.ajax
+});
 exports.model = exports.modelRef.classes;
 window.module = exports.modelRef;
 ///////////////////////////////////////////////////

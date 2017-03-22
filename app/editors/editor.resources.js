@@ -77,48 +77,64 @@ var ResourceEditor = (function () {
         var self = this;
         (function () {
             return __awaiter(this, void 0, void 0, function* () {
-                /*Lyphs*/
-                var renalH = utils_model_1.model.Lyph.new({ name: "Renal hilum" });
-                var renalP = utils_model_1.model.Lyph.new({ name: "Renal parenchyma" });
-                var renalC = utils_model_1.model.Lyph.new({ name: "Renal capsule" });
-                var cLyphsGroup = [renalH, renalP, renalC];
-                yield Promise.all(cLyphsGroup.map(function (p) { return p.commit(); }));
-                var kidney = utils_model_1.model.Lyph.new({ name: "Kidney", layers: cLyphsGroup });
-                yield kidney.commit();
-                var kidneyLobus = utils_model_1.model.Lyph.new({ name: "Kidney lobus" });
-                yield kidneyLobus.commit();
-                var cytosol = utils_model_1.model.Lyph.new({ name: "Cytosol" });
-                yield cytosol.commit();
-                var plasmaM = utils_model_1.model.Lyph.new({ name: "Plasma membrain" });
-                yield plasmaM.commit();
-                var cell = utils_model_1.model.Lyph.new({ name: "Cell", layers: [cytosol, plasmaM] });
-                yield cell.commit();
-                var plasmaMType = utils_model_1.model.Type.new({ name: "Plasma membrain type", definition: plasmaM });
-                yield plasmaMType.commit();
-                var cellType = utils_model_1.model.Type.new({ name: "Cell type", definition: cell });
-                yield cellType.commit();
-                var sln = utils_model_1.model.CanonicalTree.new({ name: "Short Looped Nephrone" });
-                yield sln.commit();
-                var sln1 = utils_model_1.model.CanonicalTree.new({ name: "SLN tail 1" });
-                yield sln1.commit();
-                var sln2 = utils_model_1.model.CanonicalTree.new({ name: "SLN tail 2" });
-                yield sln2.commit();
-                var branch1 = utils_model_1.model.CanonicalTreeBranch.new({ name: "SLN level 1",
-                    parentTree: sln, childTree: sln1, conveyingLyphType: cellType });
-                yield branch1.commit();
-                var branch2 = utils_model_1.model.CanonicalTreeBranch.new({ name: "SLN level 2",
-                    parentTree: sln1, childTree: sln2, conveyingLyphType: plasmaMType });
-                yield branch2.commit();
-                // const resources = {};
-                // const relationships = {};
+                // /*Lyphs*/
+                // let renalH = model.Lyph.new({name: "Renal hilum"});
+                // let renalP = model.Lyph.new({name: "Renal parenchyma"});
+                // let renalC = model.Lyph.new({name: "Renal capsule"});
+                // let cLyphsGroup = [renalH, renalP, renalC];
+                // await Promise.all(cLyphsGroup.map(p => p.commit()));
                 //
-                // for (let [key, value] of Object.entries(model)){
-                //   if (value.isResource) {resources[key] = value;}
-                //   if (value.isRelationship) {relationships[key] = value;}
-                // }
+                // let kidney = model.Lyph.new({name: "Kidney", layers: cLyphsGroup});
+                // await kidney.commit();
                 //
-                // console.log("Resources", resources);
-                // console.log("Relationships", relationships);
+                // let kidneyLobus = model.Lyph.new({name: "Kidney lobus"});
+                // await kidneyLobus.commit();
+                //
+                // let cytosol = model.Lyph.new({name: "Cytosol"});
+                // await cytosol.commit();
+                //
+                // let plasmaM = model.Lyph.new({name: "Plasma membrain"});
+                // await plasmaM.commit();
+                //
+                // let cell = model.Lyph.new({name: "Cell", layers: [cytosol, plasmaM]});
+                // await cell.commit();
+                //
+                // let plasmaMType = model.Type.new({name: "Plasma membrain type", definition: plasmaM});
+                // await plasmaMType.commit();
+                //
+                // let cellType = model.Type.new({name: "Cell type", definition: cell});
+                // await cellType.commit();
+                //
+                // let sln = model.CanonicalTree.new({name: "Short Looped Nephrone"});
+                // await sln.commit();
+                //
+                // let sln1 = model.CanonicalTree.new({name: "SLN tail 1"});
+                // await sln1.commit();
+                //
+                // let sln2 = model.CanonicalTree.new({name: "SLN tail 2"});
+                // await sln2.commit();
+                //
+                // let branch1 = model.CanonicalTreeBranch.new({name: "SLN level 1",
+                //   parentTree: sln, childTree: sln1, conveyingLyphType: cellType});
+                // await branch1.commit();
+                //
+                // let branch2 = model.CanonicalTreeBranch.new({name: "SLN level 2",
+                //   parentTree: sln1, childTree: sln2, conveyingLyphType: plasmaMType});
+                // await branch2.commit();
+                var extracted = yield utils_model_1.model.Lyph.getAll();
+                var resources = {};
+                var relationships = {};
+                for (var _i = 0, _a = Object.entries(utils_model_1.model); _i < _a.length; _i++) {
+                    var _b = _a[_i], key = _b[0], value = _b[1];
+                    if (value.isResource) {
+                        resources[key] = value;
+                    }
+                    if (value.isRelationship) {
+                        relationships[key] = value;
+                    }
+                }
+                console.log("Resources", resources);
+                console.log("Relationships", relationships);
             });
         })();
     }
