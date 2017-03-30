@@ -6,7 +6,6 @@
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "docker-build": "docker build -t ng2-quickstart .",
     "docker": "npm run docker-build && docker run -it --rm -p 3000:3000 -p 3001:3001 ng2-quickstart",
-    "e2e": "tsc && concurrently \"http-server\" \"protractor protractor.config.js\"",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
     "postinstall": "typings install",
@@ -36,7 +35,6 @@
     "angular2-resizable": "^0.2.1",
     "bootstrap": "^3.3.6",
     "core-js": "^2.4.0",
-    "cytoscape": "^2.7.10",
     "d3": "^3.5.17",
     "es6-promise": "^3.2.1",
     "golden-layout": "^1.5.1",
@@ -91,7 +89,6 @@
     "karma-jasmine": "^0.3.8",
     "lite-server": "^2.2.0",
     "lodash": "^4.11.1",
-    "protractor": "^3.3.0",
     "rimraf": "^2.5.2",
     "tslint": "^3.7.4",
     "typescript": "^2.2.1",
@@ -101,7 +98,6 @@
   "jspm": {
     "dependencies": {
       "css": "github:systemjs/plugin-css@^0.1.23",
-      "cytoscape": "npm:cytoscape@^2.7.10",
       "d3": "npm:d3@^4.1.1",
       "golden-layout": "npm:golden-layout@^1.5.1",
       "jquery": "npm:jquery@^3.1.0",

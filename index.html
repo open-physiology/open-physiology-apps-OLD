@@ -31,8 +31,11 @@
 
     <script src="config.js"></script>
     <script>
-      System.import('./app/main.resources').catch(function (err) {
-        console.error(err);
+      System.import('node_modules/rxjs/Rx.js').then(function(Rx){
+        window.Rx = Rx;
+        System.import('./app/main.resources').catch(function (err) {
+          console.error(err);
+        })
       })
     </script>
   </head>
