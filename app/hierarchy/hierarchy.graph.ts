@@ -1,7 +1,5 @@
-import {Component, Input, Output, OnChanges, OnDestroy, ElementRef, Renderer, EventEmitter} from '@angular/core';
+import {Component, Input, Output, OnChanges, OnDestroy, ElementRef, EventEmitter} from '@angular/core';
 import {nvD3} from 'ng2-nvd3/lib/ng2-nvd3';
-import {ResizeService} from '../common/service.resize';
-import {Subscription} from 'rxjs/Subscription';
 
 import {getIcon, getColor} from "../common/utils.model";
 import {getGraphData} from "./hierarchy.utils";
@@ -10,54 +8,37 @@ declare let d3: any;
 
 @Component({
   selector: 'hierarchy-graph',
-  inputs: ['item', 'relations', 'depth'],
+  inputs: ['item', 'relations', 'depth', 'size'],
   template : `
      <nvd3 *ngIf="active" [options]="graphOptions" [data]="data"></nvd3>
   `,
   directives: [nvD3]
 })
-export class RelationGraph implements OnChanges, OnDestroy{
+export class HierarchyGraph implements OnChanges, OnDestroy{
   @Input() item       : any;
   @Input() relations  : Set<string> = new Set<string>();
   @Input() depth      : number = -1;
+  @Input() size       : any = {width: 600, height: 300};
 
   active   : boolean = true;
 
   data: any;
-  vp: any = {size  : {width: 600, height: 300},
-             margin: {x: 20, y: 20},
-             node  : {size: {width: 40, height: 20}}};
+  vp: any = {size  : this.size, margin: {x: 20, y: 20}, node  : {size: {width: 40, height: 20}}};
 
   graphOptions: any;
-  subscription: Subscription;
 
-  constructor(public renderer: Renderer,
-              public el: ElementRef,
-              private resizeService: ResizeService){
-    let self = this;
-    this.subscription = resizeService.resize$.subscribe(
-      (event: any) => {
-        if (event.target === "hierarchy-graph"){
-          self.setPanelSize(event.size);
-        }
-      });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  constructor(public el: ElementRef){}
 
   ngOnInit(){
-    if (this.item)
-      this.setGraphOptions();
+    if (this.item) { this.setGraphOptions(); }
   }
 
   ngOnChanges(changes: { [propName: string]: any }) {
+    if (changes['size'] && this.size){ this.setPanelSize(this.size); }
     if (this.item) {
       this.data = getGraphData(this.item, this.relations, this.depth);
-    } else {
-      this.data = {};
     }
+    else { this.data = {}; }
   }
 
   setPanelSize(size: any){

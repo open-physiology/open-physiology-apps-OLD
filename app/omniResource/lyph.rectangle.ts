@@ -2,15 +2,13 @@
  * Created by Natallia on 7/14/2016.
  */
 import {Component, Input, Output, ViewChild, ElementRef, Renderer, EventEmitter} from '@angular/core';
-import {ResizeService} from '../common/service.resize';
-import {Subscription}   from 'rxjs/Subscription';
 import {Canvas, LyphRectangle} from "lyph-edit-widget";
 
 declare var $:any;
 
 @Component({
   selector: 'lyph',
-  inputs: ['item', 'highlightedItem'],
+  inputs: ['item', 'highlightedItem', 'size'],
   template : `
      <div class="panel-body">
        <svg id="lyphSvg" class="svg-widget"></svg>
@@ -21,6 +19,7 @@ declare var $:any;
 export class LyphWidget{
   @Input() item : any;
   @Input() highlightedItem: any;
+  @Input() size: any = {width: 600, height: 300};
 
   @Output() highlightedItemChange = new EventEmitter();
 
@@ -31,18 +30,8 @@ export class LyphWidget{
   vp: any = {size: {width: 600, height: 300},
     margin: {x: 20, y: 20},
     node: {size: {width: 40, height: 40}}};
-  subscription: Subscription;
 
-  constructor(public renderer: Renderer,
-              public el: ElementRef,
-              private resizeService: ResizeService) {
-    this.subscription = resizeService.resize$.subscribe(
-    (event:any) => {
-      if (event.target === "lyph") {
-        this.setPanelSize(event.size);
-      }
-    });
-  }
+  constructor(public el: ElementRef) {}
 
   setPanelSize(size: any){
     let delta = 10;
@@ -55,14 +44,10 @@ export class LyphWidget{
     }
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
   ngOnChanges(changes: { [propName: string]: any }) {
     this.svg = $('#lyphSvg');
     if (!this.root) { this.root = new Canvas({element: this.svg}); }
-
+    if( changes['size'] && this.size) { this.setPanelSize(this.size); }
     if (this.item) {
       this.model = new LyphRectangle({
         model: this.item,

@@ -1,9 +1,7 @@
 /**
  * Created by Natallia on 7/14/2016.
  */
-import {Component, Input, Output, ElementRef, Renderer, EventEmitter} from '@angular/core';
-import {ResizeService} from '../common/service.resize';
-import {Subscription}   from 'rxjs/Subscription';
+import {Component, Input, Output, ElementRef, EventEmitter} from '@angular/core';
 import {Canvas, SelectTool, DragDropTool, ResizeTool, ZoomTool,
   PanTool, BorderToggleTool, LyphRectangle, NodeGlyph, ProcessLine, DrawingTool} from "lyph-edit-widget";
 import {resourceClassNames, getClassLabel, getIcon, model} from '../common/utils.model';
@@ -13,7 +11,7 @@ declare var $:any;
 
 @Component({
   selector: 'widget-draw',
-  inputs: ['activeItem', 'highlightedItem'],
+  inputs: ['activeItem', 'highlightedItem', 'size'],
   template : `
      <div class="panel panel-success">
        <div class="panel-body" style="position: relative">
@@ -51,21 +49,10 @@ export class WidgetDraw{
     margin: {x: 20, y: 20},
     node:   {size: {width: 40, height: 40}}};
 
-  rs: Subscription; //GoldenLayout window resize events
-
   getIcon = getIcon;
   getClassLabel = getClassLabel;
 
-  constructor(public renderer: Renderer,
-              public el: ElementRef,
-              private resizeService: ResizeService) {
-    this.rs = resizeService.resize$.subscribe(
-    (event:any) => {
-      if (event.target === "graph-widget") {
-        this.setPanelSize(event.size);
-      }
-    });
-  }
+  constructor(public el: ElementRef) {}
 
   onActiveItemChange(clsName: any){
     let options: any = {};
@@ -87,19 +74,12 @@ export class WidgetDraw{
     let delta = 10;
     if ((Math.abs(this.vp.size.width - size.width) > delta) || (Math.abs(this.vp.size.height - size.height) > delta)){
       this.vp.size = {width: size.width, height: size.height - 40};
-      if (this.svg){}
     }
-  }
-
-
-  ngOnDestroy() {
-    if (this.rs) { this.rs.unsubscribe(); }
   }
 
   ngOnChanges(changes: { [propName: string]: any }) {
-    if (changes['activeItem']){
-      this.createElement();
-    }
+    if (changes['size'] && this.size){ this.setPanelSize(this.size); }
+    if (changes['activeItem']){ this.createElement(); }
   }
 
   createElement(){

@@ -2,8 +2,6 @@
  * Created by Natallia on 7/14/2016.
  */
 import {Component, Input, ElementRef, Renderer} from '@angular/core';
-import {ResizeService} from '../common/service.resize';
-import {Subscription}   from 'rxjs/Subscription';
 import {getResourceIcon, getColor} from "../common/utils.model";
 import {Canvas, LyphRectangle} from "lyph-edit-widget";
 import {getCanonicalTreeData} from "./canonicalTree.utils";
@@ -13,7 +11,7 @@ declare var $:any;
 
 @Component({
   selector: 'canonical-tree',
-  inputs: ['item'],
+  inputs: ['item', 'size'],
   template : `
      <div class="panel-body">
         <svg #treeSvg class="svg-widget"></svg>
@@ -23,6 +21,7 @@ declare var $:any;
 })
 export class CanonicalTreeWidget{
   @Input() item : any;
+  @Input() size: any = {width: 600, height: 300};
 
   svg : any;
   rootSvg: any;
@@ -33,18 +32,8 @@ export class CanonicalTreeWidget{
     margin: {x: 20, y: 20},
     node: {size: {width: 40, height: 40}}};
 
-  subscription: Subscription;
 
-  constructor(public renderer: Renderer,
-              public el: ElementRef,
-              private resizeService: ResizeService) {
-    this.subscription = resizeService.resize$.subscribe(
-    (event:any) => {
-      if (event.target === "canonical-tree") { this.setPanelSize(event.size); }
-    });
-  }
-
-  ngOnDestroy() { this.subscription.unsubscribe(); }
+  constructor(public el: ElementRef) {}
 
   setPanelSize(size: any){
     let delta = 10;
@@ -59,7 +48,7 @@ export class CanonicalTreeWidget{
   ngOnChanges(changes: { [propName: string]: any }) {
     this.svg = d3.select(this.el.nativeElement).select('svg');
     this.rootSvg = $('#treeSvg');
-
+    if( changes['size'] && this.size) { this.setPanelSize(this.size); }
     if (this.item) {
       this.data = getCanonicalTreeData(this.item, -1);
       this.draw(this.svg, this.vp, this.data);

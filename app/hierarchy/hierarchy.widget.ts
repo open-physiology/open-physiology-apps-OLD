@@ -2,19 +2,18 @@
  * Created by Natallia on 7/15/2016.
  */
 import {Component, Input, Output} from '@angular/core';
-import {RelationGraph} from "./hierarchy.graph";
-import {RelationTree}  from "./hierarchy.tree";
+import {HierarchyGraph} from "./hierarchy.graph";
+import {HierarchyTree}  from "./hierarchy.tree";
 
 import {CORE_DIRECTIVES} from '@angular/common';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
-import {ResizeService} from '../common/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
 import {ToolbarPropertySettings} from '../common/toolbar.propertySettings';
 import {getColor, getPropertyLabel} from "../common/utils.model";
 
 @Component({
   selector: 'hierarchy-widget',
-  inputs: ['item', 'depth'],
+  inputs: ['item', 'depth', 'size'],
   template : `
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -48,19 +47,21 @@ import {getColor, getPropertyLabel} from "../common/utils.model";
         </div>
         
         <hierarchy-tree *ngIf="layout == 'tree'" 
-          [item]="item" [relations]="relations" [depth]="depth"></hierarchy-tree>
+          [item]="item" [relations]="relations" [depth]="depth" [size]="size"></hierarchy-tree>
         <hierarchy-graph *ngIf="layout == 'graph'" 
-          [item]="item" [relations]="relations" [depth]="depth"></hierarchy-graph>
+          [item]="item" [relations]="relations" [depth]="depth" [size]="size"></hierarchy-graph>
         
       </div>     
     </div>
   `,
-  directives: [RelationGraph, RelationTree, DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, ToolbarPropertySettings]
+  directives: [HierarchyGraph, HierarchyTree, DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, ToolbarPropertySettings]
 })
-export class RelationshipWidget{
+export class HierarchyWidget{
   @Input() item: any;
-  @Input() relations  : Set<string> = new Set<string>();
   @Input() depth: number = 2;
+  @Input() size: any = {width: 600, height: 300};
+
+  relations: Set<string> = new Set<string>();
 
   relationOptions: Array<any> = [];
   propertyOptions: Array<any> = [];
@@ -70,22 +71,9 @@ export class RelationshipWidget{
   layout = "tree";
   subscription: Subscription;
 
-  constructor(public resizeService: ResizeService) {
-    this.subscription = resizeService.resize$.subscribe(
-      (event: any) => {
-        if (event.target == "hierarchy-widget") {
-          this.onSetPanelSize(event);
-        }
-      });
-  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  onSetPanelSize(event: any){
-    this.resizeService.announceResize({target: "hierarchy-tree", size: event.size});
-    this.resizeService.announceResize({target: "hierarchy-graph", size: event.size});
   }
 
   ngOnInit(){
@@ -96,6 +84,9 @@ export class RelationshipWidget{
   }
 
   ngOnChanges(changes: { [propName: string]: any }) {
+    if (changes['size']){
+      console.log("Hierarchy size", this.size);
+    }
     if (this.item && (this.item.class != this.Class)){
       this.Class = this.item.class;
       this.updateRelations();

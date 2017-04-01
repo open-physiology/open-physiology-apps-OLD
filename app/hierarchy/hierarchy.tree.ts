@@ -1,5 +1,4 @@
 import {Component, Input, Output, ElementRef, EventEmitter} from '@angular/core';
-import {ResizeService} from '../common/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
 
 import {getResourceIcon, getColor} from "../common/utils.model";
@@ -9,55 +8,41 @@ declare var d3:any;
 
 @Component({
   selector: 'hierarchy-tree',
-  inputs: ['item', 'relations', 'depth'],
+  inputs: ['item', 'relations', 'depth', 'size'],
   template : `
       <svg #treeSvg class="svg-widget"></svg>
-    
   `
 })
-export class RelationTree{
+export class HierarchyTree{
   @Input() item       : any;
   @Input() relations  : Set<string> = new Set<string>();
   @Input() depth      : number = -1;
+  @Input() size       : any = {width: 600, height: 300};
 
-  svg : any;
-  vp  : any = {size: {width: 600, height: 400}, margin: {x: 20, y: 20}, node: {size: {width: 40, height: 20}}};
   data: any;
+  svg : any;
+  vp  : any = {size: this.size, margin: {x: 20, y: 20}, node: {size: {width: 40, height: 20}}};
 
   @Output() selected = new EventEmitter();
-  subscription: Subscription;
 
-  constructor(public el: ElementRef, private resizeService: ResizeService){
-    this.subscription = resizeService.resize$.subscribe(
-      (event: any) => {
-        if (event.target === "hierarchy-tree"){
-          this.setPanelSize(event.size);
-        }
-      });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  setPanelSize(size: any){
-    let delta = 10;
-    if ((Math.abs(this.vp.size.width - size.width) > delta) || (Math.abs(this.vp.size.height - size.height) > delta)){
-      this.vp.size = {width: size.width, height: size.height - 40};
-      if (this.svg){
-        this.draw(this.svg, this.vp, this.data);
-      }
-    }
-  }
+  constructor(public el: ElementRef){}
 
   ngOnChanges(changes: { [propName: string]: any }) {
     this.svg = d3.select(this.el.nativeElement).select('svg');
+    if (changes['size'] && this.size){ this.setPanelSize(this.size); }
     if (this.item) {
       this.data = getTreeData(this.item, this.relations, this.depth);
       this.draw(this.svg, this.vp, this.data);
     } else {
       this.data = {};
       this.svg.selectAll(".tree").remove();
+    }
+  }
+
+  setPanelSize(size: any){
+    let delta = 10;
+    if ((Math.abs(this.vp.size.width - size.width) > delta) || (Math.abs(this.vp.size.height - size.height) > delta)){
+      this.vp.size = {width: size.width, height: size.height - 40};
     }
   }
 

@@ -6,12 +6,10 @@ import {CanonicalTreeWidget} from './canonicalTree.tree';
 import {CanonicalTreeInfoWidget} from './canonicalTree.info';
 import {LyphWidget} from './lyph.rectangle';
 import {resourceClassNames} from '../common/utils.model';
-import {ResizeService} from '../common/service.resize';
-import {Subscription}   from 'rxjs/Subscription';
 
 @Component({
   selector: 'resource-widget',
-  inputs: ['item'],
+  inputs: ['item', 'size'],
   template : `
     <div class="panel panel-default">
       <div class="panel-heading">Resource <strong>{{item?.id}}{{(item)? ': ' + item.name : ''}}</strong></div>
@@ -26,10 +24,12 @@ import {Subscription}   from 'rxjs/Subscription';
         </button>
       </div>
 
-      <canonical-tree *ngIf="(layout === 'resource') && (item?.class === resourceClassNames.CanonicalTree)" [item]="item"></canonical-tree>  
-      <canonical-tree-info *ngIf="(layout === 'info') && (item?.class === resourceClassNames.CanonicalTree)" [item]="item"></canonical-tree-info>  
+      <canonical-tree *ngIf="(layout === 'resource') && (item?.class === resourceClassNames.CanonicalTree)" 
+        [item]="item" [size]="size"></canonical-tree>  
+      <canonical-tree-info *ngIf="(layout === 'info') && (item?.class === resourceClassNames.CanonicalTree)" 
+        [item]="item"></canonical-tree-info>  
 
-      <lyph *ngIf="item?.class === resourceClassNames.Lyph" [item]="item"></lyph>  
+      <lyph *ngIf="item?.class === resourceClassNames.Lyph" [item]="item" [size]="size"></lyph>  
       
     </div> 
   `,
@@ -37,25 +37,8 @@ import {Subscription}   from 'rxjs/Subscription';
 })
 export class ResourceWidget{
   @Input() item: any;
+  @Input() size: any = {width: 600, height: 300};
 
   layout: string = 'resource';
-
   resourceClassNames = resourceClassNames;
-  subscription: Subscription;
-
-  constructor(public resizeService: ResizeService) {
-    this.subscription = resizeService.resize$.subscribe(
-      (event: any) => {
-        if (event.target === "resource-widget"){
-          this.onSetPanelSize(event);
-        }
-      });
-  }
-
-  onSetPanelSize(event: any){
-    this.resizeService.announceResize({target: "canonical-tree", size: event.size});
-    this.resizeService.announceResize({target: "lyph", size: event.size});
-  }
-
-  ngOnDestroy() {this.subscription.unsubscribe();}
 }

@@ -2,7 +2,6 @@ import {Component, ElementRef} from '@angular/core';
 import {NestedResourceWidget} from '../nestedResource/nestedResource.widget';
 import {NestedResourceList} from '../nestedResource/nestedResource.list';
 import {WidgetDraw} from '../draw/draw.widget';
-import {ResizeService} from '../common/service.resize';
 import {Subscription}   from 'rxjs/Subscription';
 import {SetToArray} from "../common/pipe.general";
 import {model} from "../common/utils.model";
@@ -14,7 +13,6 @@ declare var $: any;
 
 @Component({
   selector: 'app',
-  providers: [ResizeService],
   template: `
     <nested-resource-widget id="repo"
       caption="Resources" 
@@ -30,6 +28,7 @@ declare var $: any;
     <widget-draw id ="graphWidget" 
       [activeItem] = "activeItem" 
       [highlightedItem] = "highlightedItem" 
+      [size] = "sizeDraw"
       (highlightedItemChange) = "updateHighlightedWidget($event)"
       (activeItemChange)      = "updateActive($event)"
     ></widget-draw>
@@ -77,11 +76,9 @@ export class GraphEditor {
   mainLayout:any;
 
   rs: Subscription;
-  ts: Subscription;
+  sizeDraw: any;
 
-  constructor(private resizeService:ResizeService, public el:ElementRef) {
-
-    let self = this;
+  constructor(public el:ElementRef) {
 
     this.rs = model.Resource.p('all').subscribe(
       (data: any) => {
@@ -89,43 +86,15 @@ export class GraphEditor {
       });
 
     (async function() {
-
-      let vesselWall, bloodLayer, node1, node2;
-      let bloodVessel = model.Lyph.new({
-        name: 'Blood Vessel',
-        layers: [
-          vesselWall = model.Lyph.new(
-            { name: 'Vessel Wall' },
-            { createRadialBorders: true }
-          ),
-          bloodLayer = model.Lyph.new({
-            name: 'Blood Layer',
-            parts: [
-              model.Lyph.new(
-                { name: 'Sublyph' },
-                { createAxis: true, createRadialBorders: true }
-              )
-            ]
-          }, { createRadialBorders: true })
-        ],
-        nodes: [node1 = model.Node.new()]
-      }, {createAxis: true, createRadialBorders: true });
-
-      let brain = model.Lyph.new({
-        name: 'Brain',
-        nodes: [
-          node2 = model.Node.new()
-        ]
-      }, {createAxis: true, createRadialBorders: true });
-
-      let concentration = model.Measurable.new({name: "Concentration of water"});
-      concentration.locations.add(brain);
-
+      let extracted = [...await model.Resource.getAll()];
+      if (extracted.length > 0){
+        this.selectedItem = extracted[0];
+      }
     })();
-
   }
+
   ngOnDestroy() {
-    if (this.rs) this.rs.unsubscribe();
+    if (this.rs) { this.rs.unsubscribe();}
   }
 
   updateSelected(item:any) {
@@ -143,12 +112,14 @@ export class GraphEditor {
 
   //Repo -> widget
   updateHighlightedRepo(item:any) {
-    if (this.highlightedItem !== item) { this.highlightedItem = item; }
+    if (this.highlightedItem !== item) {
+      this.highlightedItem = item;
+    }
   }
 
   //Widget -> repo
   updateHighlightedWidget(item:any){
-    if (this.highlightedItem !== item) { this.highlightedItem = item; }
+    this.highlightedItem = item;
   }
 
   ngOnInit() {
@@ -156,24 +127,22 @@ export class GraphEditor {
     let main = $('app > #main');
     this.mainLayout = new GoldenLayout(this.layoutConfig, main);
 
-    this.mainLayout.registerComponent('RepoPanel', function (container:any, componentState:any) {
+    this.mainLayout.registerComponent('RepoPanel', (container:any, componentState:any) => {
       let panel = container.getElement();
       let content = $('app > #repo');
       content.detach().appendTo(panel);
     });
 
-    this.mainLayout.registerComponent('GraphWidgetPanel', function (container:any, componentState:any) {
+    this.mainLayout.registerComponent('GraphWidgetPanel', (container:any, componentState:any) => {
       let panel = container.getElement();
       let component = $('app > #graphWidget');
       component.detach().appendTo(panel);
       //Notify components about window resize
-      container.on('open', function() {
-        let size = {width: container.width, height: container.height};
-        self.resizeService.announceResize({target: "graph-widget", size: size});
+      container.on('open', () => {
+        this.sizeDraw = {width: container.width, height: container.height};
       });
-      container.on('resize', function() {
-        let size = {width: container.width, height: container.height};
-        self.resizeService.announceResize({target: "graph-widget", size: size});
+      container.on('resize', () => {
+        this.sizeDraw = {width: container.width, height: container.height};
       });
     });
 
