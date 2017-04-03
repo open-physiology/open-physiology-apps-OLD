@@ -149,7 +149,7 @@ export function getClassLabel(option: string): string{
 }
 
 export function getIcon(clsName: any): string{
-  return "images/" + toCamelCase(clsName) + ".png";
+  return "images/resources/" + toCamelCase(clsName) + ".png";
 }
 
 export function getResourceIcon(item: any): string{
@@ -157,7 +157,7 @@ export function getResourceIcon(item: any): string{
   if (item.class === "Type"){
     clsName = (item['<--DefinesType'] && item['<--DefinesType'][1])? item['<--DefinesType'][1].class: "Resource";
   }
-  return "images/" + toCamelCase(clsName) + ".png";
+  return "images/resources/" + toCamelCase(clsName) + ".png";
 }
 
 
