@@ -9,6 +9,7 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
   selector: 'toolbar-sort',
   inputs: ['options'],
   template: `
+    <div class="btn-group">
       <div class="btn-group" dropdown>
         <button type="button" class="btn btn-default btn-icon dropdown-toggle" aria-label="SortAsc" dropdownToggle>
           <span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
@@ -41,6 +42,7 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/components/dropdown';
           </li>
         </ul>
       </div>
+    </div>
     `,
   directives: [DROPDOWN_DIRECTIVES, CORE_DIRECTIVES]
 })

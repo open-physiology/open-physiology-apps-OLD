@@ -4,7 +4,7 @@
 import {Component, Input, Output, ElementRef, EventEmitter} from '@angular/core';
 import {Canvas, SelectTool, DragDropTool, ResizeTool, ZoomTool,
   PanTool, BorderToggleTool, LyphRectangle, NodeGlyph, ProcessLine, DrawingTool} from "lyph-edit-widget";
-import {resourceClassNames, getClassLabel, getIcon, model} from '../common/utils.model';
+import {modelClassNames, getClassLabel, model} from '../common/utils.model';
 import {ToolbarPalette} from './toolbar.palette';
 
 declare var $:any;
@@ -15,7 +15,7 @@ declare var $:any;
   template : `
      <div class="panel panel-success">
        <div class="panel-body" style="position: relative">
-          <toolbar-palette [items]="types" [activeItem]="activeItem" [imageProvider]="getIcon" [transfrom]="getClassLabel"
+          <toolbar-palette [items]="types" [activeItem]="activeItem" [transfrom]="getClassLabel"
           style="position: absolute;" (activeItemChange)="onActiveItemChange($event)"></toolbar-palette>
           <svg id="graphSvg" class="svg-widget"></svg>
        </div>
@@ -32,15 +32,15 @@ export class WidgetDraw{
 
 
   types = [
-    resourceClassNames.Material,
-    resourceClassNames.Lyph,
-    resourceClassNames.LyphWithAxis,
-    resourceClassNames.Process,
-    resourceClassNames.Measurable,
-    resourceClassNames.Causality,
-    resourceClassNames.Node,
-    resourceClassNames.CanonicalTree,
-    resourceClassNames.CoalescenceScenario];
+    modelClassNames.Material,
+    modelClassNames.Lyph,
+    modelClassNames.LyphWithAxis,
+    modelClassNames.Process,
+    modelClassNames.Measurable,
+    modelClassNames.Causality,
+    modelClassNames.Node,
+    modelClassNames.CanonicalTree,
+    modelClassNames.CoalescenceScenario];
 
   svg : any;
   root: any;
@@ -49,18 +49,17 @@ export class WidgetDraw{
     margin: {x: 20, y: 20},
     node:   {size: {width: 40, height: 40}}};
 
-  getIcon = getIcon;
   getClassLabel = getClassLabel;
 
   constructor(public el: ElementRef) {}
 
   onActiveItemChange(clsName: any){
     let options: any = {};
-    if (clsName === resourceClassNames.LyphWithAxis) {
-      clsName = resourceClassNames.Lyph;
+    if (clsName === modelClassNames.LyphWithAxis) {
+      clsName = modelClassNames.Lyph;
       options.createAxis = true;
     }
-    if (clsName === resourceClassNames.Lyph) {
+    if (clsName === modelClassNames.Lyph) {
       options.createRadialBorders = true;
     }
 

@@ -1,7 +1,7 @@
-import {Component, Input, Output, OnChanges, OnDestroy, ElementRef, EventEmitter} from '@angular/core';
+import {Component, Input, Output, OnChanges, ElementRef, EventEmitter} from '@angular/core';
 import {nvD3} from 'ng2-nvd3/lib/ng2-nvd3';
 
-import {getIcon, getColor} from "../common/utils.model";
+import {getColor} from "../common/utils.model";
 import {getGraphData} from "./hierarchy.utils";
 
 declare let d3: any;
@@ -14,7 +14,7 @@ declare let d3: any;
   `,
   directives: [nvD3]
 })
-export class HierarchyGraph implements OnChanges, OnDestroy{
+export class HierarchyGraph implements OnChanges{
   @Input() item       : any;
   @Input() relations  : Set<string> = new Set<string>();
   @Input() depth      : number = -1;
@@ -84,7 +84,7 @@ export class HierarchyGraph implements OnChanges, OnDestroy{
 
           node && node
             .append("image")
-            .attr("xlink:href", function (d: any) {return getIcon(d.class);})
+            .attr("xlink:href", function (d: any) {return d.constructor.icon;})
             .attr("x", -8).attr("y", -8)
             .attr("width", 16).attr("height", 16);
         },

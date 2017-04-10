@@ -2,7 +2,7 @@
  * Created by Natallia on 7/8/2016.
  */
 import {Input, Output, EventEmitter} from '@angular/core';
-import {resourceClassNames, getClassLabel, getResourceIcon, model} from "../common/utils.model";
+import {modelClassNames, getClassLabel, getResourceIcon, model} from "../common/utils.model";
 import {HighlightService} from "./service.highlight";
 import {Subscription}   from 'rxjs/Subscription';
 
@@ -87,7 +87,7 @@ export abstract class AbstractResourceList{
       this.selectedItem = this.items[0];
     //Resources
     if (this.types.length === 0) {
-      for (let x of Object.keys(resourceClassNames)) {
+      for (let x of Object.keys(modelClassNames)) {
         this.types.push(x);
       }
     }
@@ -146,17 +146,17 @@ export abstract class AbstractResourceList{
 
   protected onAdded(clsName: any){
     let options: any = {};
-    if (clsName === resourceClassNames.LyphWithAxis) {
-      clsName = resourceClassNames.Lyph;
+    if (clsName === modelClassNames.LyphWithAxis) {
+      clsName = model.Lyph.name;
       options.createAxis = true;
     }
-    if (clsName === resourceClassNames.Lyph) {
+    if (clsName === model.Lyph.name) {
       options.createRadialBorders = true;
     }
 
     let newItem = model[clsName].new({name: "New " + clsName}, options);
 
-    if (clsName === resourceClassNames.Material) {
+    if (clsName === model.Material.name) {
       let newType = model.Type.new({name: newItem.name, definition: newItem});
       newItem.p('name').subscribe(newType.p('name'));
     }

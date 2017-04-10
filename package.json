@@ -52,7 +52,7 @@
     "ng2-slider-component": "^1.0.1",
     "ng2-toastr": "^0.3.1",
     "ng2-toasty": "^1.9.0",
-    "open-physiology-model": "https://github.com/mhelvens/open-physiology-model.git#command-pattern",
+    "open-physiology-model": "https://github.com/mhelvens/open-physiology-model.git#08704bacf6fe58f2626aa7e097c48e339d9952ae",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.10",
     "stochasm": "^0.5.0",

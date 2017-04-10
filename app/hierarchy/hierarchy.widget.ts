@@ -84,9 +84,6 @@ export class HierarchyWidget{
   }
 
   ngOnChanges(changes: { [propName: string]: any }) {
-    if (changes['size']){
-      console.log("Hierarchy size", this.size);
-    }
     if (this.item && (this.item.class != this.Class)){
       this.Class = this.item.class;
       this.updateRelations();

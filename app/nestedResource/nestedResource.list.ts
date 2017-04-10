@@ -11,7 +11,7 @@ import {ToolbarAdd} from './toolbar.add';
 import {ToolbarFilter} from './toolbar.filter';
 import {ToolbarSort} from './toolbar.sort';
 
-import {PanelDispatchResources} from "./dispatch.resources";
+import {ResourcePanel} from "./panel.resource";
 import {AbstractResourceList} from "./nestedResource.abstract";
 import {ItemHeader} from "./component.itemHeader";
 import {OrderBy, FilterBy, SetToArray, FilterByClass} from "../common/pipe.general";
@@ -23,7 +23,7 @@ import {HighlightService} from "./service.highlight";
 
 @Component({
   selector: 'nested-resource-list',
-  inputs: ['items', 'caption', 'ignore', 'types', 'selectedItem', 'options', 'selectionOptions'],
+  inputs: ['items', 'caption', 'types', 'selectedItem', 'options', 'selectionOptions'],
   providers: [ToastyService],
   template:`
     <div class="panel repo-nested">
@@ -62,14 +62,13 @@ import {HighlightService} from "./service.highlight";
             </div>
 
             <div *ngIf="!options?.headersOnly">
-              <panel-general *ngIf="item === selectedItem" 
+              <panel-resource *ngIf="item === selectedItem" 
                 [item]    ="item" 
-                [ignore]  ="ignore"
                 [options] ="options"
                 (saved)   ="onSaved(item, $event)" 
                 (removed) ="onRemoved(item)"
                 (highlightedItemChange)="highlightedItemChange.emit($event)"
-                ></panel-general>            
+                ></panel-resource>            
             </div>
           </accordion-group>        
         </accordion>       
@@ -78,7 +77,7 @@ import {HighlightService} from "./service.highlight";
     <ng2-toasty></ng2-toasty>
   `,
   directives: [ItemHeader, ToolbarSort, ToolbarAdd, ToolbarFilter, SingleSelectInput,
-    forwardRef(() => PanelDispatchResources),
+    forwardRef(() => ResourcePanel),
     ACCORDION_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES, DND_DIRECTIVES,
     Toasty],
   pipes: [OrderBy, FilterBy, SetToArray]

@@ -9,10 +9,10 @@ import {ToolbarAdd} from './toolbar.add';
 import {ToolbarFilter} from './toolbar.filter';
 import {ToolbarSort} from './toolbar.sort';
 
-import {resourceClassNames, model} from "../common/utils.model";
+import {modelClassNames, model} from "../common/utils.model";
 
 import {OrderBy, FilterBy, HideClass} from "../common/pipe.general";
-import {PanelDispatchResources} from "./dispatch.resources";
+import {ResourcePanel} from "./panel.resource";
 import {AbstractResourceList} from "./nestedResource.abstract";
 import {ItemHeader} from "./component.itemHeader";
 import {HighlightService} from "./service.highlight";
@@ -22,7 +22,7 @@ import {ToolbarPropertySettings} from '../common/toolbar.propertySettings';
 @Component({
   selector: 'nested-resource-widget',
   providers: [HighlightService],
-  inputs: ['items', 'caption', 'ignore', 'types', 'selectedItem', 'activeItem', 'highlightedItem', 'options'],
+  inputs: ['items', 'caption', 'types', 'selectedItem', 'activeItem', 'highlightedItem', 'options'],
   template:`
      <div class="panel panel-info repo">
         <div class="panel-heading">{{caption}}
@@ -68,13 +68,12 @@ import {ToolbarPropertySettings} from '../common/toolbar.propertySettings';
             </div>
 
             <div *ngIf="!options?.headersOnly">
-              <panel-general *ngIf="item === selectedItem" [item]="item"
-                [ignore]="ignore"
+              <resource-panel *ngIf="item === selectedItem" [item]="item"
                 (saved)="onSaved(item, $event)" 
                 (canceled)="onCanceled($event)"
                 (removed)="onRemoved(item)"
                 (highlightedItemChange)="highlightedItemChange.emit($event)">
-               </panel-general>   
+               </resource-panel>   
             </div>
                 
           </accordion-group>        
@@ -86,12 +85,12 @@ import {ToolbarPropertySettings} from '../common/toolbar.propertySettings';
   directives: [
     ToolbarSort, ToolbarAdd, ToolbarFilter,
     ItemHeader,
-    PanelDispatchResources, ToolbarPropertySettings,
+    ResourcePanel, ToolbarPropertySettings,
     ACCORDION_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES, DND_DIRECTIVES],
   pipes: [OrderBy, FilterBy, HideClass]
 })
 export class NestedResourceWidget extends AbstractResourceList{
-  ignoreTypes = new Set([resourceClassNames.Border, resourceClassNames.Node]);
+  ignoreTypes = new Set([model.Border.name, model.Node.name]);
   typeOptions = [];
   highlightService;
 
@@ -102,7 +101,7 @@ export class NestedResourceWidget extends AbstractResourceList{
 
   ngOnInit(){
     super.ngOnInit();
-    this.typeOptions = this.types.filter(x => x.class !== resourceClassNames.LyphWithAxis).map(x => (
+    this.typeOptions = this.types.filter(x => x.class !== modelClassNames.LyphWithAxis).map(x => (
       { selected: !this.ignoreTypes.has(x), value: x }
     ));
     this.typeOptions.push({selected: !this.ignoreTypes.has("Type"), value: "Type"});

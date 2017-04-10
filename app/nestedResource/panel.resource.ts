@@ -1,100 +1,115 @@
 /**
  * Created by Natallia on 6/14/2016.
  */
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, ViewChild, EventEmitter, Input, Output} from '@angular/core';
 import {SingleSelectInput, MultiSelectInput} from './component.select';
 import {ToolbarCommands} from './toolbar.commands';
-import {MapToCategories} from "../common/pipe.general";
 import {ToolbarPropertySettings} from '../common/toolbar.propertySettings';
-import {resourceClassNames} from "../common/utils.model";
-import {getPropertyLabel as generalPropertyLabel} from "../common/utils.model";
+import {model} from "../common/utils.model";
+import {getPropertyLabel} from "../common/utils.model";
 import {NestedResourceList} from "./nestedResource.list";
-import {SetToArray} from "../common/pipe.general";
+import {SetToArray, HideClass} from "../common/pipe.general";
+import {TemplateValue} from './component.templateValue';
+import {RADIO_GROUP_DIRECTIVES} from "ng2-radio-group";
+import {ModalWindow} from "./component.modal";
+import {ToastyService, Toasty} from 'ng2-toasty/ng2-toasty';
 
 @Component({
   selector: 'resource-panel',
-  inputs: ['item', 'ignore', 'options', 'custom'],
+  inputs: ['item', 'options'],
+  providers: [ToastyService],
   template:`
     <div class="panel">
         <div class="panel-body">
           <toolbar-commands  
             [options]  = "options"
-            (saved)    = "saved.emit(item)"
-            (canceled) = "canceled.emit(item)"
-            (removed)  = "removed.emit(item)">            
+            (saved)    = "onSaved(event)"
+            (canceled) = "onCanceled(event)"
+            (removed)  = "removed.emit($event)">            
           </toolbar-commands>
           <toolbar-propertySettings  
-            [options] = "properties"
+            [options] = "fieldOptions"
             [transform] = "getPropertyLabel"
             (selectionChanged) = "selectionChanged($event)">
           </toolbar-propertySettings>
-          
-          <ng-content select="toolbar"></ng-content>
+          <toolbar *ngIf="!options?.hideCreateType && isTyped()" >
+            <input type="checkbox" [disabled]="typeCreated" [(ngModel)]="createType">Create type
+          </toolbar>
+          <toolbar *ngIf="item.class === model.Lyph.name">
+            <button type="button" class="btn btn-default btn-icon" 
+              (click)="generateMeasurables()">
+              <span class="glyphicon glyphicon-cog"></span>
+            </button>
+          </toolbar>
                     
-          <div class="panel-content">
-            <!--INPUT-->
-            <inputGroup *ngFor="let property of inputGroup">
-              <div class="input-control input-control-lg" *ngIf="includeProperty(property)">
-                <label for="comment">{{getPropertyLabel(property)}}: </label>
-                <input class="form-control" 
-                  [type]="inputGroupParams[property].type" 
-                  [(ngModel)]="item[property]">
-              </div>
-              <ng-content select="inputGroup"></ng-content>
-            </inputGroup>
-            
-            <!--SINGLE SELECT-->
-            <selectGroup *ngFor="let property of selectGroup">
-              <div class="input-control" *ngIf="includeProperty(property)">      
-                <label>{{getPropertyLabel(property)}}: </label>
-                <select-input-1 [item] = "item.p(property) | async" 
-                  (updated) = "updateProperty(property, $event)"  
-                  [options] = "item.fields[property].p('possibleValues') | async">
-                </select-input-1>
-              </div>
-              <ng-content select="selectGroup"></ng-content>
-            </selectGroup>
-
-            <!--MULTI SELECT-->
-            <multiSelectGroup *ngFor="let property of multiSelectGroup">
-               <div class="input-control" *ngIf="includeProperty(property)">
+          <div class="panel-content"> 
+            <div class="input-control" *ngFor="let property of fieldNames">
+              <div *ngIf="!ignore.has(property)">
+                <div class="input-control-lg" *ngIf="inputGroup.includes(property)">
+                  <label for="comment">{{getPropertyLabel(property)}}: </label>
+                  <input class="form-control" 
+                    [type]="getDefaultValue(property, 'type')" 
+                    [disabled]="item.constructor.properties[property].readOnly"
+                    [(ngModel)]="item[property]">
+                </div>
+              
+                <div *ngIf="selectGroup.includes(property)">      
                   <label>{{getPropertyLabel(property)}}: </label>
-                  <select-input [items] = "item.p(property) | async"
-                   (updated) = "updateProperty(property, $event)"    
-                   [options] = "item.fields[property].p('possibleValues') | async">
-                  </select-input>
-              </div>
-              <ng-content select="multiSelectGroup"></ng-content>
-            </multiSelectGroup>
-            
-            <!--NESTED RESOURCES-->
-            <relationGroup *ngFor="let property of relationGroup">
-              <div class="input-control" *ngIf="includeProperty(property)">
-                <nested-resource-list 
+                  <select-input-1 [item] = "item.p(property) | async" 
+                    (updated) = "updateProperty(property, $event)"  
+                    [options] = "possibleValues[property]">
+                  </select-input-1>
+                </div>
+                
+                <div *ngIf="multiSelectGroup.includes(property)">
+                    <label>{{getPropertyLabel(property)}}: </label>
+                    <select-input [items] = "item.p(property) | async"
+                     (updated) = "updateProperty(property, $event)"    
+                     [options] = "possibleValues[property]">
+                    </select-input>
+                </div>
+                
+                <nested-resource-list *ngIf="relationGroup.includes(property)"
                   [caption]="getPropertyLabel(property)" 
                   [items]  ="item.p(property) | async | setToArray" 
                   [types]  ="getTypes(property)"
                   (updated)="updateProperty(property, $event)" 
                   (highlightedItemChange)="highlightedItemChange.emit($event)">
                 </nested-resource-list>
-              </div>
-              <ng-content select="relationGroup"></ng-content>
-            </relationGroup> 
-            
-            <ng-content></ng-content>
               
+                <template-value *ngIf="templateGroup.includes(property)" 
+                  [caption]="getPropertyLabel(property)" 
+                  [item]="item.p(property) | async"
+                  [step]="getDefaultValue(property, 'step')"
+                  (updated)="updateProperty(property, $event)">
+                </template-value>
+                
+                <fieldset *ngIf="checkboxGroup.includes(property)">
+                  <legend>{{getPropertyLabel(property)}}:</legend>
+                  <checkbox-group *ngFor = "let option of possibleValues[property]"
+                    [(ngModel)]="item[property]" (ngModelChange)="onSelectChange(property, item[property])">
+                     <input type="checkbox" [value]="option">{{option}}&nbsp;
+                  </checkbox-group>
+                </fieldset>
+              </div>
+            </div>
+            
+            <modal-window *ngIf = "item.class === model.Lyph.name" [item] = item>
+            </modal-window>
+            
           </div>
         </div>
     </div>
+    <ng2-toasty></ng2-toasty>
   `,
-  directives: [ToolbarCommands, ToolbarPropertySettings, SingleSelectInput, MultiSelectInput, NestedResourceList],
-  pipes: [MapToCategories, SetToArray]
+  directives: [ToolbarCommands, ToolbarPropertySettings,
+    SingleSelectInput, MultiSelectInput, NestedResourceList,
+    TemplateValue, RADIO_GROUP_DIRECTIVES, ModalWindow, Toasty],
+  pipes: [SetToArray]
 })
 export class ResourcePanel {
   @Input() item: any;
-  @Input() ignore: Set<string> = new Set<string>();
   @Input() options: any;
-  @Input() custom: Set<string> = new Set<string>();
 
   @Output() saved = new EventEmitter();
   @Output() canceled = new EventEmitter();
@@ -102,127 +117,184 @@ export class ResourcePanel {
   @Output() propertyUpdated = new EventEmitter();
   @Output() highlightedItemChange = new EventEmitter();
 
-  protected resourceClassNames = resourceClassNames;
-  protected privateProperties: Set<string> = new Set([
-    "class", "themes", "parents", "children"
-  ]);
-  protected multiSelectProperties: Set<string> = new Set([
-    'externals',
-    'subtypes', 'supertypes',
-    'clinicalIndices', 'correlations',
-    'cardinalityMultipliers', 'types',
-    'materials', 'locations',
-    'causes','effects']);
+  getPropertyLabel = getPropertyLabel;
+  model = model;
 
-  protected properties       = [];
-  protected multiSelectGroup = [];
-  protected inputGroup       = [];
-  protected selectGroup      = [];
-  protected relationGroup    = [];
+  @ViewChild(ModalWindow) mGen: ModalWindow;
 
-  protected inputGroupParams  = {};
+  ignore: Set<string> = new Set<string>();
 
-  protected getPropertyLabel(option: string){
-    if (this.item)
-      if ((this.item.class === resourceClassNames.Lyph) ||
-        (this.item.class === resourceClassNames.CanonicalTree)) {
-        if (option === "cardinalityBase") return "Branching factor";
-      }
-    return generalPropertyLabel(option);
-  }
+  fieldNames       = [];  //All fields
+  fieldOptions     = [];  //Field visibility configurations
 
-  getTypes(property: string): any{
+  checkboxGroup    = [];  //Properties in check-boxes
+  templateGroup    = [];  //Properties in value-range-distribution component
+  inputGroup       = [];  //Properties in input fields
+
+  selectGroup      = [];  //Relationships with max cardinality-1 in combo list
+  multiSelectGroup = [];  //Relationships in multi-combo lists
+  relationGroup    = [];  //Relationships in nested resource lists
+
+  /*Typed resources*/
+  createType = false;
+  typeCreated = false;
+
+  /*Selection options*/
+  possibleValues = {};
+
+  constructor(private toastyService:ToastyService){ }
+
+  getTypes(property){
     let partnerClass = this.item.constructor.relationshipShortcuts[property].codomain.resourceClass;
-    let subClasses = /*(partnerClass.allSubclasses)?
-      Object.keys(partnerClass.allSubclasses()).filter(x => !x.abstract).map(x => x.name):*/
-      [partnerClass.name];
-    return subClasses;
+    return [partnerClass.name];
   }
-
-  //TODO: input fields - choose type
-  //TODO: disable readOnly fields
 
   ngOnInit(){
-    this.ignore.add("id").add("href");
-    this.setPropertySettings();
+    this.ignore = new Set(["id", "cardinalityBase", "cardinalityMultipliers", "definedType"]);
+    if (this.item instanceof model.Border){
+      this.ignore = this.ignore.add('externals').add('species').add('measurables').add('name').add('types').add('nodes');
+    }
 
     /*Auto-generated visual groups*/
+    let privateProperties = new Set(["class", "themes", "parents", "children"]);
 
-    //Properties
-    let properties = Object.entries(this.item.constructor.properties)
-      .filter(x => !this.privateProperties.has(x[0]) && !this.custom.has(x[0]));
-    //Relations
-    let relations = Object.entries(this.item.constructor.relationshipShortcuts)
-      .filter(x => !x[1].abstract && !this.privateProperties.has(x[0]) && !this.custom.has(x[0]));
+    let fields = Object.assign({}, this.item.constructor.properties, this.item.constructor.relationshipShortcuts);
+    this.fieldNames = Object.keys(fields).filter(p => !privateProperties.has(p));
+    this.fieldOptions = this.fieldNames.map(field => ({value: field, selected: !this.ignore.has(field)}));
 
-    //console.log("Properties", properties);
-    //console.log("Relations", relations);
+    /*Properties in check-boxes*/
+    this.checkboxGroup = ['transportPhenomenon', 'nature'].filter(key => this.item.constructor.properties[key]);
 
-    //Input fields
-    this.inputGroup = properties.map(x => x[0]);
-    for (let x of properties){
-      this.inputGroupParams[x[0]] = {
-          type: ((x[1].type === "integer") || (x[1].type === "number"))? "number": "text",
-          step: (x[1].type === "number")? 0.1: 1
-        }
+    /*Properties in value-range-distribution forms */
+    this.templateGroup = ['cardinalityBase', 'thickness', 'length'].filter(key => this.item.constructor.properties[key]);
+
+    /*Properties in input fields*/
+    this.inputGroup = Object.keys(this.item.constructor.properties)
+      .filter(key => !privateProperties.has(key)
+                  && !this.checkboxGroup.includes(key)
+                  && !this.templateGroup.includes(key));
+
+    /*Relationships*/
+    let relationships = Object.entries(this.item.constructor.relationshipShortcuts)
+      .filter(([key, value]) => !value.abstract && !privateProperties.has(key));
+
+    //Filtered possible values for relationships
+    for (let [key, value] of relationships){
+      this.item.fields[key].p('possibleValues') .subscribe(
+        (data) => {
+          this.possibleValues[key] = (key === "cardinalityMultipliers")?
+            new Set(new HideClass().transform( new SetToArray().transform(data), [model.Border.name, model.Node.name]))
+            : data;
+        });
     }
 
-    //Nested resources
-    this.relationGroup = relations.filter(x =>
-      ((x[1].cardinality.max !== 1) && !this.multiSelectProperties.has(x[0]))).map(x => x[0]);
-    //Multi-select combo box
-    this.multiSelectGroup = relations.filter(x =>
-      ((x[1].cardinality.max !== 1) && this.multiSelectProperties.has(x[0]))).map(x => x[0]);
-    //Single-select combo-box
-    this.selectGroup = relations.filter(x => (x[1].cardinality.max === 1)).map(x => x[0]);
-  }
-
-  setPropertySettings(){
-    if (this.item && this.item.constructor) {
-      let properties = Object.assign({}, this.item.constructor.properties, this.item.constructor.relationshipShortcuts);
-
-      for (let property of Object.keys(properties)) {
-        if (this.privateProperties.has(property)) { continue; }
-
-        if ((property === 'radialBorders') || (property === 'longitudinalBorders')) {
-          if (!this.properties.find(x => (x.value === "borders")))
-            this.properties.push({value: "borders", selected: !this.ignore.has("borders")});
-          continue;
-        }
-        this.properties.push({value: property, selected: !this.ignore.has(property)});
+    //Possible values for enumerations
+    for (let key of this.checkboxGroup){
+      let propertySpec = this.item.constructor.properties[key];
+      if (propertySpec && propertySpec.items && propertySpec.items.enum){
+        this.possibleValues[key] = Object.values(propertySpec.items.enum);
+      } else {
+        this.possibleValues[key] = [];
       }
     }
+
+    let multiSelectProperties = new Set([
+      'externals', 'subtypes', 'supertypes', 'clinicalIndices', 'correlations',
+      'cardinalityMultipliers', 'types', 'materials', 'locations', 'causes','effects']);
+
+    /*Relationships in nested lists*/
+    this.relationGroup = relationships.filter(x =>
+      ((x[1].cardinality.max !== 1) && !multiSelectProperties.has(x[0]))).map(x => x[0]);
+
+    /*Relationships in multi-select combo lists*/
+    this.multiSelectGroup = relationships.filter(x =>
+      ((x[1].cardinality.max !== 1) && multiSelectProperties.has(x[0]))).map(x => x[0]);
+
+    //Relationships in single-select combo lists*/
+    this.selectGroup = relationships.filter(x => (x[1].cardinality.max === 1)).map(x => x[0]);
+
+    /*"create type" check box enabled if type has not been defined */
+    if (this.isTyped()){ this.typeCreated = !!this.item['-->DefinesType']; }
   }
 
-  selectionChanged(option: any){
+  getDefaultValue(property, attribute): any{
+    let propertySpec = this.item.constructor.properties[property];
+    switch(attribute){
+      case "type": return ((propertySpec.type === "integer") || (propertySpec.type === "number"))? "number": "text";
+      case "step": return (propertySpec.type === "number")? 0.1: 1;
+    }
+    return "";
+  }
+
+  selectionChanged(option){
     if ( this.ignore.has(option.value) &&  option.selected) this.ignore.delete(option.value);
     if (!this.ignore.has(option.value) && !option.selected) this.ignore.add(option.value);
   }
 
-  includeProperty(prop: string){
-    return !this.ignore.has(prop);
+  updateProperty(property, item){
+    if (this.item.fields[property] && this.item.fields[property].readonly) { return; }
+    this.item[property] = item;
+    this.propertyUpdated.emit({property: property, values: item});
   }
 
-  updateProperty(property: string, item: any){
-    if (this.item.constructor &&
-      this.item.constructor.properties &&
-      this.item.constructor.properties[property]
-      && this.item.constructor.properties[property].readonly) return;
-
-      this.item[property] = item;
-      this.propertyUpdated.emit({property: property, values: item});
-  }
-
-  addItem(parent: any, property: string, item: any){
+  addItem(parent, property, item){
     if (parent && (parent[property])){
       parent[property].add(item);
       this.propertyUpdated.emit({property: property, values: parent[property]});
     }
   }
 
-  removeItem(parent: any, property: string, item: any){
+  removeItem(parent, property, item){
     item.delete();
     this.updateProperty(property, parent[property]);
+  }
+
+  isTyped(){
+    return this.item instanceof model.Template;
+  }
+
+  generateMeasurables(){
+    this.mGen.generateMeasurables();
+  }
+
+  onSelectChange(property, value){
+    let newArray = (Array.isArray(value))? value.slice(): value;
+    this.updateProperty(property, newArray);
+  }
+
+  onSaved(event){
+    if (this.item.class === model.CoalescenceScenario.name){
+      if (this.item.lyphs && (this.item.lyphs.size !== 2)){
+        console.log("Wrong number of lyphs", this.item.lyphs.size);
+      }
+    }
+
+    this.item.commit()
+      .catch(reason => {
+        let errorMsg = "Failed to commit resource: Relationship constraints violated! \n" +
+          "See browser console (Ctrl+Shift+J) for technical details.";
+        this.toastyService.error(errorMsg);
+        console.log(reason);
+      });
+
+    if (event.createType){
+      let template = this.item;
+      if (!template['-->DefinesType']){
+        (async function() {
+          let newType = model.Type.new({definition: template});
+          template.p('name').subscribe(newType.p('name'));
+
+          await newType.commit();
+        })();
+      }
+    }
+
+    this.saved.emit(this.item);
+  }
+
+  onCanceled(event) {
+    this.item.rollback();
+    this.canceled.emit(event);
   }
 
 }

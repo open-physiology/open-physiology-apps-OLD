@@ -6,14 +6,14 @@ import {TOOLTIP_DIRECTIVES} from 'ng2-bootstrap/components/tooltip';
 import {TooltipDirective} from "../common/directive.tooltip";
 
 @Component({
-  "inputs": ["items", "activeItem", "transform", "imageProvider"],
+  "inputs": ["items", "activeItem", "transform"],
   "selector": "toolbar-palette",
   "template": `
       <div class="btn-group pull-left">
         <label *ngFor="let item of items" type="button" class="btn btn-default btn-icon" 
           tooltip="{{transform? transform(item): item}}" tooltipPlacement="bottom"
           [ngClass]="{'active': activeItem === item}" (click)="activeItemChange.emit(item)">
-          <img *ngIf="imageProvider" class="icon" src="{{imageProvider(item)}}"/>
+          <img class="icon" src="{{item.constructor.icon}}"/>
         </label>
       </div>
    `,

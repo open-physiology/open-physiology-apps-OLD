@@ -31,8 +31,7 @@ function ajaxBackend() {
       let cls = entity.constructor;
       let classPath = cls.isResource ? toCamelCase(cls.plural) : cls.name;
       return ajax({
-        url:    entity.href ||
-        `${baseURL}/${classPath}/${entity.id}`,
+        url:  `${baseURL}/${classPath}/${entity.id}`,
         method: 'POST',
         contentType: 'application/json',
         data:   JSON.stringify(newValues)
@@ -42,8 +41,7 @@ function ajaxBackend() {
       let cls = entity.constructor;
       let classPath = cls.isResource ? toCamelCase(cls.plural) : cls.name;
       return ajax({
-        url:    entity.href ||
-        `${baseURL}/${classPath}/${entity.id}`,
+        url: `${baseURL}/${classPath}/${entity.id}`,
         method: 'DELETE',
         contentType: 'application/json'
       });
@@ -55,10 +53,8 @@ function ajaxBackend() {
         await Promise.all(Object.values(addresses).map(address => {
           let cls = address.class;
           let classPath = cls.isResource ? toCamelCase(cls.plural) : cls.name;
-          const href2Id = (href) => Number.parseInt(href.substring(href.lastIndexOf("/") + 1));
-          let id = href2Id(address.href);
           ajax({
-            url:    `${baseURL}/${classPath}/${id}`,
+            url:    `${baseURL}/${classPath}/${address.id}`,
             method: 'GET',
             contentType: 'application/json'
           }).then((res) => {
@@ -114,20 +110,19 @@ function toCamelCase(str) {
 
 export const getColor = d3.scale.category20();
 
-export const resourceClassNames = {};
+export const modelClassNames = {};
 
 for (let cls of Object.values(model)){
   if (cls.isResource && !cls.abstract){
-    resourceClassNames[cls.name] = cls.name;
+    modelClassNames[cls.name] = cls.name;
     if (cls.name === model.Lyph.name){
-      resourceClassNames["LyphWithAxis"] = "LyphWithAxis";
+      modelClassNames["LyphWithAxis"] = "LyphWithAxis";
     }
   }
 }
 
 export function getPropertyLabel(option: string): string{
   let custom = {
-    "href": "Reference",
     "externals": "Annotations",
     "locals": "Local resources"
   };
@@ -148,16 +143,13 @@ export function getClassLabel(option: string): string{
   return label;
 }
 
-export function getIcon(clsName: any): string{
-  return "images/resources/" + toCamelCase(clsName) + ".png";
-}
-
 export function getResourceIcon(item: any): string{
-  let clsName = (item.class === model.Lyph.name && item.axis)? resourceClassNames.LyphWithAxis: item.class;
-  if (item.class === "Type"){
+  if (item.class === model.Lyph.name && item.axis) { return "images/lyphWihAxis.png"; }
+  let clsName = item.class;
+  if (item.class === model.Type.name){
     clsName = (item['<--DefinesType'] && item['<--DefinesType'][1])? item['<--DefinesType'][1].class: "Resource";
   }
-  return "images/resources/" + toCamelCase(clsName) + ".png";
+  return model[clsName].icon;
 }
 
 
